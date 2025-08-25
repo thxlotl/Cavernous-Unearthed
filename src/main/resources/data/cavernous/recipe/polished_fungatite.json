@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "F": "cavernous:fungatite"
+  },
+  "pattern": [
+    "   ",
+    " FF",
+    " FF"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cavernous:polished_fungatite"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "cavernous:block/fungatite",
+    "side": "cavernous:block/underground_mycelium_side",
+    "top": "cavernous:block/underground_mycelium_top"
+  }
+}

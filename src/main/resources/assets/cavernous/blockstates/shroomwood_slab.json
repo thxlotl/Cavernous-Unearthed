@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cavernous:block/shroomwood_slab"
+    },
+    "type=double": {
+      "model": "cavernous:block/shroomwood_planks"
+    },
+    "type=top": {
+      "model": "cavernous:block/shroomwood_slab_top"
+    }
+  }
+}

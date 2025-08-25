@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "F": "cavernous:feather_moss_tufts"
+  },
+  "pattern": [
+    "   ",
+    " FF",
+    " FF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cavernous:feather_moss_block"
+  }
+}

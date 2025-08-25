@@ -1,0 +1,62 @@
+{
+  "item.cavernous.test_item": "Test Item",
+
+
+  "item.cavernous.fungatite": "Fungatite",
+  "item.cavernous.fungatite_stairs": "Fungatite Stairs",
+  "item.cavernous.fungatite_slab": "Fungatite Slab",
+  "item.cavernous.fungatite_wall": "Fungatite Wall",
+
+  "item.cavernous.polished_fungatite": "Polished Fungatite",
+  "item.cavernous.polished_fungatite_stairs": "Polished Fungatite Stairs",
+  "item.cavernous.polished_fungatite_slab": "Polished Fungatite Slab",
+  "item.cavernous.polished_fungatite_wall": "Polished Fungatite Wall",
+  "item.cavernous.chiseled_fungatite": "Chiseled Fungatite",
+
+  "item.cavernous.fungatite_bricks": "Fungatite Bricks",
+  "item.cavernous.fungatite_brick_stairs": "Fungatite Brick Stairs",
+  "item.cavernous.fungatite_brick_slab": "Fungatite Brick Slab",
+  "item.cavernous.fungatite_brick_wall": "Fungatite Brick Wall",
+
+  "item.cavernous.underground_mycelium": "Underground Mycelium",
+  "item.cavernous.mycelium_sprouts": "Mycelium Sprouts",
+  "item.cavernous.mycelium_fern": "Mycelium Fern",
+
+  "item.cavernous.feather_moss_block": "Feather Moss Block",
+  "item.cavernous.feather_moss_carpet": "Feather Moss Carpet",
+  "item.cavernous.feather_moss_tufts": "Feather Moss Tufts",
+
+  "item.cavernous.shroomwood_log": "Shroomwood Log",
+  "item.cavernous.shroomwood": "Shroomwood",
+  "item.cavernous.stripped_shroomwood_log": "Stripped Shroomwood Log",
+  "item.cavernous.stripped_shroomwood": "Stripped Shroomwood",
+  "item.cavernous.shroomwood_planks": "Shroomwood Planks",
+  "item.cavernous.shroomwood_stairs": "Shroomwood Stairs",
+  "item.cavernous.shroomwood_slab": "Shroomwood Slab",
+  "item.cavernous.shroomwood_fence": "Shroomwood Fence",
+  "item.cavernous.shroomwood_fence_gate": "Shroomwood Fence Gate",
+  "item.cavernous.shroomwood_door": "Shroomwood Door",
+  "item.cavernous.shroomwood_trapdoor": "Shroomwood Trapdoor",
+  "item.cavernous.shroomwood_pressure_plate": "Shroomwood Pressure Plate",
+  "item.cavernous.shroomwood_button": "Shroomwood Button",
+  "item.cavernous.shroomwood_sign": "Shroomwood Sign",
+  "item.cavernous.shroomwood_hanging_sign": "Shroomwood Hanging Sign",
+
+
+  "item.cavernous.toadstool_cap_block": "Toadstool Cap Block",
+  "item.cavernous.toadstool_patch": "Toadstool Patch",
+  "item.cavernous.toadstool_button": "Toadstool Button",
+
+  "item.cavernous.lampshroom": "Lampshroom",
+  "item.cavernous.hanging_shroom_spore_pod": "Hanging Shroom Spore Pod",
+  "item.cavernous.hanging_shroom_cap": "Hanging Shroom",
+  "item.cavernous.mushvine": "Mushvine",
+  "item.cavernous.mushroom_gill_block": "Mushroom Gill Block",
+  "item.cavernous.ancient_fern": "Ancient Fern",
+
+
+  "item.cavernous.test_block_ore": "Test Block Ore",
+  "item.cavernous.geyser_block": "Geyser Block",
+
+  "creativetab.cavernous.cavernous_tab": "Cavernous"
+}

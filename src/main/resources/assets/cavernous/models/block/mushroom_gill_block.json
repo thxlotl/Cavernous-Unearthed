@@ -1,0 +1,51 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"texture_size": [16, 32],
+	"textures": {
+		"0": "cavernous:block/mushroom_gill_block",
+		"particle": "cavernous:block/mushroom_gill_block"
+	},
+	"elements": [
+		{
+			"from": [0, 11, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 2.5], "texture": "#0", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 2.5], "texture": "#0", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 2.5], "texture": "#0", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 2.5], "texture": "#0", "cullface": "west"},
+				"up": {"uv": [16, 16, 0, 8], "texture": "#0", "cullface": "up"},
+				"down": {"uv": [16, 8, 0, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, -1.25, 0],
+			"scale": [0.29297, 0.29297, 0.29297]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, -1.25, 0],
+			"scale": [0.29297, 0.29297, 0.29297]
+		},
+		"firstperson_righthand": {
+			"translation": [0, -1.75, 0],
+			"scale": [0.34961, 0.34961, 0.34961]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, -1.75, 0],
+			"scale": [0.34961, 0.34961, 0.34961]
+		},
+		"ground": {
+			"scale": [0.24414, 0.24414, 0.24414]
+		},
+		"gui": {
+			"rotation": [45, 45, 0],
+			"scale": [0.56055, 0.56055, 0.56055]
+		},
+		"fixed": {
+			"scale": [0.32031, 0.32031, 0.32031]
+		}
+	}
+}

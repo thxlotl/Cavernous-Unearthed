@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "cavernous:block/toadstool_cap_block_bottom",
+    "side": "cavernous:block/toadstool_cap_block_gilled",
+    "top": "cavernous:block/toadstool_cap_block"
+  }
+}

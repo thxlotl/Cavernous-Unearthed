@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "cavernous:block/underground_mycelium"
+      },
+      {
+        "model": "cavernous:block/underground_mycelium",
+        "y": 90
+      },
+      {
+        "model": "cavernous:block/underground_mycelium",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/underground_mycelium",
+        "y": 270
+      }
+    ]
+  }
+}

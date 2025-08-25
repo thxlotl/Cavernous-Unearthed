@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "schedule_tick": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "cavernous:mycelium_sprouts",
+            "Properties": {
+              "waterlogged": "false"
+            }
+          },
+          "weight": 4
+        },
+        {
+          "data": {
+            "Name": "cavernous:mycelium_fern"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

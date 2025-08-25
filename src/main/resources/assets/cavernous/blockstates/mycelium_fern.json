@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "cavernous:block/mycelium_fern"
+      },
+      {
+        "model": "cavernous:block/mycelium_fern",
+        "y": 90
+      },
+      {
+        "model": "cavernous:block/mycelium_fern",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/mycelium_fern",
+        "y": 270
+      }
+    ]
+  }
+}

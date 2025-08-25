@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "cavernous:block/toadstool_patch"
+      },
+      {
+        "model": "cavernous:block/toadstool_patch",
+        "y": 90
+      },
+      {
+        "model": "cavernous:block/toadstool_patch",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/toadstool_patch",
+        "y": 270
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "schedule_tick": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "cavernous:toadstool_button",
+            "Properties": {
+              "facing": "north"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "cavernous:toadstool_button",
+            "Properties": {
+              "facing": "east"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "cavernous:toadstool_button",
+            "Properties": {
+              "facing": "south"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "cavernous:toadstool_button",
+            "Properties": {
+              "facing": "west"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "cavernous:toadstool_patch"
+          },
+          "weight": 12
+        }
+      ]
+    }
+  }
+}

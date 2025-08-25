@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "F": "cavernous:polished_fungatite_slab"
+  },
+  "pattern": [
+    "   ",
+    "  F",
+    "  F"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cavernous:chiseled_fungatite"
+  }
+}
