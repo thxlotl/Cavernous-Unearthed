@@ -17,6 +17,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -28,7 +29,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
@@ -39,11 +40,14 @@ import java.util.List;
 
 public class ModConfiguredFeatures {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_PATCH = registerKey("feather_moss_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_VEGETATION = registerKey("feather_moss_vegetation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_PATCH_BONEMEAL = registerKey("feather_moss_patch_bonemeal");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_PATCH = registerKey("feather_moss_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TOADSTOOL = registerKey("toadstool");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHROOMWOOD_LOG_VEGETATION = registerKey("shroomwood_log_vegetation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERGROUND_MYCELIUM_VEGETATION_BONEMEAL = registerKey("underground_mycelium_vegetation_bonemeal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERGROUND_MYCELIUM_VEGETATION = registerKey("underground_mycelium_vegetation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERGROUND_MYCELIUM_PATCH = registerKey("underground_mycelium_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERGROUND_MYCELIUM_PATCH_BONEMEAL = registerKey("underground_mycelium_patch_bonemeal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> HANGING_SHROOM_SPORE_POD = registerKey("hanging_shroom_spore_pod");
 
@@ -60,7 +64,7 @@ public class ModConfiguredFeatures {
         );
         FeatureUtils.register(context, FEATHER_MOSS_VEGETATION, Feature.SIMPLE_BLOCK, featherMossVegetationConfig);
 
-        VegetationPatchConfiguration featherMossPatchConfig = new VegetationPatchConfiguration(
+        VegetationPatchConfiguration featherMossBonemealPatchConfig = new VegetationPatchConfiguration(
                 BlockTags.MOSS_REPLACEABLE,
                 BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_BLOCK.get()),
                 PlacementUtils.inlinePlaced(holdergetter.getOrThrow(FEATHER_MOSS_VEGETATION)),
@@ -70,6 +74,19 @@ public class ModConfiguredFeatures {
                 6,
                 0.5f,
                 UniformInt.of(1,2),
+                0.75f);
+        FeatureUtils.register(context, FEATHER_MOSS_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, featherMossBonemealPatchConfig);
+
+        VegetationPatchConfiguration featherMossPatchConfig = new VegetationPatchConfiguration(
+                BlockTags.MOSS_REPLACEABLE,
+                BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_BLOCK.get()),
+                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(FEATHER_MOSS_VEGETATION)),
+                CaveSurface.FLOOR,
+                ConstantInt.of(1),
+                0f,
+                6,
+                0.5f,
+                UniformInt.of(3,4),
                 0.75f);
         FeatureUtils.register(context, FEATHER_MOSS_PATCH, Feature.VEGETATION_PATCH, featherMossPatchConfig);
 
@@ -106,10 +123,20 @@ public class ModConfiguredFeatures {
         FeatureUtils.register(context, SHROOMWOOD_LOG_VEGETATION, Feature.SIMPLE_BLOCK, shroomwoodLogVegetationConfig);
 
         // Mycelium
-        SimpleBlockConfiguration undergroundMyceliumVegetationConfig = new SimpleBlockConfiguration(
+        SimpleBlockConfiguration undergroundMyceliumVegetationBonemealConfig = new SimpleBlockConfiguration(
                 new WeightedStateProvider(WeightedList.<BlockState>builder()
                         .add(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), 4)
                         .add(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 1)),
+                true
+        );
+        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_VEGETATION_BONEMEAL, Feature.SIMPLE_BLOCK, undergroundMyceliumVegetationBonemealConfig);
+
+        SimpleBlockConfiguration undergroundMyceliumVegetationConfig = new SimpleBlockConfiguration(
+                new WeightedStateProvider(WeightedList.<BlockState>builder()
+                        .add(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), 6)
+                        .add(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 2)
+                        .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 1)
+                ),
                 true
         );
         FeatureUtils.register(context, UNDERGROUND_MYCELIUM_VEGETATION, Feature.SIMPLE_BLOCK, undergroundMyceliumVegetationConfig);
@@ -117,7 +144,7 @@ public class ModConfiguredFeatures {
         VegetationPatchConfiguration undergroundMyceliumPatchConfig = new VegetationPatchConfiguration(
                 ModTags.Blocks.UNDERGROUND_MYCELIUM_REPLACEABLE,
                 BlockStateProvider.simple(ModBlocks.UNDERGROUND_MYCELIUM.get()),
-                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(UNDERGROUND_MYCELIUM_VEGETATION)),
+                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(UNDERGROUND_MYCELIUM_VEGETATION_BONEMEAL)),
                 CaveSurface.FLOOR,
                 ConstantInt.of(1),
                 0f,
@@ -126,6 +153,15 @@ public class ModConfiguredFeatures {
                 UniformInt.of(1,2),
                 0.5f);
         FeatureUtils.register(context, UNDERGROUND_MYCELIUM_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, undergroundMyceliumPatchConfig);
+        
+        RandomPatchConfiguration myceliumVegetationPatchConfig = new RandomPatchConfiguration(
+                500,
+                8,
+                6,
+                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(UNDERGROUND_MYCELIUM_VEGETATION),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), Vec3i.ZERO))
+        ));
+        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_PATCH, Feature.RANDOM_PATCH, myceliumVegetationPatchConfig);
 
 
         BlockColumnConfiguration hangingShroomSporePodConfig = new BlockColumnConfiguration(

@@ -13,6 +13,7 @@ import net.thxlotl.cavernous.entity.client.HangingShroomSporePodRenderer;
 import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModWoodTypes;
+import net.thxlotl.cavernous.worldgen.biolith.BiolithUsage;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
 
@@ -70,7 +71,7 @@ public class Cavernous {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-
+        BiolithUsage.init();
     }
 
     // Add the example block item to the building blocks tab

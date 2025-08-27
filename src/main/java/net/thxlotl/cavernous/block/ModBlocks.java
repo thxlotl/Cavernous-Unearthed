@@ -141,7 +141,7 @@ public class ModBlocks {
     // Feather moss
     public static final DeferredBlock<BonemealableFeaturePlacerBlock> FEATHER_MOSS_BLOCK = registerBlock(
             "feather_moss_block",
-            properties -> new BonemealableFeaturePlacerBlock(ModConfiguredFeatures.FEATHER_MOSS_PATCH, properties),
+            properties -> new BonemealableFeaturePlacerBlock(ModConfiguredFeatures.FEATHER_MOSS_PATCH_BONEMEAL, properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_BLOCK)
             );
     public static final DeferredBlock<CarpetBlock> FEATHER_MOSS_CARPET = registerBlock(

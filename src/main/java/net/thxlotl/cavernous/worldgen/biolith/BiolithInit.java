@@ -7,8 +7,9 @@ import net.thxlotl.cavernous.Cavernous;
 @SuppressWarnings("unused")
 public class BiolithInit {
     public BiolithInit() {
-        BiolithUsage.LOGGER.info("Biolith usage is initializing...");
+        //BiolithUsage.LOGGER.info("Biolith usage is initializing...");
 
-        BiolithUsage.init();
+        //BiolithUsage.init();
     }
+
 }

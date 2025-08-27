@@ -14,7 +14,7 @@
     "surface": "floor",
     "vegetation_chance": 0.5,
     "vegetation_feature": {
-      "feature": "cavernous:underground_mycelium_vegetation",
+      "feature": "cavernous:underground_mycelium_vegetation_bonemeal",
       "placement": []
     },
     "vertical_range": 6,

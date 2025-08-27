@@ -38,39 +38,48 @@ public class ModBiomes {
         BiomeDefaultFeatures.addDefaultSprings(builder);
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
+    public static void globalOverworldSpawns(MobSpawnSettings.Builder builder)
+    {
+        BiomeDefaultFeatures.caveSpawns(builder);
+        BiomeDefaultFeatures.commonSpawns(builder);
+    }
 
 
 
     private static Biome fungalCaves(BootstrapContext<Biome> context) {
 
+        // Build mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 1, 2));
+        //spawnBuilder.addSpawn(MobCategory.CREATURE, 1, new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 1, 2));
+        globalOverworldSpawns(spawnBuilder);
 
+        // Build feature generation
         BiomeGenerationSettings.Builder biomeBuilder =
                 new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
 
+        // Default features
         globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        // Custom features
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FEATHER_MOSS_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.UNDERGROUND_MYCELIUM_PATCH);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_PLAINS);
-
-        Holder<SoundEvent> music = SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES;
-
+        // Biome characteristics
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .downfall(0.8f)
-                .temperature(0.7f)
+                .downfall(0.5f)
+                .temperature(0.5f)
                 .generationSettings(biomeBuilder.build())
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
-                        .waterColor(0xe82e3b)
-                        .waterFogColor(0xbf1b26)
-                        .skyColor(0x30c918)
-                        .grassColorOverride(0x7f03fc)
-                        .foliageColorOverride(0xd203fc)
-                        .fogColor(0x22a1e6)
+                        .waterColor(4178916)
+                        .waterFogColor(335155)
+                        .skyColor(8103167)
+                        .fogColor(12638463)
+                        .grassColorOverride(7311404)
+                        .foliageColorOverride(7311404)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(music)).build())
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
                 .build();
     }
 }

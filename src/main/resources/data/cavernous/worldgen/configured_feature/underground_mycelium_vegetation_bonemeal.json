@@ -12,17 +12,11 @@
               "waterlogged": "false"
             }
           },
-          "weight": 6
+          "weight": 4
         },
         {
           "data": {
             "Name": "cavernous:mycelium_fern"
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "cavernous:toadstool_patch"
           },
           "weight": 1
         }

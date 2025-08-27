@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "feature": {
+      "feature": "cavernous:underground_mycelium_vegetation",
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "cavernous:mycelium_sprouts",
+              "Properties": {
+                "waterlogged": "false"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "tries": 500,
+    "xz_spread": 8,
+    "y_spread": 6
+  }
+}
