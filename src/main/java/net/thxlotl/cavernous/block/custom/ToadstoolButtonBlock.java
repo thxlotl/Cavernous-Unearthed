@@ -24,8 +24,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.thxlotl.cavernous.util.ModTags;
-import net.thxlotl.cavernous.worldgen.tree.ModTreeGrowers;
+import net.thxlotl.cavernous.worldgen.custom.tree.ModTreeGrowers;
 
 import java.util.Map;
 

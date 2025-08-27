@@ -33,7 +33,7 @@ import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
 import net.thxlotl.cavernous.util.ModTags;
-import net.thxlotl.cavernous.worldgen.tree.ToadstoolTrunkPlacer;
+import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
 
 import java.util.List;
 

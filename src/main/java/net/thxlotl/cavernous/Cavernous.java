@@ -13,7 +13,7 @@ import net.thxlotl.cavernous.entity.client.HangingShroomSporePodRenderer;
 import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModWoodTypes;
-import net.thxlotl.cavernous.worldgen.tree.ModTrunkPlacerTypes;
+import net.thxlotl.cavernous.worldgen.custom.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;

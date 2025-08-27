@@ -8,6 +8,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.worldgen.ModBiomeModifiers;
+import net.thxlotl.cavernous.worldgen.ModBiomes;
 import net.thxlotl.cavernous.worldgen.ModConfiguredFeatures;
 import net.thxlotl.cavernous.worldgen.ModPlacedFeatures;
 
@@ -20,6 +21,7 @@ public class ModDatapackProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
+            .add(Registries.BIOME, ModBiomes::bootstrap)
             ;
 
     public ModDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

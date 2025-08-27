@@ -1,4 +1,4 @@
-package net.thxlotl.cavernous.worldgen.tree;
+package net.thxlotl.cavernous.worldgen.custom.tree;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.Registries;

@@ -1,4 +1,4 @@
-package net.thxlotl.cavernous.worldgen.tree;
+package net.thxlotl.cavernous.worldgen.custom.tree;
 
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.thxlotl.cavernous.Cavernous;

@@ -2,7 +2,6 @@ package net.thxlotl.cavernous.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +29,6 @@ import net.thxlotl.cavernous.block.custom.sign.ModWallSignBlock;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.ModConfiguredFeatures;
-import net.thxlotl.cavernous.worldgen.tree.ModTreeGrowers;
 
 import java.util.function.Function;
 
