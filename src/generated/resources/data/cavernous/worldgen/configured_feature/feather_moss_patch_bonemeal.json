@@ -15,7 +15,27 @@
     "vegetation_chance": 0.5,
     "vegetation_feature": {
       "feature": "cavernous:feather_moss_vegetation",
-      "placement": []
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:would_survive",
+            "state": {
+              "Name": "cavernous:feather_moss_tufts",
+              "Properties": {
+                "waterlogged": "false"
+              }
+            }
+          }
+        },
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
     },
     "vertical_range": 6,
     "xz_radius": {

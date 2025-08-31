@@ -15,10 +15,17 @@
               }
             }
           }
+        },
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
         }
       ]
     },
-    "tries": 500,
+    "tries": 1000,
     "xz_spread": 8,
     "y_spread": 6
   }

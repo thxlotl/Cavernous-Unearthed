@@ -17,6 +17,7 @@ import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModTags;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
@@ -146,6 +147,24 @@ public class ModRecipeProvider extends RecipeProvider {
         buttonBuilder(ModBlocks.SHROOMWOOD_BUTTON.get(), Ingredient.of(ModBlocks.SHROOMWOOD_PLANKS)).unlockedBy("has_shroomwood_planks", has(ModBlocks.SHROOMWOOD_PLANKS)).save(output);
         signBuilder(ModBlocks.SHROOMWOOD_SIGN, Ingredient.of(ModBlocks.SHROOMWOOD_PLANKS)).unlockedBy("has_shroomwood_planks", has(ModBlocks.SHROOMWOOD_PLANKS)).save(output);
         hangingSign(ModBlocks.SHROOMWOOD_HANGING_SIGN, ModBlocks.STRIPPED_SHROOMWOOD_LOG);
+
+        oreSmelting(List.of(ModBlocks.FUNGATITE_COAL_ORE.asItem()),RecipeCategory.MISC,Items.COAL,0.1f,200,"coal");
+        oreSmelting(List.of(ModBlocks.FUNGATITE_IRON_ORE.asItem()),RecipeCategory.MISC,Items.IRON_INGOT,0.7f,200,"iron");
+        oreSmelting(List.of(ModBlocks.FUNGATITE_COPPER_ORE.asItem()),RecipeCategory.MISC,Items.COPPER_INGOT,0.7f,200,"copper");
+        oreSmelting(List.of(ModBlocks.FUNGATITE_GOLD_ORE.asItem()),RecipeCategory.MISC,Items.GOLD_INGOT,1.0f,200,"gold");
+        oreSmelting(List.of(ModBlocks.FUNGATITE_REDSTONE_ORE.asItem()),RecipeCategory.MISC,Items.REDSTONE,0.7f,200,"redstone");
+        oreSmelting(List.of(ModBlocks.FUNGATITE_EMERALD_ORE.asItem()),RecipeCategory.MISC,Items.EMERALD,1.0f,200,"emerald");
+        oreSmelting(List.of(ModBlocks.FUNGATITE_LAPIS_ORE.asItem()),RecipeCategory.MISC,Items.LAPIS_LAZULI,0.2f,200,"lapis");
+        oreSmelting(List.of(ModBlocks.FUNGATITE_DIAMOND_ORE.asItem()),RecipeCategory.MISC,Items.DIAMOND,1.0f,200,"diamond");
+
+        oreBlasting(List.of(ModBlocks.FUNGATITE_COAL_ORE.asItem()),RecipeCategory.MISC,Items.COAL,0.1f,100,"coal");
+        oreBlasting(List.of(ModBlocks.FUNGATITE_IRON_ORE.asItem()),RecipeCategory.MISC,Items.IRON_INGOT,0.7f,100,"iron");
+        oreBlasting(List.of(ModBlocks.FUNGATITE_COPPER_ORE.asItem()),RecipeCategory.MISC,Items.COPPER_INGOT,0.7f,100,"copper");
+        oreBlasting(List.of(ModBlocks.FUNGATITE_GOLD_ORE.asItem()),RecipeCategory.MISC,Items.GOLD_INGOT,1.0f,100,"gold");
+        oreBlasting(List.of(ModBlocks.FUNGATITE_REDSTONE_ORE.asItem()),RecipeCategory.MISC,Items.REDSTONE,0.7f,100,"redstone");
+        oreBlasting(List.of(ModBlocks.FUNGATITE_EMERALD_ORE.asItem()),RecipeCategory.MISC,Items.EMERALD,1.0f,100,"emerald");
+        oreBlasting(List.of(ModBlocks.FUNGATITE_LAPIS_ORE.asItem()),RecipeCategory.MISC,Items.LAPIS_LAZULI,0.2f,100,"lapis");
+        oreBlasting(List.of(ModBlocks.FUNGATITE_DIAMOND_ORE.asItem()),RecipeCategory.MISC,Items.DIAMOND,1.0f,100,"diamond");
     }
 
 }

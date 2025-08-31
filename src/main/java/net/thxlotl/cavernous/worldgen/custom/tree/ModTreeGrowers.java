@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public class ModTreeGrowers {
     public static final TreeGrower TOADSTOOL = new TreeGrower(Cavernous.MODID + ":toadstool", Optional.empty(), Optional.of(ModConfiguredFeatures.TOADSTOOL), Optional.empty());
+    public static final TreeGrower LAMPSHROOM = new TreeGrower(Cavernous.MODID + ":lampshroom", Optional.empty(), Optional.of(ModConfiguredFeatures.LAMPSHROOM_TREE), Optional.empty());
 }

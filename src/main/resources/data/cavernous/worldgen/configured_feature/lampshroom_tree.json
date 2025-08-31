@@ -1,0 +1,66 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "cavernous:mushroom_cap_foliage_placer",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 6,
+        "min_inclusive": 3
+      },
+      "offset": 0,
+      "radius": 1
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "cavernous:lampshroom_cap_block"
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 1
+    },
+    "trunk_placer": {
+      "type": "cavernous:toadstool_trunk_placer",
+      "base_height": 1,
+      "bend_length": {
+        "type": "minecraft:biased_to_bottom",
+        "max_inclusive": 3,
+        "min_inclusive": 2
+      },
+      "extrusion_length": {
+        "type": "minecraft:biased_to_bottom",
+        "max_inclusive": 3,
+        "min_inclusive": 2
+      },
+      "height_rand_a": 1,
+      "height_rand_b": 1,
+      "trunk_top_bonus_height": {
+        "type": "minecraft:biased_to_bottom",
+        "max_inclusive": 2,
+        "min_inclusive": 1
+      }
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "cavernous:shroomwood_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
+}

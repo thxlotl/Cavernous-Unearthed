@@ -66,6 +66,14 @@ public class ModModelProvider extends ModelProvider {
                 .stairs(ModBlocks.FUNGATITE_STAIRS.get())
                 .slab(ModBlocks.FUNGATITE_SLAB.get())
                 .wall(ModBlocks.FUNGATITE_WALL.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_COAL_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_IRON_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_COPPER_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_GOLD_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_REDSTONE_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_EMERALD_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_LAPIS_ORE.get());
+        blockModels.createTrivialCube(ModBlocks.FUNGATITE_DIAMOND_ORE.get());
         blockModels.family(ModBlocks.POLISHED_FUNGATITE.get())
                 .stairs(ModBlocks.POLISHED_FUNGATITE_STAIRS.get())
                 .slab(ModBlocks.POLISHED_FUNGATITE_SLAB.get())
@@ -97,10 +105,11 @@ public class ModModelProvider extends ModelProvider {
                         .put(TextureSlot.BOTTOM, getBlockTexture(ModBlocks.FUNGATITE.get()))
                         .put(TextureSlot.TOP, getBlockTexture(ModBlocks.UNDERGROUND_MYCELIUM.get(), "_top"))
         );
-        modBlockModels.createBlockWithRandomRotations(undergroundMycelium, ModBlocks.UNDERGROUND_MYCELIUM.get());
+        modBlockModels.createTrivialBlock(ModBlocks.UNDERGROUND_MYCELIUM.get(), undergroundMycelium);
 
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.MYCELIUM_SPROUTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
+        blockModels.createTrivialCube(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.TOADSTOOL_CAP_BLOCK.get());
 
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.CLUSTER_SHROOM.get(), BlockModelGenerators.PlantType.NOT_TINTED);

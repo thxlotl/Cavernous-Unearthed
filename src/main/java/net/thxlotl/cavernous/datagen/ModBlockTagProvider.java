@@ -20,6 +20,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.FUNGATITE.get())
+                .add(ModBlocks.FUNGATITE_COAL_ORE.get())
+                .add(ModBlocks.FUNGATITE_COPPER_ORE.get())
+                .add(ModBlocks.FUNGATITE_IRON_ORE.get())
+                .add(ModBlocks.FUNGATITE_REDSTONE_ORE.get())
+                .add(ModBlocks.FUNGATITE_GOLD_ORE.get())
+                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get())
+                .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get())
+                .add(ModBlocks.FUNGATITE_EMERALD_ORE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get())
                 .add(ModBlocks.FUNGATITE_STAIRS.get())
                 .add(ModBlocks.FUNGATITE_SLAB.get())
@@ -36,7 +44,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get())
                 .add(ModBlocks.FEATHER_MOSS_CARPET.get())
-                .add(ModBlocks.TOADSTOOL_CAP_BLOCK.get());
+                .add(ModBlocks.TOADSTOOL_CAP_BLOCK.get())
+                .add(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SHROOMWOOD_LOG.get())
                 .add(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get())
@@ -52,10 +61,33 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHROOMWOOD_PRESSURE_PLATE.get())
                 .add(ModBlocks.SHROOMWOOD_BUTTON.get());
 
+        tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
+                .add(ModBlocks.FUNGATITE.get())
+                .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
+        
         tag(BlockTags.CLIMBABLE)
                 .add(ModBlocks.HANGING_SHROOM_CAP.get())
                 .add(ModBlocks.HANGING_SHROOM_STEM.get())
                 .add(ModBlocks.MUSHVINE.get());
+
+        tag(BlockTags.COAL_ORES)
+                .add(ModBlocks.FUNGATITE_COAL_ORE.get());tag(BlockTags.COAL_ORES)
+                .add(ModBlocks.FUNGATITE_COAL_ORE.get());
+        tag(BlockTags.IRON_ORES)
+                .add(ModBlocks.FUNGATITE_IRON_ORE.get());
+        tag(BlockTags.COPPER_ORES)
+                .add(ModBlocks.FUNGATITE_COPPER_ORE.get());
+        tag(BlockTags.GOLD_ORES)
+                .add(ModBlocks.FUNGATITE_GOLD_ORE.get());
+        tag(BlockTags.REDSTONE_ORES)
+                .add(ModBlocks.FUNGATITE_REDSTONE_ORE.get());
+        tag(BlockTags.EMERALD_ORES)
+                .add(ModBlocks.FUNGATITE_EMERALD_ORE.get());
+        tag(BlockTags.LAPIS_ORES)
+                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get());
+        tag(BlockTags.DIAMOND_ORES)
+                .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get());
+
 
         tag(BlockTags.STAIRS)
                 .add(ModBlocks.FUNGATITE_STAIRS.get())
@@ -166,6 +198,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(ModTags.Blocks.UNDERGROUND_MYCELIUM_REPLACEABLE)
                 .add(ModBlocks.FUNGATITE.get());
+
+        tag(ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE)
+                .add(ModBlocks.FUNGATITE.get())
+                .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
 
     }
 }

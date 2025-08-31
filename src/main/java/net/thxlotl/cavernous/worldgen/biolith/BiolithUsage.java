@@ -8,8 +8,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import net.minecraft.world.level.levelgen.synth.NoiseUtils;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.worldgen.ModBiomes;
@@ -41,19 +44,20 @@ public class BiolithUsage {
                 Climate.Parameter.span(0.2f, 0.53f),
                 Climate.Parameter.span(-1.0f, 1.0f),
                 0L));
-        SurfaceGeneration.addOverworldSurfaceRules(overworldRules, createRules());
+        SurfaceGeneration.addOverworldSurfaceRules(overworldRules, fungalRules());
 
         //BiomePlacement.replaceOverworld(SNOWY_SLOPES, ModBiomes.FUNGAL_CAVES);
     }
 
-    private static SurfaceRules.RuleSource createRules()
+    private static SurfaceRules.RuleSource fungalRules()
     {
         Supplier<? extends Block> undergroundMycelium = ModBlocks.UNDERGROUND_MYCELIUM;
         Supplier<? extends Block> fungatite = ModBlocks.FUNGATITE;
 
         SurfaceRules.RuleSource fungalCaves =
                 SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR), SurfaceRules.state(undergroundMycelium.get().defaultBlockState())),
+                        SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
+                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.3, 0.3), SurfaceRules.state(undergroundMycelium.get().defaultBlockState()))),
                         SurfaceRules.state(fungatite.get().defaultBlockState())
                         );
 

@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HangingSignItem;
@@ -47,6 +48,38 @@ public class ModBlocks {
                     strength(1.5f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_COAL_ORE = registerBlock(
+            "fungatite_coal_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(0, 2), properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.COAL_ORE));
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_COPPER_ORE = registerBlock(
+            "fungatite_copper_ore",
+            properties -> new DropExperienceBlock(ConstantInt.of(0), properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_ORE));
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_IRON_ORE = registerBlock(
+            "fungatite_iron_ore",
+            properties -> new DropExperienceBlock(ConstantInt.of(0), properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE));
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_GOLD_ORE = registerBlock(
+            "fungatite_gold_ore",
+            properties -> new DropExperienceBlock(ConstantInt.of(0), properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_ORE));
+    public static final DeferredBlock<RedStoneOreBlock> FUNGATITE_REDSTONE_ORE = registerBlock(
+            "fungatite_redstone_ore",
+            properties -> new RedStoneOreBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_ORE));
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_LAPIS_ORE = registerBlock(
+            "fungatite_lapis_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.LAPIS_ORE));
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_DIAMOND_ORE = registerBlock(
+            "fungatite_diamond_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(3, 7), properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE));
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_EMERALD_ORE = registerBlock(
+            "fungatite_emerald_ore",
+            properties -> new DropExperienceBlock(UniformInt.of(3, 7), properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.EMERALD_ORE));
     public static final DeferredBlock<StairBlock> FUNGATITE_STAIRS = registerBlock(
             "fungatite_stairs",
             properties -> new StairBlock(ModBlocks.FUNGATITE.get().defaultBlockState(), properties),
@@ -183,7 +216,7 @@ public class ModBlocks {
             properties -> new ToadstoolCapBlock(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
-                    sound(SoundType.WOOL));
+                    sound(SoundType.MOSS));
                                                                                                         // Change later
     public static final DeferredBlock<ToadstoolPatchBlock> TOADSTOOL_PATCH = registerBlock(
             "toadstool_patch",
@@ -373,10 +406,18 @@ public class ModBlocks {
             properties -> new ToadstoolButtonBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
     );
+
+    public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock(
+            "lampshroom_cap_block",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(0.5f).
+                    sound(SoundType.MOSS)
+                    .lightLevel((p) -> 10));
     public static final DeferredBlock<LampshroomBlock> LAMPSHROOM = registerBlock(
             "lampshroom",
             properties -> new LampshroomBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 6)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 8)
     );
     public static final DeferredBlock<VineBlock> MUSHVINE = registerBlock(
             "mushvine",

@@ -14,6 +14,7 @@ import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.biolith.BiolithUsage;
+import net.thxlotl.cavernous.worldgen.custom.tree.ModFoliagePlacerTypes;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
 
@@ -60,8 +61,9 @@ public class Cavernous {
         ModBlockEntities.register(modEventBus);
         ModEntities.register(modEventBus);
 
-        // Register Trunk Types
+        // Register Feature Types
         ModTrunkPlacerTypes.register(modEventBus);
+        ModFoliagePlacerTypes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

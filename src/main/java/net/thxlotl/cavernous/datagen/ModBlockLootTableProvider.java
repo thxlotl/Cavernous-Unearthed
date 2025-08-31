@@ -67,6 +67,24 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
 
         dropSelf(ModBlocks.FUNGATITE.get());
+
+        add(ModBlocks.FUNGATITE_COAL_ORE.get(),
+                block -> createOreDrop(ModBlocks.FUNGATITE_COAL_ORE.get(), Items.COAL));
+        add(ModBlocks.FUNGATITE_COPPER_ORE.get(),
+                block -> createCopperOreDrops(ModBlocks.FUNGATITE_COPPER_ORE.get()));
+        add(ModBlocks.FUNGATITE_IRON_ORE.get(),
+                block -> createOreDrop(ModBlocks.FUNGATITE_IRON_ORE.get(), Items.RAW_IRON));
+        add(ModBlocks.FUNGATITE_GOLD_ORE.get(),
+                block -> createOreDrop(ModBlocks.FUNGATITE_GOLD_ORE.get(), Items.RAW_GOLD));
+        add(ModBlocks.FUNGATITE_REDSTONE_ORE.get(),
+                block -> createRedstoneOreDrops(ModBlocks.FUNGATITE_REDSTONE_ORE.get()));
+        add(ModBlocks.FUNGATITE_LAPIS_ORE.get(),
+                block -> createLapisOreDrops(ModBlocks.FUNGATITE_LAPIS_ORE.get()));
+        add(ModBlocks.FUNGATITE_DIAMOND_ORE.get(),
+                block -> createOreDrop(ModBlocks.FUNGATITE_DIAMOND_ORE.get(), Items.DIAMOND));
+        add(ModBlocks.FUNGATITE_EMERALD_ORE.get(),
+                block -> createOreDrop(ModBlocks.FUNGATITE_EMERALD_ORE.get(), Items.EMERALD));
+
         dropSelf(ModBlocks.FUNGATITE_STAIRS.get());
         add(ModBlocks.FUNGATITE_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.FUNGATITE_SLAB.get()));
@@ -132,6 +150,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.MUSHROOM_GILL_BLOCK.get(),
                 block -> createShearsOnlyDrop(ModBlocks.MUSHROOM_GILL_BLOCK.get()));
         dropSelf(ModBlocks.LAMPSHROOM.get());
+        dropSelf(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
 
         add(ModBlocks.HANGING_SHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
         add(ModBlocks.HANGING_SHROOM_CAP.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));

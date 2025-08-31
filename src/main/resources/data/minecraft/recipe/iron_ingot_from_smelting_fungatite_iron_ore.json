@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "iron",
+  "ingredient": "cavernous:fungatite_iron_ore",
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_ingot"
+  }
+}

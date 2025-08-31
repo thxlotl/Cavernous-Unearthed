@@ -12,19 +12,28 @@
               "waterlogged": "false"
             }
           },
+          "weight": 8
+        },
+        {
+          "data": {
+            "Name": "cavernous:feather_moss_tufts",
+            "Properties": {
+              "waterlogged": "false"
+            }
+          },
           "weight": 6
         },
         {
           "data": {
             "Name": "cavernous:mycelium_fern"
           },
-          "weight": 2
+          "weight": 6
         },
         {
           "data": {
             "Name": "cavernous:toadstool_patch"
           },
-          "weight": 1
+          "weight": 4
         }
       ]
     }

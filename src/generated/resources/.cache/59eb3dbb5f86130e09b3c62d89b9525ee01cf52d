@@ -1,4 +1,4 @@
-// 1.21.8	2025-08-23T16:38:51.7823682	Loot Tables
+// 1.21.8	2025-08-30T14:22:26.5586947	Loot Tables
 c11c95e59dca2392195b7ae39015636ed6d60e3f data/cavernous/loot_table/blocks/chiseled_fungatite.json
 f4c4322d09f7488b8884bff2034ec76aa0e051a2 data/cavernous/loot_table/blocks/cluster_shroom.json
 b450a5677e756e71b0179456b35ee9cdd8e6737c data/cavernous/loot_table/blocks/feather_moss_block.json
@@ -9,6 +9,14 @@ b450a5677e756e71b0179456b35ee9cdd8e6737c data/cavernous/loot_table/blocks/feathe
 bf3c93d6a3e1b2167ad585e33208a0205ed02e65 data/cavernous/loot_table/blocks/fungatite_brick_slab.json
 a8048e8ddc2630c1f235f0d4672f68d3e14f094b data/cavernous/loot_table/blocks/fungatite_brick_stairs.json
 ef722707f04804b40ee77dd27414931f8ba42f6b data/cavernous/loot_table/blocks/fungatite_brick_wall.json
+74f9031547a0cdac44ad95bf5c312048df39c242 data/cavernous/loot_table/blocks/fungatite_coal_ore.json
+bc3ba702b7c109dbfdf57d0ff20de5ec062ce04f data/cavernous/loot_table/blocks/fungatite_copper_ore.json
+e0aedf0e25b299a1c65920e6160e317d091c10b0 data/cavernous/loot_table/blocks/fungatite_diamond_ore.json
+4a5b49838286ef0a25bf53b6adfcfe8a1890d086 data/cavernous/loot_table/blocks/fungatite_emerald_ore.json
+32b57a980a118541211d8e4a295fcb09e59ad501 data/cavernous/loot_table/blocks/fungatite_gold_ore.json
+23ee5b1c7655d85b6f5f82fdffd9b2e44b6f078b data/cavernous/loot_table/blocks/fungatite_iron_ore.json
+59e24e36fad56e856d485767b8deb79ab703494b data/cavernous/loot_table/blocks/fungatite_lapis_ore.json
+5208f7d302753cde2ecd5bbfad54534586b4df2b data/cavernous/loot_table/blocks/fungatite_redstone_ore.json
 5b194f5219267597253ba708f04d8e05b3e12171 data/cavernous/loot_table/blocks/fungatite_slab.json
 2e26eb30f8e555211b8b36e196c202410b16f6ca data/cavernous/loot_table/blocks/fungatite_stairs.json
 591a1461343e3143f4238d9cd6bf95c78d3ce0ff data/cavernous/loot_table/blocks/fungatite_wall.json
@@ -17,6 +25,7 @@ ef722707f04804b40ee77dd27414931f8ba42f6b data/cavernous/loot_table/blocks/fungat
 1e4beedfc3c7aec87b313ac0bfeb90ebc6f5dd25 data/cavernous/loot_table/blocks/hanging_shroom_cap.json
 62a029a7cc3f8c1e07058213c7df309892ddddd0 data/cavernous/loot_table/blocks/hanging_shroom_stem.json
 205457191ce0cfd9f743f9142e1369753968bdce data/cavernous/loot_table/blocks/lampshroom.json
+16582393f4929f6683195837fc9b84649db06900 data/cavernous/loot_table/blocks/lampshroom_cap_block.json
 4aa969b286cf96ef6650ba2720453f28e7daf76b data/cavernous/loot_table/blocks/mushroom_gill_block.json
 bca1f7c4551b12cb8c7bc058fac9d38f176ef0b1 data/cavernous/loot_table/blocks/mushvine.json
 09d1edfd5fd86cf8200fd7ea963d204a51ac53f3 data/cavernous/loot_table/blocks/mycelium_fern.json

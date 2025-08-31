@@ -6,7 +6,7 @@
   ],
   "downfall": 0.5,
   "effects": {
-    "fog_color": 12638463,
+    "fog_color": 12377016,
     "foliage_color": 7311404,
     "grass_color": 7311404,
     "mood_sound": {
@@ -27,7 +27,7 @@
       }
     ],
     "music_volume": 1.0,
-    "sky_color": 8103167,
+    "sky_color": 12377016,
     "water_color": 4178916,
     "water_fog_color": 335155
   },
@@ -55,7 +55,25 @@
       "minecraft:ore_diorite_lower",
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
-      "minecraft:ore_tuff"
+      "minecraft:ore_tuff",
+      "cavernous:fungatite_ore_coal_lower",
+      "cavernous:fungatite_ore_coal_upper",
+      "cavernous:fungatite_ore_copper",
+      "cavernous:fungatite_ore_copper_large",
+      "cavernous:fungatite_ore_iron_middle",
+      "cavernous:fungatite_ore_iron_small",
+      "cavernous:fungatite_ore_iron_upper",
+      "cavernous:fungatite_ore_gold",
+      "cavernous:fungatite_ore_gold_lower",
+      "cavernous:fungatite_ore_redstone",
+      "cavernous:fungatite_ore_redstone_lower",
+      "cavernous:fungatite_ore_lapis",
+      "cavernous:fungatite_ore_lapis_buried",
+      "cavernous:fungatite_ore_diamond",
+      "cavernous:fungatite_ore_diamond_buried",
+      "cavernous:fungatite_ore_diamond_large",
+      "cavernous:fungatite_ore_diamond_medium",
+      "cavernous:fungatite_ore_emerald"
     ],
     [],
     [
@@ -67,7 +85,11 @@
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "cavernous:feather_moss_patch",
-      "cavernous:mycelium_vegetation_patch"
+      "cavernous:mycelium_vegetation_patch",
+      "cavernous:toadstool",
+      "cavernous:hanging_shroom",
+      "cavernous:lampshroom",
+      "cavernous:lampshroom_tree"
     ],
     [
       "minecraft:freeze_top_layer"

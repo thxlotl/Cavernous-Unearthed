@@ -20,6 +20,14 @@ public class ModCreativeModeTabs {
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(ModItems.TEST_ITEM);
                 output.accept(ModBlocks.FUNGATITE);
+                output.accept(ModBlocks.FUNGATITE_COAL_ORE);
+                output.accept(ModBlocks.FUNGATITE_COPPER_ORE);
+                output.accept(ModBlocks.FUNGATITE_IRON_ORE);
+                output.accept(ModBlocks.FUNGATITE_GOLD_ORE);
+                output.accept(ModBlocks.FUNGATITE_REDSTONE_ORE);
+                output.accept(ModBlocks.FUNGATITE_LAPIS_ORE);
+                output.accept(ModBlocks.FUNGATITE_DIAMOND_ORE);
+                output.accept(ModBlocks.FUNGATITE_EMERALD_ORE);
                 output.accept(ModBlocks.FUNGATITE_STAIRS);
                 output.accept(ModBlocks.FUNGATITE_SLAB);
                 output.accept(ModBlocks.FUNGATITE_WALL);
@@ -58,6 +66,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SHROOMWOOD_HANGING_SIGN);
                 output.accept(ModBlocks.HANGING_SHROOM_CAP);
                 output.accept(ModBlocks.LAMPSHROOM);
+                output.accept(ModBlocks.LAMPSHROOM_CAP_BLOCK);
                 output.accept(ModBlocks.MUSHROOM_GILL_BLOCK);
                 output.accept(ModBlocks.MUSHVINE);
                 output.accept(ModBlocks.GILLED_MUSHROOM);
