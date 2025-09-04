@@ -61,6 +61,16 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHROOMWOOD_PRESSURE_PLATE.get())
                 .add(ModBlocks.SHROOMWOOD_BUTTON.get());
 
+        tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.FUNGATITE_IRON_ORE.get())
+                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get());
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.FUNGATITE_GOLD_ORE.get())
+                .add(ModBlocks.FUNGATITE_REDSTONE_ORE.get())
+                .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get())
+                .add(ModBlocks.FUNGATITE_EMERALD_ORE.get());
+
+
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
@@ -138,6 +148,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MUSHROOM_GROW_BLOCK)
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get())
                 .add(ModBlocks.FUNGATITE.get())
+                .add(ModBlocks.FUNGATITE_COAL_ORE.get())
+                .add(ModBlocks.FUNGATITE_COPPER_ORE.get())
+                .add(ModBlocks.FUNGATITE_IRON_ORE.get())
+                .add(ModBlocks.FUNGATITE_GOLD_ORE.get())
+                .add(ModBlocks.FUNGATITE_REDSTONE_ORE.get())
+                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get())
+                .add(ModBlocks.FUNGATITE_EMERALD_ORE.get())
+                .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get())
                 .addTag(ModTags.Blocks.SHROOMWOOD_LOGS);
         tag(BlockTags.LOGS)
                 .add(ModBlocks.SHROOMWOOD_LOG.get())

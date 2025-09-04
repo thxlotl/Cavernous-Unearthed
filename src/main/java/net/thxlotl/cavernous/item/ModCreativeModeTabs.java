@@ -18,7 +18,6 @@ public class ModCreativeModeTabs {
             .icon( () -> new ItemStack(ModBlocks.FUNGATITE.get()))
             .title(Component.translatable("creativetab.cavernous.cavernous_tab"))
             .displayItems((itemDisplayParameters, output) -> {
-                output.accept(ModItems.TEST_ITEM);
                 output.accept(ModBlocks.FUNGATITE);
                 output.accept(ModBlocks.FUNGATITE_COAL_ORE);
                 output.accept(ModBlocks.FUNGATITE_COPPER_ORE);
@@ -66,8 +65,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SHROOMWOOD_HANGING_SIGN);
                 output.accept(ModBlocks.HANGING_SHROOM_CAP);
                 output.accept(ModBlocks.LAMPSHROOM);
+                output.accept(ModBlocks.LAMPSHROOM_BUTTON);
                 output.accept(ModBlocks.LAMPSHROOM_CAP_BLOCK);
                 output.accept(ModBlocks.MUSHROOM_GILL_BLOCK);
+                output.accept(ModBlocks.BLEEDING_TOOTH_MUSHROOM);
                 output.accept(ModBlocks.MUSHVINE);
                 output.accept(ModBlocks.GILLED_MUSHROOM);
                 output.accept(ModBlocks.CLUSTER_SHROOM);

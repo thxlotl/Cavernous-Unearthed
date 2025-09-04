@@ -150,11 +150,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.MUSHROOM_GILL_BLOCK.get(),
                 block -> createShearsOnlyDrop(ModBlocks.MUSHROOM_GILL_BLOCK.get()));
         dropSelf(ModBlocks.LAMPSHROOM.get());
+        add(ModBlocks.LAMPSHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.LAMPSHROOM));
         dropSelf(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
 
         add(ModBlocks.HANGING_SHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
         add(ModBlocks.HANGING_SHROOM_CAP.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
 
+        dropSelf(ModBlocks.LAMPSHROOM_BUTTON.get());
+        dropSelf(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get());
         dropSelf(ModBlocks.GILLED_MUSHROOM.get());
         dropSelf(ModBlocks.GEYSER_BLOCK.get());
         dropSelf(ModBlocks.CLUSTER_SHROOM.get());

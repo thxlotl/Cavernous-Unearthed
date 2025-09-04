@@ -1,11 +1,43 @@
 {
-  "type": "minecraft:simple_block",
+  "type": "minecraft:block_column",
   "config": {
-    "to_place": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "cavernous:lampshroom"
+    "allowed_placement": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:air",
+      "offset": [
+        0,
+        1,
+        0
+      ]
+    },
+    "direction": "up",
+    "layers": [
+      {
+        "height": {
+          "type": "minecraft:biased_to_bottom",
+          "max_inclusive": 5,
+          "min_inclusive": 1
+        },
+        "provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "cavernous:lampshroom_stem"
+          }
+        }
+      },
+      {
+        "height": 1,
+        "provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "cavernous:lampshroom",
+            "Properties": {
+              "age": "25"
+            }
+          }
+        }
       }
-    }
+    ],
+    "prioritize_tip": true
   }
 }

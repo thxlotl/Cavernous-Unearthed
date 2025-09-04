@@ -32,13 +32,18 @@ public class UndergroundMyceliumBlock extends Block implements BonemealableBlock
     private static boolean canBeMycelium(BlockState state, LevelReader reader, BlockPos pos) {
         BlockPos blockpos = pos.above();
         BlockState blockstate = reader.getBlockState(blockpos);
-        int i = LightEngine.getLightBlockInto(state, blockstate, Direction.UP, blockstate.getLightBlock());
-        return i < 15;
+        if (blockstate.getFluidState().getAmount() == 8) {
+            return false;
+        }
+        else {
+            int i = LightEngine.getLightBlockInto(state, blockstate, Direction.UP, blockstate.getLightBlock());
+            return i < 15;
+        }
     }
 
     private static boolean canPropagate(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos blockpos = pos.above();
-        return canBeMycelium(state, level, pos) && !level.getFluidState(blockpos).is(FluidTags.WATER);
+        return canBeMycelium(state, level, pos) && !level.getFluidState(blockpos).is(FluidTags.WATER) && (level.getMaxLocalRawBrightness(pos.above()) >= 5);
     }
 
     @Override
@@ -56,7 +61,6 @@ public class UndergroundMyceliumBlock extends Block implements BonemealableBlock
             }
 
             BlockState blockstate = this.defaultBlockState();
-
             for(int i = 0; i < 4; ++i) {
                 BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
                 if (level.getBlockState(blockpos).is(ModBlocks.FUNGATITE.get()) && canPropagate(blockstate, level, blockpos)) {

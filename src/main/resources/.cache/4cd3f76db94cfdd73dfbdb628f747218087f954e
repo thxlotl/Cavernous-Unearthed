@@ -1,4 +1,4 @@
-// 1.21.8	2025-08-30T14:22:26.5537347	Model Definitions - cavernous
+// 1.21.8	2025-09-04T17:55:57.7117489	Model Definitions - cavernous
 8a13c74ae4b06f300475d44c4845a3324d7f39df assets/cavernous/blockstates/chiseled_fungatite.json
 d7e6bd02f53efc0a999b64aacfbb55b238f1a4c0 assets/cavernous/blockstates/cluster_shroom.json
 f81bfac14fa2fc0b61af77aca3d3a28cca51d2e0 assets/cavernous/blockstates/feather_moss_block.json
@@ -47,6 +47,7 @@ acb947477075d349372e09d8cece7ab383f16b18 assets/cavernous/blockstates/stripped_s
 bda9db1effeb5f1babca717ee97c9e069d5326e9 assets/cavernous/blockstates/toadstool_cap_block.json
 b7fc6b591fe260327fbba80546a52944c0aa967b assets/cavernous/blockstates/underground_mycelium.json
 fe52d8713b11f470a5e4b0179ea837640341ef1d assets/cavernous/items/ancient_fern.json
+296d89395ceccf80bb20fbf3439d7addc0d82ca9 assets/cavernous/items/bleeding_tooth_mushroom.json
 8e0e73d996d183de37f059d2b4c9696f7f1ce419 assets/cavernous/items/chiseled_fungatite.json
 841b37b1287bd3178c79eac54a3f2346a4918a4f assets/cavernous/items/cluster_shroom.json
 74fa0033f9af22955c8307b97006bff50f3fbf8c assets/cavernous/items/feather_moss_block.json
@@ -73,7 +74,9 @@ c83d7bbbddaa3aa86cbf73df5b8748304e9035a1 assets/cavernous/items/fungatite_coal_o
 3355be1432dc658aa10c150182574470832488a3 assets/cavernous/items/hanging_shroom_cap.json
 6f0f42fe0a912af8b52cc286c072b10b72157b9b assets/cavernous/items/hanging_shroom_stem.json
 49769d17d91a02295a28feead5aef0aecb081c29 assets/cavernous/items/lampshroom.json
+60ab80bdb2017eaf88aa3721ef1ceb98f5083a34 assets/cavernous/items/lampshroom_button.json
 7f41dbe1bd57e2801f7f561bcae9233b99a7072a assets/cavernous/items/lampshroom_cap_block.json
+e84ce5e6d0cce348416fa48a41a356e3e624320b assets/cavernous/items/lampshroom_stem.json
 ecf75bb6528eff1735c97eb1a26b28566c81f478 assets/cavernous/items/mushroom_gill_block.json
 b8063d2f7894d10c6cda28d3c0aa6fd8d2c695f7 assets/cavernous/items/mushvine.json
 ae309ff9850cfadf684b1893cb348d911ea5e052 assets/cavernous/items/mycelium_fern.json

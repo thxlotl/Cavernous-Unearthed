@@ -401,11 +401,6 @@ public class ModBlocks {
     );
 
 
-    public static final DeferredBlock<ToadstoolButtonBlock> GILLED_MUSHROOM = registerBlock(
-            "gilled_mushroom",
-            properties -> new ToadstoolButtonBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
-    );
 
     public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock(
             "lampshroom_cap_block",
@@ -418,6 +413,27 @@ public class ModBlocks {
             "lampshroom",
             properties -> new LampshroomBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 8)
+    );
+    public static final DeferredBlock<LampshroomStemBlock> LAMPSHROOM_STEM = registerBlock(
+            "lampshroom_stem",
+            properties -> new LampshroomStemBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission());
+
+
+    public static final DeferredBlock<LampShroomButtonBlock> LAMPSHROOM_BUTTON = registerBlock(
+            "lampshroom_button",
+            properties -> new LampShroomButtonBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 3));
+
+    public static final DeferredBlock<BleedingToothMushroomBlock> BLEEDING_TOOTH_MUSHROOM = registerBlock(
+            "bleeding_tooth_mushroom",
+            properties -> new BleedingToothMushroomBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA));
+
+    public static final DeferredBlock<ToadstoolButtonBlock> GILLED_MUSHROOM = registerBlock(
+            "gilled_mushroom",
+            properties -> new ToadstoolButtonBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
     );
     public static final DeferredBlock<VineBlock> MUSHVINE = registerBlock(
             "mushvine",

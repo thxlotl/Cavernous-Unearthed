@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.fog.environment.FogEnvironment;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.CubicSampler;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
@@ -78,8 +79,12 @@ public class ModEvents {
             ).x();
             //System.out.println("Fog Near: " + event.getNearPlaneDistance() + ", Far: " + event.getFarPlaneDistance() + ", Near Sample: " + sampledNear + ", Far Sample: " + sampledFar);
 
-            fogData.environmentalStart += sampledNear;
-            fogData.environmentalEnd *= sampledFar;
+            if (Minecraft.getInstance().player.hasEffect(MobEffects.BLINDNESS) || Minecraft.getInstance().player.hasEffect(MobEffects.DARKNESS)) {
+                //fogData.environmentalStart = 0.0f;
+            } else {
+                fogData.environmentalStart += sampledNear;
+                fogData.environmentalEnd *= sampledFar;
+            }
 
         }
 

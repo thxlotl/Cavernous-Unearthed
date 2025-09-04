@@ -79,16 +79,66 @@ public class Cavernous {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
 
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.TEST_ITEM);
-        }
-
-        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-        {
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.FUNGATITE);
-            event.accept(ModBlocks.TEST_BLOCK_ORE);
+            event.accept(ModBlocks.FUNGATITE_STAIRS);
+            event.accept(ModBlocks.FUNGATITE_SLAB);
+            event.accept(ModBlocks.FUNGATITE_WALL);
+            event.accept(ModBlocks.POLISHED_FUNGATITE);
+            event.accept(ModBlocks.POLISHED_FUNGATITE_STAIRS);
+            event.accept(ModBlocks.POLISHED_FUNGATITE_SLAB);
+            event.accept(ModBlocks.POLISHED_FUNGATITE_WALL);
+            event.accept(ModBlocks.CHISELED_FUNGATITE);
+            event.accept(ModBlocks.FUNGATITE_BRICKS);
+            event.accept(ModBlocks.FUNGATITE_BRICK_STAIRS);
+            event.accept(ModBlocks.FUNGATITE_BRICK_SLAB);
+            event.accept(ModBlocks.FUNGATITE_BRICK_WALL);
+
+            event.accept(ModBlocks.SHROOMWOOD_LOG);
+            event.accept(ModBlocks.SHROOMWOOD);
+            event.accept(ModBlocks.STRIPPED_SHROOMWOOD_LOG);
+            event.accept(ModBlocks.STRIPPED_SHROOMWOOD);
+            event.accept(ModBlocks.SHROOMWOOD_PLANKS);
+            event.accept(ModBlocks.SHROOMWOOD_STAIRS);
+            event.accept(ModBlocks.SHROOMWOOD_SLAB);
+            event.accept(ModBlocks.SHROOMWOOD_FENCE);
+            event.accept(ModBlocks.SHROOMWOOD_FENCE_GATE);
+            event.accept(ModBlocks.SHROOMWOOD_DOOR);
+            event.accept(ModBlocks.SHROOMWOOD_TRAPDOOR);
+            event.accept(ModBlocks.SHROOMWOOD_PRESSURE_PLATE);
+            event.accept(ModBlocks.SHROOMWOOD_BUTTON);
         }
 
+        if(event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.FEATHER_MOSS_BLOCK);
+            event.accept(ModBlocks.FEATHER_MOSS_CARPET);
+            event.accept(ModBlocks.UNDERGROUND_MYCELIUM);
+            event.accept(ModBlocks.FUNGATITE);
+            event.accept(ModBlocks.FUNGATITE_COAL_ORE);
+            event.accept(ModBlocks.FUNGATITE_IRON_ORE);
+            event.accept(ModBlocks.FUNGATITE_COPPER_ORE);
+            event.accept(ModBlocks.FUNGATITE_GOLD_ORE);
+            event.accept(ModBlocks.FUNGATITE_REDSTONE_ORE);
+            event.accept(ModBlocks.FUNGATITE_EMERALD_ORE);
+            event.accept(ModBlocks.FUNGATITE_LAPIS_ORE);
+            event.accept(ModBlocks.FUNGATITE_DIAMOND_ORE);
+            event.accept(ModBlocks.SHROOMWOOD_LOG);
+            event.accept(ModBlocks.SHROOMWOOD);
+            event.accept(ModBlocks.TOADSTOOL_CAP_BLOCK);
+            event.accept(ModBlocks.LAMPSHROOM_CAP_BLOCK);
+            event.accept(ModBlocks.TOADSTOOL_BUTTON);
+            event.accept(ModBlocks.LAMPSHROOM);
+            event.accept(ModBlocks.HANGING_SHROOM_CAP);
+            event.accept(ModBlocks.TOADSTOOL_PATCH);
+            event.accept(ModBlocks.MYCELIUM_FERN);
+            event.accept(ModBlocks.MYCELIUM_SPROUTS);
+            event.accept(ModBlocks.FEATHER_MOSS_TUFTS);
+        }
+
+        if(event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModBlocks.SHROOMWOOD_SIGN);
+            event.accept(ModBlocks.SHROOMWOOD_HANGING_SIGN);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -113,6 +163,7 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_FERN.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GILLED_MUSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MUSHVINE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_PATCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT_MIPPED);

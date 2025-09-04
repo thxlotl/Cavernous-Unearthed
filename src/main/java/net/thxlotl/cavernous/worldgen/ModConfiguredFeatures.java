@@ -257,11 +257,16 @@ public class ModConfiguredFeatures {
         );
         FeatureUtils.register(context, HANGING_SHROOM, Feature.BLOCK_COLUMN, hangingShroomConfig);
 
-        SimpleBlockConfiguration lampshroomConfig = new SimpleBlockConfiguration(SimpleStateProvider.simple(ModBlocks.LAMPSHROOM.get()));
-        FeatureUtils.register(context, LAMPSHROOM, Feature.SIMPLE_BLOCK, lampshroomConfig);
 
-        createOreForStoneType(context, ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE, fungatitePrefix, FUNGATITE_ORES);
-
+        BlockColumnConfiguration lampshroomConfig = new BlockColumnConfiguration(
+                List.of(
+                        new BlockColumnConfiguration.Layer(BiasedToBottomInt.of(1, 5), SimpleStateProvider.simple(ModBlocks.LAMPSHROOM_STEM.get())),
+                        new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(ModBlocks.LAMPSHROOM.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, 25)))),
+            Direction.UP,
+                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR),
+                true
+        );
+        FeatureUtils.register(context, LAMPSHROOM, Feature.BLOCK_COLUMN, lampshroomConfig);
 
         TreeConfiguration lampshroomTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.SHROOMWOOD_LOG.get().defaultBlockState()),
@@ -273,6 +278,10 @@ public class ModConfiguredFeatures {
                 .ignoreVines()
                 .build();
         FeatureUtils.register(context, LAMPSHROOM_TREE, Feature.TREE, lampshroomTreeConfig);
+
+
+
+        createOreForStoneType(context, ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE, fungatitePrefix, FUNGATITE_ORES);
     }
 
 

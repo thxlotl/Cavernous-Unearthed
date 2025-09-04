@@ -33,9 +33,12 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.POTTED_TOADSTOOL_BUTTON.get(),
             ModBlocks.MYCELIUM_FERN.get(),
             ModBlocks.LAMPSHROOM.get(),
+            ModBlocks.LAMPSHROOM_STEM.get(),
+            ModBlocks.LAMPSHROOM_BUTTON.get(),
             ModBlocks.GILLED_MUSHROOM.get(),
             ModBlocks.MUSHROOM_GILL_BLOCK.get(),
             ModBlocks.MUSHVINE.get(),
+            ModBlocks.BLEEDING_TOOTH_MUSHROOM.get(),
             ModBlocks.HANGING_SHROOM_STEM.get(),
             ModBlocks.HANGING_SHROOM_CAP.get(),
 

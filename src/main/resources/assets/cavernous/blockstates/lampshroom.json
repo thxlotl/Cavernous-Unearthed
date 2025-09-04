@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "cavernous:block/lampshroom"
-    }
+    "": [
+      {
+        "model": "cavernous:block/lampshroom"
+      },
+      {
+        "model": "cavernous:block/lampshroom",
+        "y": 90
+      },
+      {
+        "model": "cavernous:block/lampshroom",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/lampshroom",
+        "y": 270
+      }
+    ]
   }
 }
