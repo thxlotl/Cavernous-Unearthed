@@ -20,6 +20,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.FUNGATITE.get())
+                .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE_COAL_ORE.get())
                 .add(ModBlocks.FUNGATITE_COPPER_ORE.get())
                 .add(ModBlocks.FUNGATITE_IRON_ORE.get())
@@ -72,6 +73,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
 
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
+                .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
         
@@ -140,14 +142,17 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
         tag(BlockTags.LUSH_GROUND_REPLACEABLE)
+                .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
         tag(BlockTags.MOSS_REPLACEABLE)
+                .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
         tag(BlockTags.MUSHROOM_GROW_BLOCK)
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get())
                 .add(ModBlocks.FUNGATITE.get())
+                .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE_COAL_ORE.get())
                 .add(ModBlocks.FUNGATITE_COPPER_ORE.get())
                 .add(ModBlocks.FUNGATITE_IRON_ORE.get())
@@ -218,6 +223,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FUNGATITE.get());
 
         tag(ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE)
+                .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
 

@@ -1,0 +1,43 @@
+package net.thxlotl.cavernous.entity.client;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.resources.ResourceLocation;
+import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.entity.custom.AntEntity;
+
+public class AntRenderer extends MobRenderer<AntEntity, AntRenderState, AntModel> {
+
+    private static final float SHADOW_RADIUS = 0.25f;
+    private AntModel model;
+
+    public AntRenderer(EntityRendererProvider.Context context) {
+        super(context, new AntModel(context.bakeLayer(AntModel.LAYER_LOCATION)), SHADOW_RADIUS);
+        this.model = new AntModel(context.bakeLayer(AntModel.LAYER_LOCATION));
+    }
+
+    @Override
+    public void render(AntRenderState renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+
+        if(renderState.isBaby) {
+            poseStack.scale(0.5f, 0.5f, 0.5f);
+        }
+        else {
+            poseStack.scale(1f, 1f, 1f);
+        }
+
+        super.render(renderState, poseStack, bufferSource, packedLight);
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(AntRenderState antRenderState) {
+        return ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "textures/entity/ant.png");
+    }
+
+    @Override
+    public AntRenderState createRenderState() {
+        return new AntRenderState();
+    }
+}

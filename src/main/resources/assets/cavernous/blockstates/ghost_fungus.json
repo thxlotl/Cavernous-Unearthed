@@ -1,0 +1,23 @@
+{
+  "multipart": [
+    { "apply": { "model": "cavernous:block/ghost_fungus_1" }, "when": { "count_north": 1 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_2" }, "when": { "count_north": 2 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_3" }, "when": { "count_north": 3 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_4" }, "when": { "count_north": 4 } },
+
+    { "apply": { "model": "cavernous:block/ghost_fungus_1", "y": 90 }, "when": { "count_east": 1 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_2", "y": 90 }, "when": { "count_east": 2 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_3", "y": 90 }, "when": { "count_east": 3 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_4", "y": 90 }, "when": { "count_east": 4 } },
+
+    { "apply": { "model": "cavernous:block/ghost_fungus_1", "y": 180 }, "when": { "count_south": 1 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_2", "y": 180 }, "when": { "count_south": 2 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_3", "y": 180 }, "when": { "count_south": 3 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_4", "y": 180 }, "when": { "count_south": 4 } },
+
+    { "apply": { "model": "cavernous:block/ghost_fungus_1", "y": 270 }, "when": { "count_west": 1 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_2", "y": 270 }, "when": { "count_west": 2 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_3", "y": 270 }, "when": { "count_west": 3 } },
+    { "apply": { "model": "cavernous:block/ghost_fungus_4", "y": 270 }, "when": { "count_west": 4 } }
+  ]
+}

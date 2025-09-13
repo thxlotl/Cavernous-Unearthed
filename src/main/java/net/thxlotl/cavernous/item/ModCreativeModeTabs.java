@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
             .title(Component.translatable("creativetab.cavernous.cavernous_tab"))
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(ModBlocks.FUNGATITE);
+                output.accept(ModBlocks.GROUND_FUNGATITE);
                 output.accept(ModBlocks.FUNGATITE_COAL_ORE);
                 output.accept(ModBlocks.FUNGATITE_COPPER_ORE);
                 output.accept(ModBlocks.FUNGATITE_IRON_ORE);

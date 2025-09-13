@@ -72,7 +72,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.SHROOMWOOD.asItem())
                 .add(ModBlocks.STRIPPED_SHROOMWOOD.asItem());
 
-
+        tag(ModTags.Items.ANT_FOOD)
+                .add(ModBlocks.LAMPSHROOM.asItem())
+                .add(ModBlocks.BLEEDING_TOOTH_MUSHROOM.asItem());
 
     }
 }

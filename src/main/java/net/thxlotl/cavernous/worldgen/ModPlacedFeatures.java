@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -36,6 +37,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> HANGING_SHROOM = registerKey("hanging_shroom");
     public static final ResourceKey<PlacedFeature> LAMPSHROOM = registerKey("lampshroom");
     public static final ResourceKey<PlacedFeature> LAMPSHROOM_TREE = registerKey("lampshroom_tree");
+    public static final ResourceKey<PlacedFeature> GHOST_FUNGUS = registerKey("ghost_fungus");
+    public static final ResourceKey<PlacedFeature> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
 
     private static final String fungatitePrefix = "fungatite";
     public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_LOWER);
@@ -156,6 +159,31 @@ public class ModPlacedFeatures {
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
                                 BlockPredicate.wouldSurvive(ModBlocks.LAMPSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                                12
+                        ),
+                        BiomeFilter.biome()
+                ));
+
+//        register(context, GHOST_FUNGUS, configuredFeatures.getOrThrow(ModConfiguredFeatures.GHOST_FUNGUS),
+//                List.of(
+//                        CountPlacement.of(UniformInt.of(150, 160)),
+//                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+//                        InSquarePlacement.spread(),
+//                        BiomeFilter.biome()
+//                ));
+
+
+        register(context, BLEEDING_TOOTH_FUNGUS, configuredFeatures.getOrThrow(ModConfiguredFeatures.BLEEDING_TOOTH_FUNGUS),
+                List.of(
+                        CountPlacement.of(35),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                        EnvironmentScanPlacement.scanningFor(
+                                Direction.DOWN,
+                                BlockPredicate.allOf(
+                                        BlockPredicate.wouldSurvive(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.matchesBlocks(Blocks.AIR)
+                                ),
                                 12
                         ),
                         BiomeFilter.biome()

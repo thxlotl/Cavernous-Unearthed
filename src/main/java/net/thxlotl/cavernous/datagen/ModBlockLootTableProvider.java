@@ -23,6 +23,7 @@ import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.fml.common.Mod;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.block.ModBlockStateProperties;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.item.ModItems;
 
@@ -40,7 +41,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     }
 
     private final List<Block> ignoredBlocks = List.of(
-            ModBlocks.UNDERGROUND_MYCELIUM.get()
+            ModBlocks.UNDERGROUND_MYCELIUM.get(),
+            ModBlocks.GHOST_FUNGUS.get()
     );
 
 //
@@ -67,6 +69,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected void generate() {
 
         dropSelf(ModBlocks.FUNGATITE.get());
+        dropSelf(ModBlocks.GROUND_FUNGATITE.get());
 
         add(ModBlocks.FUNGATITE_COAL_ORE.get(),
                 block -> createOreDrop(ModBlocks.FUNGATITE_COAL_ORE.get(), Items.COAL));

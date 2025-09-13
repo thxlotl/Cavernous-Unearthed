@@ -3,6 +3,7 @@
 
 
   "item.cavernous.fungatite": "Fungatite",
+  "item.cavernous.ground_fungatite": "Ground Fungatite",
   "item.cavernous.fungatite_stairs": "Fungatite Stairs",
   "item.cavernous.fungatite_slab": "Fungatite Slab",
   "item.cavernous.fungatite_wall": "Fungatite Wall",
@@ -58,8 +59,11 @@
 
   "item.cavernous.lampshroom": "Lampshroom",
   "item.cavernous.lampshroom_cap_block": "Lampshroom Cap Block",
+
+
   "item.cavernous.lampshroom_button": "Lampshroom Button",
   "item.cavernous.bleeding_tooth_mushroom": "Bleeding Tooth Mushroom",
+  "item.cavernous.ghost_fungus": "Ghost Fungus",
   "item.cavernous.hanging_shroom_spore_pod": "Hanging Shroom Spore Pod",
   "item.cavernous.hanging_shroom_cap": "Hanging Shroom",
   "item.cavernous.mushvine": "Mushvine",

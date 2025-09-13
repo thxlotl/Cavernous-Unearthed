@@ -2,6 +2,7 @@ package net.thxlotl.cavernous.event;
 
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.fog.FogData;
 import net.minecraft.client.renderer.fog.environment.FogEnvironment;
@@ -16,8 +17,14 @@ import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.block.ModBlocks;
+import net.thxlotl.cavernous.block.custom.GhostFungusBlock;
+import net.thxlotl.cavernous.block.entity.ModBlockEntities;
+import net.thxlotl.cavernous.rendering.GhostFungusBlockEntityRenderer;
 import net.thxlotl.cavernous.rendering.RenderUtil;
 import net.thxlotl.cavernous.worldgen.ModBiomeData;
 import org.joml.Vector3f;
@@ -44,8 +51,6 @@ public class ModEvents {
             event.setBlue(color.z);
         }
     }
-
-
 
     @SubscribeEvent
     public static void rendering(ViewportEvent.RenderFog event)
@@ -88,6 +93,17 @@ public class ModEvents {
 
         }
 
+    }
+
+    @SubscribeEvent
+    public static void registerBlockColor(RegisterColorHandlersEvent.Block event)
+    {
+        event.register(GhostFungusBlock::getColor, ModBlocks.GHOST_FUNGUS.get());
+    }
+
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(ModBlockEntities.GHOST_FUNGUS.get(), GhostFungusBlockEntityRenderer::new);
     }
 
 }

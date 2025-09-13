@@ -9,11 +9,13 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.entity.ModEntities;
+import net.thxlotl.cavernous.entity.client.AntRenderer;
 import net.thxlotl.cavernous.entity.client.HangingShroomSporePodRenderer;
 import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.biolith.BiolithUsage;
+import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModFoliagePlacerTypes;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
@@ -64,6 +66,7 @@ public class Cavernous {
         // Register Feature Types
         ModTrunkPlacerTypes.register(modEventBus);
         ModFoliagePlacerTypes.register(modEventBus);
+        ModFeature.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -169,8 +172,10 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_STEM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_CAP.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT_MIPPED);
 
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
+            EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);
         }
     }
 }

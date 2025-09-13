@@ -1,4 +1,4 @@
-// 1.21.8	2025-09-04T17:55:57.7167097	Loot Tables
+// 1.21.8	2025-09-11T10:53:07.9176139	Loot Tables
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 c11c95e59dca2392195b7ae39015636ed6d60e3f data/cavernous/loot_table/blocks/chiseled_fungatite.json
 f4c4322d09f7488b8884bff2034ec76aa0e051a2 data/cavernous/loot_table/blocks/cluster_shroom.json
@@ -23,6 +23,7 @@ e0aedf0e25b299a1c65920e6160e317d091c10b0 data/cavernous/loot_table/blocks/fungat
 591a1461343e3143f4238d9cd6bf95c78d3ce0ff data/cavernous/loot_table/blocks/fungatite_wall.json
 820156532411079986b408a265f5d887b8e87696 data/cavernous/loot_table/blocks/geyser_block.json
 66be666b26c861e922db21762074fcbf0d43f955 data/cavernous/loot_table/blocks/gilled_mushroom.json
+6e13892515169f92cb2ad0584e8c26f729044810 data/cavernous/loot_table/blocks/ground_fungatite.json
 1e4beedfc3c7aec87b313ac0bfeb90ebc6f5dd25 data/cavernous/loot_table/blocks/hanging_shroom_cap.json
 62a029a7cc3f8c1e07058213c7df309892ddddd0 data/cavernous/loot_table/blocks/hanging_shroom_stem.json
 205457191ce0cfd9f743f9142e1369753968bdce data/cavernous/loot_table/blocks/lampshroom.json

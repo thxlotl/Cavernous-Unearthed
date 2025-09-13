@@ -28,6 +28,7 @@ import net.thxlotl.cavernous.block.custom.sign.ModStandingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModWallHangingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModWallSignBlock;
 import net.thxlotl.cavernous.item.ModItems;
+import net.thxlotl.cavernous.util.GhostFungus;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.ModConfiguredFeatures;
 
@@ -48,6 +49,13 @@ public class ModBlocks {
                     strength(1.5f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
+    public static final DeferredBlock<Block> GROUND_FUNGATITE = registerBlock(
+            "ground_fungatite",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(2.0f, 6.0f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.GRAVEL));
     public static final DeferredBlock<DropExperienceBlock> FUNGATITE_COAL_ORE = registerBlock(
             "fungatite_coal_ore",
             properties -> new DropExperienceBlock(UniformInt.of(0, 2), properties),
@@ -420,6 +428,9 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission());
 
 
+
+
+
     public static final DeferredBlock<LampShroomButtonBlock> LAMPSHROOM_BUTTON = registerBlock(
             "lampshroom_button",
             properties -> new LampShroomButtonBlock(properties),
@@ -446,6 +457,11 @@ public class ModBlocks {
             BlockBehaviour.Properties.of().noOcclusion()
     );
 
+    public static final DeferredBlock<GhostFungusBlock> GHOST_FUNGUS = registerBlock(
+            "ghost_fungus",
+            properties -> new GhostFungusBlock(properties),
+            BlockBehaviour.Properties.of().replaceable().noCollission().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT)
+    );
 
 
 

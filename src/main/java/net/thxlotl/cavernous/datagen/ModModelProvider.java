@@ -41,6 +41,7 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.BLEEDING_TOOTH_MUSHROOM.get(),
             ModBlocks.HANGING_SHROOM_STEM.get(),
             ModBlocks.HANGING_SHROOM_CAP.get(),
+            ModBlocks.GHOST_FUNGUS.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );
@@ -61,6 +62,7 @@ public class ModModelProvider extends ModelProvider {
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.ANCIENT_FERN.get(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.MUSHVINE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.HANGING_SHROOM_CAP.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ANT_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         // BLOCKS
 
@@ -69,6 +71,7 @@ public class ModModelProvider extends ModelProvider {
                 .stairs(ModBlocks.FUNGATITE_STAIRS.get())
                 .slab(ModBlocks.FUNGATITE_SLAB.get())
                 .wall(ModBlocks.FUNGATITE_WALL.get());
+        blockModels.createTrivialCube(ModBlocks.GROUND_FUNGATITE.get());
         blockModels.createTrivialCube(ModBlocks.FUNGATITE_COAL_ORE.get());
         blockModels.createTrivialCube(ModBlocks.FUNGATITE_IRON_ORE.get());
         blockModels.createTrivialCube(ModBlocks.FUNGATITE_COPPER_ORE.get());

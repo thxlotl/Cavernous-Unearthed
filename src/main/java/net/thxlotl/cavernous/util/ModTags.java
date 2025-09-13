@@ -26,6 +26,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> SHROOMWOOD_LOGS = createTag("shroomwood_logs");
+        public static final TagKey<Item> ANT_FOOD = createTag("ant_food");
 
 
         private static TagKey<Item> createTag(String name) {

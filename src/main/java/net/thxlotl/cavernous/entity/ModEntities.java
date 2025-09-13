@@ -9,6 +9,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.entity.custom.AntEntity;
 import net.thxlotl.cavernous.entity.custom.projectile.HangingShroomSporePodProjectileEntity;
 
 import java.util.function.Supplier;
@@ -25,6 +26,14 @@ public class ModEntities {
                             .sized(0.5f, 0.5f)
                             //.clientTrackingRange(4)
                             .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "hanging_shroom_spore_pod"))));
+
+    public static final Supplier<EntityType<AntEntity>> ANT =
+            ENTITY_TYPES.register("ant",
+                    () -> EntityType.Builder.<AntEntity>of(AntEntity::new, MobCategory.CREATURE)
+                            .sized(0.6f, 0.5f)
+                            //.clientTrackingRange(4)
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "ant"))));
+
 
 
 

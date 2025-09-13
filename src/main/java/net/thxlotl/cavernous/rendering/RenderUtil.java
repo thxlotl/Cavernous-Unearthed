@@ -111,4 +111,8 @@ public class RenderUtil {
         return new Vector3f((float) vec31.x, (float) vec31.y, (float) vec31.z);
         //return new Vec3(f1, f2, f3);
     }
+
+    public static int rgb(int r, int g, int b) {
+        return (r << 16) | (g << 8) | b;
+    }
 }

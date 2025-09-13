@@ -16,19 +16,29 @@ public class ModBlockEntities {
 
     // Signs
     public static final Supplier<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
-            BLOCK_ENTITIES.register("mod_sign",
+            BLOCK_ENTITIES.register(
+                    "mod_sign",
                     () -> new BlockEntityType<>(ModSignBlockEntity::new, false, ModBlocks.SHROOMWOOD_SIGN.get(), ModBlocks.SHROOMWOOD_WALL_SIGN.get()));
-//    public static final Supplier<BlockEntityType<ModHangingSignBlockEntity>> MOD_HANGING_SIGN =
-//            BLOCK_ENTITIES.register("mod_hanging_sign",
-//                    () -> new BlockEntityType<>(ModHangingSignBlockEntity::new, false, ModBlocks.SHROOMWOOD_HANGING_SIGN.get(), ModBlocks.SHROOMWOOD_WALL_HANGING_SIGN.get()));
     public static final Supplier<BlockEntityType<ModHangingSignBlockEntity>> MOD_HANGING_SIGN =
-            BLOCK_ENTITIES.register("mod_hanging_sign",
+            BLOCK_ENTITIES.register(
+                    "mod_hanging_sign",
                     () -> new BlockEntityType<>(
                             ModHangingSignBlockEntity::new,  // BlockEntity factory
                             ModBlocks.SHROOMWOOD_HANGING_SIGN.get(), // Blocks this BE applies to
                             ModBlocks.SHROOMWOOD_WALL_HANGING_SIGN.get()
                     )
             );
+
+    // Ghost fungus
+    public static final Supplier<BlockEntityType<GhostFungusBlockEntity>> GHOST_FUNGUS =
+            BLOCK_ENTITIES.register(
+                    "ghost_fungus",
+                    () -> new BlockEntityType<>(
+                            GhostFungusBlockEntity::new,
+                            ModBlocks.GHOST_FUNGUS.get()
+                    )
+            );
+
 
 
     public static void register(IEventBus eventBus) {

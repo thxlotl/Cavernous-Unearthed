@@ -1,9 +1,7 @@
 package net.thxlotl.cavernous.worldgen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.core.Direction;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.Vec3i;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -32,7 +30,6 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
 import net.minecraft.world.level.levelgen.placement.*;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
@@ -40,6 +37,8 @@ import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
 import net.thxlotl.cavernous.util.ModTags;
 import net.thxlotl.cavernous.util.OreFeatureTypes;
 import net.thxlotl.cavernous.util.OreTypes;
+import net.thxlotl.cavernous.worldgen.custom.ModFeature;
+import net.thxlotl.cavernous.worldgen.custom.wallface.WallFaceGrowthConfiguration;
 import net.thxlotl.cavernous.worldgen.custom.tree.MushroomCapFoliagePlacer;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
 
@@ -63,6 +62,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> HANGING_SHROOM = registerKey("hanging_shroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAMPSHROOM = registerKey("lampshroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAMPSHROOM_TREE = registerKey("lampshroom_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GHOST_FUNGUS = registerKey("ghost_fungus");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
 
     private static final String fungatitePrefix = "fungatite";
     private static final EnumMap<OreTypes, Block> FUNGATITE_ORES =
@@ -278,6 +279,35 @@ public class ModConfiguredFeatures {
                 .ignoreVines()
                 .build();
         FeatureUtils.register(context, LAMPSHROOM_TREE, Feature.TREE, lampshroomTreeConfig);
+
+
+//        WallFaceGrowthConfiguration ghostFungusConfig = new WallFaceGrowthConfiguration(
+//                ModBlocks.GHOST_FUNGUS.get(),
+//                20,
+//                0.8f,
+//                HolderSet.direct(
+//                        Block::builtInRegistryHolder,
+//                        ModBlocks.FUNGATITE.get(),
+//                        ModBlocks.FEATHER_MOSS_BLOCK.get(),
+//                        ModBlocks.UNDERGROUND_MYCELIUM.get(),
+//                        Blocks.STONE,
+//                        Blocks.ANDESITE,
+//                        Blocks.DIORITE,
+//                        Blocks.GRANITE,
+//                        Blocks.DRIPSTONE_BLOCK,
+//                        Blocks.CALCITE,
+//                        Blocks.TUFF,
+//                        Blocks.DEEPSLATE
+//                )
+//        );
+        //FeatureUtils.register(context, GHOST_FUNGUS, ModFeature.WALLFACE_GROWTH.get(), ghostFungusConfig);
+
+
+        SimpleBlockConfiguration bleedingToothConfig = new SimpleBlockConfiguration(
+                BlockStateProvider.simple(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState()),
+                true
+        );
+        FeatureUtils.register(context, BLEEDING_TOOTH_FUNGUS, Feature.SIMPLE_BLOCK, bleedingToothConfig);
 
 
 

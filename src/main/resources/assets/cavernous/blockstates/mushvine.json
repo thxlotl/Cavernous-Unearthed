@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "cavernous:block/mushvine"
+        "model": "cavernous:block/ghost_fungus"
       },
       "when": {
         "north": "true"
@@ -10,7 +10,7 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine"
+        "model": "cavernous:block/ghost_fungus"
       },
       "when": {
         "east": "false",
@@ -22,8 +22,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "y": 90
       },
       "when": {
@@ -32,8 +32,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "y": 90
       },
       "when": {
@@ -46,8 +46,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "y": 180
       },
       "when": {
@@ -56,8 +56,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "y": 180
       },
       "when": {
@@ -70,8 +70,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "y": 270
       },
       "when": {
@@ -80,8 +80,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "y": 270
       },
       "when": {
@@ -94,8 +94,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "x": 270
       },
       "when": {
@@ -104,8 +104,8 @@
     },
     {
       "apply": {
-        "model": "cavernous:block/mushvine",
-        "uvlock": true,
+        "model": "cavernous:block/ghost_fungus",
+        "uvlock": false,
         "x": 270
       },
       "when": {

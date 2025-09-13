@@ -89,7 +89,8 @@
       "cavernous:toadstool",
       "cavernous:hanging_shroom",
       "cavernous:lampshroom",
-      "cavernous:lampshroom_tree"
+      "cavernous:lampshroom_tree",
+      "cavernous:bleeding_tooth_fungus"
     ],
     [
       "minecraft:freeze_top_layer"
