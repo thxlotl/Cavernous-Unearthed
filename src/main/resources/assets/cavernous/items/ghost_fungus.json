@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "cavernous:block/ghost_fungus"
+    "model": "cavernous:item/ghost_fungus"
   }
 }

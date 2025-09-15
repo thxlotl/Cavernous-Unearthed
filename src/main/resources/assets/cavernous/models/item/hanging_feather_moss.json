@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cavernous:block/hanging_feather_moss"
+  }
+}

@@ -14,11 +14,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cavernous:mushvine"
+          "name": "cavernous:hanging_feather_moss"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cavernous:blocks/mushvine"
+  "random_sequence": "cavernous:blocks/hanging_feather_moss"
 }

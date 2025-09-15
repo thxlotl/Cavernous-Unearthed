@@ -70,7 +70,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.LAMPSHROOM_CAP_BLOCK);
                 output.accept(ModBlocks.MUSHROOM_GILL_BLOCK);
                 output.accept(ModBlocks.BLEEDING_TOOTH_MUSHROOM);
-                output.accept(ModBlocks.MUSHVINE);
+                output.accept(ModBlocks.CORDYCEPS_PATCH);
+                output.accept(ModBlocks.HANGING_FEATHER_MOSS);
                 output.accept(ModBlocks.GILLED_MUSHROOM);
                 output.accept(ModBlocks.CLUSTER_SHROOM);
                 output.accept(ModBlocks.ANCIENT_FERN);

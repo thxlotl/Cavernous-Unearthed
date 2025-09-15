@@ -37,11 +37,12 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.LAMPSHROOM_BUTTON.get(),
             ModBlocks.GILLED_MUSHROOM.get(),
             ModBlocks.MUSHROOM_GILL_BLOCK.get(),
-            ModBlocks.MUSHVINE.get(),
+            ModBlocks.HANGING_FEATHER_MOSS.get(),
             ModBlocks.BLEEDING_TOOTH_MUSHROOM.get(),
             ModBlocks.HANGING_SHROOM_STEM.get(),
             ModBlocks.HANGING_SHROOM_CAP.get(),
             ModBlocks.GHOST_FUNGUS.get(),
+            ModBlocks.CORDYCEPS_PATCH.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );
@@ -60,9 +61,11 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModBlocks.TOADSTOOL_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.ANCIENT_FERN.get(), ModelTemplates.FLAT_ITEM);
-        modItemModels.generateFlatItemWithBlockTexture(ModBlocks.MUSHVINE.get(), ModelTemplates.FLAT_ITEM);
+        modItemModels.generateFlatItemWithBlockTexture(ModBlocks.HANGING_FEATHER_MOSS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.HANGING_SHROOM_CAP.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ANT_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModBlocks.CORDYCEPS_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModBlocks.GHOST_FUNGUS.asItem(), ModelTemplates.FLAT_ITEM);
 
         // BLOCKS
 

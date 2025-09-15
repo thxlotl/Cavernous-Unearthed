@@ -2,34 +2,16 @@ package net.thxlotl.cavernous.datagen;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.WeatherCheck;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.neoforged.fml.common.Mod;
-import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.block.ModBlockStateProperties;
 import net.thxlotl.cavernous.block.ModBlocks;
-import net.thxlotl.cavernous.item.ModItems;
 
 import java.util.List;
 import java.util.Set;
-import java.util.function.BiConsumer;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
@@ -148,8 +130,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.SHROOMWOOD_WALL_HANGING_SIGN.get(), block -> createSingleItemTable(ModBlocks.SHROOMWOOD_HANGING_SIGN));
 
 
-        add(ModBlocks.MUSHVINE.get(),
-                block -> createShearsOnlyDrop(ModBlocks.MUSHVINE.get()));
+        add(ModBlocks.HANGING_FEATHER_MOSS.get(),
+                block -> createShearsOnlyDrop(ModBlocks.HANGING_FEATHER_MOSS.get()));
         add(ModBlocks.MUSHROOM_GILL_BLOCK.get(),
                 block -> createShearsOnlyDrop(ModBlocks.MUSHROOM_GILL_BLOCK.get()));
         dropSelf(ModBlocks.LAMPSHROOM.get());
@@ -160,6 +142,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.HANGING_SHROOM_CAP.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
 
         dropSelf(ModBlocks.LAMPSHROOM_BUTTON.get());
+        dropSelf(ModBlocks.CORDYCEPS_PATCH.get());
         dropSelf(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get());
         dropSelf(ModBlocks.GILLED_MUSHROOM.get());
         dropSelf(ModBlocks.GEYSER_BLOCK.get());

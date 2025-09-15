@@ -431,6 +431,14 @@ public class ModBlocks {
 
 
 
+
+
+
+
+
+
+
+
     public static final DeferredBlock<LampShroomButtonBlock> LAMPSHROOM_BUTTON = registerBlock(
             "lampshroom_button",
             properties -> new LampShroomButtonBlock(properties),
@@ -446,8 +454,8 @@ public class ModBlocks {
             properties -> new ToadstoolButtonBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
     );
-    public static final DeferredBlock<VineBlock> MUSHVINE = registerBlock(
-            "mushvine",
+    public static final DeferredBlock<VineBlock> HANGING_FEATHER_MOSS = registerBlock(
+            "hanging_feather_moss",
             properties -> new VineBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.VINE)
     );
@@ -465,6 +473,11 @@ public class ModBlocks {
 
 
 
+    public static final DeferredBlock<CordycepsPatchBlock> CORDYCEPS_PATCH = registerBlock(
+            "cordyceps_patch",
+            properties -> new CordycepsPatchBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
 
     public static final DeferredBlock<WaterLoggablePlantBlock> CLUSTER_SHROOM = registerBlock(
             "cluster_shroom",

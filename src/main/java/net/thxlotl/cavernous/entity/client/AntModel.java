@@ -114,11 +114,11 @@ public class AntModel extends EntityModel<AntRenderState> {
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(renderState.yRot, renderState.xRot);
 
-        this.walkingAnimation.applyWalk(renderState.walkAnimationPos, renderState.walkAnimationSpeed, 2f, 2.5f);
+        this.walkingAnimation.applyWalk(renderState.walkAnimationPos, renderState.walkAnimationSpeed, 10f, 2.5f);
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {
-        headYaw = Mth.clamp(headYaw, -30f, 30f);
+        headYaw = Mth.clamp(headYaw, -45f, 45f);
         headPitch = Mth.clamp(headPitch, -30f, 30f);
 
         this.head.yRot = headYaw * ((float)Math.PI / 180f);

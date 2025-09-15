@@ -8,6 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
+import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.entity.client.AntRenderer;
 import net.thxlotl.cavernous.entity.client.HangingShroomSporePodRenderer;
@@ -62,6 +63,8 @@ public class Cavernous {
 
         ModBlockEntities.register(modEventBus);
         ModEntities.register(modEventBus);
+
+        ModEffects.register(modEventBus);
 
         // Register Feature Types
         ModTrunkPlacerTypes.register(modEventBus);
@@ -166,13 +169,14 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_FERN.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GILLED_MUSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MUSHVINE.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_FEATHER_MOSS.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_PATCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT_MIPPED);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_STEM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_CAP.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CORDYCEPS_PATCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
 
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
             EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);

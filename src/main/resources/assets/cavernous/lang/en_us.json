@@ -63,12 +63,14 @@
 
   "item.cavernous.lampshroom_button": "Lampshroom Button",
   "item.cavernous.bleeding_tooth_mushroom": "Bleeding Tooth Mushroom",
+  "item.cavernous.cordyceps_patch": "Cordyceps Patch",
   "item.cavernous.ghost_fungus": "Ghost Fungus",
   "item.cavernous.hanging_shroom_spore_pod": "Hanging Shroom Spore Pod",
   "item.cavernous.hanging_shroom_cap": "Hanging Shroom",
-  "item.cavernous.mushvine": "Mushvine",
+  "item.cavernous.hanging_feather_moss": "Hanging Feather Moss",
   "item.cavernous.mushroom_gill_block": "Mushroom Gill Block",
   "item.cavernous.ancient_fern": "Ancient Fern",
+  "item.cavernous.ant_spawn_egg": "Ant Spawn Egg",
 
 
   "item.cavernous.test_block_ore": "Test Block Ore",

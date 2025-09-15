@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "cavernous:block/cordyceps_patch"
+      },
+      {
+        "model": "cavernous:block/cordyceps_patch",
+        "y": 90
+      },
+      {
+        "model": "cavernous:block/cordyceps_patch",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/cordyceps_patch",
+        "y": 270
+      }
+    ]
+  }
+}

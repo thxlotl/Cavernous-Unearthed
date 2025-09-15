@@ -80,7 +80,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.CLIMBABLE)
                 .add(ModBlocks.HANGING_SHROOM_CAP.get())
                 .add(ModBlocks.HANGING_SHROOM_STEM.get())
-                .add(ModBlocks.MUSHVINE.get());
+                .add(ModBlocks.HANGING_FEATHER_MOSS.get());
 
         tag(BlockTags.COAL_ORES)
                 .add(ModBlocks.FUNGATITE_COAL_ORE.get());tag(BlockTags.COAL_ORES)

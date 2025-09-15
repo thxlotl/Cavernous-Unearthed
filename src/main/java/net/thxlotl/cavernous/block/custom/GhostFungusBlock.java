@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 
-public class GhostFungusBlock extends SegmentedWallBlock implements BonemealableBlock, EntityBlock {
+public class GhostFungusBlock extends SegmentedWallBlock implements BonemealableBlock {
 
     public GhostFungusBlock(Properties properties) {
         super(properties);
@@ -60,36 +60,24 @@ public class GhostFungusBlock extends SegmentedWallBlock implements Bonemealable
         return available[randomSource.nextInt(available.length)];
     }
 
-    public static int getColor(BlockState state, BlockAndTintGetter getter, BlockPos pos, int i)
-    {
-        if (i != 0) return -1;
-        //Vec3i greenColor = new Vec3i(24, 165, 16);
-        Vec3i greenColor = new Vec3i(255, 255, 255);
-        Vec3i offColor = new Vec3i(6, 27, 88);
-
-        int blockLevel = getter.getBrightness(LightLayer.BLOCK, pos);
-        int skyLevel = getter.getBrightness(LightLayer.SKY, pos);
-
-        int lightLevel = Math.max(blockLevel, skyLevel);
-
-        float percent = (float) lightLevel / 15f;
-        return RenderUtil.rgb(
-                Mth.lerpInt(percent, greenColor.getX(), offColor.getX()),
-                Mth.lerpInt(percent, greenColor.getY(), offColor.getY()),
-                Mth.lerpInt(percent, greenColor.getZ(), offColor.getZ()));
-
-    }
-
-    // Block entity stuff
-
-    @Override
-    public @org.jetbrains.annotations.Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new GhostFungusBlockEntity(blockPos, blockState);
-    }
-
-    @Override
-    protected RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
+//    public static int getColor(BlockState state, BlockAndTintGetter getter, BlockPos pos, int i)
+//    {
+//        if (i != 0) return -1;
+//        //Vec3i greenColor = new Vec3i(24, 165, 16);
+//        Vec3i greenColor = new Vec3i(255, 255, 255);
+//        Vec3i offColor = new Vec3i(6, 27, 88);
+//
+//        int blockLevel = getter.getBrightness(LightLayer.BLOCK, pos);
+//        int skyLevel = getter.getBrightness(LightLayer.SKY, pos);
+//
+//        int lightLevel = Math.max(blockLevel, skyLevel);
+//
+//        float percent = (float) lightLevel / 15f;
+//        return RenderUtil.rgb(
+//                Mth.lerpInt(percent, greenColor.getX(), offColor.getX()),
+//                Mth.lerpInt(percent, greenColor.getY(), offColor.getY()),
+//                Mth.lerpInt(percent, greenColor.getZ(), offColor.getZ()));
+//
+//    }
 
 }

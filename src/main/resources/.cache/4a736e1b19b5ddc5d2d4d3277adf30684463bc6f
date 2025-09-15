@@ -1,11 +1,11 @@
-// 1.21.8	2025-09-11T10:53:07.8987659	Tags for minecraft:block mod id cavernous
-7474797eb81c77ff1e81fbf0ecb819c9732e6131 data/cavernous/tags/block/fungatite_ore_replaceable.json
+// 1.21.8	2025-09-15T11:04:40.3580511	Tags for minecraft:block mod id cavernous
+a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/cavernous/tags/block/shroomwood_logs.json
 d3bc41ec175b87895412b425043e832279e3df59 data/cavernous/tags/block/underground_mycelium_replaceable.json
 de6b2ac748773d268a4260b09473618d90373ce1 data/minecraft/tags/block/all_hanging_signs.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/big_dripleaf_placeable.json
 66c63c701bb9ae985d7d23050293302e8988140e data/minecraft/tags/block/ceiling_hanging_signs.json
-cbe50f1734fe4df8857ec246da03754204ec7a34 data/minecraft/tags/block/climbable.json
+e19dbca3972075fe860673c2a6487ab635855986 data/minecraft/tags/block/climbable.json
 a9e37c73450d073d7437ad8bec68f049219aca10 data/minecraft/tags/block/coal_ores.json
 1efcf776273938c796b55167f5c0e5e6365d941a data/minecraft/tags/block/combination_step_sound_blocks.json
 52bd68ed9a8976001e69e16579593a6816e69135 data/minecraft/tags/block/copper_ores.json
@@ -20,15 +20,15 @@ a794b585323727ebc110655a810c6b77b83bce8e data/minecraft/tags/block/gold_ores.jso
 22639c9a73c9c4be2c47b2af8d39203cba0245a8 data/minecraft/tags/block/lapis_ores.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/minecraft/tags/block/logs.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/minecraft/tags/block/logs_that_burn.json
-7474797eb81c77ff1e81fbf0ecb819c9732e6131 data/minecraft/tags/block/lush_ground_replaceable.json
+a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/lush_ground_replaceable.json
 6d6fdf04e15157fb1aed58e844d711194bb6a678 data/minecraft/tags/block/mineable/axe.json
 974c2272516f28535cc8a6c0fe8bb48065073da3 data/minecraft/tags/block/mineable/hoe.json
 a2c4088d36ca65026f1931bddbe0b6d10419e5ea data/minecraft/tags/block/mineable/pickaxe.json
-7474797eb81c77ff1e81fbf0ecb819c9732e6131 data/minecraft/tags/block/moss_replaceable.json
-28b956afddc6a243c50e15853ae1865bf3211d0f data/minecraft/tags/block/mushroom_grow_block.json
+a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/moss_replaceable.json
+4e8c4fdc53b72dcd5b6c1cb3574b6a80123efd80 data/minecraft/tags/block/mushroom_grow_block.json
 48ec2187dd89dc642f944d65c94c5fe18a5134f2 data/minecraft/tags/block/needs_iron_tool.json
 ec4e19c68814e44bda837c8c82b58000be0ae473 data/minecraft/tags/block/needs_stone_tool.json
-7474797eb81c77ff1e81fbf0ecb819c9732e6131 data/minecraft/tags/block/overworld_carver_replaceables.json
+a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/overworld_carver_replaceables.json
 ca08515369ee457e4c0c33454e7a7310a1f6fd2c data/minecraft/tags/block/redstone_ores.json
 a3feb5819dd65cc347542602f8fe2341e1d16a75 data/minecraft/tags/block/replaceable.json
 bb336f47252e3d2c96243f9b8b24e2a0a6d89714 data/minecraft/tags/block/saplings.json
