@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "cavernous:item/hanging_shroom_cap"
+    "model": "cavernous:block/hanging_shroom_cap"
   }
 }

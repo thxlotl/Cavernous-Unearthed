@@ -8,15 +8,14 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.thxlotl.cavernous.datagen.custom.ModBlockStateProperties;
 
-public class ToadstoolCapBlock extends Block {
-    public ToadstoolCapBlock(Properties p_49795_) {
+public class MushroomCapBlock extends Block {
+    public MushroomCapBlock(Properties p_49795_) {
         super(p_49795_);
     }
 

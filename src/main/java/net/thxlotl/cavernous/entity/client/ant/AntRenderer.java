@@ -1,4 +1,4 @@
-package net.thxlotl.cavernous.entity.client;
+package net.thxlotl.cavernous.entity.client.ant;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.entity.custom.AntEntity;
+import net.thxlotl.cavernous.entity.custom.Ant;
 
-public class AntRenderer extends MobRenderer<AntEntity, AntRenderState, AntModel> {
+public class AntRenderer extends MobRenderer<Ant, AntRenderState, AntModel> {
 
     private static final float SHADOW_RADIUS = 0.25f;
     private AntModel model;
@@ -39,5 +39,13 @@ public class AntRenderer extends MobRenderer<AntEntity, AntRenderState, AntModel
     @Override
     public AntRenderState createRenderState() {
         return new AntRenderState();
+    }
+
+    @Override
+    public void extractRenderState(Ant entity, AntRenderState state, float partialTick) {
+        super.extractRenderState(entity, state, partialTick);
+
+        state.antEntity = entity;
+        state.attackAnimationState.copyFrom(entity.attackAnimationState);
     }
 }

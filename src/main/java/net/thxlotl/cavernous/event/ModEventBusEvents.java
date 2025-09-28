@@ -10,9 +10,11 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.entity.ModEntities;
-import net.thxlotl.cavernous.entity.client.AntModel;
+import net.thxlotl.cavernous.entity.client.ant.AntModel;
 import net.thxlotl.cavernous.entity.client.HangingShroomSporePodModel;
-import net.thxlotl.cavernous.entity.custom.AntEntity;
+import net.thxlotl.cavernous.entity.client.ant.InfectedAntModel;
+import net.thxlotl.cavernous.entity.custom.Ant;
+import net.thxlotl.cavernous.entity.custom.InfectedAnt;
 
 @EventBusSubscriber(modid = Cavernous.MODID, value = Dist.CLIENT)
 public class ModEventBusEvents {
@@ -22,6 +24,7 @@ public class ModEventBusEvents {
     {
         event.registerLayerDefinition(HangingShroomSporePodModel.LAYER_LOCATION, HangingShroomSporePodModel::createBodyLayer);
         event.registerLayerDefinition(AntModel.LAYER_LOCATION, AntModel::createBodyLayer);
+        event.registerLayerDefinition(InfectedAntModel.LAYER_LOCATION, InfectedAntModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -33,6 +36,7 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(ModEntities.ANT.get(), AntEntity.createAttributes().build());
+        event.put(ModEntities.ANT.get(), Ant.createAttributes().build());
+        event.put(ModEntities.INFECTED_ANT.get(), InfectedAnt.createAttributes().build());
     }
 }

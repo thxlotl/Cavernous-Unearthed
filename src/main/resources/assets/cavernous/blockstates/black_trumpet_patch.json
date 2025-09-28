@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "cavernous:block/black_trumpet_patch"
+      },
+      {
+        "model": "cavernous:block/black_trumpet_patch",
+        "y": 90
+      },
+      {
+        "model": "cavernous:block/black_trumpet_patch",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/black_trumpet_patch",
+        "y": 270
+      }
+    ]
+  }
+}

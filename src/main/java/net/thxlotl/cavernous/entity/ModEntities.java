@@ -9,7 +9,8 @@ import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.entity.custom.AntEntity;
+import net.thxlotl.cavernous.entity.custom.Ant;
+import net.thxlotl.cavernous.entity.custom.InfectedAnt;
 import net.thxlotl.cavernous.entity.custom.projectile.HangingShroomSporePodProjectileEntity;
 
 import java.util.function.Supplier;
@@ -27,12 +28,19 @@ public class ModEntities {
                             //.clientTrackingRange(4)
                             .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "hanging_shroom_spore_pod"))));
 
-    public static final Supplier<EntityType<AntEntity>> ANT =
+    public static final Supplier<EntityType<Ant>> ANT =
             ENTITY_TYPES.register("ant",
-                    () -> EntityType.Builder.<AntEntity>of(AntEntity::new, MobCategory.CREATURE)
+                    () -> EntityType.Builder.<Ant>of(Ant::new, MobCategory.CREATURE)
                             .sized(0.6f, 0.5f)
                             //.clientTrackingRange(4)
                             .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "ant"))));
+
+    public static final Supplier<EntityType<InfectedAnt>> INFECTED_ANT =
+            ENTITY_TYPES.register("infected_ant",
+                    () -> EntityType.Builder.<InfectedAnt>of(InfectedAnt::new, MobCategory.MONSTER)
+                            .sized(0.6f, 0.5f)
+                            //.clientTrackingRange(4)
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "infected_ant"))));
 
 
 

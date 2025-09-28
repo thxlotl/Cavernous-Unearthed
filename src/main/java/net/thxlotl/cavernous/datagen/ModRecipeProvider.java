@@ -12,6 +12,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.item.ModItems;
@@ -72,6 +73,12 @@ public class ModRecipeProvider extends RecipeProvider {
 
 
         // Fungatite
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE, 4)
+                .pattern("   ")
+                .pattern(" FF")
+                .pattern(" FF")
+                .define('F', ModBlocks.GROUND_FUNGATITE.get())
+                .unlockedBy("has_ground_fungatite", has(ModBlocks.GROUND_FUNGATITE)).save(output);
         stairBuilder(ModBlocks.FUNGATITE_STAIRS.get(), Ingredient.of(ModBlocks.FUNGATITE)).unlockedBy("has_fungatite", has(ModBlocks.FUNGATITE)).save(output);
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_SLAB.get(), Ingredient.of(ModBlocks.FUNGATITE)).unlockedBy("has_fungatite", has(ModBlocks.FUNGATITE)).save(output);
         wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_WALL.get(), Ingredient.of(ModBlocks.FUNGATITE)).unlockedBy("has_fungatite", has(ModBlocks.FUNGATITE)).save(output);
@@ -165,6 +172,17 @@ public class ModRecipeProvider extends RecipeProvider {
         oreBlasting(List.of(ModBlocks.FUNGATITE_EMERALD_ORE.asItem()),RecipeCategory.MISC,Items.EMERALD,1.0f,100,"emerald");
         oreBlasting(List.of(ModBlocks.FUNGATITE_LAPIS_ORE.asItem()),RecipeCategory.MISC,Items.LAPIS_LAZULI,0.2f,100,"lapis");
         oreBlasting(List.of(ModBlocks.FUNGATITE_DIAMOND_ORE.asItem()),RecipeCategory.MISC,Items.DIAMOND,1.0f,100,"diamond");
+
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAMPSHROOM_TERRARIUM)
+                .pattern("GPG")
+                .pattern("GLG")
+                .pattern("GUG")
+                .define('G', Blocks.GLASS)
+                .define('P', ItemTags.PLANKS)
+                .define('L', ModBlocks.LAMPSHROOM)
+                .define('U', ModBlocks.UNDERGROUND_MYCELIUM)
+                .unlockedBy("has_lampshroom", has(ModBlocks.LAMPSHROOM)).save(output);
     }
 
 }

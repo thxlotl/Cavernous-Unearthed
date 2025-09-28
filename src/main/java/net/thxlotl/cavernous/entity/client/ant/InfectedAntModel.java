@@ -1,28 +1,24 @@
-package net.thxlotl.cavernous.entity.client;
+package net.thxlotl.cavernous.entity.client.ant;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.Model;
-import net.minecraft.client.model.SheepModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.entity.custom.AntEntity;
 
-public class AntModel extends EntityModel<AntRenderState> {
+public class InfectedAntModel extends EntityModel<AntRenderState> {
 
-    // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "ant"), "main");
-    private final ModelPart Thorax;
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "infected_ant"), "main");
+
+    private final KeyframeAnimation walkingAnimation;
+    private final KeyframeAnimation attackAnimation;
+    private final KeyframeAnimation tweakAnimation;
+
+    private final ModelPart thorax;
     private final ModelPart rightlegs;
     private final ModelPart r1;
     private final ModelPart r2;
@@ -33,36 +29,41 @@ public class AntModel extends EntityModel<AntRenderState> {
     private final ModelPart l3;
     private final ModelPart head;
     private final ModelPart antennae;
+    private final ModelPart fungi;
+    private final ModelPart leftpinsir;
+    private final ModelPart rightpinsir;
     private final ModelPart abdomen;
 
-    private final KeyframeAnimation walkingAnimation;
-
-
-    public AntModel(ModelPart root) {
+    public InfectedAntModel(ModelPart root) {
         super(root);
-        this.Thorax = root.getChild("Thorax");
-        this.rightlegs = this.Thorax.getChild("rightlegs");
+        this.thorax = root.getChild("thorax");
+        this.rightlegs = this.thorax.getChild("rightlegs");
         this.r1 = this.rightlegs.getChild("r1");
         this.r2 = this.rightlegs.getChild("r2");
         this.r3 = this.rightlegs.getChild("r3");
-        this.leftlegs = this.Thorax.getChild("leftlegs");
+        this.leftlegs = this.thorax.getChild("leftlegs");
         this.l1 = this.leftlegs.getChild("l1");
         this.l2 = this.leftlegs.getChild("l2");
         this.l3 = this.leftlegs.getChild("l3");
-        this.head = root.getChild("Head");
+        this.head = root.getChild("head");
         this.antennae = this.head.getChild("antennae");
+        this.fungi = this.head.getChild("fungi");
+        this.leftpinsir = this.head.getChild("leftpinsir");
+        this.rightpinsir = this.head.getChild("rightpinsir");
         this.abdomen = root.getChild("abdomen");
 
-        this.walkingAnimation = AntAnimations.ANT_WALK_ANIM.bake(root);
+        this.walkingAnimation = InfectedAntAnimations.WALK.bake(root);
+        this.attackAnimation = InfectedAntAnimations.ATTACK.bake(root);
+        this.tweakAnimation = InfectedAntAnimations.TWEAK.bake(root);
     }
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition Thorax = partdefinition.addOrReplaceChild("Thorax", CubeListBuilder.create().texOffs(0, 25).addBox(0.0F, -2.0F, -4.5F, 2.0F, 2.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.0F, 22.0F, 2.5F));
+        PartDefinition thorax = partdefinition.addOrReplaceChild("thorax", CubeListBuilder.create().texOffs(0, 25).addBox(0.0F, -2.0F, -4.5F, 2.0F, 2.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.0F, 22.0F, 2.5F));
 
-        PartDefinition rightlegs = Thorax.addOrReplaceChild("rightlegs", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition rightlegs = thorax.addOrReplaceChild("rightlegs", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         PartDefinition r1 = rightlegs.addOrReplaceChild("r1", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, -4.0F));
 
@@ -76,7 +77,7 @@ public class AntModel extends EntityModel<AntRenderState> {
 
         PartDefinition r3_r1 = r3.addOrReplaceChild("r3_r1", CubeListBuilder.create().texOffs(17, 5).addBox(-1.0F, 0.0F, -0.5F, 4.0F, 0.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2.3998F));
 
-        PartDefinition leftlegs = Thorax.addOrReplaceChild("leftlegs", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
+        PartDefinition leftlegs = thorax.addOrReplaceChild("leftlegs", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
         PartDefinition l1 = leftlegs.addOrReplaceChild("l1", CubeListBuilder.create(), PartPose.offset(2.0F, 0.0F, -4.0F));
 
@@ -90,23 +91,29 @@ public class AntModel extends EntityModel<AntRenderState> {
 
         PartDefinition l3_r1 = l3.addOrReplaceChild("l3_r1", CubeListBuilder.create().texOffs(17, 3).addBox(-1.0F, 0.0F, -0.5F, 4.0F, 0.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.7418F));
 
-        PartDefinition Head = partdefinition.addOrReplaceChild("Head", CubeListBuilder.create().texOffs(16, 14).addBox(-2.5F, 0.9F, -6.0F, 2.0F, 0.0F, 2.0F, new CubeDeformation(0.0F))
-                .texOffs(18, 0).addBox(0.5F, 0.9F, -6.0F, 2.0F, 0.0F, 2.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 9).addBox(-2.0F, -2.1F, -4.0F, 4.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 21.35F, -1.0F));
+        PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 9).addBox(-2.0F, -2.1F, -4.0F, 4.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 21.35F, -1.0F));
 
-        PartDefinition antennae = Head.addOrReplaceChild("antennae", CubeListBuilder.create(), PartPose.offset(0.0F, -2.0F, -4.0F));
+        PartDefinition antennae = head.addOrReplaceChild("antennae", CubeListBuilder.create(), PartPose.offset(0.0F, -2.0F, -4.0F));
 
         PartDefinition leftantenna_r1 = antennae.addOrReplaceChild("leftantenna_r1", CubeListBuilder.create().texOffs(12, 16).addBox(0.0F, -2.0F, -3.0F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(2.0F, -0.1F, 0.0F, 0.0F, -0.1745F, 0.0F));
 
         PartDefinition rightantenna_r1 = antennae.addOrReplaceChild("rightantenna_r1", CubeListBuilder.create().texOffs(16, 9).addBox(0.0F, -2.0F, -3.0F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.0F, -0.1F, 0.0F, 0.0F, 0.1745F, 0.0F));
 
+        PartDefinition fungi = head.addOrReplaceChild("fungi", CubeListBuilder.create(), PartPose.offset(0.0F, -1.6667F, -2.0F));
+
+        PartDefinition fruit_r1 = fungi.addOrReplaceChild("fruit_r1", CubeListBuilder.create().texOffs(28, 13).addBox(0.0F, 0.5F, -1.0F, 0.0F, 4.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.1667F, -1.0F, 3.033F, -0.484F, 0.035F));
+
+        PartDefinition fruit_r2 = fungi.addOrReplaceChild("fruit_r2", CubeListBuilder.create().texOffs(28, 5).addBox(0.0F, -7.5F, -1.0F, 0.0F, 7.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(1.0F, 0.6667F, 1.0F, 0.0F, 0.3491F, 0.2182F));
+
+        PartDefinition fruit_r3 = fungi.addOrReplaceChild("fruit_r3", CubeListBuilder.create().texOffs(28, -2).addBox(0.0F, -6.75F, -1.5F, 0.0F, 7.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.0F, -0.0833F, 0.5F, 0.0F, 0.3491F, -0.0873F));
+
+        PartDefinition leftpinsir = head.addOrReplaceChild("leftpinsir", CubeListBuilder.create().texOffs(18, 0).addBox(-1.5F, 0.0F, -2.0F, 2.0F, 0.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(2.0F, 0.9F, -4.0F));
+
+        PartDefinition rightpinsir = head.addOrReplaceChild("rightpinsir", CubeListBuilder.create().texOffs(16, 14).addBox(-1.0F, 0.0F, -2.0F, 2.0F, 0.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.5F, 0.9F, -4.0F));
+
         PartDefinition abdomen = partdefinition.addOrReplaceChild("abdomen", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -3.75F, -0.5F, 4.0F, 4.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.0F, 2.5F));
 
         return LayerDefinition.create(meshdefinition, 32, 32);
-    }
-
-    public ModelPart getHead() {
-        return this.head;
     }
 
     @Override
@@ -115,6 +122,8 @@ public class AntModel extends EntityModel<AntRenderState> {
         this.applyHeadRotation(renderState.yRot, renderState.xRot);
 
         this.walkingAnimation.applyWalk(renderState.walkAnimationPos, renderState.walkAnimationSpeed, 10f, 2.5f);
+        this.attackAnimation.apply(renderState.attackAnimationState, renderState.ageInTicks);
+        this.tweakAnimation.apply(renderState.tweakAnimationState, renderState.ageInTicks);
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {

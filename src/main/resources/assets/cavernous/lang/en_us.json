@@ -59,7 +59,10 @@
 
   "item.cavernous.lampshroom": "Lampshroom",
   "item.cavernous.lampshroom_cap_block": "Lampshroom Cap Block",
+  "item.cavernous.lampshroom_terrarium": "Lampshroom Terrarium",
 
+
+  "item.cavernous.shelfshroom_cap_block": "Shelfshroom Cap Block",
 
   "item.cavernous.lampshroom_button": "Lampshroom Button",
   "item.cavernous.bleeding_tooth_mushroom": "Bleeding Tooth Mushroom",
@@ -70,11 +73,18 @@
   "item.cavernous.hanging_feather_moss": "Hanging Feather Moss",
   "item.cavernous.mushroom_gill_block": "Mushroom Gill Block",
   "item.cavernous.ancient_fern": "Ancient Fern",
+  "item.cavernous.black_trumpet_patch": "Black Trumpet Patch",
   "item.cavernous.ant_spawn_egg": "Ant Spawn Egg",
+  "item.cavernous.infected_ant_spawn_egg": "Infected Ant Spawn Egg",
 
 
   "item.cavernous.test_block_ore": "Test Block Ore",
   "item.cavernous.geyser_block": "Geyser Block",
+
+  "entity.cavernous.ant": "Ant",
+  "entity.cavernous.infected_ant": "Infected Ant",
+
+  "biome.cavernous.fungal_caves": "Fungal Caves",
 
   "creativetab.cavernous.cavernous_tab": "Cavernous"
 }

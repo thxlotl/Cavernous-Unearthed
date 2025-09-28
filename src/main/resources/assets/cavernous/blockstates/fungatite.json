@@ -1,7 +1,20 @@
 {
   "variants": {
-    "": {
-      "model": "cavernous:block/fungatite"
-    }
+    "": [
+      {
+        "model": "cavernous:block/fungatite"
+      },
+      {
+        "model": "cavernous:block/fungatite"
+      },
+      {
+        "model": "cavernous:block/fungatite",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/fungatite",
+        "y": 180
+      }
+    ]
   }
 }

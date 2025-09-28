@@ -90,7 +90,8 @@
       "cavernous:hanging_shroom",
       "cavernous:lampshroom",
       "cavernous:lampshroom_tree",
-      "cavernous:bleeding_tooth_fungus"
+      "cavernous:bleeding_tooth_fungus",
+      "cavernous:cordyceps"
     ],
     [
       "minecraft:freeze_top_layer"

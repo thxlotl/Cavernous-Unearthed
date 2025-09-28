@@ -23,6 +23,11 @@ public class ModItems {
             properties -> new SpawnEggItem(ModEntities.ANT.get(), properties),
             new Item.Properties()
     );
+    public static final DeferredItem<SpawnEggItem> INFECTED_ANT_SPAWN_EGG = ITEMS.registerItem(
+            "infected_ant_spawn_egg",
+            properties -> new SpawnEggItem(ModEntities.INFECTED_ANT.get(), properties),
+            new Item.Properties()
+    );
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

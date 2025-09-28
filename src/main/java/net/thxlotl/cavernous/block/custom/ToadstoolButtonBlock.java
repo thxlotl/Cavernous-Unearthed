@@ -37,6 +37,11 @@ public class ToadstoolButtonBlock extends VegetationBlock implements Bonemealabl
             Block.box((double)1.0F, (double)10.0F, (double)1.0F, (double)15.0F, (double)16.0F, (double)15.0F),
             Block.box((double)7.0F, (double)0.0F, (double)7.0F, (double)9.0F, (double)16.0F, (double)9.0F),
             Block.box((double)7.0F, (double)2.0F, (double)9.0F, (double)9.0F, (double)8.0F, (double)14.0F));
+    private static final VoxelShape FAT_SHAPE = Shapes.or(
+            Block.column((double)14.0F, (double)10.0F, (double)16.0F),
+            Block.column((double)3.0F, (double)0.0F, (double)10.0F),
+            Block.box((double)6.5F, (double)2.0F, (double)9.5F, (double)9.5F, (double)8.0F, (double)13.5F));
+
 
     private static final VoxelShape SHAPE_NO_ROTATE = Shapes.or(
             Block.column((double)14.0F, (double)10.0F, (double)16.0F),
@@ -49,7 +54,7 @@ public class ToadstoolButtonBlock extends VegetationBlock implements Bonemealabl
 
     static {
         FACING = BlockStateProperties.HORIZONTAL_FACING;
-        SHAPES = Shapes.rotateHorizontal(BASE_SHAPE.optimize());
+        SHAPES = Shapes.rotateHorizontal(FAT_SHAPE.optimize());
     }
 
     public ToadstoolButtonBlock(Properties p_401368_) {

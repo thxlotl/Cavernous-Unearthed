@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ground_fungatite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cavernous:ground_fungatite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cavernous:fungatite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ground_fungatite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cavernous:fungatite"
+    ]
+  }
+}

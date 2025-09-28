@@ -129,9 +129,6 @@ public class ModEvents {
             float forward = random.nextInt(3) - 1 + initialMovement.y;
             float strafe = random.nextInt(3) - 1 + initialMovement.x;
 
-//            System.out.println("Shift value: " + shift);
-//            System.out.println("Strafe: " + strafe + " Forward: " + forward);
-
             input.keyPresses = new Input(input.keyPresses.forward(), input.keyPresses.backward(), input.keyPresses.left(), input.keyPresses.right(), jump, shift, input.keyPresses.sprint());
             setInputVector(input, new Vec2(strafe, forward));
         }

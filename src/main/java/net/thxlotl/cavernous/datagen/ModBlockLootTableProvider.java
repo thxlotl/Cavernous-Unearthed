@@ -7,11 +7,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.thxlotl.cavernous.block.ModBlocks;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.BiConsumer;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
@@ -24,33 +29,44 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     private final List<Block> ignoredBlocks = List.of(
             ModBlocks.UNDERGROUND_MYCELIUM.get(),
+            ModBlocks.FUNGATITE.get(),
             ModBlocks.GHOST_FUNGUS.get()
     );
 
-//
-//    @Override
-//    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
-//
-//        consumer.accept(lootKeyFromBlock(ModBlocks.UNDERGROUND_MYCELIUM.get()), LootTable.lootTable()
-//                .withPool(LootPool.lootPool()
-//                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
-//                        .when(hasSilkTouch())
-//                        .add(LootItem.lootTableItem(ModBlocks.UNDERGROUND_MYCELIUM))
-//                )
-//                .withPool(LootPool.lootPool()
-//                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
-//                        .when(doesNotHaveSilkTouch())
-//                        .add(LootItem.lootTableItem(ModBlocks.FUNGATITE))
-//        ));
-//
-//
-//
-//    }
+
+    @Override
+    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
+
+        super.generate(consumer);
+
+        consumer.accept(lootKeyFromBlock(ModBlocks.UNDERGROUND_MYCELIUM.get()), LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        .when(hasSilkTouch())
+                        .add(LootItem.lootTableItem(ModBlocks.UNDERGROUND_MYCELIUM))
+                )
+                .withPool(LootPool.lootPool()
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        .when(doesNotHaveSilkTouch())
+                        .add(LootItem.lootTableItem(ModBlocks.GROUND_FUNGATITE))
+                ));
+        consumer.accept(lootKeyFromBlock(ModBlocks.FUNGATITE.get()), LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        .when(hasSilkTouch())
+                        .add(LootItem.lootTableItem(ModBlocks.FUNGATITE))
+                )
+                .withPool(LootPool.lootPool()
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        .when(doesNotHaveSilkTouch())
+                        .add(LootItem.lootTableItem(ModBlocks.GROUND_FUNGATITE))
+                ));
+    }
 
     @Override
     protected void generate() {
 
-        dropSelf(ModBlocks.FUNGATITE.get());
+        //dropSelf(ModBlocks.FUNGATITE.get());
         dropSelf(ModBlocks.GROUND_FUNGATITE.get());
 
         add(ModBlocks.FUNGATITE_COAL_ORE.get(),
@@ -137,17 +153,29 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LAMPSHROOM.get());
         add(ModBlocks.LAMPSHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.LAMPSHROOM));
         dropSelf(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
+        add(ModBlocks.POTTED_LAMPSHROOM.get(),
+                block -> createPotFlowerItemTable(ModBlocks.LAMPSHROOM.asItem()));
 
         add(ModBlocks.HANGING_SHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
         add(ModBlocks.HANGING_SHROOM_CAP.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
 
-        dropSelf(ModBlocks.LAMPSHROOM_BUTTON.get());
+
+        dropSelf(ModBlocks.SHELFSHROOM_CAP_BLOCK.get());
+
+        dropSelf(ModBlocks.LAMPSHROOM_TERRARIUM.get());
         dropSelf(ModBlocks.CORDYCEPS_PATCH.get());
         dropSelf(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get());
+
+
+
+
+
         dropSelf(ModBlocks.GILLED_MUSHROOM.get());
         dropSelf(ModBlocks.GEYSER_BLOCK.get());
         dropSelf(ModBlocks.CLUSTER_SHROOM.get());
+        dropSelf(ModBlocks.BLACK_TRUMPET_PATCH.get());
 
+        dropSelf(ModBlocks.LAMPSHROOM_BUTTON.get());
     }
 
     @Override

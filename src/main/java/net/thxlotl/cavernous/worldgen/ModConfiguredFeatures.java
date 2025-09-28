@@ -29,8 +29,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.neoforged.fml.common.Mod;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
@@ -38,6 +40,7 @@ import net.thxlotl.cavernous.util.ModTags;
 import net.thxlotl.cavernous.util.OreFeatureTypes;
 import net.thxlotl.cavernous.util.OreTypes;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
+import net.thxlotl.cavernous.worldgen.custom.tree.LeaveCustomVineDecorator;
 import net.thxlotl.cavernous.worldgen.custom.wallface.WallFaceGrowthConfiguration;
 import net.thxlotl.cavernous.worldgen.custom.tree.MushroomCapFoliagePlacer;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
@@ -64,6 +67,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAMPSHROOM_TREE = registerKey("lampshroom_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GHOST_FUNGUS = registerKey("ghost_fungus");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CORDYCEPS = registerKey("cordyceps");
 
     private static final String fungatitePrefix = "fungatite";
     private static final EnumMap<OreTypes, Block> FUNGATITE_ORES =
@@ -170,12 +174,12 @@ public class ModConfiguredFeatures {
             )
                 .decorators(List.of(
                         new AttachedToLeavesDecorator(1, 0, 0, BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_CARPET.get()), 1, List.of(Direction.UP)),
-                        new AttachedToLeavesDecorator(1, 0, 0, BlockStateProvider.simple(ModBlocks.MUSHROOM_GILL_BLOCK.get()), 1, List.of(Direction.DOWN)),
                         new AttachedToLogsDecorator(0.85f, new WeightedStateProvider(WeightedList.<BlockState>builder()
                                 .add(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), 1)
                                 .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 11)
                                 .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 16))
-                                , List.of(Direction.UP))
+                                , List.of(Direction.UP)),
+                        new LeaveCustomVineDecorator(0.2f, ModBlocks.HANGING_FEATHER_MOSS.get())
                 ))
                 .ignoreVines()
                 .build();
@@ -308,6 +312,12 @@ public class ModConfiguredFeatures {
                 true
         );
         FeatureUtils.register(context, BLEEDING_TOOTH_FUNGUS, Feature.SIMPLE_BLOCK, bleedingToothConfig);
+
+        SimpleBlockConfiguration corycepsConfig = new SimpleBlockConfiguration(
+                BlockStateProvider.simple(ModBlocks.CORDYCEPS_PATCH.get().defaultBlockState()),
+                true
+        );
+        FeatureUtils.register(context, CORDYCEPS, Feature.SIMPLE_BLOCK, corycepsConfig);
 
 
 

@@ -39,6 +39,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> LAMPSHROOM_TREE = registerKey("lampshroom_tree");
     public static final ResourceKey<PlacedFeature> GHOST_FUNGUS = registerKey("ghost_fungus");
     public static final ResourceKey<PlacedFeature> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
+    public static final ResourceKey<PlacedFeature> CORDYCEPS = registerKey("cordyceps");
 
     private static final String fungatitePrefix = "fungatite";
     public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_LOWER);
@@ -115,6 +116,7 @@ public class ModPlacedFeatures {
                 List.of(
                         CountPlacement.of(45),
                         InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(3),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
@@ -155,6 +157,7 @@ public class ModPlacedFeatures {
                 List.of(
                         CountPlacement.of(15),
                         InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(3),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
@@ -182,6 +185,22 @@ public class ModPlacedFeatures {
                                 Direction.DOWN,
                                 BlockPredicate.allOf(
                                         BlockPredicate.wouldSurvive(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.matchesBlocks(Blocks.AIR)
+                                ),
+                                12
+                        ),
+                        BiomeFilter.biome()
+                ));
+
+        register(context, CORDYCEPS, configuredFeatures.getOrThrow(ModConfiguredFeatures.CORDYCEPS),
+                List.of(
+                        CountPlacement.of(10),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                        EnvironmentScanPlacement.scanningFor(
+                                Direction.DOWN,
+                                BlockPredicate.allOf(
+                                        BlockPredicate.wouldSurvive(ModBlocks.CORDYCEPS_PATCH.get().defaultBlockState(), Vec3i.ZERO),
                                         BlockPredicate.matchesBlocks(Blocks.AIR)
                                 ),
                                 12

@@ -10,14 +10,16 @@ import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.entity.ModEntities;
-import net.thxlotl.cavernous.entity.client.AntRenderer;
+import net.thxlotl.cavernous.entity.client.ant.AntRenderer;
 import net.thxlotl.cavernous.entity.client.HangingShroomSporePodRenderer;
+import net.thxlotl.cavernous.entity.client.ant.InfectedAntRenderer;
 import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.biolith.BiolithUsage;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModFoliagePlacerTypes;
+import net.thxlotl.cavernous.worldgen.custom.tree.ModTreeDecoratorType;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
 
@@ -69,6 +71,7 @@ public class Cavernous {
         // Register Feature Types
         ModTrunkPlacerTypes.register(modEventBus);
         ModFoliagePlacerTypes.register(modEventBus);
+        ModTreeDecoratorType.register(modEventBus);
         ModFeature.register(modEventBus);
 
         // Register the item to a creative tab
@@ -177,9 +180,13 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_CAP.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.CORDYCEPS_PATCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_CARPET.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_LAMPSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_TERRARIUM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
 
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
             EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);
+            EntityRenderers.register(ModEntities.INFECTED_ANT.get(), InfectedAntRenderer::new);
         }
     }
 }

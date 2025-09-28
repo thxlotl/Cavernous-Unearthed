@@ -190,10 +190,15 @@ public class ModBlocks {
             properties -> new CarpetBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET)
             );
+    public static final DeferredBlock<VineBlock> HANGING_FEATHER_MOSS = registerBlock(
+            "hanging_feather_moss",
+            properties -> new VineBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.VINE).sound(SoundType.MOSS)
+    );
     public static final DeferredBlock<WaterLoggablePlantBlock> FEATHER_MOSS_TUFTS = registerBlock(
             "feather_moss_tufts",
             properties -> new WaterLoggablePlantBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).mapColor(MapColor.PLANT)
             );
 
 
@@ -205,6 +210,7 @@ public class ModBlocks {
                     strength(2f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.NYLIUM)
+                    .mapColor(MapColor.COLOR_PURPLE)
                     .randomTicks());
     public static final DeferredBlock<WaterLoggablePlantBlock> MYCELIUM_SPROUTS = registerBlock(
             "mycelium_sprouts",
@@ -219,9 +225,9 @@ public class ModBlocks {
 
 
     // Toadstool
-    public static final DeferredBlock<ToadstoolCapBlock> TOADSTOOL_CAP_BLOCK = registerBlock(
+    public static final DeferredBlock<MushroomCapBlock> TOADSTOOL_CAP_BLOCK = registerBlock(
             "toadstool_cap_block",
-            properties -> new ToadstoolCapBlock(properties),
+            properties -> new MushroomCapBlock(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
                     sound(SoundType.MOSS));
@@ -416,20 +422,36 @@ public class ModBlocks {
             BlockBehaviour.Properties.of().
                     strength(0.5f).
                     sound(SoundType.MOSS)
-                    .lightLevel((p) -> 10));
+                    .lightLevel((p) -> 11));
     public static final DeferredBlock<LampshroomBlock> LAMPSHROOM = registerBlock(
             "lampshroom",
             properties -> new LampshroomBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 8)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 9)
     );
     public static final DeferredBlock<LampshroomStemBlock> LAMPSHROOM_STEM = registerBlock(
             "lampshroom_stem",
             properties -> new LampshroomStemBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission());
+    public static final DeferredBlock<FlowerPotBlock> POTTED_LAMPSHROOM = registerBlock(
+            "potted_lampshroom",
+            properties -> new FlowerPotBlock(ModBlocks.LAMPSHROOM.get(), properties),
+            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 8)
+    );
+    public static final DeferredBlock<LampshroomTerrarium> LAMPSHROOM_TERRARIUM = registerBlock(
+            "lampshroom_terrarium",
+            properties -> new LampshroomTerrarium(properties),
+            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 4)
+    );
 
 
 
 
+    public static final DeferredBlock<MushroomCapBlock> SHELFSHROOM_CAP_BLOCK = registerBlock(
+            "shelfshroom_cap_block",
+            properties -> new MushroomCapBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(0.5f).
+                    sound(SoundType.MOSS));
 
 
 
@@ -454,21 +476,11 @@ public class ModBlocks {
             properties -> new ToadstoolButtonBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
     );
-    public static final DeferredBlock<VineBlock> HANGING_FEATHER_MOSS = registerBlock(
-            "hanging_feather_moss",
-            properties -> new VineBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.VINE)
-    );
-    public static final DeferredBlock<MushroomGillBlock> MUSHROOM_GILL_BLOCK = registerBlock(
-            "mushroom_gill_block",
-            properties -> new MushroomGillBlock(properties),
-            BlockBehaviour.Properties.of().noOcclusion()
-    );
 
     public static final DeferredBlock<GhostFungusBlock> GHOST_FUNGUS = registerBlock(
             "ghost_fungus",
             properties -> new GhostFungusBlock(properties),
-            BlockBehaviour.Properties.of().replaceable().noCollission().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT)
+            BlockBehaviour.Properties.of().replaceable().noCollission().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT).sound(SoundType.NETHER_SPROUTS)
     );
 
 
@@ -484,10 +496,20 @@ public class ModBlocks {
             properties -> new WaterLoggablePlantBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
     );
+    public static final DeferredBlock<ToadstoolPatchBlock> BLACK_TRUMPET_PATCH = registerBlock(
+            "black_trumpet_patch",
+            properties -> new ToadstoolPatchBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
+    );
     public static final DeferredBlock<WaterLoggablePlantBlock> ANCIENT_FERN = registerBlock(
             "ancient_fern",
             properties -> new WaterLoggablePlantBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).noLootTable()
+    );
+    public static final DeferredBlock<MushroomGillBlock> MUSHROOM_GILL_BLOCK = registerBlock(
+            "mushroom_gill_block",
+            properties -> new MushroomGillBlock(properties),
+            BlockBehaviour.Properties.of().noOcclusion()
     );
     public static final DeferredBlock<Block> TEST_BLOCK_ORE = registerBlock(
             "test_block_ore",

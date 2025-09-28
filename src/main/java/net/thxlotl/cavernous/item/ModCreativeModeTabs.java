@@ -42,10 +42,12 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.FUNGATITE_BRICK_WALL);
                 output.accept(ModBlocks.FEATHER_MOSS_BLOCK);
                 output.accept(ModBlocks.FEATHER_MOSS_CARPET);
+                output.accept(ModBlocks.HANGING_FEATHER_MOSS);
                 output.accept(ModBlocks.FEATHER_MOSS_TUFTS);
                 output.accept(ModBlocks.UNDERGROUND_MYCELIUM);
                 output.accept(ModBlocks.MYCELIUM_SPROUTS);
                 output.accept(ModBlocks.MYCELIUM_FERN);
+                output.accept(ModBlocks.SHELFSHROOM_CAP_BLOCK);
                 output.accept(ModBlocks.TOADSTOOL_CAP_BLOCK);
                 output.accept(ModBlocks.TOADSTOOL_PATCH);
                 output.accept(ModBlocks.TOADSTOOL_BUTTON);
@@ -66,17 +68,12 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SHROOMWOOD_HANGING_SIGN);
                 output.accept(ModBlocks.HANGING_SHROOM_CAP);
                 output.accept(ModBlocks.LAMPSHROOM);
-                output.accept(ModBlocks.LAMPSHROOM_BUTTON);
+                output.accept(ModBlocks.LAMPSHROOM_TERRARIUM);
                 output.accept(ModBlocks.LAMPSHROOM_CAP_BLOCK);
-                output.accept(ModBlocks.MUSHROOM_GILL_BLOCK);
                 output.accept(ModBlocks.BLEEDING_TOOTH_MUSHROOM);
                 output.accept(ModBlocks.CORDYCEPS_PATCH);
-                output.accept(ModBlocks.HANGING_FEATHER_MOSS);
-                output.accept(ModBlocks.GILLED_MUSHROOM);
-                output.accept(ModBlocks.CLUSTER_SHROOM);
-                output.accept(ModBlocks.ANCIENT_FERN);
-                output.accept(ModBlocks.TEST_BLOCK_ORE);
-                output.accept(ModBlocks.GEYSER_BLOCK);
+                output.accept(ModItems.ANT_SPAWN_EGG);
+                output.accept(ModItems.INFECTED_ANT_SPAWN_EGG);
             })
             .build());
 

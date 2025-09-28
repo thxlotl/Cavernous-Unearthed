@@ -5,9 +5,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.InsideBlockEffectApplier;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -17,7 +16,11 @@ import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.event.EventHooks;
 import net.thxlotl.cavernous.effect.ModEffects;
+import net.thxlotl.cavernous.entity.ModEntities;
+import net.thxlotl.cavernous.entity.custom.Ant;
+import net.thxlotl.cavernous.entity.custom.InfectedAnt;
 
 public class CordycepsPatchBlock extends VegetationBlock {
 
@@ -45,7 +48,13 @@ public class CordycepsPatchBlock extends VegetationBlock {
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
 
         if (!level.isClientSide() && entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(ModEffects.MUSHY_MIND_EFFECT, 100, 1));
+
+            if (entity instanceof Ant) {
+
+            }
+            else {
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.MUSHY_MIND_EFFECT, 100, 1));
+            }
         }
 
         super.entityInside(state, level, pos, entity, effectApplier);
