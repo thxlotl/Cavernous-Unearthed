@@ -1,4 +1,4 @@
-package net.thxlotl.cavernous.entity.client.fungal_zombie;
+package net.thxlotl.cavernous.entity.client.fungalzombie;
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;

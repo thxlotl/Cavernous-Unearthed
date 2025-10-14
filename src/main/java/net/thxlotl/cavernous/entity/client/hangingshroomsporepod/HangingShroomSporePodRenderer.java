@@ -1,4 +1,4 @@
-package net.thxlotl.cavernous.entity.client;
+package net.thxlotl.cavernous.entity.client.hangingshroomsporepod;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

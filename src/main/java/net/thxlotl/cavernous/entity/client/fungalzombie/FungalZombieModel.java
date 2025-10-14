@@ -1,18 +1,14 @@
-package net.thxlotl.cavernous.entity.client.fungal_zombie;
+package net.thxlotl.cavernous.entity.client.fungalzombie;
 
 import net.minecraft.client.animation.KeyframeAnimation;
-import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.entity.client.ant.AntRenderState;
-import net.thxlotl.cavernous.entity.custom.FungalZombie;
 
 public class FungalZombieModel extends EntityModel<FungalZombieRenderState> {
 

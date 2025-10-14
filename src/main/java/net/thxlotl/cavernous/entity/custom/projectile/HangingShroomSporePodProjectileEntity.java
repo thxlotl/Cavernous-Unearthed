@@ -4,18 +4,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,9 +20,7 @@ import net.minecraft.world.phys.HitResult;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.MathUtil;
-import net.thxlotl.cavernous.worldgen.ModConfiguredFeatures;
-
-import java.util.Random;
+import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
 
 public class HangingShroomSporePodProjectileEntity extends ThrowableItemProjectile {
 
@@ -37,7 +29,7 @@ public class HangingShroomSporePodProjectileEntity extends ThrowableItemProjecti
     public boolean spinXDirection;
     public boolean spinYDirection;
 
-    ResourceKey<ConfiguredFeature<?, ?>> feature = ModConfiguredFeatures.HANGING_SHROOM_SPORE_POD;
+    ResourceKey<ConfiguredFeature<?, ?>> feature = FungalCavesConfiguredFeatures.HANGING_SHROOM_SPORE_POD;
 
     public HangingShroomSporePodProjectileEntity(Level level, LivingEntity owner, ItemStack item) {
         super(ModEntities.HANGING_SHROOM_SPORE_POD.get(), owner, level, item);

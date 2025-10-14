@@ -18,10 +18,12 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.util.OrePlacedFeatureTypes;
+import net.thxlotl.cavernous.worldgen.datagen.placedfeatures.FungalCavesPlacedFeatures;
 
 import java.util.EnumMap;
 
 public class ModBiomes {
+
     // Biome initialization
     public static final ResourceKey<Biome> FUNGAL_CAVES = ResourceKey.create(Registries.BIOME,
             ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "fungal_caves"));
@@ -71,6 +73,8 @@ public class ModBiomes {
         //BiomeDefaultFeatures.caveSpawns(builder);
         BiomeDefaultFeatures.commonSpawns(builder);
     }
+
+
     public static void fungalCavesSpawns(MobSpawnSettings.Builder builder)
     {
         BiomeDefaultFeatures.caveSpawns(builder);
@@ -83,14 +87,11 @@ public class ModBiomes {
         builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
         builder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
     }
-
-
-
     private static Biome fungalCaves(BootstrapContext<Biome> context) {
 
         // Build mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        fungalCavesSpawns(spawnBuilder);
+        globalOverworldSpawns(spawnBuilder);
 
         // Build feature generation
         BiomeGenerationSettings.Builder biomeBuilder =
@@ -103,17 +104,17 @@ public class ModBiomes {
         addStoneTypeOres(biomeBuilder, "fungatite");
         // Custom features
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.ORE_GROUND_FUNGATITE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FungalCavesPlacedFeatures.ORE_GROUND_FUNGATITE);
 
-        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.SHELFSHROOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FEATHER_MOSS_PATCH);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.UNDERGROUND_MYCELIUM_PATCH);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TOADSTOOL);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LAMPSHROOM_TREE);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LAMPSHROOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BLEEDING_TOOTH_FUNGUS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CORDYCEPS);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_SHROOM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, FungalCavesPlacedFeatures.SHELFSHROOM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.FEATHER_MOSS_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.UNDERGROUND_MYCELIUM_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.TOADSTOOL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.BLEEDING_TOOTH_FUNGUS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.CORDYCEPS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.HANGING_SHROOM);
         //biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GHOST_FUNGUS);
 
         // Biome characteristics

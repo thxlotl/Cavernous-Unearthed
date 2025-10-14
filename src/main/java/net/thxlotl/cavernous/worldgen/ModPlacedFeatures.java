@@ -9,20 +9,19 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.*;
-import net.neoforged.fml.common.Mod;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.util.OreFeatureTypes;
 import net.thxlotl.cavernous.util.OrePlacedFeatureTypes;
+import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.datagen.placedfeatures.FungalCavesPlacedFeatures;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -31,249 +30,33 @@ import java.util.Map;
 
 public class ModPlacedFeatures {
 
-    public static final ResourceKey<PlacedFeature> FEATHER_MOSS_PATCH = registerKey("feather_moss_patch");
-    public static final ResourceKey<PlacedFeature> UNDERGROUND_MYCELIUM_PATCH = registerKey("mycelium_vegetation_patch");
-    public static final ResourceKey<PlacedFeature> TOADSTOOL = registerKey("toadstool");
-    public static final ResourceKey<PlacedFeature> HANGING_SHROOM = registerKey("hanging_shroom");
-    public static final ResourceKey<PlacedFeature> LAMPSHROOM = registerKey("lampshroom");
-    public static final ResourceKey<PlacedFeature> LAMPSHROOM_TREE = registerKey("lampshroom_tree");
-    public static final ResourceKey<PlacedFeature> GHOST_FUNGUS = registerKey("ghost_fungus");
-    public static final ResourceKey<PlacedFeature> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
-    public static final ResourceKey<PlacedFeature> CORDYCEPS = registerKey("cordyceps");
-    public static final ResourceKey<PlacedFeature> ORE_GROUND_FUNGATITE = registerKey("ore_ground_fungatite");
-    public static final ResourceKey<PlacedFeature> SHELFSHROOM = registerKey("shelfshroom");
+    // Register Features
+    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
+        var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-    private static final String fungatitePrefix = "fungatite";
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_UPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COPPER_LARGE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_MIDDLE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.IRON_MIDDLE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_SMALL = oreKey(fungatitePrefix, OrePlacedFeatureTypes.IRON_SMALL);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.IRON_UPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD = oreKey(fungatitePrefix, OrePlacedFeatureTypes.GOLD);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.GOLD_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.REDSTONE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.REDSTONE_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS = oreKey(fungatitePrefix, OrePlacedFeatureTypes.LAPIS);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureTypes.LAPIS_BURIED);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND_BURIED);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND_LARGE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_MEDIUM = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND_MEDIUM);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_EMERALD = oreKey(fungatitePrefix, OrePlacedFeatureTypes.EMERALD);
+        FungalCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+    }
+
+
+
 
 
     // Ore setup
     public static final Map<String, EnumMap<OrePlacedFeatureTypes, ResourceKey<PlacedFeature>>> PLACED_ORE_MAPS =
             new HashMap<>();
-    static {
-        registerStoneTypeOres(fungatitePrefix);
-    }
-    private static void registerStoneTypeOres(String prefix) {
+    public static void registerStoneTypeOres(String prefix) {
         EnumMap<OrePlacedFeatureTypes, ResourceKey<PlacedFeature>> map = new EnumMap<>(OrePlacedFeatureTypes.class);
         for (OrePlacedFeatureTypes type : OrePlacedFeatureTypes.values()) {
             map.put(type, oreKey(prefix, type));
         }
         PLACED_ORE_MAPS.put(prefix, map);
     }
-    private static ResourceKey<PlacedFeature> oreKey(String prefix, OrePlacedFeatureTypes oreType)
+    public static ResourceKey<PlacedFeature> oreKey(String prefix, OrePlacedFeatureTypes oreType)
     {
         String suffix = oreType.toString().toLowerCase();
         return registerKey(prefix + "_ore_" + suffix);
     }
-
-
-    // Register Features
-    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
-        var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
-
-
-        register(context, FEATHER_MOSS_PATCH, configuredFeatures.getOrThrow(ModConfiguredFeatures.FEATHER_MOSS_PATCH),
-                List.of(
-                        CountPlacement.of(100),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-
-                        ),
-                        BiomeFilter.biome()
-                ));
-        register(context, UNDERGROUND_MYCELIUM_PATCH, configuredFeatures.getOrThrow(ModConfiguredFeatures.UNDERGROUND_MYCELIUM_PATCH),
-                List.of(
-                        CountPlacement.of(125),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-        register(context, TOADSTOOL, configuredFeatures.getOrThrow(ModConfiguredFeatures.TOADSTOOL),
-                List.of(
-                        CountPlacement.of(30),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR)),
-                                24
-                        ),
-                        //SurfaceWaterDepthFilter.forMaxDepth(3),
-                        BiomeFilter.biome()
-                ));
-        register(context, HANGING_SHROOM, configuredFeatures.getOrThrow(ModConfiguredFeatures.HANGING_SHROOM),
-                List.of(
-                        CountPlacement.of(35),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.UP,
-                                BlockPredicate.allOf(List.of(
-                                        BlockPredicate.wouldSurvive(ModBlocks.HANGING_SHROOM_CAP.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), ModBlocks.HANGING_SHROOM_CAP.get())),
-                                        BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), ModBlocks.SHELFSHROOM_CAP_BLOCK.get()))
-                                )),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-
-        register(context, LAMPSHROOM, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAMPSHROOM),
-                List.of(
-                        CountPlacement.of(85),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.LAMPSHROOM.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                        ),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-        register(context, LAMPSHROOM_TREE, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAMPSHROOM_TREE),
-                List.of(
-                        CountPlacement.of(12),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR)),
-                                24
-                        ),
-                        //SurfaceWaterDepthFilter.forMaxDepth(3),
-                        BiomeFilter.biome()
-                ));
-
-//        register(context, GHOST_FUNGUS, configuredFeatures.getOrThrow(ModConfiguredFeatures.GHOST_FUNGUS),
-//                List.of(
-//                        CountPlacement.of(UniformInt.of(150, 160)),
-//                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-//                        InSquarePlacement.spread(),
-//                        BiomeFilter.biome()
-//                ));
-
-
-        register(context, BLEEDING_TOOTH_FUNGUS, configuredFeatures.getOrThrow(ModConfiguredFeatures.BLEEDING_TOOTH_FUNGUS),
-                List.of(
-                        CountPlacement.of(35),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                ),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-
-        register(context, CORDYCEPS, configuredFeatures.getOrThrow(ModConfiguredFeatures.CORDYCEPS),
-                List.of(
-                        CountPlacement.of(10),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.CORDYCEPS_PATCH.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                ),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-
-        register(context, ORE_GROUND_FUNGATITE, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_GROUND_FUNGATITE),
-                List.of(
-                        CountPlacement.of(60),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(0)),
-                        BiomeFilter.biome()
-                ));
-
-        register(context, SHELFSHROOM, configuredFeatures.getOrThrow(ModConfiguredFeatures.SHELFSHROOM),
-                List.of(
-                        CountPlacement.of(130),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.UP,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.solid(Vec3i.ZERO.above()),
-                                        BlockPredicate.solid(Vec3i.ZERO.below()),
-                                        BlockPredicate.solid(),
-                                        BlockPredicate.anyOf(
-                                                BlockPredicate.allOf(
-                                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i(1, 1, 0), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i(1, -1, 0), Blocks.AIR)
-                                                ),
-                                                BlockPredicate.allOf(
-                                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 1, 0), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i(-1, -1, 0), Blocks.AIR)
-                                                ),
-                                                BlockPredicate.allOf(
-                                                        BlockPredicate.matchesBlocks(new Vec3i( 0, 0, 1), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i( 0, 1, 1), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i( 0, -1, 1), Blocks.AIR)
-                                                ),
-                                                BlockPredicate.allOf(
-                                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, -1), Blocks.AIR),
-                                                        BlockPredicate.matchesBlocks(new Vec3i(0, -1, -1), Blocks.AIR)
-                                                )
-                                        )
-                                ),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-
-        createOreForStoneType(context, configuredFeatures, fungatitePrefix);
-
-    }
-
-    private static void createOreForStoneType(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures, String prefix)
+    public static void createOreForStoneType(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures, String prefix)
     {
         EnumMap<OreFeatureTypes, ResourceKey<ConfiguredFeature<?, ?>>> configuredMap = ModConfiguredFeatures.ORE_MAPS.get(prefix);
         EnumMap<OrePlacedFeatureTypes, ResourceKey<PlacedFeature>> placedMap = PLACED_ORE_MAPS.get(prefix);
@@ -406,11 +189,10 @@ public class ModPlacedFeatures {
                 ));
     }
 
-    private static ResourceKey<PlacedFeature> registerKey(String name) {
+    public static ResourceKey<PlacedFeature> registerKey(String name) {
         return  ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, name));
     }
-
-    private static void register (BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key,
+    public static void register (BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key,
                                   Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }

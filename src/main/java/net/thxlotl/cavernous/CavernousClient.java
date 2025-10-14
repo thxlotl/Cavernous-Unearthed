@@ -1,8 +1,6 @@
 package net.thxlotl.cavernous;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -12,9 +10,8 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.entity.ModEntities;
-import net.thxlotl.cavernous.entity.client.HangingShroomSporePodRenderer;
+import net.thxlotl.cavernous.entity.client.hangingshroomsporepod.HangingShroomSporePodRenderer;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = Cavernous.MODID, dist = Dist.CLIENT)

@@ -1,8 +1,6 @@
-package net.thxlotl.cavernous.entity.client.fungal_zombie;
+package net.thxlotl.cavernous.entity.client.fungalzombie;
 
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 

@@ -1,4 +1,4 @@
-package net.thxlotl.cavernous.entity.client;
+package net.thxlotl.cavernous.entity.client.hangingshroomsporepod;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;

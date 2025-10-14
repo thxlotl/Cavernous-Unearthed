@@ -30,9 +30,6 @@ public class BiolithUsage {
 
     public static void init()
     {
-        //ResourceKey<Biome> DESERT = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("minecraft", "desert"));
-        ResourceKey<Biome> SNOWY_SLOPES = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("minecraft", "snowy_slopes"));
-        //ResourceKey<Biome> CRIMSON_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath("minecraft", "crimson_forest"));
 
         ResourceLocation overworldRules = ResourceLocation.fromNamespaceAndPath("minecraft", "rules/overworld");
 
@@ -46,7 +43,6 @@ public class BiolithUsage {
                 0L));
         SurfaceGeneration.addOverworldSurfaceRules(overworldRules, fungalRules());
 
-        //BiomePlacement.replaceOverworld(SNOWY_SLOPES, ModBiomes.FUNGAL_CAVES);
     }
 
     private static SurfaceRules.RuleSource fungalRules()

@@ -30,7 +30,7 @@ import net.thxlotl.cavernous.block.custom.sign.ModWallSignBlock;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.GhostFungus;
 import net.thxlotl.cavernous.util.ModWoodTypes;
-import net.thxlotl.cavernous.worldgen.ModConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
 
 import java.util.function.Function;
 
@@ -39,9 +39,7 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Cavernous.MODID);
 
 
-    // Block creation
-
-    // Fungatite
+    // region Fungatite Blocks
     public static final DeferredBlock<Block> FUNGATITE = registerBlock(
             "fungatite",
             properties -> new Block(properties),
@@ -109,8 +107,9 @@ public class ModBlocks {
                     strength(1.5f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
+    //endregion
 
-    // Polished Fungatite
+    //region Polished Fungatite Blocks
     public static final DeferredBlock<Block> POLISHED_FUNGATITE = registerBlock(
             "polished_fungatite",
             properties -> new Block(properties),
@@ -139,7 +138,6 @@ public class ModBlocks {
                     strength(2f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
-
     public static final DeferredBlock<Block> CHISELED_FUNGATITE = registerBlock(
             "chiseled_fungatite",
             properties -> new Block(properties),
@@ -147,8 +145,9 @@ public class ModBlocks {
                     strength(2f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
+    //endregion
 
-    // Fungatite Bricks
+    //region Fungatite Brick Blocks
     public static final DeferredBlock<Block> FUNGATITE_BRICKS = registerBlock(
             "fungatite_bricks",
             properties -> new Block(properties),
@@ -177,12 +176,12 @@ public class ModBlocks {
                     strength(2f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
+    //endregion
 
-
-    // Feather moss
+    //region Feather Moss Blocks
     public static final DeferredBlock<BonemealableFeaturePlacerBlock> FEATHER_MOSS_BLOCK = registerBlock(
             "feather_moss_block",
-            properties -> new BonemealableFeaturePlacerBlock(ModConfiguredFeatures.FEATHER_MOSS_PATCH_BONEMEAL, properties),
+            properties -> new BonemealableFeaturePlacerBlock(FungalCavesConfiguredFeatures.FEATHER_MOSS_PATCH_BONEMEAL, properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_BLOCK)
             );
     public static final DeferredBlock<CarpetBlock> FEATHER_MOSS_CARPET = registerBlock(
@@ -200,9 +199,9 @@ public class ModBlocks {
             properties -> new WaterLoggablePlantBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).mapColor(MapColor.PLANT)
             );
+    //endregion
 
-
-    // Underground Mycelium
+    //region Underground Mycelium Blocks
     public static final DeferredBlock<UndergroundMyceliumBlock> UNDERGROUND_MYCELIUM = registerBlock(
             "underground_mycelium",
             properties -> new UndergroundMyceliumBlock(properties),
@@ -222,16 +221,15 @@ public class ModBlocks {
             properties -> new MyceliumFernBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
     );
+    //endregion
 
-
-    // Toadstool
+    //region Toadstool Blocks
     public static final DeferredBlock<MushroomCapBlock> TOADSTOOL_CAP_BLOCK = registerBlock(
             "toadstool_cap_block",
             properties -> new MushroomCapBlock(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
                     sound(SoundType.MOSS));
-                                                                                                        // Change later
     public static final DeferredBlock<ToadstoolPatchBlock> TOADSTOOL_PATCH = registerBlock(
             "toadstool_patch",
             properties -> new ToadstoolPatchBlock(properties),
@@ -247,10 +245,9 @@ public class ModBlocks {
             properties -> new FlowerPotBlock(ModBlocks.TOADSTOOL_BUTTON.get(), properties),
             BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
     );
+    //endregion
 
-
-
-    // SHROOMWOOD
+    //region Shroomwood Blocks
     public static final DeferredBlock<ShroomwoodLogBlock> SHROOMWOOD_LOG = registerBlock(
             "shroomwood_log",
             properties -> new ShroomwoodLogBlock(properties),
@@ -398,11 +395,9 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_HANGING_SIGN),
             SHROOMWOOD_WALL_HANGING_SIGN
     );
+    //endregion
 
-
-
-
-
+    //region Hanging Shroom Blocks
     public static final DeferredBlock<HangingShroomStemBlock> HANGING_SHROOM_STEM = registerBlock(
             "hanging_shroom_stem",
             properties -> new HangingShroomStemBlock(properties),
@@ -413,9 +408,9 @@ public class ModBlocks {
             properties -> new HangingShroomCapBlock(properties),
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).randomTicks().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY).forceSolidOff()
     );
+    //endregion
 
-
-
+    //region Lampshroom Blocks
     public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock(
             "lampshroom_cap_block",
             properties -> new Block(properties),
@@ -442,55 +437,51 @@ public class ModBlocks {
             properties -> new LampshroomTerrarium(properties),
             BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 4)
     );
+    //endregion
 
-
-
-
+    //region Shelfshroom Blocks
     public static final DeferredBlock<MushroomCapBlock> SHELFSHROOM_CAP_BLOCK = registerBlock(
             "shelfshroom_cap_block",
             properties -> new MushroomCapBlock(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
                     sound(SoundType.MOSS));
+    //endregion
 
-
-
-
-
-
-
-
-
-    public static final DeferredBlock<LampShroomButtonBlock> LAMPSHROOM_BUTTON = registerBlock(
-            "lampshroom_button",
-            properties -> new LampShroomButtonBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 3));
-
+    //region Misc. Mushroom Blocks
     public static final DeferredBlock<BleedingToothMushroomBlock> BLEEDING_TOOTH_MUSHROOM = registerBlock(
             "bleeding_tooth_mushroom",
             properties -> new BleedingToothMushroomBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA));
-
-    public static final DeferredBlock<ToadstoolButtonBlock> GILLED_MUSHROOM = registerBlock(
-            "gilled_mushroom",
-            properties -> new ToadstoolButtonBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
-    );
-
     public static final DeferredBlock<GhostFungusBlock> GHOST_FUNGUS = registerBlock(
             "ghost_fungus",
             properties -> new GhostFungusBlock(properties),
             BlockBehaviour.Properties.of().replaceable().noCollission().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT).sound(SoundType.NETHER_SPROUTS)
     );
-
-
-
     public static final DeferredBlock<CordycepsPatchBlock> CORDYCEPS_PATCH = registerBlock(
             "cordyceps_patch",
             properties -> new CordycepsPatchBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
     );
+    //endregion
 
+
+
+
+
+
+
+
+    //region Scrapped/Oh-hold Blocks
+    public static final DeferredBlock<LampShroomButtonBlock> LAMPSHROOM_BUTTON = registerBlock(
+            "lampshroom_button",
+            properties -> new LampShroomButtonBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 3));
+    public static final DeferredBlock<ToadstoolButtonBlock> GILLED_MUSHROOM = registerBlock(
+            "gilled_mushroom",
+            properties -> new ToadstoolButtonBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
+    );
     public static final DeferredBlock<WaterLoggablePlantBlock> CLUSTER_SHROOM = registerBlock(
             "cluster_shroom",
             properties -> new WaterLoggablePlantBlock(properties),
@@ -526,13 +517,7 @@ public class ModBlocks {
                     strength(2f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.BASALT));
-
-
-
-
-
-
-
+    //endregion
 
     // Each block is basically adding its name, function to use, and properties to a list which neoforge will then use all together to actually make a block
 
@@ -547,6 +532,7 @@ public class ModBlocks {
         return block;
     }
 
+    //region Sign Registration
     private static <T extends Block> DeferredBlock<T> registerSignBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, BlockBehaviour.Properties blockProperties, DeferredBlock<ModWallSignBlock> wallSign)
     {
         DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, blockProperties); // Registers the block in the Deferred register
@@ -559,13 +545,13 @@ public class ModBlocks {
         ModItems.ITEMS.registerItem(name, (properties) -> new HangingSignItem(block.get(), wallSign.get(), properties.setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, name))).stacksTo(16))); // Registers the item for the block
         return block;
     }
+    //endregion
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
     {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, name)))));
         //ModItems.ITEMS.registerItem(name, (properties) -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
     }
-
     public static void register(IEventBus eventBus)
     {
         BLOCKS.register(eventBus);

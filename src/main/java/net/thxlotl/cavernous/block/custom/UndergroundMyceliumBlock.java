@@ -12,17 +12,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.MyceliumBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.thxlotl.cavernous.block.ModBlocks;
-import net.thxlotl.cavernous.worldgen.ModConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
 
 public class UndergroundMyceliumBlock extends Block implements BonemealableBlock {
 
 
-    ResourceKey<ConfiguredFeature<?, ?>> feature = ModConfiguredFeatures.UNDERGROUND_MYCELIUM_PATCH_BONEMEAL;
+    ResourceKey<ConfiguredFeature<?, ?>> feature = FungalCavesConfiguredFeatures.UNDERGROUND_MYCELIUM_PATCH_BONEMEAL;
 
     public UndergroundMyceliumBlock(Properties p_49795_) {
         super(p_49795_);
