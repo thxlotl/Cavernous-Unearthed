@@ -52,12 +52,15 @@ public class BiolithUsage {
     private static SurfaceRules.RuleSource fungalRules()
     {
         Supplier<? extends Block> undergroundMycelium = ModBlocks.UNDERGROUND_MYCELIUM;
+        Supplier<? extends Block> groundFungatite = ModBlocks.GROUND_FUNGATITE;
         Supplier<? extends Block> fungatite = ModBlocks.FUNGATITE;
 
         SurfaceRules.RuleSource fungalCaves =
                 SurfaceRules.sequence(
+                        SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 2, CaveSurface.FLOOR),
+                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.045, 0.045), SurfaceRules.state(groundFungatite.get().defaultBlockState()))),
                         SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, CaveSurface.FLOOR),
-                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.3, 0.3), SurfaceRules.state(undergroundMycelium.get().defaultBlockState()))),
+                                SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.BADLANDS_SURFACE, -0.5, 0.5), SurfaceRules.state(undergroundMycelium.get().defaultBlockState()))),
                         SurfaceRules.state(fungatite.get().defaultBlockState())
                         );
 

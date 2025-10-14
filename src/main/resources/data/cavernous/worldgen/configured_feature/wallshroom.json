@@ -1,0 +1,28 @@
+{
+  "type": "cavernous:wallshroom_feature",
+  "config": {
+    "radius": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 5,
+      "min_inclusive": 3
+    },
+    "schedule_tick": true,
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "cavernous:shelfshroom_cap_block",
+        "Properties": {
+          "east": "true",
+          "gilled": "true",
+          "north": "true",
+          "northeast": "true",
+          "northwest": "true",
+          "south": "true",
+          "southeast": "true",
+          "southwest": "true",
+          "west": "true"
+        }
+      }
+    }
+  }
+}

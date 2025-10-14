@@ -10,6 +10,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.entity.custom.Ant;
+import net.thxlotl.cavernous.entity.custom.FungalZombie;
 import net.thxlotl.cavernous.entity.custom.InfectedAnt;
 import net.thxlotl.cavernous.entity.custom.projectile.HangingShroomSporePodProjectileEntity;
 
@@ -41,6 +42,12 @@ public class ModEntities {
                             .sized(0.6f, 0.5f)
                             //.clientTrackingRange(4)
                             .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "infected_ant"))));
+
+    public static final Supplier<EntityType<FungalZombie>> FUNGAL_ZOMBIE =
+            ENTITY_TYPES.register("fungal_zombie",
+                    () -> EntityType.Builder.<FungalZombie>of(FungalZombie::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.95F)
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "fungal_zombie"))));
 
 
 

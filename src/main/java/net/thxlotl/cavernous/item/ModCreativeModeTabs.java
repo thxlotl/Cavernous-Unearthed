@@ -72,8 +72,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.LAMPSHROOM_CAP_BLOCK);
                 output.accept(ModBlocks.BLEEDING_TOOTH_MUSHROOM);
                 output.accept(ModBlocks.CORDYCEPS_PATCH);
+                output.accept(ModBlocks.GHOST_FUNGUS);
                 output.accept(ModItems.ANT_SPAWN_EGG);
                 output.accept(ModItems.INFECTED_ANT_SPAWN_EGG);
+                output.accept(ModItems.FUNGAL_ZOMBIE_SPAWN_EGG);
             })
             .build());
 

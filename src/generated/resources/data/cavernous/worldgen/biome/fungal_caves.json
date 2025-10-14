@@ -73,9 +73,12 @@
       "cavernous:fungatite_ore_diamond_buried",
       "cavernous:fungatite_ore_diamond_large",
       "cavernous:fungatite_ore_diamond_medium",
-      "cavernous:fungatite_ore_emerald"
+      "cavernous:fungatite_ore_emerald",
+      "cavernous:ore_ground_fungatite"
     ],
-    [],
+    [
+      "cavernous:shelfshroom"
+    ],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava"
@@ -87,11 +90,11 @@
       "cavernous:feather_moss_patch",
       "cavernous:mycelium_vegetation_patch",
       "cavernous:toadstool",
-      "cavernous:hanging_shroom",
-      "cavernous:lampshroom",
       "cavernous:lampshroom_tree",
+      "cavernous:lampshroom",
       "cavernous:bleeding_tooth_fungus",
-      "cavernous:cordyceps"
+      "cavernous:cordyceps",
+      "cavernous:hanging_shroom"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -101,12 +104,6 @@
   "spawn_costs": {},
   "spawners": {
     "ambient": [
-      {
-        "type": "minecraft:bat",
-        "maxCount": 8,
-        "minCount": 8,
-        "weight": 10
-      },
       {
         "type": "minecraft:bat",
         "maxCount": 8,
@@ -125,16 +122,10 @@
         "weight": 100
       },
       {
-        "type": "minecraft:zombie",
+        "type": "cavernous:fungal_zombie",
         "maxCount": 4,
         "minCount": 4,
-        "weight": 95
-      },
-      {
-        "type": "minecraft:zombie_villager",
-        "maxCount": 1,
-        "minCount": 1,
-        "weight": 5
+        "weight": 100
       },
       {
         "type": "minecraft:skeleton",
@@ -168,12 +159,6 @@
       }
     ],
     "underground_water_creature": [
-      {
-        "type": "minecraft:glow_squid",
-        "maxCount": 6,
-        "minCount": 4,
-        "weight": 10
-      },
       {
         "type": "minecraft:glow_squid",
         "maxCount": 6,

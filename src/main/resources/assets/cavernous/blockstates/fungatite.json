@@ -5,14 +5,14 @@
         "model": "cavernous:block/fungatite"
       },
       {
-        "model": "cavernous:block/fungatite"
+        "model": "cavernous:block/fungatite_mirrored"
       },
       {
         "model": "cavernous:block/fungatite",
         "y": 180
       },
       {
-        "model": "cavernous:block/fungatite",
+        "model": "cavernous:block/fungatite_mirrored",
         "y": 180
       }
     ]

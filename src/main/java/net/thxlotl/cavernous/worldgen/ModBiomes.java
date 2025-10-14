@@ -16,6 +16,7 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.util.OrePlacedFeatureTypes;
 
 import java.util.EnumMap;
@@ -67,8 +68,20 @@ public class ModBiomes {
     }
     public static void globalOverworldSpawns(MobSpawnSettings.Builder builder)
     {
-        BiomeDefaultFeatures.caveSpawns(builder);
+        //BiomeDefaultFeatures.caveSpawns(builder);
         BiomeDefaultFeatures.commonSpawns(builder);
+    }
+    public static void fungalCavesSpawns(MobSpawnSettings.Builder builder)
+    {
+        BiomeDefaultFeatures.caveSpawns(builder);
+
+        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4));
+        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(ModEntities.FUNGAL_ZOMBIE.get(), 4, 4));
+        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4));
+        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4));
+        builder.addSpawn(MobCategory.MONSTER, 100, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4));
+        builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
+        builder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
     }
 
 
@@ -77,7 +90,7 @@ public class ModBiomes {
 
         // Build mob spawns
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
-        globalOverworldSpawns(spawnBuilder);
+        fungalCavesSpawns(spawnBuilder);
 
         // Build feature generation
         BiomeGenerationSettings.Builder biomeBuilder =
@@ -89,14 +102,18 @@ public class ModBiomes {
         // Ores
         addStoneTypeOres(biomeBuilder, "fungatite");
         // Custom features
+
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacedFeatures.ORE_GROUND_FUNGATITE);
+
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, ModPlacedFeatures.SHELFSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.FEATHER_MOSS_PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.UNDERGROUND_MYCELIUM_PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TOADSTOOL);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_SHROOM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LAMPSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LAMPSHROOM_TREE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.LAMPSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BLEEDING_TOOTH_FUNGUS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.CORDYCEPS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HANGING_SHROOM);
         //biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GHOST_FUNGUS);
 
         // Biome characteristics

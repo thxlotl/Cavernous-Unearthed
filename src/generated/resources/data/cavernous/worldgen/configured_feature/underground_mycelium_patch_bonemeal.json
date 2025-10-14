@@ -12,7 +12,7 @@
     },
     "replaceable": "#cavernous:underground_mycelium_replaceable",
     "surface": "floor",
-    "vegetation_chance": 0.5,
+    "vegetation_chance": 0.3,
     "vegetation_feature": {
       "feature": "cavernous:underground_mycelium_vegetation_bonemeal",
       "placement": [

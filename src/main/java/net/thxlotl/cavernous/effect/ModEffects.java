@@ -17,7 +17,7 @@ public class ModEffects {
 
     public static final Holder<MobEffect> MUSHY_MIND_EFFECT = MOB_EFFECTS.register(
             "mushy_mind",
-            () -> new MushyMindEffect(MobEffectCategory.NEUTRAL, 0x36ebab)
+            () -> new MushyMindEffect(MobEffectCategory.NEUTRAL, 15963659)
     );
 
 

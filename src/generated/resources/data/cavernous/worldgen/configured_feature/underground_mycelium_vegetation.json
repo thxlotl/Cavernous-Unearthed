@@ -16,18 +16,9 @@
         },
         {
           "data": {
-            "Name": "cavernous:feather_moss_tufts",
-            "Properties": {
-              "waterlogged": "false"
-            }
-          },
-          "weight": 6
-        },
-        {
-          "data": {
             "Name": "cavernous:mycelium_fern"
           },
-          "weight": 6
+          "weight": 8
         },
         {
           "data": {

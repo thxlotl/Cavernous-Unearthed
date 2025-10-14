@@ -53,7 +53,7 @@ public class CordycepsPatchBlock extends VegetationBlock {
 
             }
             else {
-                livingEntity.addEffect(new MobEffectInstance(ModEffects.MUSHY_MIND_EFFECT, 100, 1));
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.MUSHY_MIND_EFFECT, 100, 0));
             }
         }
 

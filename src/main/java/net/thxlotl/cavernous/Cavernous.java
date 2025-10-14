@@ -13,6 +13,7 @@ import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.entity.client.ant.AntRenderer;
 import net.thxlotl.cavernous.entity.client.HangingShroomSporePodRenderer;
 import net.thxlotl.cavernous.entity.client.ant.InfectedAntRenderer;
+import net.thxlotl.cavernous.entity.client.fungal_zombie.FungalZombieRenderer;
 import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.ModWoodTypes;
@@ -187,6 +188,7 @@ public class Cavernous {
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
             EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);
             EntityRenderers.register(ModEntities.INFECTED_ANT.get(), InfectedAntRenderer::new);
+            EntityRenderers.register(ModEntities.FUNGAL_ZOMBIE.get(), FungalZombieRenderer::new);
         }
     }
 }

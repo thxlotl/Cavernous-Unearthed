@@ -15,6 +15,8 @@ import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
 import net.thxlotl.cavernous.worldgen.custom.wallface.WallFaceGrowthConfiguration;
 import net.thxlotl.cavernous.worldgen.custom.wallface.WallFaceGrowthFeature;
+import net.thxlotl.cavernous.worldgen.custom.wallshroom.WallShroomConfiguration;
+import net.thxlotl.cavernous.worldgen.custom.wallshroom.WallShroomFeature;
 
 import java.util.function.Supplier;
 
@@ -25,7 +27,10 @@ public class ModFeature {
             DeferredRegister.create(Registries.FEATURE, Cavernous.MODID);
 
     public static final DeferredHolder<Feature<?>, WallFaceGrowthFeature> WALLFACE_GROWTH =
-                    FEATURES.register("wallface_growth", () -> new WallFaceGrowthFeature(WallFaceGrowthConfiguration.CODEC));
+            FEATURES.register("wallface_growth", () -> new WallFaceGrowthFeature(WallFaceGrowthConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, WallShroomFeature> WALLSHROOM_FEATURE =
+            FEATURES.register("wallshroom_feature", () -> new WallShroomFeature(WallShroomConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

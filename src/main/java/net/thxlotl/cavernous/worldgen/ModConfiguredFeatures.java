@@ -31,6 +31,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeave
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.neoforged.fml.common.Mod;
 import net.thxlotl.cavernous.Cavernous;
@@ -44,6 +45,7 @@ import net.thxlotl.cavernous.worldgen.custom.tree.LeaveCustomVineDecorator;
 import net.thxlotl.cavernous.worldgen.custom.wallface.WallFaceGrowthConfiguration;
 import net.thxlotl.cavernous.worldgen.custom.tree.MushroomCapFoliagePlacer;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
+import net.thxlotl.cavernous.worldgen.custom.wallshroom.WallShroomConfiguration;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -68,6 +70,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> GHOST_FUNGUS = registerKey("ghost_fungus");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CORDYCEPS = registerKey("cordyceps");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GROUND_FUNGATITE = registerKey("ore_ground_fungatite");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHELFSHROOM = registerKey("shelfshroom");
 
     private static final String fungatitePrefix = "fungatite";
     private static final EnumMap<OreTypes, Block> FUNGATITE_ORES =
@@ -170,7 +174,7 @@ public class ModConfiguredFeatures {
                 new ToadstoolTrunkPlacer(1, 1, 1, BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(1, 2)),
                 BlockStateProvider.simple(ModBlocks.TOADSTOOL_CAP_BLOCK.get().defaultBlockState()),
                 new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1)),
-                new TwoLayersFeatureSize(1, 0, 1)
+                new TwoLayersFeatureSize(0, 0, 0)
             )
                 .decorators(List.of(
                         new AttachedToLeavesDecorator(1, 0, 0, BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_CARPET.get()), 1, List.of(Direction.UP)),
@@ -208,8 +212,7 @@ public class ModConfiguredFeatures {
         SimpleBlockConfiguration undergroundMyceliumVegetationConfig = new SimpleBlockConfiguration(
                 new WeightedStateProvider(WeightedList.<BlockState>builder()
                         .add(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), 8)
-                        .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 6)
-                        .add(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 6)
+                        .add(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 8)
                         .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 4)
                 ),
                 true
@@ -227,13 +230,13 @@ public class ModConfiguredFeatures {
                 ConstantInt.of(1),
                 0f,
                 6,
-                0.5f,
+                0.3f,
                 UniformInt.of(1,2),
                 0.5f);
         FeatureUtils.register(context, UNDERGROUND_MYCELIUM_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, undergroundMyceliumPatchConfig);
         
         RandomPatchConfiguration myceliumVegetationPatchConfig = new RandomPatchConfiguration(
-                1000,
+                500,
                 8,
                 6,
                 PlacementUtils.inlinePlaced(holdergetter.getOrThrow(UNDERGROUND_MYCELIUM_VEGETATION),
@@ -252,6 +255,7 @@ public class ModConfiguredFeatures {
                 true
         );
         FeatureUtils.register(context, HANGING_SHROOM_SPORE_POD, Feature.BLOCK_COLUMN, hangingShroomSporePodConfig);
+
         BlockColumnConfiguration hangingShroomConfig = new BlockColumnConfiguration(
                 List.of(
                         new BlockColumnConfiguration.Layer(BiasedToBottomInt.of(1, 12), SimpleStateProvider.simple(ModBlocks.HANGING_SHROOM_STEM.get())),
@@ -265,7 +269,7 @@ public class ModConfiguredFeatures {
 
         BlockColumnConfiguration lampshroomConfig = new BlockColumnConfiguration(
                 List.of(
-                        new BlockColumnConfiguration.Layer(BiasedToBottomInt.of(1, 5), SimpleStateProvider.simple(ModBlocks.LAMPSHROOM_STEM.get())),
+                        new BlockColumnConfiguration.Layer(BiasedToBottomInt.of(1, 7), SimpleStateProvider.simple(ModBlocks.LAMPSHROOM_STEM.get())),
                         new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(ModBlocks.LAMPSHROOM.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, 25)))),
             Direction.UP,
                 BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR),
@@ -278,7 +282,7 @@ public class ModConfiguredFeatures {
                 new ToadstoolTrunkPlacer(1, 1, 1, BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(1, 2)),
                 BlockStateProvider.simple(ModBlocks.LAMPSHROOM_CAP_BLOCK.get().defaultBlockState()),
                 new MushroomCapFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), UniformInt.of(3, 6)),
-                new TwoLayersFeatureSize(1, 0, 1)
+                new TwoLayersFeatureSize(0, 0, 0)
         )
                 .ignoreVines()
                 .build();
@@ -319,6 +323,19 @@ public class ModConfiguredFeatures {
         );
         FeatureUtils.register(context, CORDYCEPS, Feature.SIMPLE_BLOCK, corycepsConfig);
 
+        OreConfiguration groundFungatiteConfig = new OreConfiguration(
+                List.of(OreConfiguration.target(new TagMatchTest(ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE), ModBlocks.GROUND_FUNGATITE.get().defaultBlockState())),
+                35,
+                0.0f
+        );
+        FeatureUtils.register(context, ORE_GROUND_FUNGATITE, Feature.ORE, groundFungatiteConfig);
+
+
+        WallShroomConfiguration shelfshroomConfig = new WallShroomConfiguration(
+                BlockStateProvider.simple(ModBlocks.SHELFSHROOM_CAP_BLOCK.get().defaultBlockState()),
+                ConstantInt.of(2)
+        );
+        FeatureUtils.register(context, SHELFSHROOM, ModFeature.WALLSHROOM_FEATURE.get(), shelfshroomConfig);
 
 
         createOreForStoneType(context, ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE, fungatitePrefix, FUNGATITE_ORES);

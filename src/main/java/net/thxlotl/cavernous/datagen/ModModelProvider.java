@@ -67,14 +67,16 @@ public class ModModelProvider extends ModelProvider {
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.HANGING_FEATHER_MOSS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ANT_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.INFECTED_ANT_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.FUNGAL_ZOMBIE_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.CORDYCEPS_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.GHOST_FUNGUS.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.BLACK_TRUMPET_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
 
-        // BLOCKS
+        // BLOCKS ------------------------------------------------------------------------------------------------------
 
         // FUNGATITE
-        blockModels.family(ModBlocks.FUNGATITE.get())
+        blockModels.createRotatedMirroredVariantBlock(ModBlocks.FUNGATITE.get());
+        blockModels.familyWithExistingFullBlock(ModBlocks.FUNGATITE.get())
                 .stairs(ModBlocks.FUNGATITE_STAIRS.get())
                 .slab(ModBlocks.FUNGATITE_SLAB.get())
                 .wall(ModBlocks.FUNGATITE_WALL.get());
@@ -118,7 +120,7 @@ public class ModModelProvider extends ModelProvider {
                         .put(TextureSlot.BOTTOM, getBlockTexture(ModBlocks.FUNGATITE.get()))
                         .put(TextureSlot.TOP, getBlockTexture(ModBlocks.UNDERGROUND_MYCELIUM.get(), "_top"))
         );
-        modBlockModels.createTrivialBlock(ModBlocks.UNDERGROUND_MYCELIUM.get(), undergroundMycelium);
+        modBlockModels.createBlockWithRandomRotations(undergroundMycelium, ModBlocks.UNDERGROUND_MYCELIUM.get());
 
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.MYCELIUM_SPROUTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 

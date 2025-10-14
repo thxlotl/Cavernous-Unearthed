@@ -28,6 +28,11 @@ public class ModItems {
             properties -> new SpawnEggItem(ModEntities.INFECTED_ANT.get(), properties),
             new Item.Properties()
     );
+    public static final DeferredItem<SpawnEggItem> FUNGAL_ZOMBIE_SPAWN_EGG = ITEMS.registerItem(
+            "fungal_zombie_spawn_egg",
+            properties -> new SpawnEggItem(ModEntities.FUNGAL_ZOMBIE.get(), properties),
+            new Item.Properties()
+    );
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

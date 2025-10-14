@@ -40,6 +40,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GHOST_FUNGUS = registerKey("ghost_fungus");
     public static final ResourceKey<PlacedFeature> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
     public static final ResourceKey<PlacedFeature> CORDYCEPS = registerKey("cordyceps");
+    public static final ResourceKey<PlacedFeature> ORE_GROUND_FUNGATITE = registerKey("ore_ground_fungatite");
+    public static final ResourceKey<PlacedFeature> SHELFSHROOM = registerKey("shelfshroom");
 
     private static final String fungatitePrefix = "fungatite";
     public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_LOWER);
@@ -89,13 +91,13 @@ public class ModPlacedFeatures {
 
         register(context, FEATHER_MOSS_PATCH, configuredFeatures.getOrThrow(ModConfiguredFeatures.FEATHER_MOSS_PATCH),
                 List.of(
-                        CountPlacement.of(60),
+                        CountPlacement.of(100),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
                                 BlockPredicate.matchesBlocks(Blocks.AIR),
-                                12
+                                24
 
                         ),
                         BiomeFilter.biome()
@@ -108,39 +110,46 @@ public class ModPlacedFeatures {
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
                                 BlockPredicate.matchesBlocks(Blocks.AIR),
-                                12
+                                24
                         ),
                         BiomeFilter.biome()
                 ));
         register(context, TOADSTOOL, configuredFeatures.getOrThrow(ModConfiguredFeatures.TOADSTOOL),
                 List.of(
-                        CountPlacement.of(45),
+                        CountPlacement.of(30),
                         InSquarePlacement.spread(),
-                        SurfaceWaterDepthFilter.forMaxDepth(3),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
-                                BlockPredicate.wouldSurvive(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), Vec3i.ZERO),
-                                12
+                                BlockPredicate.allOf(
+                                        BlockPredicate.wouldSurvive(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR)),
+                                24
                         ),
+                        //SurfaceWaterDepthFilter.forMaxDepth(3),
                         BiomeFilter.biome()
                 ));
         register(context, HANGING_SHROOM, configuredFeatures.getOrThrow(ModConfiguredFeatures.HANGING_SHROOM),
                 List.of(
-                        CountPlacement.of(60),
+                        CountPlacement.of(35),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.UP,
-                                BlockPredicate.wouldSurvive(ModBlocks.HANGING_SHROOM_CAP.get().defaultBlockState(), Vec3i.ZERO),
-                                12
+                                BlockPredicate.allOf(List.of(
+                                        BlockPredicate.wouldSurvive(ModBlocks.HANGING_SHROOM_CAP.get().defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), ModBlocks.HANGING_SHROOM_CAP.get())),
+                                        BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), ModBlocks.SHELFSHROOM_CAP_BLOCK.get()))
+                                )),
+                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                24
                         ),
                         BiomeFilter.biome()
                 ));
 
         register(context, LAMPSHROOM, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAMPSHROOM),
                 List.of(
-                        CountPlacement.of(60),
+                        CountPlacement.of(85),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -149,21 +158,24 @@ public class ModPlacedFeatures {
                                         BlockPredicate.wouldSurvive(ModBlocks.LAMPSHROOM.get().defaultBlockState(), Vec3i.ZERO),
                                         BlockPredicate.matchesBlocks(Blocks.AIR)
                                         ),
-                                12
+                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                24
                         ),
                         BiomeFilter.biome()
                 ));
         register(context, LAMPSHROOM_TREE, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAMPSHROOM_TREE),
                 List.of(
-                        CountPlacement.of(15),
+                        CountPlacement.of(12),
                         InSquarePlacement.spread(),
-                        SurfaceWaterDepthFilter.forMaxDepth(3),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
-                                BlockPredicate.wouldSurvive(ModBlocks.LAMPSHROOM.get().defaultBlockState(), Vec3i.ZERO),
-                                12
+                                BlockPredicate.allOf(
+                                        BlockPredicate.wouldSurvive(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR)),
+                                24
                         ),
+                        //SurfaceWaterDepthFilter.forMaxDepth(3),
                         BiomeFilter.biome()
                 ));
 
@@ -187,7 +199,8 @@ public class ModPlacedFeatures {
                                         BlockPredicate.wouldSurvive(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState(), Vec3i.ZERO),
                                         BlockPredicate.matchesBlocks(Blocks.AIR)
                                 ),
-                                12
+                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                24
                         ),
                         BiomeFilter.biome()
                 ));
@@ -203,7 +216,55 @@ public class ModPlacedFeatures {
                                         BlockPredicate.wouldSurvive(ModBlocks.CORDYCEPS_PATCH.get().defaultBlockState(), Vec3i.ZERO),
                                         BlockPredicate.matchesBlocks(Blocks.AIR)
                                 ),
-                                12
+                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                24
+                        ),
+                        BiomeFilter.biome()
+                ));
+
+        register(context, ORE_GROUND_FUNGATITE, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_GROUND_FUNGATITE),
+                List.of(
+                        CountPlacement.of(60),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(0)),
+                        BiomeFilter.biome()
+                ));
+
+        register(context, SHELFSHROOM, configuredFeatures.getOrThrow(ModConfiguredFeatures.SHELFSHROOM),
+                List.of(
+                        CountPlacement.of(130),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                        EnvironmentScanPlacement.scanningFor(
+                                Direction.UP,
+                                BlockPredicate.allOf(
+                                        BlockPredicate.solid(Vec3i.ZERO.above()),
+                                        BlockPredicate.solid(Vec3i.ZERO.below()),
+                                        BlockPredicate.solid(),
+                                        BlockPredicate.anyOf(
+                                                BlockPredicate.allOf(
+                                                        BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i(1, 1, 0), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i(1, -1, 0), Blocks.AIR)
+                                                ),
+                                                BlockPredicate.allOf(
+                                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i(-1, 1, 0), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i(-1, -1, 0), Blocks.AIR)
+                                                ),
+                                                BlockPredicate.allOf(
+                                                        BlockPredicate.matchesBlocks(new Vec3i( 0, 0, 1), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i( 0, 1, 1), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i( 0, -1, 1), Blocks.AIR)
+                                                ),
+                                                BlockPredicate.allOf(
+                                                        BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, -1), Blocks.AIR),
+                                                        BlockPredicate.matchesBlocks(new Vec3i(0, -1, -1), Blocks.AIR)
+                                                )
+                                        )
+                                ),
+                                24
                         ),
                         BiomeFilter.biome()
                 ));
