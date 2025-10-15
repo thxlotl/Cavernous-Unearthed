@@ -25,7 +25,7 @@ import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.util.HangingShrooms;
 
 public class HangingShroomCapBlock extends GrowingPlantHeadBlock {
-    public static final VoxelShape STEM_SHAPE = Block.column((double)4.0F, (double)0.0F, (double)16.0F);
+    public static final VoxelShape STEM_SHAPE = Block.column((double)7.0F, (double)0.0F, (double)16.0F);
     public static final VoxelShape CAP_SHAPE = Block.column((double)16.0F, (double)0.0F, (double)6.0F);
     public static final VoxelShape CAP_COLLISION_SHAPE = Block.column((double)16.0F, (double)0.0F, (double)4.0F);
     public static final VoxelShape SHAPE = Shapes.or(STEM_SHAPE, CAP_SHAPE);

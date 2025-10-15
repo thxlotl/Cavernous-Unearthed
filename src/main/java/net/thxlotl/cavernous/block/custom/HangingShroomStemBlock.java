@@ -28,7 +28,7 @@ import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.util.HangingShrooms;
 
 public class HangingShroomStemBlock extends GrowingPlantBodyBlock {
-    public static final VoxelShape SHAPE = Block.column((double)4.0F, (double)0.0F, (double)16.0F);
+    public static final VoxelShape SHAPE = Block.column((double)7.0F, (double)0.0F, (double)16.0F);
 
     public HangingShroomStemBlock(Properties properties) {
         super(properties, Direction.DOWN, SHAPE, false);
