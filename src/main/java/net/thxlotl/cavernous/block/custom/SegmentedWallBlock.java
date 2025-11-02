@@ -17,7 +17,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.thxlotl.cavernous.block.ModBlockStateProperties;
-import net.thxlotl.cavernous.worldgen.custom.wallface.WallFaceSpreader;
 
 import javax.annotation.Nullable;
 import java.util.*;
@@ -25,12 +24,7 @@ import java.util.function.Function;
 
 public class SegmentedWallBlock extends Block {
 
-    private final WallFaceSpreader spreader = new WallFaceSpreader(this);
-    public WallFaceSpreader getSpreader() {
-        return this.spreader;
-    }
-
-    protected static Direction[] VALID_DIRECTIONS;
+    public static Direction[] VALID_DIRECTIONS;
 
     public static final IntegerProperty COUNT_NORTH;
     public static final IntegerProperty COUNT_EAST;
@@ -205,7 +199,7 @@ public class SegmentedWallBlock extends Block {
         return Block.isFaceFull(state.getBlockSupportShape(level, pos), direction.getOpposite()) || Block.isFaceFull(state.getCollisionShape(level, pos), direction.getOpposite());
     }
 
-    protected boolean hasAnyFace(BlockState state) {
+    public boolean hasAnyFace(BlockState state) {
         for(Direction direction : VALID_DIRECTIONS) {
             if (hasFace(state, direction)) {
                 return true;

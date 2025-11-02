@@ -417,11 +417,11 @@ public class ModBlocks {
             BlockBehaviour.Properties.of().
                     strength(0.5f).
                     sound(SoundType.MOSS)
-                    .lightLevel((p) -> 11));
+                    .lightLevel((p) -> 9));
     public static final DeferredBlock<LampshroomBlock> LAMPSHROOM = registerBlock(
             "lampshroom",
             properties -> new LampshroomBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 9)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 7)
     );
     public static final DeferredBlock<LampshroomStemBlock> LAMPSHROOM_STEM = registerBlock(
             "lampshroom_stem",
@@ -430,12 +430,12 @@ public class ModBlocks {
     public static final DeferredBlock<FlowerPotBlock> POTTED_LAMPSHROOM = registerBlock(
             "potted_lampshroom",
             properties -> new FlowerPotBlock(ModBlocks.LAMPSHROOM.get(), properties),
-            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 8)
+            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 6)
     );
     public static final DeferredBlock<LampshroomTerrarium> LAMPSHROOM_TERRARIUM = registerBlock(
             "lampshroom_terrarium",
             properties -> new LampshroomTerrarium(properties),
-            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 4)
+            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 6)
     );
     //endregion
 
@@ -445,6 +445,12 @@ public class ModBlocks {
             properties -> new MushroomCapBlock(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
+                    sound(SoundType.MOSS));
+    public static final DeferredBlock<ShelfshroomBlock> SHELFSHROOM = registerBlock(
+            "shelfshroom",
+            properties -> new ShelfshroomBlock(properties),
+            BlockBehaviour.Properties.of()
+                    .instabreak().
                     sound(SoundType.MOSS));
     //endregion
 

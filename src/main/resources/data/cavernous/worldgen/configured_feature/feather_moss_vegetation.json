@@ -19,6 +19,12 @@
             }
           },
           "weight": 7
+        },
+        {
+          "data": {
+            "Name": "cavernous:toadstool_patch"
+          },
+          "weight": 2
         }
       ]
     }

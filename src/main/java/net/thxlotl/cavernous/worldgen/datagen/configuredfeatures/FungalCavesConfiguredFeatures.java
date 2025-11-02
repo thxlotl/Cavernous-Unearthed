@@ -12,6 +12,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -31,6 +32,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsD
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.thxlotl.cavernous.block.ModBlockStateProperties;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
 import net.thxlotl.cavernous.util.ModTags;
@@ -38,6 +40,7 @@ import net.thxlotl.cavernous.util.OreFeatureTypes;
 import net.thxlotl.cavernous.util.OreTypes;
 import net.thxlotl.cavernous.worldgen.ModConfiguredFeatures;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
+import net.thxlotl.cavernous.worldgen.custom.segmentedwallblock.SegmentedWallBlockConfiguration;
 import net.thxlotl.cavernous.worldgen.custom.tree.LeaveCustomVineDecorator;
 import net.thxlotl.cavernous.worldgen.custom.tree.MushroomCapFoliagePlacer;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
@@ -49,6 +52,7 @@ import java.util.List;
 public class FungalCavesConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_VEGETATION = ModConfiguredFeatures.registerKey("feather_moss_vegetation");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_VEGETATION_BONEMEAL = ModConfiguredFeatures.registerKey("feather_moss_vegetation_bonemeal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_PATCH_BONEMEAL = ModConfiguredFeatures.registerKey("feather_moss_patch_bonemeal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_PATCH = ModConfiguredFeatures.registerKey("feather_moss_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TOADSTOOL = ModConfiguredFeatures.registerKey("toadstool");
@@ -107,10 +111,19 @@ public class FungalCavesConfiguredFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
         // Feather Moss
-        SimpleBlockConfiguration featherMossVegetationConfig = new SimpleBlockConfiguration(
+        SimpleBlockConfiguration featherMossVegetationBonemealConfig = new SimpleBlockConfiguration(
                 new WeightedStateProvider(WeightedList.<BlockState>builder()
                         .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 1)
                         .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 7)),
+                true
+        );
+        FeatureUtils.register(context, FEATHER_MOSS_VEGETATION_BONEMEAL, Feature.SIMPLE_BLOCK, featherMossVegetationBonemealConfig);
+
+        SimpleBlockConfiguration featherMossVegetationConfig = new SimpleBlockConfiguration(
+                new WeightedStateProvider(WeightedList.<BlockState>builder()
+                        .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 1)
+                        .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 7)
+                        .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 2)),
                 true
         );
         FeatureUtils.register(context, FEATHER_MOSS_VEGETATION, Feature.SIMPLE_BLOCK, featherMossVegetationConfig);
@@ -118,7 +131,7 @@ public class FungalCavesConfiguredFeatures {
         VegetationPatchConfiguration featherMossBonemealPatchConfig = new VegetationPatchConfiguration(
                 BlockTags.MOSS_REPLACEABLE,
                 BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_BLOCK.get()),
-                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(FEATHER_MOSS_VEGETATION),
+                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(FEATHER_MOSS_VEGETATION_BONEMEAL),
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), Vec3i.ZERO)),
                         BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR)
                         )),
@@ -268,26 +281,11 @@ public class FungalCavesConfiguredFeatures {
         FeatureUtils.register(context, LAMPSHROOM_TREE, Feature.TREE, lampshroomTreeConfig);
 
 
-//        WallFaceGrowthConfiguration ghostFungusConfig = new WallFaceGrowthConfiguration(
-//                ModBlocks.GHOST_FUNGUS.get(),
-//                20,
-//                0.8f,
-//                HolderSet.direct(
-//                        Block::builtInRegistryHolder,
-//                        ModBlocks.FUNGATITE.get(),
-//                        ModBlocks.FEATHER_MOSS_BLOCK.get(),
-//                        ModBlocks.UNDERGROUND_MYCELIUM.get(),
-//                        Blocks.STONE,
-//                        Blocks.ANDESITE,
-//                        Blocks.DIORITE,
-//                        Blocks.GRANITE,
-//                        Blocks.DRIPSTONE_BLOCK,
-//                        Blocks.CALCITE,
-//                        Blocks.TUFF,
-//                        Blocks.DEEPSLATE
-//                )
-//        );
-        //FeatureUtils.register(context, GHOST_FUNGUS, ModFeature.WALLFACE_GROWTH.get(), ghostFungusConfig);
+        SegmentedWallBlockConfiguration ghostFungusConfig = new SegmentedWallBlockConfiguration(
+                BlockStateProvider.simple(ModBlocks.GHOST_FUNGUS.get()),
+                BiasedToBottomInt.of(1, 3)
+                );
+        FeatureUtils.register(context, GHOST_FUNGUS, ModFeature.SEGMENTED_WALL_BLOCK_FEATURE.get(), ghostFungusConfig);
 
 
         SimpleBlockConfiguration bleedingToothConfig = new SimpleBlockConfiguration(

@@ -6,6 +6,8 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -69,7 +71,7 @@ public class FungalCavesPlacedFeatures {
 
         register(context, FEATHER_MOSS_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.FEATHER_MOSS_PATCH),
                 List.of(
-                        CountPlacement.of(60),
+                        CountPlacement.of(130),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -82,7 +84,7 @@ public class FungalCavesPlacedFeatures {
                 ));
         register(context, UNDERGROUND_MYCELIUM_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.UNDERGROUND_MYCELIUM_PATCH),
                 List.of(
-                        CountPlacement.of(125),
+                        CountPlacement.of(60),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -94,7 +96,7 @@ public class FungalCavesPlacedFeatures {
                 ));
         register(context, TOADSTOOL, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.TOADSTOOL),
                 List.of(
-                        CountPlacement.of(30),
+                        CountPlacement.of(40),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -109,7 +111,7 @@ public class FungalCavesPlacedFeatures {
                 ));
         register(context, HANGING_SHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.HANGING_SHROOM),
                 List.of(
-                        CountPlacement.of(35),
+                        CountPlacement.of(60),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -127,7 +129,7 @@ public class FungalCavesPlacedFeatures {
 
         register(context, LAMPSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM),
                 List.of(
-                        CountPlacement.of(85),
+                        CountPlacement.of(110),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -157,20 +159,36 @@ public class FungalCavesPlacedFeatures {
                         BiomeFilter.biome()
                 ));
 
-//        register(context, GHOST_FUNGUS, configuredFeatures.getOrThrow(ModConfiguredFeatures.GHOST_FUNGUS),
-//                List.of(
-//                        CountPlacement.of(UniformInt.of(150, 160)),
-//                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-//                        InSquarePlacement.spread(),
-//                        BiomeFilter.biome()
-//                ));
+        register(context, GHOST_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.GHOST_FUNGUS),
+                List.of(
+                        CountPlacement.of(ConstantInt.of(55)),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
+                        EnvironmentScanPlacement.scanningFor(
+                                Direction.DOWN,
+                                BlockPredicate.allOf(
+                                        BlockPredicate.solid(),
+                                        BlockPredicate.anyOf(
+                                                BlockPredicate.matchesBlocks(new Vec3i(1, 0, 0), Blocks.AIR),
+                                                BlockPredicate.matchesBlocks(new Vec3i(-1, 0, 0), Blocks.AIR),
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR),
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, -1, 0), Blocks.AIR),
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, 1), Blocks.AIR),
+                                                BlockPredicate.matchesBlocks(new Vec3i(0, 0, -1), Blocks.AIR)
+                                        )
+                                ),
+                                BlockPredicate.alwaysTrue(),
+                                24
+                        ),
+                        InSquarePlacement.spread(),
+                        BiomeFilter.biome()
+                ));
 
 
         register(context, BLEEDING_TOOTH_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.BLEEDING_TOOTH_FUNGUS),
                 List.of(
                         CountPlacement.of(35),
                         InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,
                                 BlockPredicate.allOf(
@@ -210,7 +228,7 @@ public class FungalCavesPlacedFeatures {
 
         register(context, SHELFSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.SHELFSHROOM),
                 List.of(
-                        CountPlacement.of(200),
+                        CountPlacement.of(175),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(

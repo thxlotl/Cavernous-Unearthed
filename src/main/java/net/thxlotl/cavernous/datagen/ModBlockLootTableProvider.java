@@ -161,6 +161,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
 
         dropSelf(ModBlocks.SHELFSHROOM_CAP_BLOCK.get());
+        dropSelf(ModBlocks.SHELFSHROOM.get());
 
         dropSelf(ModBlocks.LAMPSHROOM_TERRARIUM.get());
         dropSelf(ModBlocks.CORDYCEPS_PATCH.get());

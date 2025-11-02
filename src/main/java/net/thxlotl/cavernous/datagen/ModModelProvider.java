@@ -46,6 +46,7 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.BLACK_TRUMPET_PATCH.get(),
             ModBlocks.POTTED_LAMPSHROOM.get(),
             ModBlocks.LAMPSHROOM_TERRARIUM.get(),
+            ModBlocks.SHELFSHROOM.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );
@@ -105,7 +106,8 @@ public class ModModelProvider extends ModelProvider {
 
 
         // SHROOMWOOD
-        blockModels.woodProvider(ModBlocks.SHROOMWOOD_LOG.get()).logWithHorizontal(ModBlocks.SHROOMWOOD_LOG.get()).wood(ModBlocks.SHROOMWOOD.get());
+        blockModels.woodProvider(ModBlocks.SHROOMWOOD_LOG.get()).wood(ModBlocks.SHROOMWOOD.get()).logWithHorizontal(ModBlocks.SHROOMWOOD_LOG.get());
+
         blockModels.woodProvider(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get()).wood(ModBlocks.STRIPPED_SHROOMWOOD.get());
 
         blockModels.createHangingSign(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get(), ModBlocks.SHROOMWOOD_HANGING_SIGN.get(), ModBlocks.SHROOMWOOD_WALL_HANGING_SIGN.get());

@@ -1,4 +1,4 @@
-// 1.21.8	2025-10-08T22:12:31.7286723	Model Definitions - cavernous
+// 1.21.8	2025-11-01T15:25:14.3673059	Model Definitions - cavernous
 8a13c74ae4b06f300475d44c4845a3324d7f39df assets/cavernous/blockstates/chiseled_fungatite.json
 d7e6bd02f53efc0a999b64aacfbb55b238f1a4c0 assets/cavernous/blockstates/cluster_shroom.json
 f81bfac14fa2fc0b61af77aca3d3a28cca51d2e0 assets/cavernous/blockstates/feather_moss_block.json
@@ -97,6 +97,7 @@ d17f37b2864de101aa9397363cac6ff8ca0467be assets/cavernous/items/polished_fungati
 49cbac7d8c0c4317a2fc4a5fa53360c63f01b2ef assets/cavernous/items/polished_fungatite_wall.json
 c8a7308ea2eff92e5ae0797b1d3861792f589536 assets/cavernous/items/potted_lampshroom.json
 98ace6087766abd7b7578662ee8db7db078c0133 assets/cavernous/items/potted_toadstool_button.json
+3ec03aa4b26229dfa9699efffa0b028021cfcdca assets/cavernous/items/shelfshroom.json
 7ff6d606404d7442256365c0c1ebe3f0dc9845ec assets/cavernous/items/shelfshroom_cap_block.json
 c8e648fb520589279f4cacd314d163da7846f988 assets/cavernous/items/shroomwood.json
 b58868e7680b32f8dbb36aa49e4996f29ee83bd3 assets/cavernous/items/shroomwood_button.json
