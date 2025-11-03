@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.thxlotl.cavernous.block.ModBlockStateProperties;
 import net.thxlotl.cavernous.block.custom.SegmentedWallBlock;
 import net.thxlotl.cavernous.worldgen.custom.wallshroom.WallShroomConfiguration;
 
@@ -50,7 +51,10 @@ public class SegmentedWallBlockFeature extends Feature<SegmentedWallBlockConfigu
                             }
                             if (!block.hasAnyFace(placeState)) willPlace = false;
 
-                            if (willPlace) level.setBlock(currentPos, placeState, 2);
+                            if (willPlace) {
+                                placeState = placeState.setValue(ModBlockStateProperties.TOTAL_COUNT, SegmentedWallBlock.getTotalCount(placeState));
+                                level.setBlock(currentPos, placeState, 2);
+                            }
 
                         }
                     }

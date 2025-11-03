@@ -242,7 +242,7 @@ public class SegmentedWallBlock extends Block {
         //return Block.box(0, 0, 0, 16, 16, 16);
     }
 
-    private Integer getTotalCount(BlockState state)
+    public static Integer getTotalCount(BlockState state)
     {
         Integer count = 0;
         for (Direction direction : VALID_DIRECTIONS)

@@ -161,7 +161,7 @@ public class FungalCavesPlacedFeatures {
 
         register(context, GHOST_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.GHOST_FUNGUS),
                 List.of(
-                        CountPlacement.of(ConstantInt.of(55)),
+                        CountPlacement.of(ConstantInt.of(40)),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.DOWN,

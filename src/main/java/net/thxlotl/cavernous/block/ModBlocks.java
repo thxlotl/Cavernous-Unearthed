@@ -469,6 +469,11 @@ public class ModBlocks {
             properties -> new CordycepsPatchBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
     );
+    public static final DeferredBlock<SpringshroomBlock> SPRINGSHROOM = registerBlock(
+            "springshroom",
+            properties -> new SpringshroomBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
+    );
     //endregion
 
 

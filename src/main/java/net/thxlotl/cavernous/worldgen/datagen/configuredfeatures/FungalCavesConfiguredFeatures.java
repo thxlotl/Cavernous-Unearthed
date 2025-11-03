@@ -277,6 +277,12 @@ public class FungalCavesConfiguredFeatures {
                 new TwoLayersFeatureSize(0, 0, 0)
         )
                 .ignoreVines()
+                .decorators(List.of(
+                        new AttachedToLogsDecorator(0.85f, new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                .add(ModBlocks.LAMPSHROOM.get().defaultBlockState(), 1)
+                                .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 10))
+                                ,List.of(Direction.UP))
+                ))
                 .build();
         FeatureUtils.register(context, LAMPSHROOM_TREE, Feature.TREE, lampshroomTreeConfig);
 

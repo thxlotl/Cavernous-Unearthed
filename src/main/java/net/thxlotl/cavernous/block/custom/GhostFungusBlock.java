@@ -45,7 +45,10 @@ public class GhostFungusBlock extends SegmentedWallBlock implements Bonemealable
     @Override
     public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         Direction direction = getRandomFace(serverLevel, randomSource, blockPos, blockState);
-        if (direction != null) serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(getFaceProperty(direction), getFaceCount(blockState, direction) + 1));
+        if (direction != null) serverLevel.setBlockAndUpdate(blockPos,
+                blockState
+                        .setValue(getFaceProperty(direction), getFaceCount(blockState, direction) + 1)
+                        .setValue(TOTAL_COUNT, blockState.getValue(TOTAL_COUNT) + 1));
     }
 
     private Direction getRandomFace(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
