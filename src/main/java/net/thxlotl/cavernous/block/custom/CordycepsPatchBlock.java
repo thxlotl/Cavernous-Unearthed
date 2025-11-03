@@ -45,7 +45,7 @@ public class CordycepsPatchBlock extends VegetationBlock {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean p_451772_) {
 
         if (!level.isClientSide() && entity instanceof LivingEntity livingEntity) {
 
@@ -57,6 +57,6 @@ public class CordycepsPatchBlock extends VegetationBlock {
             }
         }
 
-        super.entityInside(state, level, pos, entity, effectApplier);
+        super.entityInside(state, level, pos, entity, effectApplier, p_451772_);
     }
 }

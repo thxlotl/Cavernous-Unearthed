@@ -20,17 +20,17 @@ public class ModItems {
 
     public static final DeferredItem<SpawnEggItem> ANT_SPAWN_EGG = ITEMS.registerItem(
             "ant_spawn_egg",
-            properties -> new SpawnEggItem(ModEntities.ANT.get(), properties),
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.ANT.get())),
             new Item.Properties()
     );
     public static final DeferredItem<SpawnEggItem> INFECTED_ANT_SPAWN_EGG = ITEMS.registerItem(
             "infected_ant_spawn_egg",
-            properties -> new SpawnEggItem(ModEntities.INFECTED_ANT.get(), properties),
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.INFECTED_ANT.get())),
             new Item.Properties()
     );
     public static final DeferredItem<SpawnEggItem> FUNGAL_ZOMBIE_SPAWN_EGG = ITEMS.registerItem(
             "fungal_zombie_spawn_egg",
-            properties -> new SpawnEggItem(ModEntities.FUNGAL_ZOMBIE.get(), properties),
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntities.FUNGAL_ZOMBIE.get())),
             new Item.Properties()
     );
 

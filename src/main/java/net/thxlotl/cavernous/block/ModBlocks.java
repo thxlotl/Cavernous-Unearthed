@@ -229,7 +229,7 @@ public class ModBlocks {
             properties -> new MushroomCapBlock(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
-                    sound(SoundType.MOSS));
+                    sound(SoundType.WART_BLOCK));
     public static final DeferredBlock<ToadstoolPatchBlock> TOADSTOOL_PATCH = registerBlock(
             "toadstool_patch",
             properties -> new ToadstoolPatchBlock(properties),
@@ -238,7 +238,7 @@ public class ModBlocks {
     public static final DeferredBlock<ToadstoolButtonBlock> TOADSTOOL_BUTTON = registerBlock(
             "toadstool_button",
             properties -> new ToadstoolButtonBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).sound(SoundType.FUNGUS)
     );
     public static final DeferredBlock<FlowerPotBlock> POTTED_TOADSTOOL_BUTTON = registerBlock(
             "potted_toadstool_button",
@@ -401,7 +401,7 @@ public class ModBlocks {
     public static final DeferredBlock<HangingShroomStemBlock> HANGING_SHROOM_STEM = registerBlock(
             "hanging_shroom_stem",
             properties -> new HangingShroomStemBlock(properties),
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollission().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
     );
     public static final DeferredBlock<HangingShroomCapBlock> HANGING_SHROOM_CAP = registerBlock(
             "hanging_shroom_cap",
@@ -416,17 +416,18 @@ public class ModBlocks {
             properties -> new Block(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
-                    sound(SoundType.MOSS)
+                    sound(SoundType.WART_BLOCK)
                     .lightLevel((p) -> 9));
     public static final DeferredBlock<LampshroomBlock> LAMPSHROOM = registerBlock(
             "lampshroom",
             properties -> new LampshroomBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 7)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 7).sound(SoundType.FUNGUS)
     );
     public static final DeferredBlock<LampshroomStemBlock> LAMPSHROOM_STEM = registerBlock(
             "lampshroom_stem",
             properties -> new LampshroomStemBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission());
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollision().sound(SoundType.FUNGUS)
+    );
     public static final DeferredBlock<FlowerPotBlock> POTTED_LAMPSHROOM = registerBlock(
             "potted_lampshroom",
             properties -> new FlowerPotBlock(ModBlocks.LAMPSHROOM.get(), properties),
@@ -445,24 +446,25 @@ public class ModBlocks {
             properties -> new MushroomCapBlock(properties),
             BlockBehaviour.Properties.of().
                     strength(0.5f).
-                    sound(SoundType.MOSS));
+                    sound(SoundType.WART_BLOCK));
     public static final DeferredBlock<ShelfshroomBlock> SHELFSHROOM = registerBlock(
             "shelfshroom",
             properties -> new ShelfshroomBlock(properties),
             BlockBehaviour.Properties.of()
                     .instabreak().
-                    sound(SoundType.MOSS));
+                    sound(SoundType.FUNGUS));
     //endregion
 
     //region Misc. Mushroom Blocks
     public static final DeferredBlock<BleedingToothMushroomBlock> BLEEDING_TOOTH_MUSHROOM = registerBlock(
             "bleeding_tooth_mushroom",
             properties -> new BleedingToothMushroomBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA));
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).sound(SoundType.FUNGUS)
+    );
     public static final DeferredBlock<GhostFungusBlock> GHOST_FUNGUS = registerBlock(
             "ghost_fungus",
             properties -> new GhostFungusBlock(properties),
-            BlockBehaviour.Properties.of().replaceable().noCollission().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT).sound(SoundType.NETHER_SPROUTS)
+            BlockBehaviour.Properties.of().replaceable().noCollision().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT).sound(SoundType.FUNGUS)
     );
     public static final DeferredBlock<CordycepsPatchBlock> CORDYCEPS_PATCH = registerBlock(
             "cordyceps_patch",
@@ -472,7 +474,7 @@ public class ModBlocks {
     public static final DeferredBlock<SpringshroomBlock> SPRINGSHROOM = registerBlock(
             "springshroom",
             properties -> new SpringshroomBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).sound(SoundType.FUNGUS)
     );
     //endregion
 

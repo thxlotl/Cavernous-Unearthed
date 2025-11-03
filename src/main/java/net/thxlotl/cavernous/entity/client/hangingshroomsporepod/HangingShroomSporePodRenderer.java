@@ -4,10 +4,12 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -45,7 +47,7 @@ public class HangingShroomSporePodRenderer extends EntityRenderer<HangingShroomS
     }
 
     @Override
-    public void render(EntityRenderState renderState, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
+    public void submit(EntityRenderState renderState, PoseStack poseStack, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
 
         HangingShroomSporePodRenderState state = (HangingShroomSporePodRenderState)renderState;
         Entity entity = state.entity;
@@ -60,11 +62,11 @@ public class HangingShroomSporePodRenderer extends EntityRenderer<HangingShroomS
         poseStack.translate(0.0f, -1.0f, 0.0f);
 
 
-        VertexConsumer vertexconsumer = ItemRenderer.getFoilBuffer(
-                bufferSource, this.model.renderType(this.getTextureLocation()),false, false);
-        this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
+//        VertexConsumer vertexconsumer = ItemRenderer.getFoilBuffer(
+//                bufferSource, this.model.renderType(this.getTextureLocation()),false, false);
+//        this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
-        super.render(renderState, poseStack, bufferSource, packedLight);
+        super.submit(renderState, poseStack, nodeCollector, cameraRenderState);
     }
 
     public ResourceLocation getTextureLocation() {

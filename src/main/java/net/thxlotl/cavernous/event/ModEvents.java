@@ -22,9 +22,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.effect.ModEffects;
-import net.thxlotl.cavernous.rendering.GhostFungusBlockEntityRenderer;
 import net.thxlotl.cavernous.rendering.RenderUtil;
 import net.thxlotl.cavernous.worldgen.ModBiomeData;
 import net.thxlotl.mixin.ClientInputAccessor;
@@ -40,7 +38,7 @@ public class ModEvents {
     {
         Entity entity = event.getCamera().getEntity();
 
-        if (entity.level().isClientSide && event.getCamera().getFluidInCamera() == FogType.NONE) {
+        if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
             ClientLevel level = (ClientLevel) entity.level();
             Vector3f color =
                     RenderUtil.getBaseColor(
@@ -60,7 +58,7 @@ public class ModEvents {
     {
         Entity entity = event.getCamera().getEntity();
 
-        if (entity.level().isClientSide && event.getCamera().getFluidInCamera() == FogType.NONE)
+        if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE)
         {
             ClientLevel level = (ClientLevel) entity.level();
             BiomeManager biomemanager = level.getBiomeManager();
@@ -106,7 +104,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntities.GHOST_FUNGUS.get(), GhostFungusBlockEntityRenderer::new);
+
     }
 
     @SubscribeEvent

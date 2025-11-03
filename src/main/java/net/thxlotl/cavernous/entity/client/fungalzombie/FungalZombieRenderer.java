@@ -2,8 +2,10 @@ package net.thxlotl.cavernous.entity.client.fungalzombie;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.resources.ResourceLocation;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.entity.custom.FungalZombie;
@@ -39,7 +41,7 @@ public class FungalZombieRenderer extends MobRenderer<FungalZombie, FungalZombie
     }
 
     @Override
-    public void render(FungalZombieRenderState renderState, PoseStack poseStack, MultiBufferSource p_115312_, int p_115313_) {
+    public void submit(FungalZombieRenderState renderState, PoseStack poseStack, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
 
         if(renderState.isBaby) {
             poseStack.scale(0.5f, 0.5f, 0.5f);
@@ -48,6 +50,6 @@ public class FungalZombieRenderer extends MobRenderer<FungalZombie, FungalZombie
             poseStack.scale(1f, 1f, 1f);
         }
 
-        super.render(renderState, poseStack, p_115312_, p_115313_);
+        super.submit(renderState, poseStack, nodeCollector, cameraRenderState);
     }
 }
