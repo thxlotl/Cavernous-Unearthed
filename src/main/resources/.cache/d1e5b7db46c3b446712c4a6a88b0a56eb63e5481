@@ -1,4 +1,4 @@
-// 1.21.8	2025-09-20T00:25:48.6060158	My Recipes
+// 1.21.10	2025-11-03T12:59:59.5669006	My Recipes
 2953c9e9cf0df07d3e0221f3f5bb104538adf44d data/cavernous/advancement/recipes/building_blocks/chiseled_fungatite.json
 d00599f6068c086fb57c7e8761a54c73ba7ed2dc data/cavernous/advancement/recipes/building_blocks/feather_moss_block.json
 50b191eaafbbcaf3fb00b6c06270fb93bccbbe0d data/cavernous/advancement/recipes/building_blocks/feather_moss_carpet.json
@@ -51,7 +51,7 @@ d179eeb54a47576acc3994f3400349f00374737c data/cavernous/recipe/shroomwood.json
 d7c0f13d0baa38d15a8f2c056cd968fe6bb49db4 data/cavernous/recipe/shroomwood_door.json
 7c4046295684b607b0f2ebf207c673314a119f24 data/cavernous/recipe/shroomwood_fence.json
 4ea36d2376e0d5cedf1dc9bf2854644abc8e2566 data/cavernous/recipe/shroomwood_fence_gate.json
-cd6817b7799dfdffabf66353aec6589fa2b21150 data/cavernous/recipe/shroomwood_hanging_sign.json
+cd2f3c6c588f70c7cdc6968e25a2c83b44f5bf6a data/cavernous/recipe/shroomwood_hanging_sign.json
 071d9e35281dfb96ae752a3ea80c29f1db45b473 data/cavernous/recipe/shroomwood_planks.json
 d210e1f7f6ff894bfd3eb40f29f76d3c6d3f41c1 data/cavernous/recipe/shroomwood_pressure_plate.json
 82ba3ccdfc9e98169c02d501cd26930f3e36e27f data/cavernous/recipe/shroomwood_sign.json

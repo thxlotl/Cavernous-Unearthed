@@ -123,7 +123,8 @@ public class FungalCavesConfiguredFeatures {
                 new WeightedStateProvider(WeightedList.<BlockState>builder()
                         .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 1)
                         .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 7)
-                        .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 2)),
+                        .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 2)
+                        .add(ModBlocks.INKY_CAP_PATCH.get().defaultBlockState(), 2)),
                 true
         );
         FeatureUtils.register(context, FEATHER_MOSS_VEGETATION, Feature.SIMPLE_BLOCK, featherMossVegetationConfig);

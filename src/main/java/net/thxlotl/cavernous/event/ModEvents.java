@@ -24,7 +24,7 @@ import net.neoforged.neoforge.client.event.*;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.rendering.RenderUtil;
-import net.thxlotl.cavernous.worldgen.ModBiomeData;
+import net.thxlotl.cavernous.worldgen.CustomBiomeData;
 import net.thxlotl.mixin.ClientInputAccessor;
 import org.joml.Vector3f;
 
@@ -70,7 +70,7 @@ public class ModEvents {
                     (x, y, z) -> {
                         Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
                         ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                        float value = key != null ? ModBiomeData.get(ModBiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
+                        float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
                         return new Vec3(value, value, value); // replicate float into RGB
                     }
             ).x();
@@ -79,7 +79,7 @@ public class ModEvents {
                     (x, y, z) -> {
                         Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
                         ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                        float value = key != null ? ModBiomeData.get(ModBiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
+                        float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
                         return new Vec3(value, value, value); // replicate float into RGB
                     }
             ).x();

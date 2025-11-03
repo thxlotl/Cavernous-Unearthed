@@ -476,6 +476,11 @@ public class ModBlocks {
             properties -> new SpringshroomBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).sound(SoundType.FUNGUS)
     );
+    public static final DeferredBlock<WaterLoggablePlantBlock> INKY_CAP_PATCH = registerBlock(
+            "inky_cap_patch",
+            properties -> new WaterLoggablePlantBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
+    );
     //endregion
 
 
@@ -485,7 +490,7 @@ public class ModBlocks {
 
 
 
-    //region Scrapped/Oh-hold Blocks
+    //region Scrapped/On-hold Blocks
     public static final DeferredBlock<LampShroomButtonBlock> LAMPSHROOM_BUTTON = registerBlock(
             "lampshroom_button",
             properties -> new LampShroomButtonBlock(properties),

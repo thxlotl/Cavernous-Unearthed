@@ -25,6 +25,15 @@
             "Name": "cavernous:toadstool_patch"
           },
           "weight": 2
+        },
+        {
+          "data": {
+            "Name": "cavernous:inky_cap_patch",
+            "Properties": {
+              "waterlogged": "false"
+            }
+          },
+          "weight": 2
         }
       ]
     }

@@ -1,4 +1,4 @@
-// 1.21.8	2025-11-02T23:01:14.9025321	Loot Tables
+// 1.21.10	2025-11-03T12:59:59.5728526	Loot Tables
 c51630f1719f6478d4d8656f74a6cdeae6bb5062 data/cavernous/loot_table/blocks/black_trumpet_patch.json
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 c11c95e59dca2392195b7ae39015636ed6d60e3f data/cavernous/loot_table/blocks/chiseled_fungatite.json
@@ -29,6 +29,7 @@ e0aedf0e25b299a1c65920e6160e317d091c10b0 data/cavernous/loot_table/blocks/fungat
 be52a7dc4a6c6d4398fb2d13982fd0aec84cf27e data/cavernous/loot_table/blocks/hanging_feather_moss.json
 1e4beedfc3c7aec87b313ac0bfeb90ebc6f5dd25 data/cavernous/loot_table/blocks/hanging_shroom_cap.json
 62a029a7cc3f8c1e07058213c7df309892ddddd0 data/cavernous/loot_table/blocks/hanging_shroom_stem.json
+7cb088ca10ed58655c210272e6db7446ba5d40e0 data/cavernous/loot_table/blocks/inky_cap_patch.json
 205457191ce0cfd9f743f9142e1369753968bdce data/cavernous/loot_table/blocks/lampshroom.json
 4f3c0ad3d59ca9614dc94a72ce94d5a000bed8ef data/cavernous/loot_table/blocks/lampshroom_button.json
 16582393f4929f6683195837fc9b84649db06900 data/cavernous/loot_table/blocks/lampshroom_cap_block.json

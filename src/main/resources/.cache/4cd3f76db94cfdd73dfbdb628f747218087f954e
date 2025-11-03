@@ -1,4 +1,4 @@
-// 1.21.8	2025-11-02T23:01:14.8881483	Model Definitions - cavernous
+// 1.21.10	2025-11-03T12:59:59.569876	Model Definitions - cavernous
 8a13c74ae4b06f300475d44c4845a3324d7f39df assets/cavernous/blockstates/chiseled_fungatite.json
 d7e6bd02f53efc0a999b64aacfbb55b238f1a4c0 assets/cavernous/blockstates/cluster_shroom.json
 f81bfac14fa2fc0b61af77aca3d3a28cca51d2e0 assets/cavernous/blockstates/feather_moss_block.json
@@ -21,6 +21,7 @@ d2718b2ea83709f5d7a2839ebff44deb0fb90a86 assets/cavernous/blockstates/fungatite_
 d2d455b8b450d6a0d3a01e850926f9197c088144 assets/cavernous/blockstates/fungatite_wall.json
 6fcdeb4583d0d806c562dbc9859aa15a29cf4fe1 assets/cavernous/blockstates/geyser_block.json
 d9bad5d3be1abe7b29a4a3afe9144f365dcd2d90 assets/cavernous/blockstates/ground_fungatite.json
+c386c01c71116e65ebbff716ba64f85200c5e357 assets/cavernous/blockstates/inky_cap_patch.json
 0f97345216c9dd1b54b48b617431f4d5bf1e895e assets/cavernous/blockstates/lampshroom_cap_block.json
 bb6a8e90ef70e3e5ad26fb6d133a773d8a9a4039 assets/cavernous/blockstates/mycelium_sprouts.json
 e4727d8e89f40edde5f3d96f8fa989e62fe4b17d assets/cavernous/blockstates/polished_fungatite.json
@@ -83,6 +84,7 @@ f29029f15d12549d81419fb95570ae284d346d0d assets/cavernous/items/ground_fungatite
 be9ac8b244e9c199933682129a4cbdca7967a8d4 assets/cavernous/items/hanging_shroom_cap.json
 6f0f42fe0a912af8b52cc286c072b10b72157b9b assets/cavernous/items/hanging_shroom_stem.json
 bcfd946704988c6f314372eabb5cd7966bfaf9f1 assets/cavernous/items/infected_ant_spawn_egg.json
+66944563d1be5c7203611dbe25117419b0df9435 assets/cavernous/items/inky_cap_patch.json
 49769d17d91a02295a28feead5aef0aecb081c29 assets/cavernous/items/lampshroom.json
 60ab80bdb2017eaf88aa3721ef1ceb98f5083a34 assets/cavernous/items/lampshroom_button.json
 7f41dbe1bd57e2801f7f561bcae9233b99a7072a assets/cavernous/items/lampshroom_cap_block.json
@@ -158,6 +160,7 @@ a9a60d800787c3eb3aa530e0b2dfbda82e62c19d assets/cavernous/models/block/fungatite
 28b040389f2ee7db7c5557df7d18746cc9c28e04 assets/cavernous/models/block/fungatite_wall_side_tall.json
 063010a5b247659098f953ef2db43536b2f40e31 assets/cavernous/models/block/geyser_block.json
 efde240cc63fe116d00086b595505b82edbafd03 assets/cavernous/models/block/ground_fungatite.json
+4bf56ab564af4a299e47396cb2ab2291080a9492 assets/cavernous/models/block/inky_cap_patch.json
 9f30fa3617ab0f55a01321aecae42513855f707f assets/cavernous/models/block/lampshroom_cap_block.json
 b0600da22ae888ee1a4c5c96b1f9d52c86078c9b assets/cavernous/models/block/mycelium_sprouts.json
 61ba7d2ee1b508f724faefcffbe09bcf9f0346f3 assets/cavernous/models/block/polished_fungatite.json
@@ -221,6 +224,7 @@ df6331276606aa7f2a42e0430a806824f8a8125e assets/cavernous/models/item/feather_mo
 50339a9f74663d811cee0b3122d6fe23ab62f03c assets/cavernous/models/item/ghost_fungus.json
 27eb0244d923355faddea240a46f8b1546d3c471 assets/cavernous/models/item/hanging_feather_moss.json
 e45655dfc9aa50ce9c09293d125b961befbe0871 assets/cavernous/models/item/infected_ant_spawn_egg.json
+336900f99a1e113954ca3d7aa627956b0714a612 assets/cavernous/models/item/inky_cap_patch.json
 d34aea6263d501fe9cfd7d9eed5c213549eca740 assets/cavernous/models/item/mycelium_fern.json
 32bca30425eb5b13b942a7126b62cd3e184783ba assets/cavernous/models/item/mycelium_sprouts.json
 e68f8d09142ceae6b84690c946069fe51ab03978 assets/cavernous/models/item/shroomwood_door.json

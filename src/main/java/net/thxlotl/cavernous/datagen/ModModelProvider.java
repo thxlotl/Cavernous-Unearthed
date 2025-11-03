@@ -135,6 +135,7 @@ public class ModModelProvider extends ModelProvider {
 
 
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.CLUSTER_SHROOM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createCrossBlockWithDefaultItem(ModBlocks.INKY_CAP_PATCH.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         //modBlockModels.createVine(ModBlocks.MUSHVINE.get(), false);
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_ORE.get());
         blockModels.createTrivialCube(ModBlocks.GEYSER_BLOCK.get());
