@@ -116,6 +116,7 @@ public class ModBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.CORDYCEPS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.HANGING_SHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.GHOST_FUNGUS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.PUFFSHROOM);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()

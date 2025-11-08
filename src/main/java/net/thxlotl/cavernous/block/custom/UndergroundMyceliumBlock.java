@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.thxlotl.cavernous.block.ModBlocks;
+import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
 
 public class UndergroundMyceliumBlock extends Block implements BonemealableBlock {
@@ -77,7 +78,7 @@ public class UndergroundMyceliumBlock extends Block implements BonemealableBlock
             double posY = (double)pos.getY() + 1.1;
             double posZ = (double)pos.getZ() + random.nextDouble();
             // CHANGE PARTICLE TYPE LATER
-            level.addParticle(ParticleTypes.MYCELIUM, posX, posY, posZ, (double)0.0F, (double)0.0F, (double)0.0F);
+            level.addParticle(ModParticles.UNDERGROUND_MYCELIUM.get(), posX, posY, posZ, (double)0.0F, (double)0.0F, (double)0.0F);
         }
     }
 

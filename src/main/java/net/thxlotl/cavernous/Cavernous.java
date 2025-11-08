@@ -16,6 +16,7 @@ import net.thxlotl.cavernous.entity.client.ant.InfectedAntRenderer;
 import net.thxlotl.cavernous.entity.client.fungalzombie.FungalZombieRenderer;
 import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
+import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.biolith.BiolithUsage;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
@@ -69,11 +70,15 @@ public class Cavernous {
 
         ModEffects.register(modEventBus);
 
+        ModParticles.register(modEventBus);
+
         // Register Feature Types
         ModTrunkPlacerTypes.register(modEventBus);
         ModFoliagePlacerTypes.register(modEventBus);
         ModTreeDecoratorType.register(modEventBus);
         ModFeature.register(modEventBus);
+
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -186,6 +191,7 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_TERRARIUM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRINGSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.INKY_CAP_PATCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PUFFSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
 
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
             EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);

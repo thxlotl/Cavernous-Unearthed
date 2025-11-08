@@ -38,6 +38,7 @@ public class FungalCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> CORDYCEPS = registerKey("cordyceps");
     public static final ResourceKey<PlacedFeature> ORE_GROUND_FUNGATITE = registerKey("ore_ground_fungatite");
     public static final ResourceKey<PlacedFeature> SHELFSHROOM = registerKey("shelfshroom");
+    public static final ResourceKey<PlacedFeature> PUFFSHROOM = registerKey("puffshroom");
 
     private static final String fungatitePrefix = "fungatite";
     public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_LOWER);
@@ -193,6 +194,23 @@ public class FungalCavesPlacedFeatures {
                                 Direction.DOWN,
                                 BlockPredicate.allOf(
                                         BlockPredicate.wouldSurvive(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.matchesBlocks(Blocks.AIR)
+                                ),
+                                BlockPredicate.matchesBlocks(Blocks.AIR),
+                                24
+                        ),
+                        BiomeFilter.biome()
+                ));
+
+        register(context, PUFFSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.PUFFSHROOM),
+                List.of(
+                        CountPlacement.of(25),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
+                        EnvironmentScanPlacement.scanningFor(
+                                Direction.DOWN,
+                                BlockPredicate.allOf(
+                                        BlockPredicate.wouldSurvive(ModBlocks.PUFFSHROOM.get().defaultBlockState(), Vec3i.ZERO),
                                         BlockPredicate.matchesBlocks(Blocks.AIR)
                                 ),
                                 BlockPredicate.matchesBlocks(Blocks.AIR),

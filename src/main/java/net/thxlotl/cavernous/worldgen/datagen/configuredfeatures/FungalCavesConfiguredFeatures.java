@@ -70,6 +70,7 @@ public class FungalCavesConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CORDYCEPS = ModConfiguredFeatures.registerKey("cordyceps");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GROUND_FUNGATITE = ModConfiguredFeatures.registerKey("ore_ground_fungatite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHELFSHROOM = ModConfiguredFeatures.registerKey("shelfshroom");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PUFFSHROOM = ModConfiguredFeatures.registerKey("puffshroom");
 
     private static final String fungatitePrefix = "fungatite";
     private static final EnumMap<OreTypes, Block> FUNGATITE_ORES =
@@ -121,8 +122,8 @@ public class FungalCavesConfiguredFeatures {
 
         SimpleBlockConfiguration featherMossVegetationConfig = new SimpleBlockConfiguration(
                 new WeightedStateProvider(WeightedList.<BlockState>builder()
-                        .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 1)
-                        .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 7)
+                        .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 2)
+                        .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 12)
                         .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 2)
                         .add(ModBlocks.INKY_CAP_PATCH.get().defaultBlockState(), 2)),
                 true
@@ -300,6 +301,12 @@ public class FungalCavesConfiguredFeatures {
                 true
         );
         FeatureUtils.register(context, BLEEDING_TOOTH_FUNGUS, Feature.SIMPLE_BLOCK, bleedingToothConfig);
+
+        SimpleBlockConfiguration puffshroomConfig = new SimpleBlockConfiguration(
+                BlockStateProvider.simple(ModBlocks.PUFFSHROOM.get().defaultBlockState()),
+                true
+        );
+        FeatureUtils.register(context, PUFFSHROOM, Feature.SIMPLE_BLOCK, puffshroomConfig);
 
         SimpleBlockConfiguration corycepsConfig = new SimpleBlockConfiguration(
                 BlockStateProvider.simple(ModBlocks.CORDYCEPS_PATCH.get().defaultBlockState()),

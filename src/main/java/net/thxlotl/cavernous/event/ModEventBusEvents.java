@@ -6,6 +6,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
@@ -17,6 +18,9 @@ import net.thxlotl.cavernous.entity.client.fungalzombie.FungalZombieModel;
 import net.thxlotl.cavernous.entity.custom.Ant;
 import net.thxlotl.cavernous.entity.custom.FungalZombie;
 import net.thxlotl.cavernous.entity.custom.InfectedAnt;
+import net.thxlotl.cavernous.particle.ModParticles;
+import net.thxlotl.cavernous.particle.SporeParticle;
+import net.thxlotl.cavernous.particle.UndergroundMyceliumParticle;
 
 @EventBusSubscriber(modid = Cavernous.MODID, value = Dist.CLIENT)
 public class ModEventBusEvents {
@@ -43,4 +47,11 @@ public class ModEventBusEvents {
         event.put(ModEntities.INFECTED_ANT.get(), InfectedAnt.createAttributes().build());
         event.put(ModEntities.FUNGAL_ZOMBIE.get(), FungalZombie.createAttributes().build());
     }
+
+    @SubscribeEvent
+    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ModParticles.PUFFSHROOM_SPORE.get(), SporeParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.UNDERGROUND_MYCELIUM.get(), UndergroundMyceliumParticle.Provider::new);
+    }
+
 }

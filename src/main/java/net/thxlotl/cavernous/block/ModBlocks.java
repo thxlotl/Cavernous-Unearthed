@@ -481,6 +481,11 @@ public class ModBlocks {
             properties -> new WaterLoggablePlantBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
     );
+    public static final DeferredBlock<PuffshroomBlock> PUFFSHROOM = registerBlock(
+            "puffshroom",
+            properties -> new PuffshroomBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
+    );
     //endregion
 
 

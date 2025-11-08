@@ -48,6 +48,7 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.LAMPSHROOM_TERRARIUM.get(),
             ModBlocks.SHELFSHROOM.get(),
             ModBlocks.SPRINGSHROOM.get(),
+            ModBlocks.PUFFSHROOM.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );

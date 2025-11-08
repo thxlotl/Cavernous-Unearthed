@@ -1,5 +1,5 @@
-// 1.21.10	2025-11-03T12:59:59.5758269	Registries
-c615e81873449b603ecfee6f39892d045c67676a data/cavernous/worldgen/biome/fungal_caves.json
+// 1.21.10	2025-11-08T01:21:18.1782797	Registries
+bc7c1b207c399c4fe3915aee14ebed2f184df2ea data/cavernous/worldgen/biome/fungal_caves.json
 60358963754d7674521732993342e1e4d7d5b9c3 data/cavernous/worldgen/configured_feature/bleeding_tooth_fungus.json
 9625f104db9d31853e2f4028f03f28273734e746 data/cavernous/worldgen/configured_feature/cordyceps.json
 6631d9a416494c54d88751de708e028f4d442ba5 data/cavernous/worldgen/configured_feature/feather_moss_patch.json
@@ -28,6 +28,7 @@ da673d6be6eb554cef31e10391cee9cf71cc6128 data/cavernous/worldgen/configured_feat
 f9a5e1578c80a7d9961c589e737358301a636d31 data/cavernous/worldgen/configured_feature/lampshroom.json
 e463cfc9e14f104af494ca0447f5c2867a810b25 data/cavernous/worldgen/configured_feature/lampshroom_tree.json
 9e56206c3767ada1ca2ff10e4b124a3dd78a7060 data/cavernous/worldgen/configured_feature/ore_ground_fungatite.json
+85a492d1272bc6c786b0969d1dc22d07d4b99eff data/cavernous/worldgen/configured_feature/puffshroom.json
 2c3963f81c9b4a4081724da6696c1600a44831a2 data/cavernous/worldgen/configured_feature/shelfshroom.json
 3d9ef39c5814369a11bd51397700f25ada08666b data/cavernous/worldgen/configured_feature/shroomwood_log_vegetation.json
 8772adf574bba285845be1bcdbc3e337869c4629 data/cavernous/worldgen/configured_feature/toadstool.json
@@ -62,5 +63,6 @@ a6c67594445f27db11cb1fd06551016949237b9c data/cavernous/worldgen/placed_feature/
 15ec6b0954ed5e2c84f3d07434b5eeaceab5f959 data/cavernous/worldgen/placed_feature/lampshroom_tree.json
 29ca3ec30c39cf712a1c09be80c9e1cc6107ca46 data/cavernous/worldgen/placed_feature/mycelium_vegetation_patch.json
 ae03bbdb39985eb3c80f993a294137a6ac3c4955 data/cavernous/worldgen/placed_feature/ore_ground_fungatite.json
+96acab74ed1cdbcd80f250f039b6f47288dfb860 data/cavernous/worldgen/placed_feature/puffshroom.json
 cb21cf2023ca5cdd7cba38d14b394e9c3838bd07 data/cavernous/worldgen/placed_feature/shelfshroom.json
 9f3626c61a7efca0a410fe213a282cae407032e2 data/cavernous/worldgen/placed_feature/toadstool.json
