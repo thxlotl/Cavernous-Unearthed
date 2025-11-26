@@ -22,6 +22,23 @@ public class ModParticles {
             "underground_mycelium",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> GEYSER_AMBIENT = PARTICLE_TYPES.register(
+            "geyser_ambient",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> GEYSER_BURST = PARTICLE_TYPES.register(
+            "geyser_burst",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> GEYSER_BUBBLE = PARTICLE_TYPES.register(
+            "geyser_bubble",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> VOLCANIC_ASH = PARTICLE_TYPES.register(
+            "volcanic_ash",
+            () -> new SimpleParticleType(false)
+    );
+
 
 
     public static void register(IEventBus eventBus) {

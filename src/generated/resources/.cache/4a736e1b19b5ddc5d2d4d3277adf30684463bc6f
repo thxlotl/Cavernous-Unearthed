@@ -1,4 +1,4 @@
-// 1.21.10	2025-11-03T12:59:59.5624356	Tags for minecraft:block mod id cavernous
+// 1.21.10	2025-11-24T17:35:46.3325257	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/cavernous/tags/block/shroomwood_logs.json
 d3bc41ec175b87895412b425043e832279e3df59 data/cavernous/tags/block/underground_mycelium_replaceable.json
@@ -23,12 +23,12 @@ a794b585323727ebc110655a810c6b77b83bce8e data/minecraft/tags/block/gold_ores.jso
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/lush_ground_replaceable.json
 6d6fdf04e15157fb1aed58e844d711194bb6a678 data/minecraft/tags/block/mineable/axe.json
 974c2272516f28535cc8a6c0fe8bb48065073da3 data/minecraft/tags/block/mineable/hoe.json
-a2c4088d36ca65026f1931bddbe0b6d10419e5ea data/minecraft/tags/block/mineable/pickaxe.json
+23194ed9bd2163d646ad77f090e4888d21148ce2 data/minecraft/tags/block/mineable/pickaxe.json
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/moss_replaceable.json
 4e8c4fdc53b72dcd5b6c1cb3574b6a80123efd80 data/minecraft/tags/block/mushroom_grow_block.json
 48ec2187dd89dc642f944d65c94c5fe18a5134f2 data/minecraft/tags/block/needs_iron_tool.json
 ec4e19c68814e44bda837c8c82b58000be0ae473 data/minecraft/tags/block/needs_stone_tool.json
-a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/overworld_carver_replaceables.json
+0ad12a62294cadc75cd67b68626650a15624aaa9 data/minecraft/tags/block/overworld_carver_replaceables.json
 ca08515369ee457e4c0c33454e7a7310a1f6fd2c data/minecraft/tags/block/redstone_ores.json
 a3feb5819dd65cc347542602f8fe2341e1d16a75 data/minecraft/tags/block/replaceable.json
 bb336f47252e3d2c96243f9b8b24e2a0a6d89714 data/minecraft/tags/block/saplings.json

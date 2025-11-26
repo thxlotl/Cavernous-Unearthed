@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.entity.ModEntities;
+import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.util.OrePlacedFeatureTypes;
 import net.thxlotl.cavernous.worldgen.datagen.placedfeatures.FungalCavesPlacedFeatures;
 
@@ -27,13 +28,18 @@ public class ModBiomes {
     // Biome initialization
     public static final ResourceKey<Biome> FUNGAL_CAVES = ResourceKey.create(Registries.BIOME,
             ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "fungal_caves"));
+    public static final ResourceKey<Biome> VOLCANIC_CAVES = ResourceKey.create(Registries.BIOME,
+            ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "volcanic_caves"));
 
 
 
     // Generate data
     public static void bootstrap(BootstrapContext<Biome> context) {
         context.register(FUNGAL_CAVES, fungalCaves(context));
+        context.register(VOLCANIC_CAVES, volcanicCaves(context));
     }
+
+
 
 
 
@@ -68,12 +74,11 @@ public class ModBiomes {
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureTypes.DIAMOND_MEDIUM))
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureTypes.EMERALD));
     }
-    public static void globalOverworldSpawns(MobSpawnSettings.Builder builder)
-    {
+
+    public static void globalOverworldSpawns(MobSpawnSettings.Builder builder) {
         //BiomeDefaultFeatures.caveSpawns(builder);
         BiomeDefaultFeatures.commonSpawns(builder);
     }
-
 
     public static void fungalCavesSpawns(MobSpawnSettings.Builder builder)
     {
@@ -87,6 +92,7 @@ public class ModBiomes {
         builder.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4));
         builder.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1));
     }
+
     private static Biome fungalCaves(BootstrapContext<Biome> context) {
 
         // Build mob spawns
@@ -134,6 +140,44 @@ public class ModBiomes {
                         .foliageColorOverride(7311404)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
+                .build();
+    }
+
+    private static Biome volcanicCaves(BootstrapContext<Biome> context) {
+
+        // Build mob spawns
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        globalOverworldSpawns(spawnBuilder);
+
+        // Build feature generation
+        BiomeGenerationSettings.Builder biomeBuilder =
+                new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
+
+        // Default features
+        globalOverworldGeneration(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        // Ores
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        // Custom features
+
+        // Biome characteristics
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(false)
+                .downfall(0.0f)
+                .temperature(1.0f)
+                .generationSettings(biomeBuilder.build())
+                .mobSpawnSettings(spawnBuilder.build())
+                .specialEffects((new BiomeSpecialEffects.Builder())
+                        .waterColor(7039851)
+                        .waterFogColor(3552822)
+                        .skyColor(8870956)
+                        .fogColor(13464130)
+                        .grassColorOverride(7039851)
+                        .foliageColorOverride(7039851)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
+                        .ambientParticle(new AmbientParticleSettings(ModParticles.VOLCANIC_ASH.get(), 0.07f))
+                        .build())
                 .build();
     }
 }

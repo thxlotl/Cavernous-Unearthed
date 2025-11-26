@@ -18,9 +18,7 @@ import net.thxlotl.cavernous.entity.client.fungalzombie.FungalZombieModel;
 import net.thxlotl.cavernous.entity.custom.Ant;
 import net.thxlotl.cavernous.entity.custom.FungalZombie;
 import net.thxlotl.cavernous.entity.custom.InfectedAnt;
-import net.thxlotl.cavernous.particle.ModParticles;
-import net.thxlotl.cavernous.particle.SporeParticle;
-import net.thxlotl.cavernous.particle.UndergroundMyceliumParticle;
+import net.thxlotl.cavernous.particle.*;
 
 @EventBusSubscriber(modid = Cavernous.MODID, value = Dist.CLIENT)
 public class ModEventBusEvents {
@@ -52,6 +50,10 @@ public class ModEventBusEvents {
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticles.PUFFSHROOM_SPORE.get(), SporeParticle.Provider::new);
         event.registerSpriteSet(ModParticles.UNDERGROUND_MYCELIUM.get(), UndergroundMyceliumParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_AMBIENT.get(), GeyserAmbientParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BURST.get(), GeyserBurstParticle.BurstProvider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BUBBLE.get(), GeyserBurstParticle.BubbleProvider::new);
+        event.registerSpriteSet(ModParticles.VOLCANIC_ASH.get(), VolcanicAshParticle.Provider::new);
     }
 
 }

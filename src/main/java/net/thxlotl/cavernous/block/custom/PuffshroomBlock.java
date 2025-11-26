@@ -26,10 +26,10 @@ public class PuffshroomBlock extends VegetationBlock {
         super(properties);
     }
 
-    private static final float CLOUD_OFFSET = 4.0f;
-    private static final float CLOUD_RADIUS = 12.0f;
+    private static final float CLOUD_OFFSET = 2.0f;
+    private static final float CLOUD_RADIUS = 10.0f;
     private static final int CLOUD_PARTICLE_COUNT = 7;
-    private static final int SPEW_PARTICLE_COUNT = 3;
+    private static final int SPEW_PARTICLE_COUNT = 4;
 
     @Override
     protected MapCodec<? extends VegetationBlock> codec() {
@@ -54,7 +54,7 @@ public class PuffshroomBlock extends VegetationBlock {
 
         Vec3 origin = new Vec3(pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f);
 
-        if (random.nextFloat() < 0.2f) {
+        if (random.nextFloat() < 0.23f) {
 
             for (int i = 0; i < SPEW_PARTICLE_COUNT; i++) {
 

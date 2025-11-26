@@ -1,4 +1,4 @@
-// 1.21.10	2025-11-07T21:13:40.9001755	Loot Tables
+// 1.21.10	2025-11-24T17:35:46.3399663	Loot Tables
 c51630f1719f6478d4d8656f74a6cdeae6bb5062 data/cavernous/loot_table/blocks/black_trumpet_patch.json
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 c11c95e59dca2392195b7ae39015636ed6d60e3f data/cavernous/loot_table/blocks/chiseled_fungatite.json
@@ -38,6 +38,7 @@ be52a7dc4a6c6d4398fb2d13982fd0aec84cf27e data/cavernous/loot_table/blocks/hangin
 4aa969b286cf96ef6650ba2720453f28e7daf76b data/cavernous/loot_table/blocks/mushroom_gill_block.json
 09d1edfd5fd86cf8200fd7ea963d204a51ac53f3 data/cavernous/loot_table/blocks/mycelium_fern.json
 0739e3405b203ad22d935df6b626f0e7446376e7 data/cavernous/loot_table/blocks/mycelium_sprouts.json
+a05e8300791fe68d90089d4235a39b1d0cbf3e7c data/cavernous/loot_table/blocks/obsidianstone.json
 667b5a938a439cea0bb8dc2153548b7df1aa5c80 data/cavernous/loot_table/blocks/polished_fungatite.json
 d27aee0c51136c404eb19e15005c65ceba1a9366 data/cavernous/loot_table/blocks/polished_fungatite_slab.json
 6761a7907e0c8304eeaaeb214622906e194d62f0 data/cavernous/loot_table/blocks/polished_fungatite_stairs.json
@@ -45,6 +46,7 @@ d27aee0c51136c404eb19e15005c65ceba1a9366 data/cavernous/loot_table/blocks/polish
 44f9663a9d44ad65dc25a50c36c46e545825e842 data/cavernous/loot_table/blocks/potted_lampshroom.json
 108f148c2df05f6209b2afd608119caa275f9682 data/cavernous/loot_table/blocks/potted_toadstool_button.json
 eb56f6999924b8bc9aec3e54c389ee522adb6c81 data/cavernous/loot_table/blocks/puffshroom.json
+276c0bedac245acfeb64f91d122053d4db889cb8 data/cavernous/loot_table/blocks/scoria.json
 cc7fa4e8d362ef3aa9d454e1f8daa05292e5c976 data/cavernous/loot_table/blocks/shelfshroom.json
 18981fe57e99b53b21edc9b520600a9318b6212c data/cavernous/loot_table/blocks/shelfshroom_cap_block.json
 97ddb79c0ad2465a1661640bbc4f2adf8d7a167f data/cavernous/loot_table/blocks/shroomwood.json

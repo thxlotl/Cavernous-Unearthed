@@ -488,7 +488,29 @@ public class ModBlocks {
     );
     //endregion
 
-
+    //region Volcanic Cave Misc
+    public static final DeferredBlock<Block> GEYSER_BLOCK = registerBlock(
+            "geyser_block",
+            properties -> new GeyserBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(2f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.BASALT));
+    public static final DeferredBlock<Block> OBSIDIANSTONE = registerBlock(
+            "obsidianstone",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.0F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<Block> SCORIA = registerBlock(
+            "scoria",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(1.5f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    //endregion
 
 
 
@@ -533,13 +555,6 @@ public class ModBlocks {
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE).
                     noLootTable());
-    public static final DeferredBlock<Block> GEYSER_BLOCK = registerBlock(
-            "geyser_block",
-            properties -> new GeyserBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.BASALT));
     //endregion
 
     // Each block is basically adding its name, function to use, and properties to a list which neoforge will then use all together to actually make a block

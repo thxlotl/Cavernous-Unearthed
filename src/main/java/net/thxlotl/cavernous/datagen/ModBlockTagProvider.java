@@ -41,7 +41,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FUNGATITE_BRICKS.get())
                 .add(ModBlocks.FUNGATITE_BRICK_STAIRS.get())
                 .add(ModBlocks.FUNGATITE_BRICK_SLAB.get())
-                .add(ModBlocks.FUNGATITE_BRICK_WALL.get());
+                .add(ModBlocks.FUNGATITE_BRICK_WALL.get())
+                .add(ModBlocks.GEYSER_BLOCK.get())
+                .add(ModBlocks.OBSIDIANSTONE.get())
+                .add(ModBlocks.SCORIA.get());
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get())
                 .add(ModBlocks.FEATHER_MOSS_CARPET.get())
@@ -75,7 +78,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
                 .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE.get())
-                .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
+                .add(ModBlocks.UNDERGROUND_MYCELIUM.get())
+                .add(ModBlocks.OBSIDIANSTONE.get())
+                .add(ModBlocks.SCORIA.get());
         
         tag(BlockTags.CLIMBABLE)
                 .add(ModBlocks.HANGING_SHROOM_CAP.get())

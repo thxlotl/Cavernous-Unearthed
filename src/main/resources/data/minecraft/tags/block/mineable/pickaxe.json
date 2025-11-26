@@ -22,6 +22,9 @@
     "cavernous:fungatite_bricks",
     "cavernous:fungatite_brick_stairs",
     "cavernous:fungatite_brick_slab",
-    "cavernous:fungatite_brick_wall"
+    "cavernous:fungatite_brick_wall",
+    "cavernous:geyser_block",
+    "cavernous:obsidianstone",
+    "cavernous:scoria"
   ]
 }

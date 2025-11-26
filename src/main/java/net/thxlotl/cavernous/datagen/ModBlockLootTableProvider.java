@@ -176,6 +176,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         dropSelf(ModBlocks.GILLED_MUSHROOM.get());
         dropSelf(ModBlocks.GEYSER_BLOCK.get());
+        dropSelf(ModBlocks.OBSIDIANSTONE.get());
+        dropSelf(ModBlocks.SCORIA.get());
         dropSelf(ModBlocks.CLUSTER_SHROOM.get());
         dropSelf(ModBlocks.BLACK_TRUMPET_PATCH.get());
 

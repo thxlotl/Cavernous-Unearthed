@@ -139,7 +139,17 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.INKY_CAP_PATCH.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         //modBlockModels.createVine(ModBlocks.MUSHVINE.get(), false);
         blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_ORE.get());
-        blockModels.createTrivialCube(ModBlocks.GEYSER_BLOCK.get());
+
+        //Volcanic Caves
+
+        TexturedModel.Provider geyser = TexturedModel.CUBE_TOP_BOTTOM.updateTexture(mapping ->
+                mapping.put(TextureSlot.SIDE, getBlockTexture(ModBlocks.OBSIDIANSTONE.get()))
+                        .put(TextureSlot.BOTTOM, getBlockTexture(ModBlocks.OBSIDIANSTONE.get()))
+                        .put(TextureSlot.TOP, getBlockTexture(ModBlocks.GEYSER_BLOCK.get(), "_top"))
+        );
+        modBlockModels.createBlockWithRandomRotations(geyser, ModBlocks.GEYSER_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.OBSIDIANSTONE.get());
+        blockModels.createTrivialCube(ModBlocks.SCORIA.get());
 
     }
 

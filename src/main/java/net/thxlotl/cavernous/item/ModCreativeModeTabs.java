@@ -78,6 +78,9 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.ANT_SPAWN_EGG);
                 output.accept(ModItems.INFECTED_ANT_SPAWN_EGG);
                 output.accept(ModItems.FUNGAL_ZOMBIE_SPAWN_EGG);
+                output.accept(ModBlocks.GEYSER_BLOCK);
+                output.accept(ModBlocks.OBSIDIANSTONE);
+                output.accept(ModBlocks.SCORIA);
             })
             .build());
 

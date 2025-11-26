@@ -30,12 +30,12 @@ public class ModBlockEntities {
             );
 
     // Ghost fungus
-    public static final Supplier<BlockEntityType<GhostFungusBlockEntity>> GHOST_FUNGUS =
+    public static final Supplier<BlockEntityType<GeyserBlockEntity>> GEYSER_BLOCK =
             BLOCK_ENTITIES.register(
-                    "ghost_fungus",
+                    "geyser_block",
                     () -> new BlockEntityType<>(
-                            GhostFungusBlockEntity::new,
-                            ModBlocks.GHOST_FUNGUS.get()
+                            GeyserBlockEntity::new,
+                            ModBlocks.GEYSER_BLOCK.get()
                     )
             );
 

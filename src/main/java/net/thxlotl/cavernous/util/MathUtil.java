@@ -14,6 +14,10 @@ public class MathUtil {
     {
         return min + input * (max - min);
     }
+    public static double scaleFloat(double input, double min, double max)
+    {
+        return min + input * (max - min);
+    }
 
     public static float circleDistribution(float input)
     {

@@ -58,40 +58,43 @@ public class ModEvents {
     {
         Entity entity = event.getCamera().getEntity();
 
-        if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE)
-        {
-            ClientLevel level = (ClientLevel) entity.level();
-            BiomeManager biomemanager = level.getBiomeManager();
-            FogData fogData = event.getFogData();
-            Vec3 pos = entity.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
+        if (entity instanceof Player player) {
 
-            float sampledNear = (float) CubicSampler.gaussianSampleVec3(
-                    pos,
-                    (x, y, z) -> {
-                        Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                        float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
-                        return new Vec3(value, value, value); // replicate float into RGB
-                    }
-            ).x();
-            float sampledFar = (float) CubicSampler.gaussianSampleVec3(
-                    pos,
-                    (x, y, z) -> {
-                        Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                        float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
-                        return new Vec3(value, value, value); // replicate float into RGB
-                    }
-            ).x();
-            //System.out.println("Fog Near: " + event.getNearPlaneDistance() + ", Far: " + event.getFarPlaneDistance() + ", Near Sample: " + sampledNear + ", Far Sample: " + sampledFar);
+            if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE && !player.isSpectator())
+            {
+                ClientLevel level = (ClientLevel) entity.level();
+                BiomeManager biomemanager = level.getBiomeManager();
+                FogData fogData = event.getFogData();
+                Vec3 pos = entity.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
 
-            if (Minecraft.getInstance().player.hasEffect(MobEffects.BLINDNESS) || Minecraft.getInstance().player.hasEffect(MobEffects.DARKNESS)) {
-                //fogData.environmentalStart = 0.0f;
-            } else {
-                fogData.environmentalStart += sampledNear;
-                fogData.environmentalEnd *= sampledFar;
+                float sampledNear = (float) CubicSampler.gaussianSampleVec3(
+                        pos,
+                        (x, y, z) -> {
+                            Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
+                            ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                            float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
+                            return new Vec3(value, value, value); // replicate float into RGB
+                        }
+                ).x();
+                float sampledFar = (float) CubicSampler.gaussianSampleVec3(
+                        pos,
+                        (x, y, z) -> {
+                            Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
+                            ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                            float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
+                            return new Vec3(value, value, value); // replicate float into RGB
+                        }
+                ).x();
+                //System.out.println("Fog Near: " + event.getNearPlaneDistance() + ", Far: " + event.getFarPlaneDistance() + ", Near Sample: " + sampledNear + ", Far Sample: " + sampledFar);
+
+                if (Minecraft.getInstance().player.hasEffect(MobEffects.BLINDNESS) || Minecraft.getInstance().player.hasEffect(MobEffects.DARKNESS)) {
+                    //fogData.environmentalStart = 0.0f;
+                } else {
+                    fogData.environmentalStart += sampledNear;
+                    fogData.environmentalEnd *= sampledFar;
+                }
+
             }
-
         }
 
     }

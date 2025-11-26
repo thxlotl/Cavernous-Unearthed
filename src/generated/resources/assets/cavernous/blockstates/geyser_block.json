@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "cavernous:block/geyser_block"
-    }
+    "": [
+      {
+        "model": "cavernous:block/geyser_block"
+      },
+      {
+        "model": "cavernous:block/geyser_block",
+        "y": 90
+      },
+      {
+        "model": "cavernous:block/geyser_block",
+        "y": 180
+      },
+      {
+        "model": "cavernous:block/geyser_block",
+        "y": 270
+      }
+    ]
   }
 }
