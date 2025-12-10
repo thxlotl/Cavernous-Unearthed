@@ -148,8 +148,27 @@ public class ModModelProvider extends ModelProvider {
                         .put(TextureSlot.TOP, getBlockTexture(ModBlocks.GEYSER_BLOCK.get(), "_top"))
         );
         modBlockModels.createBlockWithRandomRotations(geyser, ModBlocks.GEYSER_BLOCK.get());
-        blockModels.createTrivialCube(ModBlocks.OBSIDIANSTONE.get());
+
+        //region Obsidianstone
+
+        blockModels.family(ModBlocks.OBSIDIANSTONE.get())
+                .stairs(ModBlocks.OBSIDIANSTONE_STAIRS.get())
+                .slab(ModBlocks.OBSIDIANSTONE_SLAB.get())
+                .wall(ModBlocks.OBSIDIANSTONE_WALL.get());
+        blockModels.family(ModBlocks.POLISHED_OBSIDIANSTONE.get())
+                .stairs(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get())
+                .slab(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get())
+                .wall(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
+        blockModels.family(ModBlocks.OBSIDIANSTONE_BRICKS.get())
+                .stairs(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get())
+                .slab(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get())
+                .wall(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
+
+
+        //endregion
+
         blockModels.createTrivialCube(ModBlocks.SCORIA.get());
+        blockModels.createNonTemplateModelBlock(ModBlocks.SOFT_MAGMA_BLOCK.get());
 
     }
 

@@ -171,13 +171,33 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get());
 
 
+        //region Obsidianstone
 
+        dropSelf(ModBlocks.OBSIDIANSTONE.get());
+        dropSelf(ModBlocks.OBSIDIANSTONE_STAIRS.get());
+        add(ModBlocks.OBSIDIANSTONE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.OBSIDIANSTONE_SLAB.get()));
+        dropSelf(ModBlocks.OBSIDIANSTONE_WALL.get());
+        dropSelf(ModBlocks.POLISHED_OBSIDIANSTONE.get());
+        dropSelf(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get());
+        add(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get()));
+        dropSelf(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
+        dropSelf(ModBlocks.OBSIDIANSTONE_BRICKS.get());
+        dropSelf(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get());
+        add(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
+
+
+        //endregion
+
+        dropSelf(ModBlocks.GEYSER_BLOCK.get());
+        dropSelf(ModBlocks.SCORIA.get());
+        dropWhenSilkTouch(ModBlocks.SOFT_MAGMA_BLOCK.get());
 
 
         dropSelf(ModBlocks.GILLED_MUSHROOM.get());
-        dropSelf(ModBlocks.GEYSER_BLOCK.get());
-        dropSelf(ModBlocks.OBSIDIANSTONE.get());
-        dropSelf(ModBlocks.SCORIA.get());
         dropSelf(ModBlocks.CLUSTER_SHROOM.get());
         dropSelf(ModBlocks.BLACK_TRUMPET_PATCH.get());
 

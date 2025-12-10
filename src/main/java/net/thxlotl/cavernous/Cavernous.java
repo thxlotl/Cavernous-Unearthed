@@ -18,7 +18,7 @@ import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.util.ModWoodTypes;
-import net.thxlotl.cavernous.worldgen.biolith.BiolithUsage;
+import net.thxlotl.cavernous.worldgen.biome.BiolithUsage;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModFoliagePlacerTypes;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTreeDecoratorType;

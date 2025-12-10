@@ -8,6 +8,10 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.worldgen.*;
+import net.thxlotl.cavernous.worldgen.biome.ModBiomeModifiers;
+import net.thxlotl.cavernous.worldgen.biome.ModBiomes;
+import net.thxlotl.cavernous.worldgen.features.ModConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.ModPlacedFeatures;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

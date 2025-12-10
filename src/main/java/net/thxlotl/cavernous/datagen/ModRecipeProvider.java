@@ -11,7 +11,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.*;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import net.thxlotl.cavernous.block.ModBlocks;
@@ -43,6 +44,48 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
 
+    private void makeStoneFamilyRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock) {
+        stairBuilder(stairBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, wallBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+    }
+
+    private void makeRefineRecipe(Block input, Block result) {
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, result, 4)
+                .pattern("   ")
+                .pattern(" FF")
+                .pattern(" FF")
+                .define('F', input)
+                .unlockedBy("has_" + input.getName(), has(input)).save(output);
+    }
+
+    private void makeStoneFamilyStonecutterRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, Block... ingredients) {
+
+        if (ingredients.length == 0) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, parent, 1);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, parent, 2);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, parent, 1);
+        }
+
+        for (Block ingredient : ingredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, ingredient, 1);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, ingredient, 2);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, ingredient, 1);
+            if (ingredient != parent) {
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, parent, ingredient, 1);
+            }
+        }
+
+    }
+
+    private void stonecutterResultFromIngredients(Block result, int amount, Block... ingredients) {
+
+        for (Block ingredient : ingredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, ingredient, amount);
+        }
+
+    }
+
     @Override
     protected void buildRecipes() {
 
@@ -73,69 +116,48 @@ public class ModRecipeProvider extends RecipeProvider {
 
 
         // Fungatite
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE, 4)
-                .pattern("   ")
-                .pattern(" FF")
-                .pattern(" FF")
-                .define('F', ModBlocks.GROUND_FUNGATITE.get())
-                .unlockedBy("has_ground_fungatite", has(ModBlocks.GROUND_FUNGATITE)).save(output);
-        stairBuilder(ModBlocks.FUNGATITE_STAIRS.get(), Ingredient.of(ModBlocks.FUNGATITE)).unlockedBy("has_fungatite", has(ModBlocks.FUNGATITE)).save(output);
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_SLAB.get(), Ingredient.of(ModBlocks.FUNGATITE)).unlockedBy("has_fungatite", has(ModBlocks.FUNGATITE)).save(output);
-        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_WALL.get(), Ingredient.of(ModBlocks.FUNGATITE)).unlockedBy("has_fungatite", has(ModBlocks.FUNGATITE)).save(output);
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE, 4)
-                .pattern("   ")
-                .pattern(" FF")
-                .pattern(" FF")
-                .define('F', ModBlocks.FUNGATITE.get())
-                .unlockedBy("has_fungatite", has(ModBlocks.FUNGATITE)).save(output);
-
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_STAIRS, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_SLAB, ModBlocks.FUNGATITE, 2);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_WALL, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_STAIRS, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_SLAB, ModBlocks.FUNGATITE, 2);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_WALL, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_FUNGATITE, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICKS, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_STAIRS, ModBlocks.FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_SLAB, ModBlocks.FUNGATITE, 2);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_WALL, ModBlocks.FUNGATITE, 1);
+        makeRefineRecipe(ModBlocks.GROUND_FUNGATITE.get(), ModBlocks.FUNGATITE.get());
+        makeStoneFamilyRecipes(
+                ModBlocks.FUNGATITE.get(),
+                ModBlocks.FUNGATITE_STAIRS.get(),
+                ModBlocks.FUNGATITE_SLAB.get(),
+                ModBlocks.FUNGATITE_WALL.get());
+        makeStoneFamilyStonecutterRecipes(
+                ModBlocks.FUNGATITE.get(),
+                ModBlocks.FUNGATITE_STAIRS.get(),
+                ModBlocks.FUNGATITE_SLAB.get(),
+                ModBlocks.FUNGATITE_WALL.get());
 
         // Polished Fungatite
-        stairBuilder(ModBlocks.POLISHED_FUNGATITE_STAIRS.get(), Ingredient.of(ModBlocks.POLISHED_FUNGATITE)).unlockedBy("has_polished_fungatite", has(ModBlocks.POLISHED_FUNGATITE)).save(output);
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_SLAB.get(), Ingredient.of(ModBlocks.POLISHED_FUNGATITE)).unlockedBy("has_polished_fungatite", has(ModBlocks.POLISHED_FUNGATITE)).save(output);
-        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_WALL.get(), Ingredient.of(ModBlocks.POLISHED_FUNGATITE)).unlockedBy("has_polished_fungatite", has(ModBlocks.POLISHED_FUNGATITE)).save(output);
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICKS, 4)
-                .pattern("   ")
-                .pattern(" FF")
-                .pattern(" FF")
-                .define('F', ModBlocks.POLISHED_FUNGATITE.get())
-                .unlockedBy("has_polished_fungatite", has(ModBlocks.POLISHED_FUNGATITE)).save(output);
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_FUNGATITE, 1)
-                .pattern("   ")
-                .pattern("  F")
-                .pattern("  F")
-                .define('F', ModBlocks.POLISHED_FUNGATITE_SLAB.get())
-                .unlockedBy("has_polished_fungatite_slab", has(ModBlocks.POLISHED_FUNGATITE_SLAB)).save(output);
+        makeRefineRecipe(ModBlocks.FUNGATITE.get(), ModBlocks.POLISHED_FUNGATITE.get());
+        makeStoneFamilyRecipes(
+                ModBlocks.POLISHED_FUNGATITE.get(),
+                ModBlocks.POLISHED_FUNGATITE_STAIRS.get(),
+                ModBlocks.POLISHED_FUNGATITE_SLAB.get(),
+                ModBlocks.POLISHED_FUNGATITE_WALL.get());
+        makeStoneFamilyStonecutterRecipes(
+                ModBlocks.POLISHED_FUNGATITE.get(),
+                ModBlocks.POLISHED_FUNGATITE_STAIRS.get(),
+                ModBlocks.POLISHED_FUNGATITE_SLAB.get(),
+                ModBlocks.POLISHED_FUNGATITE_WALL.get(),
+                ModBlocks.FUNGATITE.get());
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_FUNGATITE, ModBlocks.POLISHED_FUNGATITE_SLAB);
 
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_STAIRS, ModBlocks.POLISHED_FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_SLAB, ModBlocks.POLISHED_FUNGATITE, 2);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_FUNGATITE_WALL, ModBlocks.POLISHED_FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_FUNGATITE, ModBlocks.POLISHED_FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICKS, ModBlocks.POLISHED_FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_STAIRS, ModBlocks.POLISHED_FUNGATITE, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_SLAB, ModBlocks.POLISHED_FUNGATITE, 2);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_WALL, ModBlocks.POLISHED_FUNGATITE, 1);
+        stonecutterResultFromIngredients(ModBlocks.CHISELED_FUNGATITE.get(), 1, ModBlocks.FUNGATITE.get(), ModBlocks.POLISHED_FUNGATITE.get());
 
         // Fungatite Bricks
-        stairBuilder(ModBlocks.FUNGATITE_BRICK_STAIRS.get(), Ingredient.of(ModBlocks.FUNGATITE_BRICKS)).unlockedBy("has_fungatite_bricks", has(ModBlocks.FUNGATITE_BRICKS)).save(output);
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_SLAB.get(), Ingredient.of(ModBlocks.FUNGATITE_BRICKS)).unlockedBy("has_fungatite_bricks", has(ModBlocks.FUNGATITE_BRICKS)).save(output);
-        wallBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_WALL.get(), Ingredient.of(ModBlocks.FUNGATITE_BRICKS)).unlockedBy("has_fungatite_bricks", has(ModBlocks.FUNGATITE_BRICKS)).save(output);
-
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_STAIRS, ModBlocks.FUNGATITE_BRICKS, 1);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_SLAB, ModBlocks.FUNGATITE_BRICKS, 2);
-        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FUNGATITE_BRICK_WALL, ModBlocks.FUNGATITE_BRICKS, 1);
+        makeRefineRecipe(ModBlocks.POLISHED_FUNGATITE.get(), ModBlocks.FUNGATITE_BRICKS.get());
+        makeStoneFamilyRecipes(
+                ModBlocks.FUNGATITE_BRICKS.get(),
+                ModBlocks.FUNGATITE_BRICK_STAIRS.get(),
+                ModBlocks.FUNGATITE_BRICK_SLAB.get(),
+                ModBlocks.FUNGATITE_BRICK_WALL.get());
+        makeStoneFamilyStonecutterRecipes(
+                ModBlocks.FUNGATITE_BRICKS.get(),
+                ModBlocks.FUNGATITE_BRICK_STAIRS.get(),
+                ModBlocks.FUNGATITE_BRICK_SLAB.get(),
+                ModBlocks.FUNGATITE_BRICK_WALL.get(),
+                ModBlocks.FUNGATITE.get(), ModBlocks.POLISHED_FUNGATITE.get());
 
         // Shroomwood
         woodFromLogs(ModBlocks.SHROOMWOOD.get(), ModBlocks.SHROOMWOOD_LOG.get());
@@ -183,6 +205,49 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('L', ModBlocks.LAMPSHROOM)
                 .define('U', ModBlocks.UNDERGROUND_MYCELIUM)
                 .unlockedBy("has_lampshroom", has(ModBlocks.LAMPSHROOM)).save(output);
+
+
+        //region Obsidianstone
+
+        makeStoneFamilyRecipes(
+                ModBlocks.OBSIDIANSTONE.get(),
+                ModBlocks.OBSIDIANSTONE_STAIRS.get(),
+                ModBlocks.OBSIDIANSTONE_SLAB.get(),
+                ModBlocks.OBSIDIANSTONE_WALL.get());
+        makeStoneFamilyStonecutterRecipes(
+                ModBlocks.OBSIDIANSTONE.get(),
+                ModBlocks.OBSIDIANSTONE_STAIRS.get(),
+                ModBlocks.OBSIDIANSTONE_SLAB.get(),
+                ModBlocks.OBSIDIANSTONE_WALL.get());
+
+        makeRefineRecipe(ModBlocks.OBSIDIANSTONE.get(), ModBlocks.POLISHED_OBSIDIANSTONE.get());
+        makeStoneFamilyRecipes(
+                ModBlocks.POLISHED_OBSIDIANSTONE.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
+        makeStoneFamilyStonecutterRecipes(
+                ModBlocks.POLISHED_OBSIDIANSTONE.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get(),
+                ModBlocks.OBSIDIANSTONE.get());
+
+        makeRefineRecipe(ModBlocks.POLISHED_OBSIDIANSTONE.get(), ModBlocks.OBSIDIANSTONE_BRICKS.get());
+        makeStoneFamilyRecipes(
+                ModBlocks.OBSIDIANSTONE_BRICKS.get(),
+                ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get(),
+                ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
+                ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
+        makeStoneFamilyStonecutterRecipes(
+                ModBlocks.OBSIDIANSTONE_BRICKS.get(),
+                ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get(),
+                ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
+                ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE.get(),
+                ModBlocks.OBSIDIANSTONE.get());
+
+        //endregion
     }
 
 }

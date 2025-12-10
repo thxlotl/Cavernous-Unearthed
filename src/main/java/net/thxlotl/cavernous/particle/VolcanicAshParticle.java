@@ -29,7 +29,7 @@ public class VolcanicAshParticle extends SingleQuadParticle {
         this.lifetime = Mth.randomBetweenInclusive(random, 60, 80);
 
         //Display
-        float f = this.random.nextFloat() * 0.05f + 0.95f;
+        float f = this.random.nextFloat() * 0.05f + 0.08f;
         this.rCol = f;
         this.gCol = f;
         this.bCol = f;

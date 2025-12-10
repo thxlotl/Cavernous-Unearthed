@@ -2,7 +2,7 @@ package net.thxlotl.cavernous.worldgen.custom.tree;
 
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
 import java.util.Optional;
 

@@ -20,7 +20,7 @@ import net.minecraft.world.phys.HitResult;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.MathUtil;
-import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
 public class HangingShroomSporePodProjectileEntity extends ThrowableItemProjectile {
 

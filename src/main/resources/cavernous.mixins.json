@@ -2,7 +2,7 @@
   "required": true,
   "package": "net.thxlotl.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": ["NoiseBasedAquiferMixin"],
   "injectors": {
     "defaultRequire": 1
   },
@@ -10,6 +10,12 @@
     "requireAnnotations": true
   },
   "client": [
-    "ClientInputAccessor"
+    "ClientInputAccessor",
+    "CameraMixin",
+    "EntityMixin",
+    "NearPlaneAccessor"
+  ],
+  "server": [
+
   ]
 }

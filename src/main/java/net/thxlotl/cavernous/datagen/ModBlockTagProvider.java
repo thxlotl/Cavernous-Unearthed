@@ -43,7 +43,19 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FUNGATITE_BRICK_SLAB.get())
                 .add(ModBlocks.FUNGATITE_BRICK_WALL.get())
                 .add(ModBlocks.GEYSER_BLOCK.get())
+                .add(ModBlocks.SOFT_MAGMA_BLOCK.get())
                 .add(ModBlocks.OBSIDIANSTONE.get())
+                .add(ModBlocks.OBSIDIANSTONE_STAIRS.get())
+                .add(ModBlocks.OBSIDIANSTONE_SLAB.get())
+                .add(ModBlocks.OBSIDIANSTONE_WALL.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get())
+                .add(ModBlocks.OBSIDIANSTONE_BRICKS.get())
+                .add(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get())
+                .add(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get())
+                .add(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get())
                 .add(ModBlocks.SCORIA.get());
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get())
@@ -110,16 +122,25 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FUNGATITE_STAIRS.get())
                 .add(ModBlocks.POLISHED_FUNGATITE_STAIRS.get())
                 .add(ModBlocks.FUNGATITE_BRICK_STAIRS.get())
-                .add(ModBlocks.SHROOMWOOD_STAIRS.get());
+                .add(ModBlocks.SHROOMWOOD_STAIRS.get())
+                .add(ModBlocks.OBSIDIANSTONE_STAIRS.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get())
+                .add(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get());
         tag(BlockTags.SLABS)
                 .add(ModBlocks.FUNGATITE_SLAB.get())
                 .add(ModBlocks.POLISHED_FUNGATITE_SLAB.get())
                 .add(ModBlocks.FUNGATITE_BRICK_SLAB.get())
-                .add(ModBlocks.SHROOMWOOD_SLAB.get());
+                .add(ModBlocks.SHROOMWOOD_SLAB.get())
+                .add(ModBlocks.OBSIDIANSTONE_SLAB.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get())
+                .add(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get());
         tag(BlockTags.WALLS)
                 .add(ModBlocks.FUNGATITE_WALL.get())
                 .add(ModBlocks.POLISHED_FUNGATITE_WALL.get())
-                .add(ModBlocks.FUNGATITE_BRICK_WALL.get());
+                .add(ModBlocks.FUNGATITE_BRICK_WALL.get())
+                .add(ModBlocks.OBSIDIANSTONE_WALL.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get())
+                .add(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());;
         tag(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.SHROOMWOOD_FENCE.get());
         tag(BlockTags.FENCE_GATES)

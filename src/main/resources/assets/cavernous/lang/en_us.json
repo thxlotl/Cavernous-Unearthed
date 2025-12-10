@@ -80,10 +80,23 @@
   "item.cavernous.black_trumpet_patch": "Black Trumpet Patch",
   "item.cavernous.infected_ant_spawn_egg": "Infected Ant Spawn Egg",
 
+  "item.cavernous.obsidianstone": "Obsidianstone",
+  "item.cavernous.obsidianstone_stairs": "Obsidianstone Stairs",
+  "item.cavernous.obsidianstone_slab": "Obsidianstone Slab",
+  "item.cavernous.obsidianstone_wall": "Obsidianstone Wall",
+  "item.cavernous.polished_obsidianstone": "Polished Obsidianstone",
+  "item.cavernous.polished_obsidianstone_stairs": "Polished Obsidianstone Stairs",
+  "item.cavernous.polished_obsidianstone_slab": "Polished Obsidianstone Slab",
+  "item.cavernous.polished_obsidianstone_wall": "Polished Obsidianstone Wall",
+  "item.cavernous.obsidianstone_bricks": "Obsidianstone Bricks",
+  "item.cavernous.obsidianstone_brick_stairs": "Obsidianstone Brick Stairs",
+  "item.cavernous.obsidianstone_brick_slab": "Obsidianstone Brick Slab",
+  "item.cavernous.obsidianstone_brick_wall": "Obsidianstone Brick Wall",
+
+  "item.cavernous.soft_magma_block": "Soft Magma Block",
 
   "item.cavernous.test_block_ore": "Test Block Ore",
   "item.cavernous.geyser_block": "Geyser Block",
-  "item.cavernous.obsidianstone": "Obsidianstone",
   "item.cavernous.scoria": "Scoria",
 
   "entity.cavernous.ant": "Ant",

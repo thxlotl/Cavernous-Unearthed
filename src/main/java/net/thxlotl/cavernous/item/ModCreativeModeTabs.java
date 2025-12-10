@@ -80,7 +80,19 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.FUNGAL_ZOMBIE_SPAWN_EGG);
                 output.accept(ModBlocks.GEYSER_BLOCK);
                 output.accept(ModBlocks.OBSIDIANSTONE);
+                output.accept(ModBlocks.OBSIDIANSTONE_STAIRS);
+                output.accept(ModBlocks.OBSIDIANSTONE_SLAB);
+                output.accept(ModBlocks.OBSIDIANSTONE_WALL);
+                output.accept(ModBlocks.POLISHED_OBSIDIANSTONE);
+                output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS);
+                output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB);
+                output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_WALL);
+                output.accept(ModBlocks.OBSIDIANSTONE_BRICKS);
+                output.accept(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS);
+                output.accept(ModBlocks.OBSIDIANSTONE_BRICK_SLAB);
+                output.accept(ModBlocks.OBSIDIANSTONE_BRICK_WALL);
                 output.accept(ModBlocks.SCORIA);
+                output.accept(ModBlocks.SOFT_MAGMA_BLOCK);
             })
             .build());
 

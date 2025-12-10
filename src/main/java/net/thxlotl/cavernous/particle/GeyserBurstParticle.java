@@ -42,7 +42,7 @@ public class GeyserBurstParticle extends SingleQuadParticle{
 
         this.setParticleSpeed(xSpeed, ySpeed, zSpeed);
 
-        this.setAlpha(0.6f);
+        this.setAlpha(MathUtil.scaleFloat((float)Math.random(), 0.7f, 1f));
 
     }
 

@@ -48,6 +48,7 @@ public class DataGenerators {
         BlockTagsProvider blockTagsProvider = new ModBlockTagProvider(packOutput, lookupProvider, Cavernous.MODID);
         generator.addProvider(true, blockTagsProvider);
         generator.addProvider(true, new ModItemTagProvider(packOutput, lookupProvider, Cavernous.MODID));
+        generator.addProvider(true, new ModEntityTypeTagProvider(packOutput, lookupProvider));
 
         // Models, Block states, items
         generator.addProvider(true, new ModModelProvider(packOutput));

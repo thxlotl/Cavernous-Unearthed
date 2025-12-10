@@ -30,11 +30,15 @@ import net.thxlotl.cavernous.block.custom.sign.ModWallSignBlock;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.GhostFungus;
 import net.thxlotl.cavernous.util.ModWoodTypes;
-import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
 import java.util.function.Function;
 
 public class ModBlocks {
+
+    private static boolean always(BlockState state, BlockGetter blockGetter, BlockPos pos) {
+        return true;
+    }
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Cavernous.MODID);
 
@@ -496,6 +500,26 @@ public class ModBlocks {
                     strength(2f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.BASALT));
+    public static final DeferredBlock<Block> SCORIA = registerBlock(
+            "scoria",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(1.5f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<SoftMagmaBlock> SOFT_MAGMA_BLOCK = registerBlock(
+            "soft_magma_block",
+            properties -> new SoftMagmaBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(1.0f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE).
+                    lightLevel((p) -> 9).
+                    noOcclusion()
+                    .emissiveRendering(ModBlocks::always));
+    //endregion
+
+    //region Obsidianstone
     public static final DeferredBlock<Block> OBSIDIANSTONE = registerBlock(
             "obsidianstone",
             properties -> new Block(properties),
@@ -503,11 +527,83 @@ public class ModBlocks {
                     strength(3.0F, 6.0F).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
-    public static final DeferredBlock<Block> SCORIA = registerBlock(
-            "scoria",
+    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_STAIRS = registerBlock(
+            "obsidianstone_stairs",
+            properties -> new StairBlock(ModBlocks.OBSIDIANSTONE.get().defaultBlockState(), properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.0F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_SLAB = registerBlock(
+            "obsidianstone_slab",
+            properties -> new SlabBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.0F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_WALL = registerBlock(
+            "obsidianstone_wall",
+            properties -> new WallBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.0F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+
+    public static final DeferredBlock<Block> POLISHED_OBSIDIANSTONE = registerBlock(
+            "polished_obsidianstone",
             properties -> new Block(properties),
             BlockBehaviour.Properties.of().
-                    strength(1.5f).
+                    strength(3.5F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<StairBlock> POLISHED_OBSIDIANSTONE_STAIRS = registerBlock(
+            "polished_obsidianstone_stairs",
+            properties -> new StairBlock(ModBlocks.POLISHED_OBSIDIANSTONE.get().defaultBlockState(), properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.5F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<SlabBlock> POLISHED_OBSIDIANSTONE_SLAB = registerBlock(
+            "polished_obsidianstone_slab",
+            properties -> new SlabBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.5F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<WallBlock> POLISHED_OBSIDIANSTONE_WALL = registerBlock(
+            "polished_obsidianstone_wall",
+            properties -> new WallBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.5F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+
+    public static final DeferredBlock<Block> OBSIDIANSTONE_BRICKS = registerBlock(
+            "obsidianstone_bricks",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.5F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_BRICK_STAIRS = registerBlock(
+            "obsidianstone_brick_stairs",
+            properties -> new StairBlock(ModBlocks.OBSIDIANSTONE_BRICKS.get().defaultBlockState(), properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.5F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_BRICK_SLAB = registerBlock(
+            "obsidianstone_brick_slab",
+            properties -> new SlabBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.5F, 6.0F).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_BRICK_WALL = registerBlock(
+            "obsidianstone_brick_wall",
+            properties -> new WallBlock(properties),
+            BlockBehaviour.Properties.of().
+                    strength(3.5F, 6.0F).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
     //endregion

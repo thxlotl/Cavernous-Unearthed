@@ -11,7 +11,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.phys.Vec3;
-import net.thxlotl.cavernous.worldgen.CustomBiomeData;
+import net.thxlotl.cavernous.worldgen.biome.BiomeData;
 import org.joml.Vector3f;
 
 public class RenderUtil {
@@ -46,7 +46,7 @@ public class RenderUtil {
                 (x, y, z) -> {
                     Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
                     ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                    float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_BRIGHTNESS_BOOST, key) : 1.0f;
+                    float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_BOOST, key) : 1.0f;
                     return new Vec3(value, value, value); // replicate float into RGB
                 }
         ).x();
@@ -55,7 +55,7 @@ public class RenderUtil {
                 (x, y, z) -> {
                     Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
                     ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                    float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
+                    float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
                     return new Vec3(value, value, value); // replicate float into RGB
                 }
         ).x();

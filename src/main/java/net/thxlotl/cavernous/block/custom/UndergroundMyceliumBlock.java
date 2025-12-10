@@ -2,7 +2,6 @@ package net.thxlotl.cavernous.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -17,7 +16,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.particle.ModParticles;
-import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
 public class UndergroundMyceliumBlock extends Block implements BonemealableBlock {
 

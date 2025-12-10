@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cavernous:block/obsidianstone_slab"
+    },
+    "type=double": {
+      "model": "cavernous:block/obsidianstone"
+    },
+    "type=top": {
+      "model": "cavernous:block/obsidianstone_slab_top"
+    }
+  }
+}

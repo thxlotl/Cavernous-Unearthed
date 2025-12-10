@@ -1,4 +1,4 @@
-// 1.21.10	2025-11-24T17:35:46.3325257	Tags for minecraft:block mod id cavernous
+// 1.21.10	2025-12-01T12:57:03.0851527	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/cavernous/tags/block/shroomwood_logs.json
 d3bc41ec175b87895412b425043e832279e3df59 data/cavernous/tags/block/underground_mycelium_replaceable.json
@@ -23,7 +23,7 @@ a794b585323727ebc110655a810c6b77b83bce8e data/minecraft/tags/block/gold_ores.jso
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/lush_ground_replaceable.json
 6d6fdf04e15157fb1aed58e844d711194bb6a678 data/minecraft/tags/block/mineable/axe.json
 974c2272516f28535cc8a6c0fe8bb48065073da3 data/minecraft/tags/block/mineable/hoe.json
-23194ed9bd2163d646ad77f090e4888d21148ce2 data/minecraft/tags/block/mineable/pickaxe.json
+2d37497871e1c5ae113c22417dafa49307b2222d data/minecraft/tags/block/mineable/pickaxe.json
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/moss_replaceable.json
 4e8c4fdc53b72dcd5b6c1cb3574b6a80123efd80 data/minecraft/tags/block/mushroom_grow_block.json
 48ec2187dd89dc642f944d65c94c5fe18a5134f2 data/minecraft/tags/block/needs_iron_tool.json
@@ -33,13 +33,13 @@ ca08515369ee457e4c0c33454e7a7310a1f6fd2c data/minecraft/tags/block/redstone_ores
 a3feb5819dd65cc347542602f8fe2341e1d16a75 data/minecraft/tags/block/replaceable.json
 bb336f47252e3d2c96243f9b8b24e2a0a6d89714 data/minecraft/tags/block/saplings.json
 be4dad649d96e9d8e5b43ca0b63476a4c4af2f8f data/minecraft/tags/block/signs.json
-181d27e2554d8e237e4490e44523cfc79550f1ed data/minecraft/tags/block/slabs.json
+e33e43388e9f173f94196b06bc3843531f14c002 data/minecraft/tags/block/slabs.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/small_dripleaf_placeable.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/sniffer_diggable_block.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/sniffer_egg_hatch_boost.json
-59c3fcb593b29c8b3b14cd68538f117aa379eb8c data/minecraft/tags/block/stairs.json
+73a5fbe09869c47939f96ed34c43a2ca01dcc20a data/minecraft/tags/block/stairs.json
 b173d01c149e335d696a38f432be19239b55458c data/minecraft/tags/block/standing_signs.json
-bf93c5e89503ab2db0c6455d86510d0503de82a2 data/minecraft/tags/block/walls.json
+a81996c74606e4b87a1c0ea5aff707b62254ddca data/minecraft/tags/block/walls.json
 21f89e59b8592568dcca7318ea77b5c11456773a data/minecraft/tags/block/wall_hanging_signs.json
 b173d01c149e335d696a38f432be19239b55458c data/minecraft/tags/block/wall_post_override.json
 deb8bec2edbfa1d66d2b915732cc743b2d415aab data/minecraft/tags/block/wall_signs.json

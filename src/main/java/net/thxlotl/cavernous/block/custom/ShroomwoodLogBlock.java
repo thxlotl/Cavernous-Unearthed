@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.thxlotl.cavernous.worldgen.datagen.configuredfeatures.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
 public class ShroomwoodLogBlock extends ModFlammableRotatedPillarBlock implements BonemealableBlock {
     public ShroomwoodLogBlock(Properties p_55926_) {

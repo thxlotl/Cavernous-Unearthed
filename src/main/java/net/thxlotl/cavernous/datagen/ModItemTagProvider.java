@@ -5,6 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import net.thxlotl.cavernous.Cavernous;
@@ -75,6 +76,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.ANT_FOOD)
                 .add(ModBlocks.LAMPSHROOM.asItem())
                 .add(ModBlocks.BLEEDING_TOOTH_MUSHROOM.asItem());
+
+        tag(ModTags.Items.SMOOTH_MAGMA_WALKABLE)
+                .add(Items.NETHERITE_BOOTS);
 
     }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_obsidianstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cavernous:polished_obsidianstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:polished_obsidianstone_wall_from_polished_obsidianstone_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_polished_obsidianstone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:polished_obsidianstone_wall_from_polished_obsidianstone_stonecutting"
+    ]
+  }
+}

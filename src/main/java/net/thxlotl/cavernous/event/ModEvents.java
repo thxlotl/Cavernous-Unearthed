@@ -24,7 +24,7 @@ import net.neoforged.neoforge.client.event.*;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.rendering.RenderUtil;
-import net.thxlotl.cavernous.worldgen.CustomBiomeData;
+import net.thxlotl.cavernous.worldgen.biome.BiomeData;
 import net.thxlotl.mixin.ClientInputAccessor;
 import org.joml.Vector3f;
 
@@ -38,7 +38,14 @@ public class ModEvents {
     {
         Entity entity = event.getCamera().getEntity();
 
-        if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
+//        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+//
+//            event.setRed(0.6f);
+//            event.setGreen(0.09411765f);
+//            event.setBlue(0f);
+//        }
+//        else
+            if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
             ClientLevel level = (ClientLevel) entity.level();
             Vector3f color =
                     RenderUtil.getBaseColor(
@@ -56,15 +63,44 @@ public class ModEvents {
     @SubscribeEvent
     public static void rendering(ViewportEvent.RenderFog event)
     {
-        Entity entity = event.getCamera().getEntity();
 
-        if (entity instanceof Player player) {
+
+        Entity entity = event.getCamera().getEntity();
+        FogData fogData = event.getFogData();
+
+//        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+//
+//            float f = 16 * Minecraft.getInstance().options.getEffectiveRenderDistance();
+//            if (entity.isSpectator()) {
+//                fogData.environmentalStart = -8.0F;
+//                fogData.environmentalEnd = f * 0.5F;
+//            } else {
+//                label14: {
+//                    if (entity instanceof LivingEntity) {
+//                        LivingEntity livingentity = (LivingEntity)entity;
+//                        if (livingentity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+//                            fogData.environmentalStart = 0.0F;
+//                            fogData.environmentalEnd = 5.0F;
+//                            break label14;
+//                        }
+//                    }
+//
+//                    fogData.environmentalStart = 0.25F;
+//                    fogData.environmentalEnd = 1.0F;
+//                }
+//            }
+//
+//            fogData.skyEnd = fogData.environmentalEnd;
+//            fogData.cloudEnd = fogData.environmentalEnd;
+//
+//        }
+//        else
+            if (entity instanceof Player player) {
 
             if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE && !player.isSpectator())
             {
                 ClientLevel level = (ClientLevel) entity.level();
                 BiomeManager biomemanager = level.getBiomeManager();
-                FogData fogData = event.getFogData();
                 Vec3 pos = entity.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
 
                 float sampledNear = (float) CubicSampler.gaussianSampleVec3(
@@ -72,7 +108,7 @@ public class ModEvents {
                         (x, y, z) -> {
                             Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
                             ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                            float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
+                            float value = key != null ? BiomeData.get(BiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
                             return new Vec3(value, value, value); // replicate float into RGB
                         }
                 ).x();
@@ -81,7 +117,7 @@ public class ModEvents {
                         (x, y, z) -> {
                             Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
                             ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                            float value = key != null ? CustomBiomeData.get(CustomBiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
+                            float value = key != null ? BiomeData.get(BiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
                             return new Vec3(value, value, value); // replicate float into RGB
                         }
                 ).x();
@@ -104,11 +140,6 @@ public class ModEvents {
 //    {
 //        event.register(GhostFungusBlock::getColor, ModBlocks.GHOST_FUNGUS.get());
 //    }
-
-    @SubscribeEvent
-    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-
-    }
 
     @SubscribeEvent
     public static void movementInputEvent(MovementInputUpdateEvent event) {
