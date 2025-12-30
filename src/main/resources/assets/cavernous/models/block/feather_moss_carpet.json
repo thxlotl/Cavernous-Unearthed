@@ -5,7 +5,7 @@
 	"textures": {
 		"1": "cavernous:block/feather_moss_carpet_side",
 		"2": "cavernous:block/feather_moss_block",
-		"particle": "cavernous:block/feather_moss_block"
+		"particle": "cavernous:block/feather_moss_tufts"
 	},
 	"elements": [
 		{
@@ -72,5 +72,46 @@
 				"down": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#1"}
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [68, 45, 0],
+			"translation": [0, 2.5, 2],
+			"scale": [0.33398, 0.33398, 0.33398]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [68, 45, 0],
+			"translation": [0, 2.5, 2],
+			"scale": [0.33398, 0.33398, 0.33398]
+		},
+		"firstperson_righthand": {
+			"rotation": [19.01, -49.42, 13],
+			"translation": [0, 3.75, 0],
+			"scale": [0.33398, 0.33398, 0.33398]
+		},
+		"firstperson_lefthand": {
+			"rotation": [19.01, -49.42, 13],
+			"translation": [0, 3.75, 0],
+			"scale": [0.33398, 0.33398, 0.33398]
+		},
+		"ground": {
+			"translation": [0, 3.25, 0],
+			"scale": [0.25586, 0.25586, 0.25586]
+		},
+		"gui": {
+			"rotation": [30, -45, 0],
+			"translation": [0, 7, 0],
+			"scale": [0.60742, 0.60742, 0.60742]
+		},
+		"head": {
+			"translation": [0, 13.75, 0]
+		},
+		"fixed": {
+			"translation": [0, 4, 0],
+			"scale": [0.40234, 0.40234, 0.40234]
+		},
+		"on_shelf": {
+			"translation": [0, 0, -4]
+		}
+	}
 }

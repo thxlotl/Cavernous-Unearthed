@@ -10,6 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.util.worldgen.ore.CustomStoneOreFamily;
 
 import java.util.Collections;
 import java.util.List;
@@ -57,6 +58,7 @@ public class DataGenerators {
         generator.addProvider(true, new ModDataMapProvider(packOutput, lookupProvider));
 
         // Datapack
+        CustomStoneOreFamily.init();
         generator.addProvider(true, new ModDatapackProvider(packOutput, lookupProvider));
     }
 }

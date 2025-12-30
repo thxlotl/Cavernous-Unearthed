@@ -12,7 +12,8 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.thxlotl.cavernous.block.ModBlocks;
-import net.thxlotl.cavernous.util.OrePlacedFeatureTypes;
+import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
+import net.thxlotl.cavernous.util.worldgen.ore.enums.OrePlacedFeatureType;
 import net.thxlotl.cavernous.worldgen.features.ModPlacedFeatures;
 import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
@@ -36,24 +37,24 @@ public class FungalCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PUFFSHROOM = registerKey("puffshroom");
 
     private static final String fungatitePrefix = "fungatite";
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COAL_UPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.COPPER_LARGE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_MIDDLE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.IRON_MIDDLE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_SMALL = oreKey(fungatitePrefix, OrePlacedFeatureTypes.IRON_SMALL);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.IRON_UPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD = oreKey(fungatitePrefix, OrePlacedFeatureTypes.GOLD);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.GOLD_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.REDSTONE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureTypes.REDSTONE_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS = oreKey(fungatitePrefix, OrePlacedFeatureTypes.LAPIS);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureTypes.LAPIS_BURIED);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND_BURIED);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND_LARGE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_MEDIUM = oreKey(fungatitePrefix, OrePlacedFeatureTypes.DIAMOND_MEDIUM);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_EMERALD = oreKey(fungatitePrefix, OrePlacedFeatureTypes.EMERALD);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureType.COAL_LOWER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureType.COAL_UPPER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER = oreKey(fungatitePrefix, OrePlacedFeatureType.COPPER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureType.COPPER_LARGE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_MIDDLE = oreKey(fungatitePrefix, OrePlacedFeatureType.IRON_MIDDLE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_SMALL = oreKey(fungatitePrefix, OrePlacedFeatureType.IRON_SMALL);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureType.IRON_UPPER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD = oreKey(fungatitePrefix, OrePlacedFeatureType.GOLD);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureType.GOLD_LOWER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE = oreKey(fungatitePrefix, OrePlacedFeatureType.REDSTONE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureType.REDSTONE_LOWER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS = oreKey(fungatitePrefix, OrePlacedFeatureType.LAPIS);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureType.LAPIS_BURIED);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND_BURIED);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND_LARGE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_MEDIUM = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND_MEDIUM);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_EMERALD = oreKey(fungatitePrefix, OrePlacedFeatureType.EMERALD);
 
 
     static {
@@ -278,7 +279,7 @@ public class FungalCavesPlacedFeatures {
                         BiomeFilter.biome()
                 ));
 
-        ModPlacedFeatures.createOreForStoneType(context, configuredFeatures, fungatitePrefix);
+        ModPlacedFeatures.createOreForStoneType(context, configuredFeatures, CustomStoneType.FUNGATITE);
 
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.10	2025-12-01T12:57:03.0920987	Loot Tables
+// 1.21.10	2025-12-26T16:21:29.1848218	Loot Tables
 c51630f1719f6478d4d8656f74a6cdeae6bb5062 data/cavernous/loot_table/blocks/black_trumpet_patch.json
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 c11c95e59dca2392195b7ae39015636ed6d60e3f data/cavernous/loot_table/blocks/chiseled_fungatite.json
@@ -73,7 +73,7 @@ f87f1d4cbef4cef35e5e8a336b25e1772a02caae data/cavernous/loot_table/blocks/shroom
 4dd18c81ba6965c17e45b4424eec3694f09b230d data/cavernous/loot_table/blocks/shroomwood_slab.json
 0612187c2c0443a97e36f1709053b86030b065a1 data/cavernous/loot_table/blocks/shroomwood_stairs.json
 a749b32985f9d582d9bfa0b45fa045e8712386a0 data/cavernous/loot_table/blocks/shroomwood_trapdoor.json
-25ba64871f77939144eeb05c0065a2642c0f88e9 data/cavernous/loot_table/blocks/soft_magma_block.json
+52ebdb0fd72784ff8018f3a2f962748ade82d130 data/cavernous/loot_table/blocks/soft_magma_block.json
 bba1cc0c419f2d9b23231be282646aa91347c7df data/cavernous/loot_table/blocks/springshroom.json
 9d46eb72ca7b1e7887a588047af07afd33513467 data/cavernous/loot_table/blocks/stripped_shroomwood.json
 fd2625ce8bd61ab858726d231dd45c2ba3f85420 data/cavernous/loot_table/blocks/stripped_shroomwood_log.json

@@ -1,9 +1,5 @@
 package net.thxlotl.cavernous.worldgen.biome;
 
-import com.terraformersmc.biolith.api.biome.BiomePlacement;
-import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -14,21 +10,9 @@ import net.thxlotl.cavernous.worldgen.ModNoises;
 
 import java.util.function.Supplier;
 
-public class BiolithUsage {
+public class BiomeSurfaceRules {
 
-    public static void init()
-    {
-        ResourceLocation overworldRules = ResourceLocation.fromNamespaceAndPath("minecraft", "rules/overworld");
-
-        BiomePlacement.addOverworld(ModBiomes.FUNGAL_CAVES, ClimateParameters.fungalParameters);
-        SurfaceGeneration.addOverworldSurfaceRules(overworldRules, fungalRules());
-
-        BiomePlacement.addOverworld(ModBiomes.VOLCANIC_CAVES, ClimateParameters.volcanicParameters); // Offset
-        SurfaceGeneration.addOverworldSurfaceRules(overworldRules, volcanicRules());
-
-    }
-
-    private static SurfaceRules.RuleSource fungalRules()
+    public static SurfaceRules.RuleSource fungalRules()
     {
         Supplier<? extends Block> undergroundMycelium = ModBlocks.UNDERGROUND_MYCELIUM;
         Supplier<? extends Block> groundFungatite = ModBlocks.GROUND_FUNGATITE;
@@ -46,7 +30,7 @@ public class BiolithUsage {
         return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.FUNGAL_CAVES), fungalCaves);
     }
 
-    private static SurfaceRules.RuleSource volcanicRules()
+    public static SurfaceRules.RuleSource volcanicRules()
     {
         Supplier<? extends Block> obsidianStone = ModBlocks.OBSIDIANSTONE;
         Supplier<? extends Block> scoria = ModBlocks.SCORIA;
@@ -83,4 +67,5 @@ public class BiolithUsage {
 
         return SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.VOLCANIC_CAVES), volcanicCaves);
     }
+
 }

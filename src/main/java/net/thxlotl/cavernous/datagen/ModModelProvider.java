@@ -49,6 +49,7 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.SHELFSHROOM.get(),
             ModBlocks.SPRINGSHROOM.get(),
             ModBlocks.PUFFSHROOM.get(),
+            ModBlocks.FEATHER_MOSS_TUFTS.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );
@@ -68,6 +69,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.ANCIENT_FERN.get(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.HANGING_FEATHER_MOSS.get(), ModelTemplates.FLAT_ITEM);
+        modItemModels.generateFlatItemWithBlockTexture(ModBlocks.FEATHER_MOSS_TUFTS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ANT_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.INFECTED_ANT_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.FUNGAL_ZOMBIE_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
@@ -104,7 +106,7 @@ public class ModModelProvider extends ModelProvider {
 
         // FEATHER MOSS
         blockModels.createTrivialCube(ModBlocks.FEATHER_MOSS_BLOCK.get());
-        blockModels.createCrossBlockWithDefaultItem(ModBlocks.FEATHER_MOSS_TUFTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        //blockModels.createCrossBlockWithDefaultItem(ModBlocks.FEATHER_MOSS_TUFTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
 
         // SHROOMWOOD

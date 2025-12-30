@@ -13,7 +13,6 @@ import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -34,8 +33,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
 import net.thxlotl.cavernous.util.ModTags;
-import net.thxlotl.cavernous.util.OreFeatureTypes;
-import net.thxlotl.cavernous.util.OreTypes;
+import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
+import net.thxlotl.cavernous.util.worldgen.ore.enums.OreConfiguredFeatureType;
 import net.thxlotl.cavernous.worldgen.features.ModConfiguredFeatures;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.custom.segmentedwallblock.SegmentedWallBlockConfiguration;
@@ -70,40 +69,24 @@ public class FungalCavesConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHELFSHROOM = ModConfiguredFeatures.registerKey("shelfshroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PUFFSHROOM = ModConfiguredFeatures.registerKey("puffshroom");
 
-    private static final String fungatitePrefix = "fungatite";
-    private static final EnumMap<OreTypes, Block> FUNGATITE_ORES =
-            new EnumMap<>(OreTypes.class);
-    static {
-        FUNGATITE_ORES.put(OreTypes.COAL, ModBlocks.FUNGATITE_COAL_ORE.get());
-        FUNGATITE_ORES.put(OreTypes.COPPER, ModBlocks.FUNGATITE_COPPER_ORE.get());
-        FUNGATITE_ORES.put(OreTypes.IRON, ModBlocks.FUNGATITE_IRON_ORE.get());
-        FUNGATITE_ORES.put(OreTypes.GOLD, ModBlocks.FUNGATITE_GOLD_ORE.get());
-        FUNGATITE_ORES.put(OreTypes.REDSTONE, ModBlocks.FUNGATITE_REDSTONE_ORE.get());
-        FUNGATITE_ORES.put(OreTypes.LAPIS, ModBlocks.FUNGATITE_LAPIS_ORE.get());
-        FUNGATITE_ORES.put(OreTypes.DIAMOND, ModBlocks.FUNGATITE_DIAMOND_ORE.get());
-        FUNGATITE_ORES.put(OreTypes.EMERALD, ModBlocks.FUNGATITE_EMERALD_ORE.get());
-    }
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COAL = ModConfiguredFeatures.oreKey(fungatitePrefix, OreFeatureTypes.COAL);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COAL_BURIED = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.COAL_BURIED);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COPPER_LARGE = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.COPPER_LARGE);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COPPER_SMALL = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.COPPER_SMALL);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_IRON = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.IRON);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_IRON_SMALL = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.IRON_SMALL);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_GOLD = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.GOLD);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_GOLD_BURIED = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.GOLD_BURIED);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_REDSTONE = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.REDSTONE);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_LAPIS = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.LAPIS);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_LAPIS_BURIED = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.LAPIS_BURIED);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_BURIED = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.DIAMOND_BURIED);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_LARGE = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.DIAMOND_LARGE);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_MEDIUM = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.DIAMOND_MEDIUM);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_SMALL = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.DIAMOND_SMALL);
-    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_EMERALD = ModConfiguredFeatures.oreKey(fungatitePrefix,OreFeatureTypes.EMERALD);
-
-
-    static {
-        ModConfiguredFeatures.registerStoneTypeOres(fungatitePrefix);
-    }
+    //region ORES
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COAL = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.COAL);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COAL_BURIED = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.COAL_BURIED);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COPPER_LARGE = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.COPPER_LARGE);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COPPER_SMALL = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.COPPER_SMALL);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_IRON = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.IRON);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_IRON_SMALL = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.IRON_SMALL);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_GOLD = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.GOLD);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_GOLD_BURIED = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.GOLD_BURIED);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_REDSTONE = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.REDSTONE);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_LAPIS = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.LAPIS);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_LAPIS_BURIED = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.LAPIS_BURIED);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_BURIED = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.DIAMOND_BURIED);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_LARGE = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.DIAMOND_LARGE);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_MEDIUM = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.DIAMOND_MEDIUM);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_DIAMOND_SMALL = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.DIAMOND_SMALL);
+    public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_EMERALD = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.EMERALD);
+    //endregion
 
     // Register features here
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -327,6 +310,6 @@ public class FungalCavesConfiguredFeatures {
         FeatureUtils.register(context, SHELFSHROOM, ModFeature.WALLSHROOM_FEATURE.get(), shelfshroomConfig);
 
 
-        ModConfiguredFeatures.createOreForStoneType(context, ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE, fungatitePrefix, FUNGATITE_ORES);
+        ModConfiguredFeatures.createOreForStoneType(context, CustomStoneType.FUNGATITE, ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE);
     }
 }

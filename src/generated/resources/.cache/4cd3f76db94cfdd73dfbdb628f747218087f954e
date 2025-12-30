@@ -1,8 +1,7 @@
-// 1.21.10	2025-12-02T13:26:55.8657365	Model Definitions - cavernous
+// 1.21.10	2025-12-26T16:34:27.7202542	Model Definitions - cavernous
 8a13c74ae4b06f300475d44c4845a3324d7f39df assets/cavernous/blockstates/chiseled_fungatite.json
 d7e6bd02f53efc0a999b64aacfbb55b238f1a4c0 assets/cavernous/blockstates/cluster_shroom.json
 f81bfac14fa2fc0b61af77aca3d3a28cca51d2e0 assets/cavernous/blockstates/feather_moss_block.json
-6aa592f38ed050ec15d8ff0ce3c577ffab6b8f39 assets/cavernous/blockstates/feather_moss_tufts.json
 bb987c3122d415c5b06e460e22bb6247a9f708be assets/cavernous/blockstates/fungatite.json
 711d5d96403f1e3579d817c45f0c3af1bc43ee22 assets/cavernous/blockstates/fungatite_bricks.json
 46d4bbf0edfb15c125f69b14133ddde49d555675 assets/cavernous/blockstates/fungatite_brick_slab.json
@@ -157,7 +156,6 @@ dc56690d4bf9d54b674c053f7d373569e9aa57a3 assets/cavernous/items/test_item.json
 8a49d01820a5fe812a198b7bdd878734299a4a44 assets/cavernous/models/block/chiseled_fungatite.json
 97d23d79decb3060730b281da032c16b7c14950d assets/cavernous/models/block/cluster_shroom.json
 0d8f8bc904cc07c90fc0bf051e1fab90280484d3 assets/cavernous/models/block/feather_moss_block.json
-babe46fbc3213c62a1fc8cedd9dc9c3430036c36 assets/cavernous/models/block/feather_moss_tufts.json
 f1be410703e219d8108a1e193e23b19c1943abbc assets/cavernous/models/block/fungatite.json
 2877f97c43573a87cfbc2257b63f2bbe394c2a23 assets/cavernous/models/block/fungatite_bricks.json
 846b0d8435f6349b19621322cad5b946facc42d0 assets/cavernous/models/block/fungatite_brick_slab.json

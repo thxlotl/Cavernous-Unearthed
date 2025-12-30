@@ -1,6 +1,6 @@
-package net.thxlotl.cavernous.util;
+package net.thxlotl.cavernous.util.worldgen.ore.enums;
 
-public enum OreFeatureTypes {
+public enum OreConfiguredFeatureType {
     COAL,
     COAL_BURIED,
     COPPER_LARGE,

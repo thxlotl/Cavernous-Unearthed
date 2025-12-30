@@ -18,7 +18,8 @@ import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.util.ModWoodTypes;
-import net.thxlotl.cavernous.worldgen.biome.BiolithUsage;
+import net.thxlotl.cavernous.util.worldgen.ore.CustomStoneOreFamily;
+import net.thxlotl.cavernous.worldgen.biome.BiolithBiomePlacement;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModFoliagePlacerTypes;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTreeDecoratorType;
@@ -88,7 +89,7 @@ public class Cavernous {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        BiolithUsage.init();
+        BiolithBiomePlacement.init();
     }
 
     // Add the example block item to the building blocks tab
@@ -171,7 +172,7 @@ public class Cavernous {
 
             Sheets.addWoodType(ModWoodTypes.SHROOMWOOD);
 
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_TUFTS.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_TUFTS.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.ANCIENT_FERN.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLUSTER_SHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_SPROUTS.get(), ChunkSectionLayer.CUTOUT_MIPPED);
