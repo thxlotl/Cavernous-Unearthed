@@ -40,18 +40,10 @@ public class ModPlacedFeatures {
 
 
     //region ORE STUFF
-    public static final Map<String, EnumMap<OrePlacedFeatureType, ResourceKey<PlacedFeature>>> PLACED_ORE_MAPS =
-            new HashMap<>();
-    public static void registerStoneTypeOres(String prefix) {
-        EnumMap<OrePlacedFeatureType, ResourceKey<PlacedFeature>> map = new EnumMap<>(OrePlacedFeatureType.class);
-        for (OrePlacedFeatureType type : OrePlacedFeatureType.values()) {
-            map.put(type, oreKey(prefix, type));
-        }
-        PLACED_ORE_MAPS.put(prefix, map);
-    }
-    public static ResourceKey<PlacedFeature> oreKey(String prefix, OrePlacedFeatureType oreType)
+    public static ResourceKey<PlacedFeature> oreKey(CustomStoneType stoneType, OrePlacedFeatureType oreType)
     {
         String suffix = oreType.toString().toLowerCase();
+        String prefix = stoneType.toString().toLowerCase();
         return registerKey(prefix + "_ore_" + suffix);
     }
 

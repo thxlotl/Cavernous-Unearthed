@@ -10,8 +10,9 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.thxlotl.cavernous.particle.ModParticles;
+import net.thxlotl.cavernous.util.worldgen.ore.CustomStoneOreFamily;
+import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OrePlacedFeatureType;
-import net.thxlotl.cavernous.worldgen.features.ModPlacedFeatures;
 import net.thxlotl.cavernous.worldgen.features.placed.FungalCavesPlacedFeatures;
 
 import java.util.EnumMap;
@@ -31,28 +32,13 @@ public class BiomeBuilders {
     }
 
     // Default ores
-    public static void addStoneTypeOres(BiomeGenerationSettings.Builder builder, String prefix) {
+    public static void addCustomStoneOres (BiomeGenerationSettings.Builder builder, CustomStoneType type) {
 
-        EnumMap<OrePlacedFeatureType, ResourceKey<PlacedFeature>> map = ModPlacedFeatures.PLACED_ORE_MAPS.get(prefix);
+        EnumMap<OrePlacedFeatureType, ResourceKey<PlacedFeature>> placedFeatures = CustomStoneOreFamily.allFamilies.get(type).placedFeatures;
 
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.COAL_LOWER))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.COAL_UPPER))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.COPPER))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.COPPER_LARGE))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.IRON_MIDDLE))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.IRON_SMALL))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.IRON_UPPER))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.GOLD))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.GOLD_LOWER))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.REDSTONE))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.REDSTONE_LOWER))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.LAPIS))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.LAPIS_BURIED))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.DIAMOND))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.DIAMOND_BURIED))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.DIAMOND_LARGE))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.DIAMOND_MEDIUM))
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, map.get(OrePlacedFeatureType.EMERALD));
+        for (OrePlacedFeatureType placedFeatureType : placedFeatures.keySet()) {
+            builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatures.get(placedFeatureType));
+        }
     }
 
     // Default Spawns
@@ -77,7 +63,7 @@ public class BiomeBuilders {
         globalOverworldGeneration(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         // Ores
-        ///addStoneTypeOres(biomeBuilder, "fungatite");
+        addCustomStoneOres(biomeBuilder, CustomStoneType.FUNGATITE);
         // Custom features
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FungalCavesPlacedFeatures.ORE_GROUND_FUNGATITE);

@@ -36,31 +36,25 @@ public class FungalCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SHELFSHROOM = registerKey("shelfshroom");
     public static final ResourceKey<PlacedFeature> PUFFSHROOM = registerKey("puffshroom");
 
-    private static final String fungatitePrefix = "fungatite";
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureType.COAL_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureType.COAL_UPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER = oreKey(fungatitePrefix, OrePlacedFeatureType.COPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureType.COPPER_LARGE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_MIDDLE = oreKey(fungatitePrefix, OrePlacedFeatureType.IRON_MIDDLE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_SMALL = oreKey(fungatitePrefix, OrePlacedFeatureType.IRON_SMALL);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_UPPER = oreKey(fungatitePrefix, OrePlacedFeatureType.IRON_UPPER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD = oreKey(fungatitePrefix, OrePlacedFeatureType.GOLD);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureType.GOLD_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE = oreKey(fungatitePrefix, OrePlacedFeatureType.REDSTONE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE_LOWER = oreKey(fungatitePrefix, OrePlacedFeatureType.REDSTONE_LOWER);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS = oreKey(fungatitePrefix, OrePlacedFeatureType.LAPIS);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureType.LAPIS_BURIED);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_BURIED = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND_BURIED);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_LARGE = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND_LARGE);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_MEDIUM = oreKey(fungatitePrefix, OrePlacedFeatureType.DIAMOND_MEDIUM);
-    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_EMERALD = oreKey(fungatitePrefix, OrePlacedFeatureType.EMERALD);
 
-
-    static {
-        ModPlacedFeatures.registerStoneTypeOres(fungatitePrefix);
-    }
-
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.COAL_LOWER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_UPPER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.COAL_UPPER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.COPPER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COPPER_LARGE = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.COPPER_LARGE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_MIDDLE = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.IRON_MIDDLE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_SMALL = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.IRON_SMALL);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_IRON_UPPER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.IRON_UPPER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.GOLD);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_GOLD_LOWER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.GOLD_LOWER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.REDSTONE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_REDSTONE_LOWER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.REDSTONE_LOWER);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.LAPIS);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_LAPIS_BURIED = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.LAPIS_BURIED);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.DIAMOND);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_BURIED = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.DIAMOND_BURIED);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_LARGE = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.DIAMOND_LARGE);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_DIAMOND_MEDIUM = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.DIAMOND_MEDIUM);
+    public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_EMERALD = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.EMERALD);
 
     // Register Features
     public static void bootstrap(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures) {
