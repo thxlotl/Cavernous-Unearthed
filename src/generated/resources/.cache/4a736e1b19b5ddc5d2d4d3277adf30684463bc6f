@@ -1,5 +1,6 @@
-// 1.21.10	2025-12-26T16:21:29.1699424	Tags for minecraft:block mod id cavernous
+// 1.21.10	2026-01-10T14:41:56.3995131	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
+58e7fee002632c6756921410207fd1c68bdf9350 data/cavernous/tags/block/mycelium_sprouts_placeable.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/cavernous/tags/block/shroomwood_logs.json
 d3bc41ec175b87895412b425043e832279e3df59 data/cavernous/tags/block/underground_mycelium_replaceable.json
 de6b2ac748773d268a4260b09473618d90373ce1 data/minecraft/tags/block/all_hanging_signs.json

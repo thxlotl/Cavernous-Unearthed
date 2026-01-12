@@ -44,8 +44,8 @@ public class ToadstoolButtonBlock extends VegetationBlock implements Bonemealabl
 
 
     private static final VoxelShape SHAPE_NO_ROTATE = Shapes.or(
-            Block.column((double)14.0F, (double)10.0F, (double)16.0F),
-            Block.column((double)10.0F, (double)0.0F, (double)10.0F));
+            Block.column((double)12.0F, (double)10.0F, (double)16.0F),
+            Block.column((double)8.0F, (double)0.0F, (double)10.0F));
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -72,8 +72,8 @@ public class ToadstoolButtonBlock extends VegetationBlock implements Bonemealabl
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPES.get(state.getValue(FACING));
-        //return SHAPE_NO_ROTATE;
+        ///return SHAPES.get(state.getValue(FACING));
+        return SHAPE_NO_ROTATE;
     }
 
     @Override

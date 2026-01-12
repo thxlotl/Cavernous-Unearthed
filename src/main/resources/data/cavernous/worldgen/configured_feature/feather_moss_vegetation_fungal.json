@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "schedule_tick": true,
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "cavernous:feather_moss_carpet"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "cavernous:feather_moss_tufts",
+            "Properties": {
+              "waterlogged": "false"
+            }
+          },
+          "weight": 12
+        },
+        {
+          "data": {
+            "Name": "cavernous:toadstool_patch"
+          },
+          "weight": 3
+        }
+      ]
+    }
+  }
+}

@@ -27,7 +27,7 @@
           "data": {
             "Name": "cavernous:toadstool_button",
             "Properties": {
-              "facing": "south"
+              "facing": "west"
             }
           },
           "weight": 1
@@ -36,7 +36,7 @@
           "data": {
             "Name": "cavernous:toadstool_button",
             "Properties": {
-              "facing": "west"
+              "facing": "south"
             }
           },
           "weight": 1

@@ -33,6 +33,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
 import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.util.worldgen.CFeatureUtil;
+import net.thxlotl.cavernous.util.worldgen.WeightedBlockState;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OreConfiguredFeatureType;
 import net.thxlotl.cavernous.worldgen.features.ModConfiguredFeatures;
@@ -43,13 +45,12 @@ import net.thxlotl.cavernous.worldgen.custom.tree.MushroomCapFoliagePlacer;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
 import net.thxlotl.cavernous.worldgen.custom.wallshroom.WallShroomConfiguration;
 
-import java.util.EnumMap;
 import java.util.List;
 
 public class FungalCavesConfiguredFeatures {
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_VEGETATION_FUNGAL = ModConfiguredFeatures.registerKey("feather_moss_vegetation_fungal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_VEGETATION = ModConfiguredFeatures.registerKey("feather_moss_vegetation");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_VEGETATION_BONEMEAL = ModConfiguredFeatures.registerKey("feather_moss_vegetation_bonemeal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_PATCH_BONEMEAL = ModConfiguredFeatures.registerKey("feather_moss_patch_bonemeal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATHER_MOSS_PATCH = ModConfiguredFeatures.registerKey("feather_moss_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> TOADSTOOL = ModConfiguredFeatures.registerKey("toadstool");
@@ -68,6 +69,9 @@ public class FungalCavesConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GROUND_FUNGATITE = ModConfiguredFeatures.registerKey("ore_ground_fungatite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SHELFSHROOM = ModConfiguredFeatures.registerKey("shelfshroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PUFFSHROOM = ModConfiguredFeatures.registerKey("puffshroom");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MYCELIUM_SPROUT_PATCH = ModConfiguredFeatures.registerKey("mycelium_sprout_patch");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LAMPSHROOM_PATCH_CLUSTER = ModConfiguredFeatures.registerKey("lampshroom_patch_cluster");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LAMPSHROOM_CLUSTER = ModConfiguredFeatures.registerKey("lampshroom_cluster");
 
     //region ORES
     public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COAL = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.COAL);
@@ -93,55 +97,39 @@ public class FungalCavesConfiguredFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
         // Feather Moss
-        SimpleBlockConfiguration featherMossVegetationBonemealConfig = new SimpleBlockConfiguration(
-                new WeightedStateProvider(WeightedList.<BlockState>builder()
-                        .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 1)
-                        .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 7)),
-                true
-        );
-        FeatureUtils.register(context, FEATHER_MOSS_VEGETATION_BONEMEAL, Feature.SIMPLE_BLOCK, featherMossVegetationBonemealConfig);
+        FeatureUtils.register(context, FEATHER_MOSS_VEGETATION, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+                new WeightedBlockState(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 1),
+                new WeightedBlockState(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 7)
+        ));
 
-        SimpleBlockConfiguration featherMossVegetationConfig = new SimpleBlockConfiguration(
-                new WeightedStateProvider(WeightedList.<BlockState>builder()
-                        .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 2)
-                        .add(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 12)
-                        .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 2)
-                        .add(ModBlocks.INKY_CAP_PATCH.get().defaultBlockState(), 2)),
-                true
-        );
-        FeatureUtils.register(context, FEATHER_MOSS_VEGETATION, Feature.SIMPLE_BLOCK, featherMossVegetationConfig);
+        FeatureUtils.register(context, FEATHER_MOSS_VEGETATION_FUNGAL, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+                new WeightedBlockState(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 2),
+                new WeightedBlockState(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), 12),
+                new WeightedBlockState(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 3)
+        ));
 
-        VegetationPatchConfiguration featherMossBonemealPatchConfig = new VegetationPatchConfiguration(
+        FeatureUtils.register(context, FEATHER_MOSS_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(
+                holdergetter,
                 BlockTags.MOSS_REPLACEABLE,
-                BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_BLOCK.get()),
-                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(FEATHER_MOSS_VEGETATION_BONEMEAL),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR)
-                        )),
-                CaveSurface.FLOOR,
-                ConstantInt.of(1),
-                0f,
-                6,
+                ModBlocks.FEATHER_MOSS_BLOCK.get(),
+                FEATHER_MOSS_VEGETATION,
                 0.5f,
-                UniformInt.of(1,2),
-                0.75f);
-        FeatureUtils.register(context, FEATHER_MOSS_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, featherMossBonemealPatchConfig);
+                1, 2
+        ));
 
-        VegetationPatchConfiguration featherMossPatchConfig = new VegetationPatchConfiguration(
+        FeatureUtils.register(context, FEATHER_MOSS_PATCH, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(
+                holdergetter,
                 BlockTags.MOSS_REPLACEABLE,
-                BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_BLOCK.get()),
-                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(FEATHER_MOSS_VEGETATION),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.FEATHER_MOSS_TUFTS.get().defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR)
-                        )),
-                CaveSurface.FLOOR,
-                ConstantInt.of(1),
-                0f,
-                6,
-                0.5f,
-                UniformInt.of(2,3),
-                0.75f);
-        FeatureUtils.register(context, FEATHER_MOSS_PATCH, Feature.VEGETATION_PATCH, featherMossPatchConfig);
+                ModBlocks.FEATHER_MOSS_BLOCK.get(),
+                FEATHER_MOSS_VEGETATION_FUNGAL,
+                0.65f,
+                2, 3
+        ));
+
+
+        FeatureUtils.register(context, LAMPSHROOM_PATCH_CLUSTER, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchOfBlock(
+                95, 4, ModBlocks.LAMPSHROOM_PATCH.get()
+        ));
 
         // Toadstool
         TreeConfiguration toadstoolConfig = new TreeConfiguration.TreeConfigurationBuilder(
@@ -149,7 +137,7 @@ public class FungalCavesConfiguredFeatures {
                 new ToadstoolTrunkPlacer(1, 1, 1, BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(1, 2)),
                 BlockStateProvider.simple(ModBlocks.TOADSTOOL_CAP_BLOCK.get().defaultBlockState()),
                 new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1)),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(3, 0, 3)
         )
                 .decorators(List.of(
                         new AttachedToLeavesDecorator(1, 0, 0, BlockStateProvider.simple(ModBlocks.FEATHER_MOSS_CARPET.get()), 1, List.of(Direction.UP)),
@@ -157,68 +145,55 @@ public class FungalCavesConfiguredFeatures {
                                 .add(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), 1)
                                 .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 11)
                                 .add(ModBlocks.FEATHER_MOSS_CARPET.get().defaultBlockState(), 16))
-                                , List.of(Direction.UP)),
-                        new LeaveCustomVineDecorator(0.2f, ModBlocks.HANGING_FEATHER_MOSS.get())
+                                , List.of(Direction.UP))
                 ))
                 .ignoreVines()
                 .build();
         FeatureUtils.register(context, TOADSTOOL, Feature.TREE, toadstoolConfig);
 
-        SimpleBlockConfiguration shroomwoodLogVegetationConfig = new SimpleBlockConfiguration(
-                new WeightedStateProvider(WeightedList.<BlockState>builder()
-                        .add(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.NORTH), 1)
-                        .add(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.EAST), 1)
-                        .add(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.SOUTH), 1)
-                        .add(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.WEST), 1)
-                        .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 12)),
-                true
-        );
-        FeatureUtils.register(context, SHROOMWOOD_LOG_VEGETATION, Feature.SIMPLE_BLOCK, shroomwoodLogVegetationConfig);
+        FeatureUtils.register(context, SHROOMWOOD_LOG_VEGETATION, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+                new WeightedBlockState(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.NORTH), 1),
+                new WeightedBlockState(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.EAST), 1),
+                new WeightedBlockState(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.WEST), 1),
+                new WeightedBlockState(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState().setValue(ToadstoolButtonBlock.FACING, Direction.SOUTH), 1),
+                new WeightedBlockState(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 12)
 
-        // Mycelium
-        SimpleBlockConfiguration undergroundMyceliumVegetationBonemealConfig = new SimpleBlockConfiguration(
-                new WeightedStateProvider(WeightedList.<BlockState>builder()
-                        .add(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), 4)
-                        .add(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 1)),
-                true
-        );
-        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_VEGETATION_BONEMEAL, Feature.SIMPLE_BLOCK, undergroundMyceliumVegetationBonemealConfig);
+        ));
 
-        SimpleBlockConfiguration undergroundMyceliumVegetationConfig = new SimpleBlockConfiguration(
-                new WeightedStateProvider(WeightedList.<BlockState>builder()
-                        .add(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), 8)
-                        .add(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 8)
-                        .add(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 4)
-                ),
-                true
-        );
-        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_VEGETATION, Feature.SIMPLE_BLOCK, undergroundMyceliumVegetationConfig);
+        //region MYCELIUM
+        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_VEGETATION_BONEMEAL, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+                new WeightedBlockState(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), 4),
+                new WeightedBlockState(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 1)
+        ));
 
-        VegetationPatchConfiguration undergroundMyceliumPatchConfig = new VegetationPatchConfiguration(
+        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_VEGETATION, Feature.SIMPLE_BLOCK, CFeatureUtil.createWeightedState(
+                new WeightedBlockState(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), 12),
+                new WeightedBlockState(ModBlocks.MYCELIUM_FERN.get().defaultBlockState(), 8),
+                new WeightedBlockState(ModBlocks.TOADSTOOL_PATCH.get().defaultBlockState(), 4)
+        ));
+
+        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(
+                holdergetter,
                 ModTags.Blocks.UNDERGROUND_MYCELIUM_REPLACEABLE,
-                BlockStateProvider.simple(ModBlocks.UNDERGROUND_MYCELIUM.get()),
-                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(UNDERGROUND_MYCELIUM_VEGETATION_BONEMEAL),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR)
-                        )),
-                CaveSurface.FLOOR,
-                ConstantInt.of(1),
-                0f,
-                6,
+                ModBlocks.UNDERGROUND_MYCELIUM.get(),
+                UNDERGROUND_MYCELIUM_VEGETATION_BONEMEAL,
                 0.3f,
-                UniformInt.of(1,2),
-                0.5f);
-        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_PATCH_BONEMEAL, Feature.VEGETATION_PATCH, undergroundMyceliumPatchConfig);
+                1, 2
+        ));
 
-        RandomPatchConfiguration myceliumVegetationPatchConfig = new RandomPatchConfiguration(
-                500,
-                8,
-                6,
-                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(UNDERGROUND_MYCELIUM_VEGETATION),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(ModBlocks.MYCELIUM_SPROUTS.get().defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR)
-                        )));
-        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_PATCH, Feature.RANDOM_PATCH, myceliumVegetationPatchConfig);
+        FeatureUtils.register(context, UNDERGROUND_MYCELIUM_PATCH, Feature.VEGETATION_PATCH, CFeatureUtil.createSurfaceVegetationPatch(
+                holdergetter,
+                ModTags.Blocks.UNDERGROUND_MYCELIUM_REPLACEABLE,
+                ModBlocks.UNDERGROUND_MYCELIUM.get(),
+                UNDERGROUND_MYCELIUM_VEGETATION,
+                0.7f,
+                2, 5
+        ));
+
+        FeatureUtils.register(context, MYCELIUM_SPROUT_PATCH, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchOfBlock(
+                450, 8, ModBlocks.MYCELIUM_SPROUTS.get()
+        ));
+        //endregion
 
 
         BlockColumnConfiguration hangingShroomSporePodConfig = new BlockColumnConfiguration(
@@ -251,13 +226,14 @@ public class FungalCavesConfiguredFeatures {
                 true
         );
         FeatureUtils.register(context, LAMPSHROOM, Feature.BLOCK_COLUMN, lampshroomConfig);
+        FeatureUtils.register(context, LAMPSHROOM_CLUSTER, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchNoGrassCheck(holdergetter, 40, 3, LAMPSHROOM));
 
         TreeConfiguration lampshroomTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.SHROOMWOOD_LOG.get().defaultBlockState()),
                 new ToadstoolTrunkPlacer(1, 1, 1, BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(2, 3), BiasedToBottomInt.of(1, 2)),
                 BlockStateProvider.simple(ModBlocks.LAMPSHROOM_CAP_BLOCK.get().defaultBlockState()),
                 new MushroomCapFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0), UniformInt.of(3, 6)),
-                new TwoLayersFeatureSize(0, 0, 0)
+                new TwoLayersFeatureSize(3, 0, 3)
         )
                 .ignoreVines()
                 .decorators(List.of(
@@ -277,23 +253,11 @@ public class FungalCavesConfiguredFeatures {
         FeatureUtils.register(context, GHOST_FUNGUS, ModFeature.SEGMENTED_WALL_BLOCK_FEATURE.get(), ghostFungusConfig);
 
 
-        SimpleBlockConfiguration bleedingToothConfig = new SimpleBlockConfiguration(
-                BlockStateProvider.simple(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState()),
-                true
-        );
-        FeatureUtils.register(context, BLEEDING_TOOTH_FUNGUS, Feature.SIMPLE_BLOCK, bleedingToothConfig);
+        FeatureUtils.register(context, BLEEDING_TOOTH_FUNGUS, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get()));
 
-        SimpleBlockConfiguration puffshroomConfig = new SimpleBlockConfiguration(
-                BlockStateProvider.simple(ModBlocks.PUFFSHROOM.get().defaultBlockState()),
-                true
-        );
-        FeatureUtils.register(context, PUFFSHROOM, Feature.SIMPLE_BLOCK, puffshroomConfig);
+        FeatureUtils.register(context, PUFFSHROOM, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(ModBlocks.PUFFSHROOM.get()));
 
-        SimpleBlockConfiguration corycepsConfig = new SimpleBlockConfiguration(
-                BlockStateProvider.simple(ModBlocks.CORDYCEPS_PATCH.get().defaultBlockState()),
-                true
-        );
-        FeatureUtils.register(context, CORDYCEPS, Feature.SIMPLE_BLOCK, corycepsConfig);
+        FeatureUtils.register(context, CORDYCEPS, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(ModBlocks.CORDYCEPS_PATCH.get()));
 
         OreConfiguration groundFungatiteConfig = new OreConfiguration(
                 List.of(OreConfiguration.target(new TagMatchTest(ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE), ModBlocks.GROUND_FUNGATITE.get().defaultBlockState())),
@@ -301,7 +265,6 @@ public class FungalCavesConfiguredFeatures {
                 0.0f
         );
         FeatureUtils.register(context, ORE_GROUND_FUNGATITE, Feature.ORE, groundFungatiteConfig);
-
 
         WallShroomConfiguration shelfshroomConfig = new WallShroomConfiguration(
                 BlockStateProvider.simple(ModBlocks.SHELFSHROOM_CAP_BLOCK.get().defaultBlockState()),

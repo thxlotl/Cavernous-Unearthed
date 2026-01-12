@@ -27,7 +27,7 @@ public class LampshroomBlock extends GrowingPlantHeadBlock {
 
 
     private static final VoxelShape BASE_SHAPE = Shapes.or(
-            Block.box((double)4.0F, (double)4.5F, (double)4.0F, (double)12.0F, (double)15.5F, (double)12.0F),
+            Block.box((double)4.0F, (double)4.5F, (double)4.0F, (double)12.0F, (double)12.5F, (double)12.0F),
             Block.column((double)5.0F, (double)0.0F, (double)7.0F));
 
     public LampshroomBlock(Properties properties) {

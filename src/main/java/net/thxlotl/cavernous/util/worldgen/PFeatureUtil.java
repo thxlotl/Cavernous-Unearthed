@@ -54,7 +54,10 @@ public class PFeatureUtil {
                 HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                 EnvironmentScanPlacement.scanningFor(
                         Direction.DOWN,
-                        BlockPredicate.wouldSurvive(sapling.defaultBlockState(), Vec3i.ZERO),
+                        BlockPredicate.allOf(
+                                BlockPredicate.wouldSurvive(sapling.defaultBlockState(), Vec3i.ZERO),
+                                BlockPredicate.matchesBlocks(Blocks.AIR)
+                        ),
                         24
                 ),
                 BiomeFilter.biome()

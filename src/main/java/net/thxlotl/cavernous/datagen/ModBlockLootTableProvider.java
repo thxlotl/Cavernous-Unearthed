@@ -153,6 +153,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.LAMPSHROOM.get());
         add(ModBlocks.LAMPSHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.LAMPSHROOM));
         dropSelf(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
+        dropSelf(ModBlocks.LAMPSHROOM_PATCH.get());
         add(ModBlocks.POTTED_LAMPSHROOM.get(),
                 block -> createPotFlowerItemTable(ModBlocks.LAMPSHROOM.asItem()));
 

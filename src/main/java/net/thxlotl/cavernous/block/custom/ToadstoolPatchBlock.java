@@ -27,7 +27,7 @@ public class ToadstoolPatchBlock extends VegetationBlock implements Bonemealable
         super(p_401368_);
     }
 
-    private static final VoxelShape SHAPE = Block.column((double)12.0F, (double)0.0F, (double)4.0F);
+    private static final VoxelShape SHAPE = Block.column((double)12.0F, (double)0.0F, (double)10.0F);
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }

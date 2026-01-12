@@ -12,6 +12,7 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.thxlotl.cavernous.block.ModBlocks;
+import net.thxlotl.cavernous.util.worldgen.PFeatureUtil;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OrePlacedFeatureType;
 import net.thxlotl.cavernous.worldgen.features.ModPlacedFeatures;
@@ -27,7 +28,7 @@ public class FungalCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> UNDERGROUND_MYCELIUM_PATCH = registerKey("mycelium_vegetation_patch");
     public static final ResourceKey<PlacedFeature> TOADSTOOL = registerKey("toadstool");
     public static final ResourceKey<PlacedFeature> HANGING_SHROOM = registerKey("hanging_shroom");
-    public static final ResourceKey<PlacedFeature> LAMPSHROOM = registerKey("lampshroom");
+    public static final ResourceKey<PlacedFeature> LAMPSHROOM_CLUSTER = registerKey("lampshroom");
     public static final ResourceKey<PlacedFeature> LAMPSHROOM_TREE = registerKey("lampshroom_tree");
     public static final ResourceKey<PlacedFeature> GHOST_FUNGUS = registerKey("ghost_fungus");
     public static final ResourceKey<PlacedFeature> BLEEDING_TOOTH_FUNGUS = registerKey("bleeding_tooth_fungus");
@@ -35,6 +36,8 @@ public class FungalCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_GROUND_FUNGATITE = registerKey("ore_ground_fungatite");
     public static final ResourceKey<PlacedFeature> SHELFSHROOM = registerKey("shelfshroom");
     public static final ResourceKey<PlacedFeature> PUFFSHROOM = registerKey("puffshroom");
+    public static final ResourceKey<PlacedFeature> MYCELIUM_SPROUT_PATCH = registerKey("mycelium_sprout_patch");
+    public static final ResourceKey<PlacedFeature> LAMPSHROOM_PATCH_CLUSTER = registerKey("lampshroom_patch_cluster");
 
 
     public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.COAL_LOWER);
@@ -59,50 +62,26 @@ public class FungalCavesPlacedFeatures {
     // Register Features
     public static void bootstrap(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures) {
 
+        // Ground Patches
+        register(context, FEATHER_MOSS_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.FEATHER_MOSS_PATCH), PFeatureUtil.cavePlacementModifers(65));
+        register(context, UNDERGROUND_MYCELIUM_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.UNDERGROUND_MYCELIUM_PATCH), PFeatureUtil.cavePlacementModifers(110));
+        register(context, MYCELIUM_SPROUT_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.MYCELIUM_SPROUT_PATCH), PFeatureUtil.cavePlacementModifers(70));
+        register(context, LAMPSHROOM_PATCH_CLUSTER, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM_PATCH_CLUSTER), PFeatureUtil.cavePlacementModifers(75));
 
-        register(context, FEATHER_MOSS_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.FEATHER_MOSS_PATCH),
-                List.of(
-                        CountPlacement.of(130),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
+        // Trees
+        register(context, TOADSTOOL, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.TOADSTOOL), PFeatureUtil.caveTreePlacementModifiers(30, ModBlocks.TOADSTOOL_BUTTON.get()));
+        register(context, LAMPSHROOM_TREE, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM_TREE), PFeatureUtil.caveTreePlacementModifiers(12, ModBlocks.TOADSTOOL_BUTTON.get()));
 
-                        ),
-                        BiomeFilter.biome()
-                ));
-        register(context, UNDERGROUND_MYCELIUM_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.UNDERGROUND_MYCELIUM_PATCH),
-                List.of(
-                        CountPlacement.of(60),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-        register(context, TOADSTOOL, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.TOADSTOOL),
-                List.of(
-                        CountPlacement.of(40),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR)),
-                                24
-                        ),
-                        //SurfaceWaterDepthFilter.forMaxDepth(3),
-                        BiomeFilter.biome()
-                ));
+
+
+        register(context, LAMPSHROOM_CLUSTER, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM_CLUSTER), PFeatureUtil.cavePlacementModifers(20));
+        register(context, BLEEDING_TOOTH_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.BLEEDING_TOOTH_FUNGUS), PFeatureUtil.caveTreePlacementModifiers(0, ModBlocks.BLEEDING_TOOTH_MUSHROOM.get()));
+        register(context, PUFFSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.PUFFSHROOM), PFeatureUtil.caveTreePlacementModifiers(0, ModBlocks.PUFFSHROOM.get()));
+        register(context, CORDYCEPS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.CORDYCEPS), PFeatureUtil.caveTreePlacementModifiers(0, ModBlocks.CORDYCEPS_PATCH.get()));
+        register(context, ORE_GROUND_FUNGATITE, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.ORE_GROUND_FUNGATITE), PFeatureUtil.cavePlacementModifersNoScan(100));
         register(context, HANGING_SHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.HANGING_SHROOM),
                 List.of(
-                        CountPlacement.of(60),
+                        CountPlacement.of(0),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -118,44 +97,14 @@ public class FungalCavesPlacedFeatures {
                         BiomeFilter.biome()
                 ));
 
-        register(context, LAMPSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM),
-                List.of(
-                        CountPlacement.of(110),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.LAMPSHROOM.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                ),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-        register(context, LAMPSHROOM_TREE, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM_TREE),
-                List.of(
-                        CountPlacement.of(10),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.TOADSTOOL_BUTTON.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR)),
-                                24
-                        ),
-                        //SurfaceWaterDepthFilter.forMaxDepth(3),
-                        BiomeFilter.biome()
-                ));
+
 
         register(context, GHOST_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.GHOST_FUNGUS),
                 List.of(
-                        CountPlacement.of(ConstantInt.of(40)),
+                        CountPlacement.of(ConstantInt.of(60)),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
+                                Direction.UP,
                                 BlockPredicate.allOf(
                                         BlockPredicate.solid(),
                                         BlockPredicate.anyOf(
@@ -175,68 +124,10 @@ public class FungalCavesPlacedFeatures {
                 ));
 
 
-        register(context, BLEEDING_TOOTH_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.BLEEDING_TOOTH_FUNGUS),
-                List.of(
-                        CountPlacement.of(35),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                ),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-
-        register(context, PUFFSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.PUFFSHROOM),
-                List.of(
-                        CountPlacement.of(25),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(24), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.PUFFSHROOM.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                ),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-
-        register(context, CORDYCEPS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.CORDYCEPS),
-                List.of(
-                        CountPlacement.of(10),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
-                        EnvironmentScanPlacement.scanningFor(
-                                Direction.DOWN,
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(ModBlocks.CORDYCEPS_PATCH.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.matchesBlocks(Blocks.AIR)
-                                ),
-                                BlockPredicate.matchesBlocks(Blocks.AIR),
-                                24
-                        ),
-                        BiomeFilter.biome()
-                ));
-
-        register(context, ORE_GROUND_FUNGATITE, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.ORE_GROUND_FUNGATITE),
-                List.of(
-                        CountPlacement.of(60),
-                        InSquarePlacement.spread(),
-                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.belowTop(0)),
-                        BiomeFilter.biome()
-                ));
 
         register(context, SHELFSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.SHELFSHROOM),
                 List.of(
-                        CountPlacement.of(175),
+                        CountPlacement.of(160),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
@@ -274,6 +165,7 @@ public class FungalCavesPlacedFeatures {
                 ));
 
         ModPlacedFeatures.createOreForStoneType(context, configuredFeatures, CustomStoneType.FUNGATITE);
+
 
     }
 }

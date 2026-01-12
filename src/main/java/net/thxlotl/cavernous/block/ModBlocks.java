@@ -29,6 +29,7 @@ import net.thxlotl.cavernous.block.custom.sign.ModWallHangingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModWallSignBlock;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.GhostFungus;
+import net.thxlotl.cavernous.util.ModTags;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
@@ -215,9 +216,9 @@ public class ModBlocks {
                     sound(SoundType.NYLIUM)
                     .mapColor(MapColor.COLOR_PURPLE)
                     .randomTicks());
-    public static final DeferredBlock<WaterLoggablePlantBlock> MYCELIUM_SPROUTS = registerBlock(
+    public static final DeferredBlock<MyceliumSproutsBlock> MYCELIUM_SPROUTS = registerBlock(
             "mycelium_sprouts",
-            properties -> new WaterLoggablePlantBlock(properties),
+            properties -> new MyceliumSproutsBlock(properties, ModTags.Blocks.MYCELIUM_SPROUTS_PLACEABLE),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
     );
     public static final DeferredBlock<MyceliumFernBlock> MYCELIUM_FERN = registerBlock(
@@ -441,6 +442,11 @@ public class ModBlocks {
             "lampshroom_terrarium",
             properties -> new LampshroomTerrarium(properties),
             BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 6)
+    );
+    public static final DeferredBlock<LampshroomPatchBlock> LAMPSHROOM_PATCH = registerBlock(
+            "lampshroom_patch",
+            properties -> new LampshroomPatchBlock(properties),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.NONE).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 2)
     );
     //endregion
 

@@ -7,16 +7,16 @@
       "entries": [
         {
           "data": {
-            "Name": "cavernous:mycelium_sprouts",
-            "Properties": {
-              "waterlogged": "false"
-            }
+            "Name": "cavernous:mycelium_sprouts"
           },
           "weight": 4
         },
         {
           "data": {
-            "Name": "cavernous:mycelium_fern"
+            "Name": "cavernous:mycelium_fern",
+            "Properties": {
+              "half": "lower"
+            }
           },
           "weight": 1
         }

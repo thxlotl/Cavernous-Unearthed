@@ -3,6 +3,7 @@ package net.thxlotl.cavernous.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
@@ -252,6 +253,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
+
+        tag(ModTags.Blocks.MYCELIUM_SPROUTS_PLACEABLE)
+                .addTag(BlockTags.MUSHROOM_GROW_BLOCK);
 
     }
 }

@@ -6,7 +6,7 @@
   ],
   "downfall": 0.5,
   "effects": {
-    "fog_color": 12377016,
+    "fog_color": 10014123,
     "foliage_color": 7311404,
     "grass_color": 7311404,
     "mood_sound": {
@@ -27,7 +27,7 @@
       }
     ],
     "music_volume": 1.0,
-    "sky_color": 12377016,
+    "sky_color": 10014123,
     "water_color": 4178916,
     "water_fog_color": 335155
   },
@@ -87,8 +87,9 @@
       "minecraft:glow_lichen",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "cavernous:feather_moss_patch",
       "cavernous:mycelium_vegetation_patch",
+      "cavernous:mycelium_sprout_patch",
+      "cavernous:lampshroom_patch_cluster",
       "cavernous:toadstool",
       "cavernous:lampshroom_tree",
       "cavernous:lampshroom",

@@ -50,11 +50,6 @@
           "up"
         ],
         "probability": 0.85
-      },
-      {
-        "type": "cavernous:custom_leave_vine",
-        "probability": 0.2,
-        "vine_block": "cavernous:hanging_feather_moss"
       }
     ],
     "dirt_provider": {
@@ -89,9 +84,9 @@
     "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
-      "limit": 0,
+      "limit": 3,
       "lower_size": 0,
-      "upper_size": 0
+      "upper_size": 3
     },
     "trunk_placer": {
       "type": "cavernous:toadstool_trunk_placer",

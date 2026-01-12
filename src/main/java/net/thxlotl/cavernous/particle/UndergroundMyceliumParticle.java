@@ -21,7 +21,7 @@ public class UndergroundMyceliumParticle extends SuspendedTownParticle {
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
             SuspendedTownParticle particle = new SuspendedTownParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprite.get(random));
 
-            particle.setColor(123f/255f, 64f/255f, 79f/255f);
+            particle.setColor(116/255f, 67/255f, 61/255f);
 
             return particle;
         }

@@ -1,4 +1,4 @@
-// 1.21.10	2025-12-26T16:21:29.1848218	Loot Tables
+// 1.21.10	2026-01-10T14:41:56.4099285	Loot Tables
 c51630f1719f6478d4d8656f74a6cdeae6bb5062 data/cavernous/loot_table/blocks/black_trumpet_patch.json
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 c11c95e59dca2392195b7ae39015636ed6d60e3f data/cavernous/loot_table/blocks/chiseled_fungatite.json
@@ -33,6 +33,7 @@ be52a7dc4a6c6d4398fb2d13982fd0aec84cf27e data/cavernous/loot_table/blocks/hangin
 205457191ce0cfd9f743f9142e1369753968bdce data/cavernous/loot_table/blocks/lampshroom.json
 4f3c0ad3d59ca9614dc94a72ce94d5a000bed8ef data/cavernous/loot_table/blocks/lampshroom_button.json
 16582393f4929f6683195837fc9b84649db06900 data/cavernous/loot_table/blocks/lampshroom_cap_block.json
+11c714139f348fde3ab379c0a89485d81b95bf41 data/cavernous/loot_table/blocks/lampshroom_patch.json
 1b2b6db6511b271fd3812611939a561f88dc602c data/cavernous/loot_table/blocks/lampshroom_stem.json
 711a8c5d6afc0511042488bf272d2dc6f23a0acb data/cavernous/loot_table/blocks/lampshroom_terrarium.json
 4aa969b286cf96ef6650ba2720453f28e7daf76b data/cavernous/loot_table/blocks/mushroom_gill_block.json

@@ -9,7 +9,7 @@
           "data": {
             "Name": "cavernous:feather_moss_carpet"
           },
-          "weight": 2
+          "weight": 1
         },
         {
           "data": {
@@ -18,22 +18,7 @@
               "waterlogged": "false"
             }
           },
-          "weight": 12
-        },
-        {
-          "data": {
-            "Name": "cavernous:toadstool_patch"
-          },
-          "weight": 2
-        },
-        {
-          "data": {
-            "Name": "cavernous:inky_cap_patch",
-            "Properties": {
-              "waterlogged": "false"
-            }
-          },
-          "weight": 2
+          "weight": 7
         }
       ]
     }

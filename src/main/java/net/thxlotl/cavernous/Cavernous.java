@@ -193,6 +193,8 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRINGSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.INKY_CAP_PATCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.PUFFSHROOM.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_PATCH.get(), ChunkSectionLayer.CUTOUT_MIPPED);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT_MIPPED);
 
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
             EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);

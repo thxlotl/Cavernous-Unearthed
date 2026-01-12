@@ -6,6 +6,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.*;
@@ -15,10 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -30,6 +28,8 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.thxlotl.cavernous.block.ModBlocks;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class CFeatureUtil {
                 BlockStateProvider.simple(block),
                 PlacementUtils.inlinePlaced(holdergetter.getOrThrow(featureKey),
                         BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SHORT_GRASS.defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.AIR)
+                        BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE))
                         )),
                 CaveSurface.FLOOR,
                 ConstantInt.of(1),
@@ -83,6 +83,54 @@ public class CFeatureUtil {
                 0.75f);
     }
 
+    public static RandomPatchConfiguration createRandomVegetationPatch(HolderGetter<ConfiguredFeature<?, ?>> holderGetter, int tries, int xzSpread, ResourceKey<ConfiguredFeature<?,?>> featureKey) {
+        return new RandomPatchConfiguration(
+                tries,
+                xzSpread,
+                3,
+                PlacementUtils.inlinePlaced(holderGetter.getOrThrow(featureKey),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SHORT_GRASS.defaultBlockState(), Vec3i.ZERO)),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE)))
+                )
+        );
+    }
+    public static RandomPatchConfiguration createRandomVegetationPatchNoGrassCheck(HolderGetter<ConfiguredFeature<?, ?>> holderGetter, int tries, int xzSpread, ResourceKey<ConfiguredFeature<?,?>> featureKey) {
+        return new RandomPatchConfiguration(
+                tries,
+                xzSpread,
+                3,
+                PlacementUtils.inlinePlaced(holderGetter.getOrThrow(featureKey),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.TORCH.defaultBlockState(), Vec3i.ZERO)),
+                        BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE))
+                        ))
+        );
+    }
+    public static RandomPatchConfiguration createRandomVegetationPatchOfBlock(int tries, int xzSpread, Block block) {
+
+        return new RandomPatchConfiguration(
+                tries,
+                xzSpread,
+                3,
+                PlacementUtils.inlinePlaced(
+                        Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, createSimpleBlock(block))),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.allOf(
+                                        BlockPredicate.wouldSurvive(block.defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE))
+                                )
+                        )
+                )
+        );
+    }
+
+    public static SimpleBlockConfiguration createSimpleBlock(Block block) {
+        return new SimpleBlockConfiguration(
+                SimpleStateProvider.simple(block.defaultBlockState()),
+                true
+        );
+    }
+
+    //region Maybe just cavernous lite
     public static TreeConfiguration createForkingMushroom(Block capBlock) {
 
         return new TreeConfiguration.TreeConfigurationBuilder(
@@ -141,4 +189,5 @@ public class CFeatureUtil {
                 .ignoreVines()
                 .build();
     }
+    //endregion
 }
