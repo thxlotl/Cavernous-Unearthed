@@ -3,7 +3,7 @@ package net.thxlotl.cavernous.entity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
@@ -27,27 +27,27 @@ public class ModEntities {
                     () -> EntityType.Builder.<HangingShroomSporePodProjectileEntity>of(HangingShroomSporePodProjectileEntity::new, MobCategory.MISC)
                             .sized(0.5f, 0.5f)
                             //.clientTrackingRange(4)
-                            .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "hanging_shroom_spore_pod"))));
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Cavernous.MODID, "hanging_shroom_spore_pod"))));
 
     public static final Supplier<EntityType<Ant>> ANT =
             ENTITY_TYPES.register("ant",
                     () -> EntityType.Builder.<Ant>of(Ant::new, MobCategory.CREATURE)
                             .sized(0.6f, 0.5f)
                             //.clientTrackingRange(4)
-                            .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "ant"))));
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Cavernous.MODID, "ant"))));
 
     public static final Supplier<EntityType<InfectedAnt>> INFECTED_ANT =
             ENTITY_TYPES.register("infected_ant",
                     () -> EntityType.Builder.<InfectedAnt>of(InfectedAnt::new, MobCategory.MONSTER)
                             .sized(0.6f, 0.5f)
                             //.clientTrackingRange(4)
-                            .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "infected_ant"))));
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Cavernous.MODID, "infected_ant"))));
 
     public static final Supplier<EntityType<FungalZombie>> FUNGAL_ZOMBIE =
             ENTITY_TYPES.register("fungal_zombie",
                     () -> EntityType.Builder.<FungalZombie>of(FungalZombie::new, MobCategory.MONSTER)
                             .sized(0.6F, 1.95F)
-                            .build(ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "fungal_zombie"))));
+                            .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Cavernous.MODID, "fungal_zombie"))));
 
 
 

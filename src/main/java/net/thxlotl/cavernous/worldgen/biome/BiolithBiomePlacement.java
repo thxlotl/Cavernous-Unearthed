@@ -2,7 +2,7 @@ package net.thxlotl.cavernous.worldgen.biome;
 
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Noises;
@@ -17,7 +17,7 @@ public class BiolithBiomePlacement {
 
     public static void init()
     {
-        ResourceLocation overworldRules = ResourceLocation.fromNamespaceAndPath("minecraft", "rules/overworld");
+        Identifier overworldRules = Identifier.fromNamespaceAndPath("minecraft", "rules/overworld");
 
         BiomePlacement.addOverworld(ModBiomes.FUNGAL_CAVES, ClimateParameters.fungalParameters);
         SurfaceGeneration.addOverworldSurfaceRules(overworldRules, BiomeSurfaceRules.fungalRules());

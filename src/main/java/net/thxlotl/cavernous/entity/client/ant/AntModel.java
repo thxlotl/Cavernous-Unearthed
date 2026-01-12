@@ -6,7 +6,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.thxlotl.cavernous.Cavernous;
 
@@ -15,7 +15,7 @@ public class AntModel extends EntityModel<AntRenderState> {
     private final KeyframeAnimation walkingAnimation;
     private final KeyframeAnimation attackAnimation;
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "ant"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Cavernous.MODID, "ant"), "main");
     private final ModelPart thorax;
     private final ModelPart rightlegs;
     private final ModelPart r1;

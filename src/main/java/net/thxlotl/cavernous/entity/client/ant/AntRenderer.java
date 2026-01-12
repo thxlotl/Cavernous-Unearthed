@@ -6,7 +6,8 @@ import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.state.CameraRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.Identifier;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.entity.custom.Ant;
 
@@ -32,8 +33,8 @@ public class AntRenderer extends MobRenderer<Ant, AntRenderState, AntModel> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(AntRenderState antRenderState) {
-        return ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "textures/entity/ant.png");
+    public Identifier getTextureLocation(AntRenderState antRenderState) {
+        return Identifier.fromNamespaceAndPath(Cavernous.MODID, "textures/entity/ant.png");
     }
 
     @Override

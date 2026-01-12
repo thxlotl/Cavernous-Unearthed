@@ -1,7 +1,7 @@
 package net.thxlotl.cavernous.util;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
@@ -23,7 +23,7 @@ public class ModTags {
 
 
         private static TagKey<Block> createTag(String name) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, name));
+            return BlockTags.create(Identifier.fromNamespaceAndPath(Cavernous.MODID, name));
         }
     }
     public static class Items {
@@ -34,7 +34,7 @@ public class ModTags {
 
 
         private static TagKey<Item> createTag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, name));
+            return ItemTags.create(Identifier.fromNamespaceAndPath(Cavernous.MODID, name));
         }
     }
     public static class EntityTypes {
@@ -42,7 +42,7 @@ public class ModTags {
         public static final TagKey<EntityType<?>> CAN_WALK_ON_SMOOTH_MAGMA = createTag("can_walk_on_smooth_magma");
 
         private static TagKey<EntityType<?>> createTag(String name) {
-            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, name));
+            return TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(Cavernous.MODID, name));
         }
     }
 
