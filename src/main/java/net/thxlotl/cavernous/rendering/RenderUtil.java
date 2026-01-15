@@ -36,9 +36,30 @@ public class RenderUtil {
         return Mth.lerp(partialTicks, darkenWorldAmountO, darkenWorldAmount);
     }
 
-    public static Vector3f getBaseColor(ClientLevel level, Camera camera, BiomeManager biomeManager, int renderDistance, float darkenWorldAmount, float sampledOverride, float sampledBoost) {
+    public static Vector3f getBaseColor(ClientLevel level, Camera camera, int renderDistance, float darkenWorldAmount) {
 
         Vec3 vec3 = camera.getPosition();
+        BiomeManager biomeManager = level.getBiomeManager();
+
+        float sampledBoost = (float) CubicSampler.gaussianSampleVec3(
+                vec3,
+                (x, y, z) -> {
+                    Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
+                    ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                    float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_BOOST, key) : 1.0f;
+                    return new Vec3(value, value, value); // replicate float into RGB
+                }
+        ).x();
+        float sampledOverride = (float) CubicSampler.gaussianSampleVec3(
+                vec3,
+                (x, y, z) -> {
+                    Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
+                    ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                    float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
+                    return new Vec3(value, value, value); // replicate float into RGB
+                }
+        ).x();
+
 
         float f = Mth.clamp(Mth.cos(level.getTimeOfDay(darkenWorldAmount) * ((float)Math.PI * 2F)) * 2.0F + 0.5F, 0.0F, 1.0F);
 

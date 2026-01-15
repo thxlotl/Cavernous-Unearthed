@@ -12,6 +12,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Input;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
@@ -52,45 +53,23 @@ public class ModEvents {
 
             Camera camera = event.getCamera();
             ///Vec3 vec3 = camera.getPosition().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
-            Vec3 vec3 = camera.getPosition();
-            BiomeManager biomeManager = level.getBiomeManager();
 
-            float sampledBoost = (float) CubicSampler.gaussianSampleVec3(
-                    vec3,
-                    (x, y, z) -> {
-                        Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
-                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                        float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_BOOST, key) : 1.0f;
-                        return new Vec3(value, value, value); // replicate float into RGB
-                    }
-            ).x();
-            float sampledOverride = (float) CubicSampler.gaussianSampleVec3(
-                    vec3,
-                    (x, y, z) -> {
-                        Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
-                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                        float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
-                        return new Vec3(value, value, value); // replicate float into RGB
-                    }
-            ).x();
-
-            if (sampledOverride > 0.01 || sampledBoost > 0.01) {
-                Vector3f color =
-                        RenderUtil.getBaseColor(
-                                level,
-                                camera,
-                                biomeManager,
-                                Minecraft.getInstance().options.getEffectiveRenderDistance(),
-                                RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(true)),
-                                sampledOverride,
-                                sampledBoost
-                        );
-
-                event.setRed(color.x);
-                event.setGreen(color.y);
-                event.setBlue(color.z);
-            }
+            setFogColor(
+                    event,
+                    RenderUtil.getBaseColor(
+                        level,
+                        camera,
+                        Minecraft.getInstance().options.getEffectiveRenderDistance(),
+                        RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(true))
+                    )
+            );
         }
+    }
+
+    private static void setFogColor(ViewportEvent.ComputeFogColor event, Vector3f color) {
+        event.setRed(color.x);
+        event.setGreen(color.y);
+        event.setBlue(color.z);
     }
 
     @SubscribeEvent
@@ -101,34 +80,33 @@ public class ModEvents {
         Entity entity = event.getCamera().getEntity();
         FogData fogData = event.getFogData();
 
-//        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
-//
-//            float f = 16 * Minecraft.getInstance().options.getEffectiveRenderDistance();
-//            if (entity.isSpectator()) {
-//                fogData.environmentalStart = -8.0F;
-//                fogData.environmentalEnd = f * 0.5F;
-//            } else {
-//                label14: {
-//                    if (entity instanceof LivingEntity) {
-//                        LivingEntity livingentity = (LivingEntity)entity;
-//                        if (livingentity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-//                            fogData.environmentalStart = 0.0F;
-//                            fogData.environmentalEnd = 5.0F;
-//                            break label14;
-//                        }
-//                    }
-//
-//                    fogData.environmentalStart = 0.25F;
-//                    fogData.environmentalEnd = 1.0F;
-//                }
-//            }
-//
-//            fogData.skyEnd = fogData.environmentalEnd;
-//            fogData.cloudEnd = fogData.environmentalEnd;
-//
-//        }
-//        else
-            if (entity instanceof Player player) {
+        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+
+            float f = 16 * Minecraft.getInstance().options.getEffectiveRenderDistance();
+            if (entity.isSpectator()) {
+                fogData.environmentalStart = -8.0F;
+                fogData.environmentalEnd = f * 0.5F;
+            } else {
+                label14: {
+                    if (entity instanceof LivingEntity) {
+                        LivingEntity livingentity = (LivingEntity)entity;
+                        if (livingentity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+                            fogData.environmentalStart = 0.0F;
+                            fogData.environmentalEnd = 5.0F;
+                            break label14;
+                        }
+                    }
+
+                    fogData.environmentalStart = 0.25F;
+                    fogData.environmentalEnd = 1.0F;
+                }
+            }
+
+            fogData.skyEnd = fogData.environmentalEnd;
+            fogData.cloudEnd = fogData.environmentalEnd;
+
+        }
+        else if (entity instanceof Player player) {
 
             if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE && !player.isSpectator())
             {
@@ -167,12 +145,6 @@ public class ModEvents {
         }
 
     }
-
-//    @SubscribeEvent
-//    public static void registerBlockColor(RegisterColorHandlersEvent.Block event)
-//    {
-//        event.register(GhostFungusBlock::getColor, ModBlocks.GHOST_FUNGUS.get());
-//    }
 
     @SubscribeEvent
     public static void movementInputEvent(MovementInputUpdateEvent event) {
