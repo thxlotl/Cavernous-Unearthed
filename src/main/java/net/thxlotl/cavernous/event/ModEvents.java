@@ -1,5 +1,6 @@
 package net.thxlotl.cavernous.event;
 
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.ClientInput;
@@ -22,6 +23,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.rendering.RenderUtil;
 import net.thxlotl.cavernous.worldgen.biome.BiomeData;
@@ -37,26 +39,57 @@ public class ModEvents {
     public static void rendering(ViewportEvent.ComputeFogColor event)
     {
         Entity entity = event.getCamera().getEntity();
+        ClientLevel level = (ClientLevel) entity.level();
 
-//        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
-//
-//            event.setRed(0.6f);
-//            event.setGreen(0.09411765f);
-//            event.setBlue(0f);
-//        }
-//        else
-            if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
-            ClientLevel level = (ClientLevel) entity.level();
-            Vector3f color =
-                    RenderUtil.getBaseColor(
-                            level,
-                            event.getCamera(),
-                            Minecraft.getInstance().options.getEffectiveRenderDistance(),
-                            RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(true)));
+        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
 
-            event.setRed(color.x);
-            event.setGreen(color.y);
-            event.setBlue(color.z);
+            event.setRed(0.6f);
+            event.setGreen(0.09411765f);
+            event.setBlue(0f);
+        }
+        else
+        if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
+
+            Camera camera = event.getCamera();
+            ///Vec3 vec3 = camera.getPosition().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
+            Vec3 vec3 = camera.getPosition();
+            BiomeManager biomeManager = level.getBiomeManager();
+
+            float sampledBoost = (float) CubicSampler.gaussianSampleVec3(
+                    vec3,
+                    (x, y, z) -> {
+                        Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
+                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                        float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_BOOST, key) : 1.0f;
+                        return new Vec3(value, value, value); // replicate float into RGB
+                    }
+            ).x();
+            float sampledOverride = (float) CubicSampler.gaussianSampleVec3(
+                    vec3,
+                    (x, y, z) -> {
+                        Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
+                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                        float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
+                        return new Vec3(value, value, value); // replicate float into RGB
+                    }
+            ).x();
+
+            if (sampledOverride > 0.01 || sampledBoost > 0.01) {
+                Vector3f color =
+                        RenderUtil.getBaseColor(
+                                level,
+                                camera,
+                                biomeManager,
+                                Minecraft.getInstance().options.getEffectiveRenderDistance(),
+                                RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(true)),
+                                sampledOverride,
+                                sampledBoost
+                        );
+
+                event.setRed(color.x);
+                event.setGreen(color.y);
+                event.setBlue(color.z);
+            }
         }
     }
 

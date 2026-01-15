@@ -36,36 +36,16 @@ public class RenderUtil {
         return Mth.lerp(partialTicks, darkenWorldAmountO, darkenWorldAmount);
     }
 
-    public static Vector3f getBaseColor(ClientLevel level, Camera camera, int renderDistance, float darkenWorldAmount) {
+    public static Vector3f getBaseColor(ClientLevel level, Camera camera, BiomeManager biomeManager, int renderDistance, float darkenWorldAmount, float sampledOverride, float sampledBoost) {
 
-        Vec3 vec3 = camera.getPosition().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
-        BiomeManager biomemanager = level.getBiomeManager();
-
-        float sampledBoost = (float) CubicSampler.gaussianSampleVec3(
-                vec3,
-                (x, y, z) -> {
-                    Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-                    ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                    float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_BOOST, key) : 1.0f;
-                    return new Vec3(value, value, value); // replicate float into RGB
-                }
-        ).x();
-        float sampledOverride = (float) CubicSampler.gaussianSampleVec3(
-                vec3,
-                (x, y, z) -> {
-                    Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-                    ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                    float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
-                    return new Vec3(value, value, value); // replicate float into RGB
-                }
-        ).x();
+        Vec3 vec3 = camera.getPosition();
 
         float f = Mth.clamp(Mth.cos(level.getTimeOfDay(darkenWorldAmount) * ((float)Math.PI * 2F)) * 2.0F + 0.5F, 0.0F, 1.0F);
 
         //System.out.println("F: " + f + "Sampled Boost: " + sampledBoost);
         float multiplier = 1 - sampledOverride;
 
-        Vec3 vec31 = level.effects().getBrightnessDependentFogColor(CubicSampler.gaussianSampleVec3(vec3, (p_423449_, p_423541_, p_423654_) -> Vec3.fromRGB24(((Biome)biomemanager.getNoiseBiomeAtQuart(p_423449_, p_423541_, p_423654_).value()).getFogColor())), f * multiplier + sampledBoost);
+        Vec3 vec31 = level.effects().getBrightnessDependentFogColor(CubicSampler.gaussianSampleVec3(vec3, (p_423449_, p_423541_, p_423654_) -> Vec3.fromRGB24(((Biome)biomeManager.getNoiseBiomeAtQuart(p_423449_, p_423541_, p_423654_).value()).getFogColor())), f * multiplier + sampledBoost);
         float f1 = (float)vec31.x();
         float f2 = (float)vec31.y();
         float f3 = (float)vec31.z();
