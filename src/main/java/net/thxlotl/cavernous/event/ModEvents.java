@@ -8,9 +8,11 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 ///import net.minecraft.util.CubicSampler;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.attribute.GaussianSampler;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Input;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
@@ -22,6 +24,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.rendering.RenderUtil;
 import net.thxlotl.cavernous.worldgen.biome.BiomeData;
@@ -33,68 +36,70 @@ public class ModEvents {
 
     private static final int MUSHY_MIND_QUOTIENT = 20;
 
-//    @SubscribeEvent
-//    public static void rendering(ViewportEvent.ComputeFogColor event)
-//    {
-//        Entity entity = event.getCamera().getEntity();
+    @SubscribeEvent
+    public static void rendering(ViewportEvent.ComputeFogColor event)
+    {
+        Entity entity = event.getCamera().entity();
+
+        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+
+            event.setRed(0.6f);
+            event.setGreen(0.09411765f);
+            event.setBlue(0f);
+        }
+//        else if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
 //
-////        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
-////
-////            event.setRed(0.6f);
-////            event.setGreen(0.09411765f);
-////            event.setBlue(0f);
-////        }
-////        else
-//            if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
 //            ClientLevel level = (ClientLevel) entity.level();
+//            Vec3 position = entity.position();
 //            Vector3f color =
 //                    RenderUtil.getBaseColor(
 //                            level,
 //                            event.getCamera(),
 //                            Minecraft.getInstance().options.getEffectiveRenderDistance(),
-//                            RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(true)));
+//                            RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false)));
 //
 //            event.setRed(color.x);
 //            event.setGreen(color.y);
 //            event.setBlue(color.z);
 //        }
-//    }
+    }
 
-//    @SubscribeEvent
-//    public static void rendering(ViewportEvent.RenderFog event)
-//    {
-//
-//
-//        Entity entity = event.getCamera().getEntity();
-//        FogData fogData = event.getFogData();
-//
-////        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
-////
-////            float f = 16 * Minecraft.getInstance().options.getEffectiveRenderDistance();
-////            if (entity.isSpectator()) {
-////                fogData.environmentalStart = -8.0F;
-////                fogData.environmentalEnd = f * 0.5F;
-////            } else {
-////                label14: {
-////                    if (entity instanceof LivingEntity) {
-////                        LivingEntity livingentity = (LivingEntity)entity;
-////                        if (livingentity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
-////                            fogData.environmentalStart = 0.0F;
-////                            fogData.environmentalEnd = 5.0F;
-////                            break label14;
-////                        }
-////                    }
-////
-////                    fogData.environmentalStart = 0.25F;
-////                    fogData.environmentalEnd = 1.0F;
-////                }
-////            }
-////
-////            fogData.skyEnd = fogData.environmentalEnd;
-////            fogData.cloudEnd = fogData.environmentalEnd;
-////
-////        }
-////        else
+    @SubscribeEvent
+    public static void rendering(ViewportEvent.RenderFog event)
+    {
+
+
+        Entity entity = event.getCamera().entity();
+        FogData fogData = event.getFogData();
+
+        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+
+            float f = 16 * Minecraft.getInstance().options.getEffectiveRenderDistance();
+            if (entity.isSpectator()) {
+                fogData.environmentalStart = -8.0F;
+                fogData.environmentalEnd = f * 0.5F;
+            } else {
+                label14: {
+                    if (entity instanceof LivingEntity) {
+                        LivingEntity livingentity = (LivingEntity)entity;
+                        if (livingentity.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+                            fogData.environmentalStart = 0.0F;
+                            fogData.environmentalEnd = 5.0F;
+                            break label14;
+                        }
+                    }
+
+                    fogData.environmentalStart = 0.25F;
+                    fogData.environmentalEnd = 1.0F;
+                }
+            }
+
+            fogData.skyEnd = fogData.environmentalEnd;
+            fogData.cloudEnd = fogData.environmentalEnd;
+
+        }
+//        else
+
 //            if (entity instanceof Player player) {
 //
 //            if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE && !player.isSpectator())
@@ -103,6 +108,7 @@ public class ModEvents {
 //                BiomeManager biomemanager = level.getBiomeManager();
 //                Vec3 pos = entity.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
 //
+//                GaussianSampler
 //                float sampledNear = (float) CubicSampler.gaussianSampleVec3(
 //                        pos,
 //                        (x, y, z) -> {
@@ -132,8 +138,8 @@ public class ModEvents {
 //
 //            }
 //        }
-//
-//    }
+
+    }
 
 
     @SubscribeEvent
