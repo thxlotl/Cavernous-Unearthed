@@ -1,5 +1,6 @@
 package net.thxlotl.cavernous.event;
 
+import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.ClientInput;
@@ -29,6 +30,7 @@ import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.rendering.RenderUtil;
 import net.thxlotl.cavernous.worldgen.biome.BiomeData;
 ///import net.thxlotl.mixin.ClientInputAccessor;
+import net.thxlotl.mixin.ClientInputAccessor;
 import org.joml.Vector3f;
 
 @EventBusSubscriber(modid = Cavernous.MODID)
@@ -39,13 +41,12 @@ public class ModEvents {
     @SubscribeEvent
     public static void rendering(ViewportEvent.ComputeFogColor event)
     {
-        Entity entity = event.getCamera().entity();
+        Camera cam = event.getCamera();
+        Entity entity = cam.entity();
 
-        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
-
-            event.setRed(0.6f);
-            event.setGreen(0.09411765f);
-            event.setBlue(0f);
+        // Smooth magma fog color
+        if (cam.getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+            setFogColors(event, 0.6f, 0.0941f, 0f);
         }
 //        else if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
 //
@@ -64,15 +65,23 @@ public class ModEvents {
 //        }
     }
 
+    private static void setFogColors(ViewportEvent.ComputeFogColor event, float red, float green, float blue) {
+        event.setRed(red);
+        event.setGreen(green);
+        event.setBlue(blue);
+    }
+
     @SubscribeEvent
     public static void rendering(ViewportEvent.RenderFog event)
     {
+        Camera cam = event.getCamera();
 
+        // Make fog close in soft magma
+        // Maybe change this check to make give it a small range so there is less of a jump when entering magma
+        if (cam.getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
 
-        Entity entity = event.getCamera().entity();
-        FogData fogData = event.getFogData();
-
-        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+            Entity entity = cam.entity();
+            FogData fogData = event.getFogData();
 
             float f = 16 * Minecraft.getInstance().options.getEffectiveRenderDistance();
             if (entity.isSpectator()) {
@@ -98,47 +107,6 @@ public class ModEvents {
             fogData.cloudEnd = fogData.environmentalEnd;
 
         }
-//        else
-
-//            if (entity instanceof Player player) {
-//
-//            if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE && !player.isSpectator())
-//            {
-//                ClientLevel level = (ClientLevel) entity.level();
-//                BiomeManager biomemanager = level.getBiomeManager();
-//                Vec3 pos = entity.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
-//
-//                GaussianSampler
-//                float sampledNear = (float) CubicSampler.gaussianSampleVec3(
-//                        pos,
-//                        (x, y, z) -> {
-//                            Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-//                            ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-//                            float value = key != null ? BiomeData.get(BiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
-//                            return new Vec3(value, value, value); // replicate float into RGB
-//                        }
-//                ).x();
-//                float sampledFar = (float) CubicSampler.gaussianSampleVec3(
-//                        pos,
-//                        (x, y, z) -> {
-//                            Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-//                            ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-//                            float value = key != null ? BiomeData.get(BiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
-//                            return new Vec3(value, value, value); // replicate float into RGB
-//                        }
-//                ).x();
-//                //System.out.println("Fog Near: " + event.getNearPlaneDistance() + ", Far: " + event.getFarPlaneDistance() + ", Near Sample: " + sampledNear + ", Far Sample: " + sampledFar);
-//
-//                if (Minecraft.getInstance().player.hasEffect(MobEffects.BLINDNESS) || Minecraft.getInstance().player.hasEffect(MobEffects.DARKNESS)) {
-//                    //fogData.environmentalStart = 0.0f;
-//                } else {
-//                    fogData.environmentalStart += sampledNear;
-//                    fogData.environmentalEnd *= sampledFar;
-//                }
-//
-//            }
-//        }
-
     }
 
 
@@ -168,8 +136,7 @@ public class ModEvents {
     }
 
     private static void setInputVector(ClientInput input, Vec2 moveVector) {
-        //((ClientInputAccessor) input).setMoveVector(moveVector);
+        ((ClientInputAccessor) input).setMoveVector(moveVector);
     }
-
 
 }
