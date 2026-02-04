@@ -38,6 +38,9 @@ public class FungalCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PUFFSHROOM = registerKey("puffshroom");
     public static final ResourceKey<PlacedFeature> MYCELIUM_SPROUT_PATCH = registerKey("mycelium_sprout_patch");
     public static final ResourceKey<PlacedFeature> LAMPSHROOM_PATCH_CLUSTER = registerKey("lampshroom_patch_cluster");
+    public static final ResourceKey<PlacedFeature> FUNGATITE_BOULDER = registerKey("fungatite_boulder");
+    public static final ResourceKey<PlacedFeature> MYCELIUM_VINES = registerKey("mycelium_vines");
+    public static final ResourceKey<PlacedFeature> BLUE_GHOST_FUNGUS_CLUSTER = registerKey("blue_ghost_fungus_cluster");
 
 
     public static final ResourceKey<PlacedFeature> FUNGATITE_ORE_COAL_LOWER = oreKey(CustomStoneType.FUNGATITE, OrePlacedFeatureType.COAL_LOWER);
@@ -67,28 +70,28 @@ public class FungalCavesPlacedFeatures {
         register(context, UNDERGROUND_MYCELIUM_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.UNDERGROUND_MYCELIUM_PATCH), PFeatureUtil.cavePlacementModifers(110));
         register(context, MYCELIUM_SPROUT_PATCH, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.MYCELIUM_SPROUT_PATCH), PFeatureUtil.cavePlacementModifers(70));
         register(context, LAMPSHROOM_PATCH_CLUSTER, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM_PATCH_CLUSTER), PFeatureUtil.cavePlacementModifers(75));
+        register(context, BLUE_GHOST_FUNGUS_CLUSTER, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.BLUE_GHOST_FUNGUS_CLUSTER), PFeatureUtil.cavePlacementModifers(20));
 
         // Trees
         register(context, TOADSTOOL, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.TOADSTOOL), PFeatureUtil.caveTreePlacementModifiers(30, ModBlocks.TOADSTOOL_BUTTON.get()));
         register(context, LAMPSHROOM_TREE, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM_TREE), PFeatureUtil.caveTreePlacementModifiers(12, ModBlocks.TOADSTOOL_BUTTON.get()));
 
-
-
+        // Various Vegetation
         register(context, LAMPSHROOM_CLUSTER, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.LAMPSHROOM_CLUSTER), PFeatureUtil.cavePlacementModifers(20));
         register(context, BLEEDING_TOOTH_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.BLEEDING_TOOTH_FUNGUS), PFeatureUtil.caveTreePlacementModifiers(0, ModBlocks.BLEEDING_TOOTH_MUSHROOM.get()));
         register(context, PUFFSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.PUFFSHROOM), PFeatureUtil.caveTreePlacementModifiers(0, ModBlocks.PUFFSHROOM.get()));
         register(context, CORDYCEPS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.CORDYCEPS), PFeatureUtil.caveTreePlacementModifiers(0, ModBlocks.CORDYCEPS_PATCH.get()));
-        register(context, ORE_GROUND_FUNGATITE, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.ORE_GROUND_FUNGATITE), PFeatureUtil.cavePlacementModifersNoScan(100));
+        register(context, MYCELIUM_VINES, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.MYCELIUM_VINES), PFeatureUtil.caveHangingPlacementModifiers(30, ModBlocks.MYCELIUM_VINE.get()));
         register(context, HANGING_SHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.HANGING_SHROOM),
                 List.of(
-                        CountPlacement.of(0),
+                        CountPlacement.of(30),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(0), VerticalAnchor.absolute(256)),
                         EnvironmentScanPlacement.scanningFor(
                                 Direction.UP,
                                 BlockPredicate.allOf(List.of(
-                                        BlockPredicate.wouldSurvive(ModBlocks.HANGING_SHROOM_CAP.get().defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), ModBlocks.HANGING_SHROOM_CAP.get())),
+                                        BlockPredicate.wouldSurvive(ModBlocks.FLIPSHROOM.get().defaultBlockState(), Vec3i.ZERO),
+                                        BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), ModBlocks.FLIPSHROOM.get())),
                                         BlockPredicate.not(BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), ModBlocks.SHELFSHROOM_CAP_BLOCK.get()))
                                 )),
                                 BlockPredicate.matchesBlocks(Blocks.AIR),
@@ -96,9 +99,6 @@ public class FungalCavesPlacedFeatures {
                         ),
                         BiomeFilter.biome()
                 ));
-
-
-
         register(context, GHOST_FUNGUS, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.GHOST_FUNGUS),
                 List.of(
                         CountPlacement.of(ConstantInt.of(60)),
@@ -122,9 +122,6 @@ public class FungalCavesPlacedFeatures {
                         InSquarePlacement.spread(),
                         BiomeFilter.biome()
                 ));
-
-
-
         register(context, SHELFSHROOM, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.SHELFSHROOM),
                 List.of(
                         CountPlacement.of(160),
@@ -164,6 +161,9 @@ public class FungalCavesPlacedFeatures {
                         BiomeFilter.biome()
                 ));
 
+        // Terrain modification
+        register(context, ORE_GROUND_FUNGATITE, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.ORE_GROUND_FUNGATITE), PFeatureUtil.cavePlacementModifersNoScan(100));
+        register(context, FUNGATITE_BOULDER, configuredFeatures.getOrThrow(FungalCavesConfiguredFeatures.FUNGATITE_BOULDER), PFeatureUtil.boulderPlacement(40, ModBlocks.FUNGATITE.get()));
         ModPlacedFeatures.createOreForStoneType(context, configuredFeatures, CustomStoneType.FUNGATITE);
 
 

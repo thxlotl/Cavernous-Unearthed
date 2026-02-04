@@ -39,8 +39,8 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.MUSHROOM_GILL_BLOCK.get(),
             ///ModBlocks.HANGING_FEATHER_MOSS.get(),
             ModBlocks.BLEEDING_TOOTH_MUSHROOM.get(),
-            ModBlocks.HANGING_SHROOM_STEM.get(),
-            ModBlocks.HANGING_SHROOM_CAP.get(),
+            ModBlocks.FLIPSHROOM_STEM.get(),
+            ModBlocks.FLIPSHROOM.get(),
             ModBlocks.GHOST_FUNGUS.get(),
             ModBlocks.CORDYCEPS_PATCH.get(),
             ModBlocks.BLACK_TRUMPET_PATCH.get(),
@@ -50,7 +50,17 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.SPRINGSHROOM.get(),
             ModBlocks.PUFFSHROOM.get(),
             ModBlocks.LAMPSHROOM_PATCH.get(),
+            ModBlocks.BLUE_GHOST_FUNGUS.get(),
             ///ModBlocks.FEATHER_MOSS_TUFTS.get(),
+
+            ModBlocks.OBSIDIANSTONE.get(),
+            ModBlocks.OBSIDIANSTONE_STAIRS.get(),
+            ModBlocks.OBSIDIANSTONE_SLAB.get(),
+            ModBlocks.OBSIDIANSTONE_WALL.get(),
+            ModBlocks.POLISHED_OBSIDIANSTONE.get(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );
@@ -69,6 +79,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModBlocks.TOADSTOOL_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.ANCIENT_FERN.get(), ModelTemplates.FLAT_ITEM);
+        modItemModels.generateFlatItemWithBlockTexture(ModBlocks.BLUE_GHOST_FUNGUS.get(), ModelTemplates.FLAT_ITEM);
         ///modItemModels.generateFlatItemWithBlockTexture(ModBlocks.HANGING_FEATHER_MOSS.get(), ModelTemplates.FLAT_ITEM);
         ///modItemModels.generateFlatItemWithBlockTexture(ModBlocks.FEATHER_MOSS_TUFTS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ANT_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
@@ -78,6 +89,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModBlocks.LAMPSHROOM_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.GHOST_FUNGUS.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.BLACK_TRUMPET_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
+        modItemModels.generateFlatItemWithBlockTexture(ModBlocks.MYCELIUM_VINE.get(), ModelTemplates.FLAT_ITEM);
 
         // BLOCKS ------------------------------------------------------------------------------------------------------
 
@@ -133,11 +145,17 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.MYCELIUM_SPROUTS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createDoublePlant(ModBlocks.MYCELIUM_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createGrowingPlant(ModBlocks.MYCELIUM_VINE_PLANT.get(), ModBlocks.MYCELIUM_VINE.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+
+
 
         blockModels.createTrivialCube(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
         blockModels.createTrivialCube(ModBlocks.TOADSTOOL_CAP_BLOCK.get());
 
         blockModels.createTrivialCube(ModBlocks.SHELFSHROOM_CAP_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.FLIPSHROOM_CAP_BLOCK.get());
+
+        ///blockModels.createCrossBlockWithDefaultItem(ModBlocks.BLUE_GHOST_FUNGUS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
 
 
@@ -157,19 +175,20 @@ public class ModModelProvider extends ModelProvider {
 
         //region Obsidianstone
 
-        blockModels.family(ModBlocks.OBSIDIANSTONE.get())
-                .stairs(ModBlocks.OBSIDIANSTONE_STAIRS.get())
-                .slab(ModBlocks.OBSIDIANSTONE_SLAB.get())
-                .wall(ModBlocks.OBSIDIANSTONE_WALL.get());
-        blockModels.family(ModBlocks.POLISHED_OBSIDIANSTONE.get())
-                .stairs(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get())
-                .slab(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get())
-                .wall(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
+        /// what
+
+//        blockModels.family(ModBlocks.OBSIDIANSTONE.get())
+//                .stairs(ModBlocks.OBSIDIANSTONE_STAIRS.get())
+//                .slab(ModBlocks.OBSIDIANSTONE_SLAB.get())
+//                .wall(ModBlocks.OBSIDIANSTONE_WALL.get());
+//        blockModels.family(ModBlocks.POLISHED_OBSIDIANSTONE.get())
+//                .stairs(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get())
+//                .slab(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get())
+//                .wall(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
         blockModels.family(ModBlocks.OBSIDIANSTONE_BRICKS.get())
                 .stairs(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get())
                 .slab(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get())
                 .wall(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
-
 
         //endregion
 

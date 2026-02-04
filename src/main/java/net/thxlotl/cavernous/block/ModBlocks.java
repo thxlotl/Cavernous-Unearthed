@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -226,6 +227,16 @@ public class ModBlocks {
             properties -> new MyceliumFernBlock(properties),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
     );
+    public static final DeferredBlock<MyceliumVineBlock> MYCELIUM_VINE = registerBlock(
+            "mycelium_vine",
+            properties -> new MyceliumVineBlock(properties),
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<MyceliumVinePlantBlock> MYCELIUM_VINE_PLANT = registerBlock( // Body block btw
+            "mycelium_vine_plant",
+            properties -> new MyceliumVinePlantBlock(properties),
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
+    );
     //endregion
 
     //region Toadstool Blocks
@@ -402,27 +413,16 @@ public class ModBlocks {
     );
     //endregion
 
-    //region Hanging Shroom Blocks
-    public static final DeferredBlock<HangingShroomStemBlock> HANGING_SHROOM_STEM = registerBlock(
-            "hanging_shroom_stem",
-            properties -> new HangingShroomStemBlock(properties),
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
-    );
-    public static final DeferredBlock<HangingShroomCapBlock> HANGING_SHROOM_CAP = registerBlock(
-            "hanging_shroom_cap",
-            properties -> new HangingShroomCapBlock(properties),
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).randomTicks().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY).forceSolidOff()
-    );
-    //endregion
-
     //region Lampshroom Blocks
     public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock(
             "lampshroom_cap_block",
             properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(0.5f).
-                    sound(SoundType.WART_BLOCK)
-                    .lightLevel((p) -> 9));
+            BlockBehaviour.Properties.of()
+                    .strength(0.5f)
+                    .sound(SoundType.WART_BLOCK)
+                    .lightLevel((p) -> 9)
+                    .emissiveRendering(ModBlocks::always)
+    );
     public static final DeferredBlock<LampshroomBlock> LAMPSHROOM = registerBlock(
             "lampshroom",
             properties -> new LampshroomBlock(properties),
@@ -465,6 +465,27 @@ public class ModBlocks {
                     sound(SoundType.FUNGUS));
     //endregion
 
+    //region Flipshroom
+    public static final DeferredBlock<Block> FLIPSHROOM_CAP_BLOCK = registerBlock(
+            "flipshroom_cap_block",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of()
+                    .strength(0.5f)
+                    .sound(SoundType.WART_BLOCK)
+                    .lightLevel((p) -> 4)
+    );
+    public static final DeferredBlock<HangingShroomStemBlock> FLIPSHROOM_STEM = registerBlock(
+            "flipshroom_stem",
+            properties -> new HangingShroomStemBlock(properties),
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
+    );
+    public static final DeferredBlock<HangingShroomCapBlock> FLIPSHROOM = registerBlock(
+            "flipshroom",
+            properties -> new HangingShroomCapBlock(properties),
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).randomTicks().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY).forceSolidOff()
+    );
+    //endregion
+
     //region Misc. Mushroom Blocks
     public static final DeferredBlock<BleedingToothMushroomBlock> BLEEDING_TOOTH_MUSHROOM = registerBlock(
             "bleeding_tooth_mushroom",
@@ -475,6 +496,11 @@ public class ModBlocks {
             "ghost_fungus",
             properties -> new GhostFungusBlock(properties),
             BlockBehaviour.Properties.of().replaceable().noCollision().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT).sound(SoundType.FUNGUS)
+    );
+    public static final DeferredBlock<SurfaceCoverPlant> BLUE_GHOST_FUNGUS = registerBlock(
+            "blue_ghost_fungus",
+            properties -> new SurfaceCoverPlant(properties, BlockTags.MUSHROOM_GROW_BLOCK),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.NONE).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 2)
     );
     public static final DeferredBlock<CordycepsPatchBlock> CORDYCEPS_PATCH = registerBlock(
             "cordyceps_patch",

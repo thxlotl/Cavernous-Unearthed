@@ -15,9 +15,17 @@
         "sound": "minecraft:music.overworld.lush_caves"
       }
     },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "cavernous:lampshroom_spore"
+        },
+        "probability": 0.001
+      }
+    ],
     "minecraft:visual/fog_color": "#98cdab",
     "minecraft:visual/fog_end_distance": 85.0,
-    "minecraft:visual/fog_start_distance": 10.0,
+    "minecraft:visual/fog_start_distance": -10.0,
     "minecraft:visual/sky_color": "#98cdab",
     "minecraft:visual/sky_light_factor": 0.0,
     "minecraft:visual/water_fog_color": "#051d33"
@@ -76,6 +84,7 @@
       "cavernous:fungatite_ore_diamond_large",
       "cavernous:fungatite_ore_diamond_medium",
       "cavernous:fungatite_ore_emerald",
+      "cavernous:fungatite_boulder",
       "cavernous:ore_ground_fungatite"
     ],
     [
@@ -89,17 +98,20 @@
       "minecraft:glow_lichen",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
+      "cavernous:feather_moss_patch",
+      "cavernous:lampshroom_patch_cluster",
       "cavernous:mycelium_vegetation_patch",
       "cavernous:mycelium_sprout_patch",
-      "cavernous:lampshroom_patch_cluster",
       "cavernous:toadstool",
       "cavernous:lampshroom_tree",
       "cavernous:lampshroom",
+      "cavernous:blue_ghost_fungus_cluster",
       "cavernous:bleeding_tooth_fungus",
       "cavernous:cordyceps",
       "cavernous:hanging_shroom",
       "cavernous:ghost_fungus",
-      "cavernous:puffshroom"
+      "cavernous:puffshroom",
+      "cavernous:mycelium_vines"
     ],
     [
       "minecraft:freeze_top_layer"

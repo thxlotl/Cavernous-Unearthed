@@ -3,7 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 0
+      "count": 30
     },
     {
       "type": "minecraft:in_square"
@@ -34,7 +34,7 @@
           {
             "type": "minecraft:would_survive",
             "state": {
-              "Name": "cavernous:hanging_shroom_cap",
+              "Name": "cavernous:flipshroom",
               "Properties": {
                 "age": "0"
               }
@@ -44,7 +44,7 @@
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:matching_blocks",
-              "blocks": "cavernous:hanging_shroom_cap",
+              "blocks": "cavernous:flipshroom",
               "offset": [
                 0,
                 1,

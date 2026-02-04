@@ -71,23 +71,26 @@ public class BiomeBuilders {
         addCustomStoneOres(biomeBuilder, CustomStoneType.FUNGATITE);
 
         // Custom features
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FungalCavesPlacedFeatures.FUNGATITE_BOULDER);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FungalCavesPlacedFeatures.ORE_GROUND_FUNGATITE);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, FungalCavesPlacedFeatures.SHELFSHROOM);
 
-        ///biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.FEATHER_MOSS_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.FEATHER_MOSS_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_PATCH_CLUSTER);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.UNDERGROUND_MYCELIUM_PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.MYCELIUM_SPROUT_PATCH);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_PATCH_CLUSTER);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.TOADSTOOL);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_CLUSTER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.BLUE_GHOST_FUNGUS_CLUSTER);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.BLEEDING_TOOTH_FUNGUS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.CORDYCEPS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.HANGING_SHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.GHOST_FUNGUS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.PUFFSHROOM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.MYCELIUM_VINES);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()
@@ -105,9 +108,11 @@ public class BiomeBuilders {
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 335155)
                 .setAttribute(EnvironmentAttributes.SKY_COLOR, 10014123) //12377016 old color
                 .setAttribute(EnvironmentAttributes.FOG_COLOR, 10014123)
-                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 10f)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -10f)
                 .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
                 .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.FUNGAL_SPORE.get(), 0.001f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.LAMPSHROOM_SPORE.get(), 0.001f))
                 .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
                 .build();

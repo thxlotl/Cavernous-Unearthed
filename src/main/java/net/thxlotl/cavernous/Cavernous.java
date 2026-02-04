@@ -1,11 +1,17 @@
 package net.thxlotl.cavernous;
 
+import net.minecraft.client.color.item.GrassColorSource;
+import net.minecraft.client.renderer.FaceInfo;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.world.level.GrassColor;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.RenderTypeGroup;
+import net.neoforged.neoforge.client.RenderTypeHelper;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.effect.ModEffects;
@@ -18,7 +24,6 @@ import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.util.ModWoodTypes;
-import net.thxlotl.cavernous.util.worldgen.ore.CustomStoneOreFamily;
 import net.thxlotl.cavernous.worldgen.biome.BiolithBiomePlacement;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModFoliagePlacerTypes;
@@ -144,7 +149,7 @@ public class Cavernous {
             event.accept(ModBlocks.LAMPSHROOM_CAP_BLOCK);
             event.accept(ModBlocks.TOADSTOOL_BUTTON);
             event.accept(ModBlocks.LAMPSHROOM);
-            event.accept(ModBlocks.HANGING_SHROOM_CAP);
+            event.accept(ModBlocks.FLIPSHROOM);
             event.accept(ModBlocks.TOADSTOOL_PATCH);
             event.accept(ModBlocks.MYCELIUM_FERN);
             event.accept(ModBlocks.MYCELIUM_SPROUTS);
@@ -183,8 +188,8 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_FEATHER_MOSS.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_PATCH.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_SHROOM_CAP.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLIPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLIPSHROOM.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.CORDYCEPS_PATCH.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_CARPET.get(), ChunkSectionLayer.CUTOUT);
@@ -195,6 +200,13 @@ public class Cavernous {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.PUFFSHROOM.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_PATCH.get(), ChunkSectionLayer.CUTOUT);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_VINE.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_VINE_PLANT.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
+
+            // hold on
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.OBSIDIANSTONE.get(), ChunkSectionLayer.CUTOUT);
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.OBSIDIANSTONE_STAIRS.get(), ChunkSectionLayer.CUTOUT);
 
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
             EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);

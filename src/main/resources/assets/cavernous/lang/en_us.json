@@ -31,6 +31,7 @@
   "item.cavernous.underground_mycelium": "Underground Mycelium",
   "item.cavernous.mycelium_sprouts": "Mycelium Sprouts",
   "item.cavernous.mycelium_fern": "Mycelium Fern",
+  "item.cavernous.mycelium_vine": "Mycelium Vine",
 
   "item.cavernous.feather_moss_block": "Feather Moss Block",
   "item.cavernous.feather_moss_carpet": "Feather Moss Carpet",
@@ -74,7 +75,8 @@
   "item.cavernous.cordyceps_patch": "Cordyceps Patch",
   "item.cavernous.ghost_fungus": "Ghost Fungus",
   "item.cavernous.hanging_shroom_spore_pod": "Hanging Shroom Spore Pod",
-  "item.cavernous.hanging_shroom_cap": "Hanging Shroom",
+  "item.cavernous.flipshroom": "Flipshroom",
+  "item.cavernous.flipshroom_cap_block": "Flipshroom Cap Block",
   "item.cavernous.hanging_feather_moss": "Hanging Feather Moss",
   "item.cavernous.mushroom_gill_block": "Mushroom Gill Block",
   "item.cavernous.ancient_fern": "Ancient Fern",

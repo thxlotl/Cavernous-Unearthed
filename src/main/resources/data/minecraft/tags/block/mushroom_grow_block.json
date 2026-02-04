@@ -11,6 +11,10 @@
     "cavernous:fungatite_lapis_ore",
     "cavernous:fungatite_emerald_ore",
     "cavernous:fungatite_diamond_ore",
+    "cavernous:flipshroom_cap_block",
+    "cavernous:shelfshroom_cap_block",
+    "cavernous:toadstool_cap_block",
+    "cavernous:lampshroom_cap_block",
     "#cavernous:shroomwood_logs"
   ]
 }

@@ -12,6 +12,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.worldgen.custom.boulder.BoulderConfiguration;
+import net.thxlotl.cavernous.worldgen.custom.boulder.BoulderFeature;
 import net.thxlotl.cavernous.worldgen.custom.segmentedwallblock.SegmentedWallBlockConfiguration;
 import net.thxlotl.cavernous.worldgen.custom.segmentedwallblock.SegmentedWallBlockFeature;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
@@ -31,6 +33,9 @@ public class ModFeature {
 
     public static final DeferredHolder<Feature<?>, WallShroomFeature> WALLSHROOM_FEATURE =
             FEATURES.register("wallshroom_feature", () -> new WallShroomFeature(WallShroomConfiguration.CODEC));
+
+    public static final DeferredHolder<Feature<?>, BoulderFeature> BOULDER_FEATURE =
+            FEATURES.register("boulder_feature", () -> new BoulderFeature(BoulderConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

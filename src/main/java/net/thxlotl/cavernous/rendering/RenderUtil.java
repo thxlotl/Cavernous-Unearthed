@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.world.attribute.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.phys.Vec3;
@@ -117,68 +118,94 @@ public class RenderUtil {
 //        //return new Vec3(f1, f2, f3);
 //    }
 
-    public static Vector3f getBaseColor(ClientLevel level, Camera camera, int effectiveRenderDistance, float partialTick) {
+    public static int getCaveFogColor(Level level, Camera camera, Vec3 vec3) {
 
-        Vec3 vec3 = camera.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
-        BiomeManager biomemanager = level.getBiomeManager();
+        BiomeManager biomeManager = level.getBiomeManager();
+
 
         float sampledBoost = (float) CubicSampler.gaussianSampleVec3(
                 vec3,
                 (x, y, z) -> {
-                    Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
+                    Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
                     ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
                     float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_BOOST, key) : 1.0f;
                     return new Vec3(value, value, value); // replicate float into RGB
                 }
         ).x();
-        float sampledOverride = (float) CubicSampler.gaussianSampleVec3(
+        Vec3 sampledColor = CubicSampler.gaussianSampleVec3(
                 vec3,
                 (x, y, z) -> {
-                    Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
+                    Holder<Biome> biomeAtQuart = biomeManager.getNoiseBiomeAtQuart(x, y, z);
                     ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                    float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
-                    return new Vec3(value, value, value); // replicate float into RGB
+                    Vec3 value = key != null ? BiomeData.getVec3(BiomeData.BIOME_FOG_COLOR, key) : new Vec3(0, 0, 0);
+                    return value;
                 }
-        ).x();
+        );
 
-        float thing = Mth.clamp(Mth.cos(level.getDayTime() * ((float)Math.PI * 2F)) * 2.0F + 0.5F, 0.0F, 1.0F);
+        return ARGB.color(sampledColor.multiply(1, 1, 1));
+    }
 
-        //System.out.println("F: " + f + "Sampled Boost: " + sampledBoost);
-        float multiplier = 1 - sampledOverride;
+    // Copy of the vanilla AtmosphericFogEnvironment class's method
+    public static int getBaseColor(
+            ClientLevel level,
+            Camera camera,
+            int effectiveRenderDistance,
+            float partialTick
+    ) {
+        int fogColor = camera.attributeProbe()
+                .getValue(EnvironmentAttributes.FOG_COLOR, partialTick);
 
-
-
-
-        int i = (Integer)camera.attributeProbe().getValue(EnvironmentAttributes.FOG_COLOR, partialTick);
         if (effectiveRenderDistance >= 4) {
-            float f = (Float)camera.attributeProbe().getValue(EnvironmentAttributes.SUN_ANGLE, partialTick) * ((float)Math.PI / 180F);
-            float f1 = Mth.sin((double)f) > 0.0F ? -1.0F : 1.0F;
-            PanoramicScreenshotParameters panoramicscreenshotparameters = Minecraft.getInstance().gameRenderer.getPanoramicScreenshotParameters();
-            Vector3fc vector3fc = panoramicscreenshotparameters != null ? panoramicscreenshotparameters.forwardVector() : camera.forwardVector();
-            float f2 = vector3fc.dot(f1, 0.0F, 0.0F);
-            if (f2 > 0.0F) {
-                int j = (Integer)camera.attributeProbe().getValue(EnvironmentAttributes.SUNRISE_SUNSET_COLOR, partialTick);
-                float f3 = ARGB.alphaFloat(j);
-                if (f3 > 0.0F) {
-                    i = ARGB.srgbLerp(f2 * f3, i, ARGB.opaque(j));
+            float sunAngleRad = camera.attributeProbe()
+                    .getValue(EnvironmentAttributes.SUN_ANGLE, partialTick)
+                    * ((float) Math.PI / 180.0F);
+
+            float sunDirection = Mth.sin(sunAngleRad) > 0.0F ? -1.0F : 1.0F;
+
+            PanoramicScreenshotParameters panorama =
+                    Minecraft.getInstance().gameRenderer.getPanoramicScreenshotParameters();
+
+            Vector3fc forward =
+                    panorama != null ? panorama.forwardVector() : camera.forwardVector();
+
+            float alignment = forward.dot(sunDirection, 0.0F, 0.0F);
+
+            if (alignment > 0.0F) {
+                int sunriseSunsetColor = camera.attributeProbe()
+                        .getValue(EnvironmentAttributes.SUNRISE_SUNSET_COLOR, partialTick);
+
+                float alpha = ARGB.alphaFloat(sunriseSunsetColor);
+                if (alpha > 0.0F) {
+                    fogColor = ARGB.srgbLerp(
+                            alignment * alpha,
+                            fogColor,
+                            ARGB.opaque(sunriseSunsetColor)
+                    );
                 }
             }
         }
 
-        int baseColor = (Integer)camera.attributeProbe().getValue(EnvironmentAttributes.SKY_COLOR, partialTick);
-        int k = applyWeatherDarken(baseColor, level.getRainLevel(partialTick), level.getThunderLevel(partialTick), multiplier);
-        float f4 = Math.min((Float)camera.attributeProbe().getValue(EnvironmentAttributes.SKY_FOG_END_DISTANCE, partialTick) / 16.0F, (float)effectiveRenderDistance);
-        float f5 = Mth.clampedLerp(f4 / 32.0F, 0.25F, 1.0F);
-        f5 = 1.0F - (float)Math.pow((double)f5, (double)0.25F);
+        int skyColor = camera.attributeProbe()
+                .getValue(EnvironmentAttributes.SKY_COLOR, partialTick);
 
-        int vanillaColor = ARGB.srgbLerp(f5, i, k);
-        Vec3 pos = camera.position();
-        int caveColor = getFogColorFromLevel(level, pos);
+        skyColor = applyWeatherDarken(
+                skyColor,
+                level.getRainLevel(partialTick),
+                level.getThunderLevel(partialTick)
+        );
 
-        int resolvedColor = ARGB.srgbLerp(multiplier, caveColor, vanillaColor);
+        float skyFogEnd = Math.min(
+                camera.attributeProbe()
+                        .getValue(EnvironmentAttributes.SKY_FOG_END_DISTANCE, partialTick) / 16.0F,
+                (float) effectiveRenderDistance
+        );
 
-        return new Vector3f(ARGB.redFloat(caveColor), ARGB.greenFloat(caveColor), ARGB.blueFloat(caveColor));
+        float blend = Mth.clampedLerp(skyFogEnd / 32.0F, 0.25F, 1.0F);
+        blend = 1.0F - (float) Math.pow(blend, 0.25F);
+
+        return ARGB.srgbLerp(blend, fogColor, skyColor);
     }
+
 
     private static int getFogColorFromLevel(ClientLevel level, Vec3 pos) {
 
@@ -192,9 +219,7 @@ public class RenderUtil {
         return level.environmentAttributes().getValue(EnvironmentAttributes.FOG_COLOR, pos, biomeInterpolator);
     }
 
-    private static int applyWeatherDarken(int k, float rainLevel, float thunderLevel, float multiplier) {
-
-        int storedK = k;
+    private static int applyWeatherDarken(int k, float rainLevel, float thunderLevel) {
 
         if (rainLevel > 0.0F) {
             float f = 1.0F - rainLevel * 0.5F;
@@ -206,9 +231,7 @@ public class RenderUtil {
             k = ARGB.scaleRGB(k, 1.0F - thunderLevel * 0.5F);
         }
 
-        return storedK;
-
-        //return ARGB.linearLerp(multiplier, storedK, k);
+        return k;
     }
 
     private static int multiplyColor(int color, float multiplier) {

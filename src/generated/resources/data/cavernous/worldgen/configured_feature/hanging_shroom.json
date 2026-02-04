@@ -21,7 +21,7 @@
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "cavernous:hanging_shroom_stem"
+            "Name": "cavernous:flipshroom_stem"
           }
         }
       },
@@ -30,7 +30,7 @@
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "cavernous:hanging_shroom_cap",
+            "Name": "cavernous:flipshroom",
             "Properties": {
               "age": "12"
             }

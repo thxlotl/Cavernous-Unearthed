@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "cavernous:block/obsidianstone_wall_inventory"
+    "model": "cavernous:block/obsidianstone_wall",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 6381412
+      }
+    ]
   }
 }

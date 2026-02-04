@@ -124,6 +124,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.POTTED_TOADSTOOL_BUTTON.get(),
                 block -> createPotFlowerItemTable(ModBlocks.TOADSTOOL_BUTTON.asItem()));
 
+        dropSelf(ModBlocks.FLIPSHROOM_CAP_BLOCK.get());
+        add(ModBlocks.FLIPSHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.FLIPSHROOM));
+        add(ModBlocks.FLIPSHROOM.get(), block -> createSingleItemTable(ModBlocks.FLIPSHROOM));
 
         dropSelf(ModBlocks.SHROOMWOOD_LOG.get());
         dropSelf(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get());
@@ -157,13 +160,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.POTTED_LAMPSHROOM.get(),
                 block -> createPotFlowerItemTable(ModBlocks.LAMPSHROOM.asItem()));
 
-        add(ModBlocks.HANGING_SHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
-        add(ModBlocks.HANGING_SHROOM_CAP.get(), block -> createSingleItemTable(ModBlocks.HANGING_SHROOM_CAP));
 
+        add(ModBlocks.MYCELIUM_VINE_PLANT.get(), block -> createSingleItemTable(ModBlocks.MYCELIUM_VINE));
+        dropSelf(ModBlocks.MYCELIUM_VINE.get());
 
         dropSelf(ModBlocks.SHELFSHROOM_CAP_BLOCK.get());
         dropSelf(ModBlocks.SHELFSHROOM.get());
 
+        dropSelf(ModBlocks.BLUE_GHOST_FUNGUS.get());
         dropSelf(ModBlocks.LAMPSHROOM_TERRARIUM.get());
         dropSelf(ModBlocks.SPRINGSHROOM.get());
         dropSelf(ModBlocks.PUFFSHROOM.get());

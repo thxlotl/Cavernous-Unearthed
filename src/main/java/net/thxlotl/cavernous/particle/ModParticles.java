@@ -38,6 +38,14 @@ public class ModParticles {
             "volcanic_ash",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> FUNGAL_SPORE = PARTICLE_TYPES.register(
+            "fungal_spore",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> LAMPSHROOM_SPORE = PARTICLE_TYPES.register(
+            "lampshroom_spore",
+            () -> new SimpleParticleType(false)
+    );
 
 
 

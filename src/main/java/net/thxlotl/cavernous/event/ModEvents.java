@@ -2,12 +2,16 @@ package net.thxlotl.cavernous.event;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.item.GrassColorSource;
+import net.minecraft.client.color.item.ItemTintSource;
+import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.ClientInput;
 import net.minecraft.client.renderer.fog.FogData;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 ///import net.minecraft.util.CubicSampler;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.attribute.GaussianSampler;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -18,6 +22,7 @@ import net.minecraft.world.entity.player.Input;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -28,6 +33,7 @@ import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.rendering.RenderUtil;
+import net.thxlotl.cavernous.util.CubicSampler;
 import net.thxlotl.cavernous.worldgen.biome.BiomeData;
 ///import net.thxlotl.mixin.ClientInputAccessor;
 import net.thxlotl.mixin.ClientInputAccessor;
@@ -48,27 +54,47 @@ public class ModEvents {
         if (cam.getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
             setFogColors(event, 0.6f, 0.0941f, 0f);
         }
-//        else if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
-//
-//            ClientLevel level = (ClientLevel) entity.level();
-//            Vec3 position = entity.position();
-//            Vector3f color =
-//                    RenderUtil.getBaseColor(
-//                            level,
-//                            event.getCamera(),
-//                            Minecraft.getInstance().options.getEffectiveRenderDistance(),
-//                            RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false)));
-//
-//            event.setRed(color.x);
-//            event.setGreen(color.y);
-//            event.setBlue(color.z);
-//        }
+        else if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
+
+            Vec3 vec3 = cam.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
+            BiomeManager biomemanager = entity.level().getBiomeManager();
+
+            float sampledOverride = (float) CubicSampler.gaussianSampleVec3(
+                    vec3,
+                    (x, y, z) -> {
+                        Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
+                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                        float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
+                        return new Vec3(value, value, value); // replicate float into RGB
+                    }
+            ).x();
+
+            if (sampledOverride > 0) {
+                ClientLevel level = (ClientLevel) entity.level();
+
+                int caveColor = RenderUtil.getCaveFogColor(entity.level(), cam, vec3);
+                int baseColor = RenderUtil.getBaseColor(
+                        level,
+                        event.getCamera(),
+                        Minecraft.getInstance().options.getEffectiveRenderDistance(),
+                        RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false)));
+
+                int resolvedColor = ARGB.linearLerp(sampledOverride, baseColor, caveColor);
+
+                setFogColors(event, ARGB.vector3fFromRGB24(resolvedColor));
+            }
+        }
     }
 
     private static void setFogColors(ViewportEvent.ComputeFogColor event, float red, float green, float blue) {
         event.setRed(red);
         event.setGreen(green);
         event.setBlue(blue);
+    }
+    private static void setFogColors(ViewportEvent.ComputeFogColor event, Vector3f color) {
+        event.setRed(color.x);
+        event.setGreen(color.y);
+        event.setBlue(color.z);
     }
 
     @SubscribeEvent
