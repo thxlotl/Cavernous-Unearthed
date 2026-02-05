@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "cavernous:block/fungatite_bricks",
-    "side": "cavernous:block/fungatite_bricks",
-    "top": "cavernous:block/fungatite_bricks"
-  }
-}

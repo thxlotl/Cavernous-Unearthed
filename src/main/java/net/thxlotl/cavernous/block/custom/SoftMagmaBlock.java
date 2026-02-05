@@ -1,36 +1,29 @@
 package net.thxlotl.cavernous.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.IceBlock;
-import net.minecraft.world.level.block.PowderSnowBlock;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.LavaFluid;
 import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.redstone.Orientation;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -43,7 +36,60 @@ public class SoftMagmaBlock extends Block {
         super(properties);
     }
 
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return null;
+    }
+
     private static final VoxelShape FALLING_COLLISION_SHAPE = Shapes.box(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        super.onPlace(state, level, pos, oldState, movedByPiston);
+        tryCoolOff(level, pos);
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, @org.jspecify.annotations.Nullable Orientation orientation, boolean movedByPiston) {
+        super.neighborChanged(state, level, pos, neighborBlock, orientation, movedByPiston);
+        tryCoolOff(level, pos);
+    }
+
+    private void tryCoolOff(Level level, BlockPos pos) {
+
+        if (shouldCoolOff(level, pos)) {
+            level.playSound((Entity)null, pos, SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+            if (level instanceof ServerLevel serverLevel) {
+                Vec3 center = pos.getCenter();
+                RandomSource random = level.getRandom();
+                for (int i = 0; i < 8; i++) {
+
+                    serverLevel.sendParticles(
+                            ParticleTypes.LARGE_SMOKE,
+                            center.x() + random.nextFloat() - 0.4f, center.y() + random.nextFloat() - 0.4f, center.z() + random.nextFloat() - 0.4f,
+                            0,
+                            0, 0, 0,
+                            0);
+                }
+            }
+
+            level.setBlockAndUpdate(pos, coolOffState());
+        }
+    }
+
+    private BlockState coolOffState() {
+        return Blocks.MAGMA_BLOCK.defaultBlockState();
+    }
+
+    private boolean shouldCoolOff(LevelReader level, BlockPos pos) {
+
+        for (Direction direction : Direction.values()) {
+            if (level.getBlockState(pos.relative(direction)).is(Blocks.WATER)) return true;
+        }
+
+        return false;
+    }
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
@@ -111,10 +157,10 @@ public class SoftMagmaBlock extends Block {
         return adjacentState.is(this) ? true : super.skipRendering(state, adjacentState, direction);
     }
 
-    @Override
-    protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return Shapes.empty();
-    }
+//    @Override
+//    protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+//        return Shapes.empty();
+//    }
 
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -146,5 +192,4 @@ public class SoftMagmaBlock extends Block {
         }
 
     }
-
 }

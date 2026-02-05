@@ -29,7 +29,6 @@ public class ModBlockEntities {
                     )
             );
 
-    // Ghost fungus
     public static final Supplier<BlockEntityType<GeyserBlockEntity>> GEYSER_BLOCK =
             BLOCK_ENTITIES.register(
                     "geyser_block",
@@ -38,7 +37,6 @@ public class ModBlockEntities {
                             ModBlocks.GEYSER_BLOCK.get()
                     )
             );
-
 
 
     public static void register(IEventBus eventBus) {

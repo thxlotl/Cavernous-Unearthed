@@ -1,29 +1,19 @@
-package net.thxlotl.cavernous.block.custom;
+package net.thxlotl.cavernous.rendering;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.GrassBlock;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.TintedGlassBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.thxlotl.cavernous.util.ModTags;
-import org.joml.Vector3f;
 
-public class ObsidianstoneBlock extends Block {
+public class ObsidianstoneTint {
 
     private static final int boost = 1;
 
     private static final int maxRange = 6;
     public static final int heatedColor = ARGB.color(255, 255, 110, 40);
     public static final int unheatedColor = ARGB.color(255, 97 * boost, 95 * boost, 100 * boost);
-
-    public ObsidianstoneBlock(Properties p_49795_) {
-        super(p_49795_);
-    }
 
     public static int getColor(BlockState state, BlockAndTintGetter getter, BlockPos pos, int i)
     {

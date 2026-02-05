@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/slab_top",
+  "parent": "cavernous:block/template/slab_top_tinted",
   "textures": {
     "bottom": "cavernous:block/obsidianstone_bricks",
     "side": "cavernous:block/obsidianstone_bricks",

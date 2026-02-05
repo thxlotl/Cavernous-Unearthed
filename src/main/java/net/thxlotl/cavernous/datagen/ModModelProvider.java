@@ -61,11 +61,27 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get(),
             ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
             ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get(),
+            ModBlocks.OBSIDIANSTONE_BRICKS.get(),
+            ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get(),
+            ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
+            ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );
     private final List<Item> ignoredItems = List.of(
-            ModItems.HANGING_SHROOM_SPORE_POD.get()
+            ModItems.HANGING_SHROOM_SPORE_POD.get(),
+            ModBlocks.OBSIDIANSTONE.asItem(),
+            ModBlocks.OBSIDIANSTONE_STAIRS.asItem(),
+            ModBlocks.OBSIDIANSTONE_SLAB.asItem(),
+            ModBlocks.OBSIDIANSTONE_WALL.asItem(),
+            ModBlocks.POLISHED_OBSIDIANSTONE.asItem(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.asItem(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.asItem(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_WALL.asItem(),
+            ModBlocks.OBSIDIANSTONE_BRICKS.asItem(),
+            ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.asItem(),
+            ModBlocks.OBSIDIANSTONE_BRICK_SLAB.asItem(),
+            ModBlocks.OBSIDIANSTONE_BRICK_WALL.asItem()
     );
 
 
@@ -185,10 +201,10 @@ public class ModModelProvider extends ModelProvider {
 //                .stairs(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get())
 //                .slab(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get())
 //                .wall(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
-        blockModels.family(ModBlocks.OBSIDIANSTONE_BRICKS.get())
-                .stairs(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get())
-                .slab(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get())
-                .wall(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
+//        blockModels.family(ModBlocks.OBSIDIANSTONE_BRICKS.get())
+//                .stairs(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get())
+//                .slab(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get())
+//                .wall(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
 
         //endregion
 

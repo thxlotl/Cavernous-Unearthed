@@ -1,7 +1,5 @@
 package net.thxlotl.cavernous.event;
 
-import com.mojang.serialization.codecs.OptionalFieldCodec;
-import net.minecraft.client.color.item.ItemTintSource;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.neoforged.api.distmarker.Dist;
@@ -13,7 +11,7 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
-import net.thxlotl.cavernous.block.custom.ObsidianstoneBlock;
+import net.thxlotl.cavernous.rendering.ObsidianstoneTint;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.entity.client.ant.AntModel;
@@ -25,7 +23,6 @@ import net.thxlotl.cavernous.entity.custom.FungalZombie;
 import net.thxlotl.cavernous.entity.custom.InfectedAnt;
 import net.thxlotl.cavernous.particle.*;
 import net.thxlotl.cavernous.particle.custom.*;
-import net.thxlotl.cavernous.rendering.ObsidianstoneItemTintSource;
 
 @EventBusSubscriber(modid = Cavernous.MODID, value = Dist.CLIENT)
 public class RegisterEvents {
@@ -68,20 +65,18 @@ public class RegisterEvents {
     @SubscribeEvent
     public static void registerBlockColor(RegisterColorHandlersEvent.Block event)
     {
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.OBSIDIANSTONE.get());
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.OBSIDIANSTONE_STAIRS.get());
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.OBSIDIANSTONE_SLAB.get());
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.OBSIDIANSTONE_WALL.get());
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.POLISHED_OBSIDIANSTONE.get());
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get());
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get());
-        event.register(ObsidianstoneBlock::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
-    }
-
-    @SubscribeEvent
-    public static void registerItemColor(RegisterColorHandlersEvent.ItemTintSources event)
-    {
-
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_STAIRS.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_SLAB.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_WALL.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_BRICKS.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
     }
 
 }

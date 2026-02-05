@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/template_wall_side",
+  "parent": "cavernous:block/template/wall_side_tinted",
   "textures": {
     "wall": "cavernous:block/obsidianstone_bricks"
   }
