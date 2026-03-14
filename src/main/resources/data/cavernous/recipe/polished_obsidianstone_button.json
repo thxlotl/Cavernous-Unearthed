@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "cavernous:polished_obsidianstone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cavernous:polished_obsidianstone_button"
+  }
+}

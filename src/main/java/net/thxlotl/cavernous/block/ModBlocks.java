@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.LavaFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -29,6 +30,7 @@ import net.thxlotl.cavernous.block.custom.sign.ModHangingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModStandingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModWallHangingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModWallSignBlock;
+import net.thxlotl.cavernous.block.register.ModBlockSetTypes;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.GhostFungus;
 import net.thxlotl.cavernous.util.ModTags;
@@ -533,13 +535,6 @@ public class ModBlocks {
                     strength(2f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.BASALT));
-    public static final DeferredBlock<Block> SCORIA = registerBlock(
-            "scoria",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
     public static final DeferredBlock<SoftMagmaBlock> SOFT_MAGMA_BLOCK = registerBlock(
             "soft_magma_block",
             properties -> new SoftMagmaBlock(properties),
@@ -551,6 +546,23 @@ public class ModBlocks {
                     noOcclusion()
                     .forceSolidOn()
                     .emissiveRendering(ModBlocks::always));
+    //endregion
+
+    //region Scoria
+    public static final DeferredBlock<Block> SCORIA = registerBlock(
+            "scoria",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(1.5f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
+    public static final DeferredBlock<Block> SCORIA_BRICKS = registerBlock(
+            "scoria_bricks",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(1.5f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
     //endregion
 
     //region Obsidianstone
@@ -611,6 +623,15 @@ public class ModBlocks {
                     strength(3.5F, 6.0F).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
+    public static final DeferredBlock<PressurePlateBlock> POLISHED_OBSIDIANSTONE_PRESSURE_PLATE = registerBlock(
+            "polished_obsidianstone_pressure_plate",
+            properties -> new PressurePlateBlock(ModBlockSetTypes.POLISHED_OBSIDIANTSTONE ,properties),
+            BlockBehaviour.Properties.of().forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY).sound(SoundType.STONE));
+
+    public static final DeferredBlock<ButtonBlock> POLISHED_OBSIDIANSTONE_BUTTON = registerBlock(
+            "polished_obsidianstone_button",
+            properties -> new ButtonBlock(ModBlockSetTypes.POLISHED_OBSIDIANTSTONE, 20 ,properties),
+            BlockBehaviour.Properties.of().noCollision().instrument(NoteBlockInstrument.BASEDRUM).noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY).sound(SoundType.STONE));
 
     public static final DeferredBlock<Block> OBSIDIANSTONE_BRICKS = registerBlock(
             "obsidianstone_bricks",

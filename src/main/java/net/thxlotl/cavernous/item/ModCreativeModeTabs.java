@@ -89,11 +89,14 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS);
                 output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB);
                 output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_WALL);
+                output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE);
+                output.accept(ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON);
                 output.accept(ModBlocks.OBSIDIANSTONE_BRICKS);
                 output.accept(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS);
                 output.accept(ModBlocks.OBSIDIANSTONE_BRICK_SLAB);
                 output.accept(ModBlocks.OBSIDIANSTONE_BRICK_WALL);
                 output.accept(ModBlocks.SCORIA);
+                output.accept(ModBlocks.SCORIA_BRICKS);
                 output.accept(ModBlocks.SOFT_MAGMA_BLOCK);
             })
             .build());

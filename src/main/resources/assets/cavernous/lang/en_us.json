@@ -91,6 +91,8 @@
   "item.cavernous.polished_obsidianstone_stairs": "Polished Obsidianstone Stairs",
   "item.cavernous.polished_obsidianstone_slab": "Polished Obsidianstone Slab",
   "item.cavernous.polished_obsidianstone_wall": "Polished Obsidianstone Wall",
+  "item.cavernous.polished_obsidianstone_button": "Polished Obsidianstone Button",
+  "item.cavernous.polished_obsidianstone_pressure_plate": "Polished Obsidianstone Pressure Plate",
   "item.cavernous.obsidianstone_bricks": "Obsidianstone Bricks",
   "item.cavernous.obsidianstone_brick_stairs": "Obsidianstone Brick Stairs",
   "item.cavernous.obsidianstone_brick_slab": "Obsidianstone Brick Slab",
@@ -101,6 +103,7 @@
   "item.cavernous.test_block_ore": "Test Block Ore",
   "item.cavernous.geyser_block": "Geyser Block",
   "item.cavernous.scoria": "Scoria",
+  "item.cavernous.scoria_bricks": "Scoria Bricks",
 
   "entity.cavernous.ant": "Ant",
   "entity.cavernous.infected_ant": "Infected Ant",

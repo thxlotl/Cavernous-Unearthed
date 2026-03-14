@@ -12,6 +12,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.thxlotl.cavernous.block.ModBlocks;
 
 import java.util.List;
@@ -66,8 +67,71 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
 
+        List<DeferredBlock<?>> simpleDropBlocks = List.of(
+                ModBlocks.GROUND_FUNGATITE,
+                ModBlocks.FUNGATITE_STAIRS,
+                ModBlocks.FUNGATITE_WALL,
+                ModBlocks.POLISHED_FUNGATITE,
+                ModBlocks.POLISHED_FUNGATITE_STAIRS,
+                ModBlocks.POLISHED_FUNGATITE_WALL,
+                ModBlocks.CHISELED_FUNGATITE,
+                ModBlocks.FUNGATITE_BRICKS,
+                ModBlocks.FUNGATITE_BRICK_STAIRS,
+                ModBlocks.FUNGATITE_BRICK_WALL,
+                ModBlocks.FEATHER_MOSS_BLOCK,
+                ModBlocks.FEATHER_MOSS_CARPET,
+                ModBlocks.TOADSTOOL_CAP_BLOCK,
+                ModBlocks.TOADSTOOL_BUTTON,
+                ModBlocks.FLIPSHROOM_CAP_BLOCK,
+                ModBlocks.SHROOMWOOD_LOG,
+                ModBlocks.STRIPPED_SHROOMWOOD_LOG,
+                ModBlocks.SHROOMWOOD,
+                ModBlocks.STRIPPED_SHROOMWOOD,
+                ModBlocks.STRIPPED_SHROOMWOOD,
+                ModBlocks.SHROOMWOOD_PLANKS,
+                ModBlocks.SHROOMWOOD_STAIRS,
+                ModBlocks.SHROOMWOOD_FENCE,
+                ModBlocks.SHROOMWOOD_FENCE_GATE,
+                ModBlocks.SHROOMWOOD_TRAPDOOR,
+                ModBlocks.SHROOMWOOD_PRESSURE_PLATE,
+                ModBlocks.SHROOMWOOD_BUTTON,
+                ModBlocks.LAMPSHROOM,
+                ModBlocks.LAMPSHROOM_CAP_BLOCK,
+                ModBlocks.LAMPSHROOM_PATCH,
+                ModBlocks.MYCELIUM_VINE,
+                ModBlocks.SHELFSHROOM_CAP_BLOCK,
+                ModBlocks.SHELFSHROOM,
+                ModBlocks.BLUE_GHOST_FUNGUS,
+                ModBlocks.LAMPSHROOM_TERRARIUM,
+                ModBlocks.SPRINGSHROOM,
+                ModBlocks.PUFFSHROOM,
+                ModBlocks.INKY_CAP_PATCH,
+                ModBlocks.CORDYCEPS_PATCH,
+                ModBlocks.BLEEDING_TOOTH_MUSHROOM,
+                ModBlocks.OBSIDIANSTONE,
+                ModBlocks.OBSIDIANSTONE_STAIRS,
+                ModBlocks.OBSIDIANSTONE_WALL,
+                ModBlocks.POLISHED_OBSIDIANSTONE,
+                ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS,
+                ModBlocks.POLISHED_OBSIDIANSTONE_WALL,
+                ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE,
+                ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON,
+                ModBlocks.OBSIDIANSTONE_BRICKS,
+                ModBlocks.OBSIDIANSTONE_BRICK_STAIRS,
+                ModBlocks.OBSIDIANSTONE_BRICK_WALL,
+                ModBlocks.GEYSER_BLOCK,
+                ModBlocks.SCORIA,
+                ModBlocks.SCORIA_BRICKS,
+                ModBlocks.GILLED_MUSHROOM,
+                ModBlocks.CLUSTER_SHROOM,
+                ModBlocks.BLACK_TRUMPET_PATCH,
+                ModBlocks.LAMPSHROOM_BUTTON
+        );
+        for (DeferredBlock deferredBlock : simpleDropBlocks) {
+            makeDropSelf(deferredBlock);
+        }
+
         //dropSelf(ModBlocks.FUNGATITE.get());
-        dropSelf(ModBlocks.GROUND_FUNGATITE.get());
 
         add(ModBlocks.FUNGATITE_COAL_ORE.get(),
                 block -> createOreDrop(ModBlocks.FUNGATITE_COAL_ORE.get(), Items.COAL));
@@ -86,27 +150,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.FUNGATITE_EMERALD_ORE.get(),
                 block -> createOreDrop(ModBlocks.FUNGATITE_EMERALD_ORE.get(), Items.EMERALD));
 
-        dropSelf(ModBlocks.FUNGATITE_STAIRS.get());
         add(ModBlocks.FUNGATITE_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.FUNGATITE_SLAB.get()));
-        dropSelf(ModBlocks.FUNGATITE_WALL.get());
 
-        dropSelf(ModBlocks.POLISHED_FUNGATITE.get());
-        dropSelf(ModBlocks.POLISHED_FUNGATITE_STAIRS.get());
         add(ModBlocks.POLISHED_FUNGATITE_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.POLISHED_FUNGATITE_SLAB.get()));
-        dropSelf(ModBlocks.POLISHED_FUNGATITE_WALL.get());
-        dropSelf(ModBlocks.CHISELED_FUNGATITE.get());
 
-        dropSelf(ModBlocks.FUNGATITE_BRICKS.get());
-        dropSelf(ModBlocks.FUNGATITE_BRICK_STAIRS.get());
         add(ModBlocks.FUNGATITE_BRICK_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.FUNGATITE_BRICK_SLAB.get()));
-        dropSelf(ModBlocks.FUNGATITE_BRICK_WALL.get());
 
 
-        dropSelf(ModBlocks.FEATHER_MOSS_BLOCK.get());
-        dropSelf(ModBlocks.FEATHER_MOSS_CARPET.get());
         add(ModBlocks.FEATHER_MOSS_TUFTS.get(),
                 block -> createShearsOnlyDrop(ModBlocks.FEATHER_MOSS_TUFTS.get()));
 
@@ -117,32 +170,18 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 block -> createShearsOnlyDrop(ModBlocks.MYCELIUM_FERN.get()));
 
 
-        dropSelf(ModBlocks.TOADSTOOL_CAP_BLOCK.get());
         add(ModBlocks.TOADSTOOL_PATCH.get(),
                 block -> createShearsOnlyDrop(ModBlocks.TOADSTOOL_CAP_BLOCK.get()));
-        dropSelf(ModBlocks.TOADSTOOL_BUTTON.get());
         add(ModBlocks.POTTED_TOADSTOOL_BUTTON.get(),
                 block -> createPotFlowerItemTable(ModBlocks.TOADSTOOL_BUTTON.asItem()));
 
-        dropSelf(ModBlocks.FLIPSHROOM_CAP_BLOCK.get());
         add(ModBlocks.FLIPSHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.FLIPSHROOM));
         add(ModBlocks.FLIPSHROOM.get(), block -> createSingleItemTable(ModBlocks.FLIPSHROOM));
 
-        dropSelf(ModBlocks.SHROOMWOOD_LOG.get());
-        dropSelf(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get());
-        dropSelf(ModBlocks.SHROOMWOOD.get());
-        dropSelf(ModBlocks.STRIPPED_SHROOMWOOD.get());
-        dropSelf(ModBlocks.SHROOMWOOD_PLANKS.get());
-        dropSelf(ModBlocks.SHROOMWOOD_STAIRS.get());
         add(ModBlocks.SHROOMWOOD_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.SHROOMWOOD_SLAB.get()));
-        dropSelf(ModBlocks.SHROOMWOOD_FENCE.get());
-        dropSelf(ModBlocks.SHROOMWOOD_FENCE_GATE.get());
         add(ModBlocks.SHROOMWOOD_DOOR.get(),
                 block -> createDoorTable(ModBlocks.SHROOMWOOD_DOOR.get()));
-        dropSelf(ModBlocks.SHROOMWOOD_TRAPDOOR.get());
-        dropSelf(ModBlocks.SHROOMWOOD_PRESSURE_PLATE.get());
-        dropSelf(ModBlocks.SHROOMWOOD_BUTTON.get());
         add(ModBlocks.SHROOMWOOD_SIGN.get(), block -> createSingleItemTable(ModBlocks.SHROOMWOOD_SIGN));
         add(ModBlocks.SHROOMWOOD_WALL_SIGN.get(), block -> createSingleItemTable(ModBlocks.SHROOMWOOD_SIGN));
         add(ModBlocks.SHROOMWOOD_HANGING_SIGN.get(), block -> createSingleItemTable(ModBlocks.SHROOMWOOD_HANGING_SIGN));
@@ -153,64 +192,37 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 block -> createShearsOnlyDrop(ModBlocks.HANGING_FEATHER_MOSS.get()));
         add(ModBlocks.MUSHROOM_GILL_BLOCK.get(),
                 block -> createShearsOnlyDrop(ModBlocks.MUSHROOM_GILL_BLOCK.get()));
-        dropSelf(ModBlocks.LAMPSHROOM.get());
         add(ModBlocks.LAMPSHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.LAMPSHROOM));
-        dropSelf(ModBlocks.LAMPSHROOM_CAP_BLOCK.get());
-        dropSelf(ModBlocks.LAMPSHROOM_PATCH.get());
         add(ModBlocks.POTTED_LAMPSHROOM.get(),
                 block -> createPotFlowerItemTable(ModBlocks.LAMPSHROOM.asItem()));
 
 
         add(ModBlocks.MYCELIUM_VINE_PLANT.get(), block -> createSingleItemTable(ModBlocks.MYCELIUM_VINE));
-        dropSelf(ModBlocks.MYCELIUM_VINE.get());
 
-        dropSelf(ModBlocks.SHELFSHROOM_CAP_BLOCK.get());
-        dropSelf(ModBlocks.SHELFSHROOM.get());
 
-        dropSelf(ModBlocks.BLUE_GHOST_FUNGUS.get());
-        dropSelf(ModBlocks.LAMPSHROOM_TERRARIUM.get());
-        dropSelf(ModBlocks.SPRINGSHROOM.get());
-        dropSelf(ModBlocks.PUFFSHROOM.get());
-        dropSelf(ModBlocks.INKY_CAP_PATCH.get());
-        dropSelf(ModBlocks.CORDYCEPS_PATCH.get());
-        dropSelf(ModBlocks.BLEEDING_TOOTH_MUSHROOM.get());
 
 
         //region Obsidianstone
 
-        dropSelf(ModBlocks.OBSIDIANSTONE.get());
-        dropSelf(ModBlocks.OBSIDIANSTONE_STAIRS.get());
         add(ModBlocks.OBSIDIANSTONE_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.OBSIDIANSTONE_SLAB.get()));
-        dropSelf(ModBlocks.OBSIDIANSTONE_WALL.get());
-        dropSelf(ModBlocks.POLISHED_OBSIDIANSTONE.get());
-        dropSelf(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get());
         add(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get()));
-        dropSelf(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
-        dropSelf(ModBlocks.OBSIDIANSTONE_BRICKS.get());
-        dropSelf(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get());
         add(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get()));
-        dropSelf(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
 
 
         //endregion
 
-        dropSelf(ModBlocks.GEYSER_BLOCK.get());
-        dropSelf(ModBlocks.SCORIA.get());
         dropWhenSilkTouch(ModBlocks.SOFT_MAGMA_BLOCK.get());
-
-
-        dropSelf(ModBlocks.GILLED_MUSHROOM.get());
-        dropSelf(ModBlocks.CLUSTER_SHROOM.get());
-        dropSelf(ModBlocks.BLACK_TRUMPET_PATCH.get());
-
-        dropSelf(ModBlocks.LAMPSHROOM_BUTTON.get());
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().filter(x -> !ignoredBlocks.contains(x.value())).map(Holder::value)::iterator;
+    }
+
+    private void makeDropSelf(DeferredBlock<?> block) {
+        dropSelf(block.get());
     }
 }

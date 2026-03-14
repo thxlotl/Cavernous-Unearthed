@@ -1,13 +1,13 @@
 package net.thxlotl.cavernous.worldgen.biome;
 
 import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
-import net.minecraft.world.level.levelgen.DensityFunctions;
-import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
-import net.minecraft.world.level.levelgen.NoiseSettings;
+import net.minecraft.world.level.levelgen.*;
 
 public class RemoveAquifers {
 
 // NoiseBasedChunkGenerator
+
+//Aquifer.FluidPicker
 
 
 }

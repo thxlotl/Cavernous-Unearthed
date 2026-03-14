@@ -21,4 +21,22 @@ public class ClimateParameters {
             Climate.Parameter.span(-1.0f, 1.0f), // Weirdness
             0L);
 
+    public static final Climate.ParameterPoint fungalParametersSNAPSHOT = new Climate.ParameterPoint(
+            Climate.Parameter.span(-1.0f, 0.0f), // half world
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(0.35f, 1f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            0L);
+
+    public static final Climate.ParameterPoint volcanicParametersSNAPSHOT = new Climate.ParameterPoint(
+            Climate.Parameter.span(0.0f, 1.0f), // other half
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            Climate.Parameter.span(0.35f, 1f),
+            Climate.Parameter.span(-1.0f, 1.0f),
+            0L);
+
 }

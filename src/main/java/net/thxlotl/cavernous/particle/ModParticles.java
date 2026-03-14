@@ -46,6 +46,10 @@ public class ModParticles {
             "lampshroom_spore",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> GEYSER_STEAM = PARTICLE_TYPES.register(
+            "geyser_steam",
+            () -> new SimpleParticleType(false)
+    );
 
 
 

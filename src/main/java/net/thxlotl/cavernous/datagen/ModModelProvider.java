@@ -61,10 +61,13 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get(),
             ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
             ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON.get(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE.get(),
             ModBlocks.OBSIDIANSTONE_BRICKS.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
+            ModBlocks.GEYSER_BLOCK.get(),
 
             ModBlocks.ANCIENT_FERN.get()
     );
@@ -81,7 +84,8 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_BRICKS.asItem(),
             ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.asItem(),
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.asItem(),
-            ModBlocks.OBSIDIANSTONE_BRICK_WALL.asItem()
+            ModBlocks.OBSIDIANSTONE_BRICK_WALL.asItem(),
+            ModBlocks.GEYSER_BLOCK.asItem()
     );
 
 
@@ -182,13 +186,6 @@ public class ModModelProvider extends ModelProvider {
 
         //Volcanic Caves
 
-        TexturedModel.Provider geyser = TexturedModel.CUBE_TOP_BOTTOM.updateTexture(mapping ->
-                mapping.put(TextureSlot.SIDE, getBlockTexture(ModBlocks.OBSIDIANSTONE.get()))
-                        .put(TextureSlot.BOTTOM, getBlockTexture(ModBlocks.OBSIDIANSTONE.get()))
-                        .put(TextureSlot.TOP, getBlockTexture(ModBlocks.GEYSER_BLOCK.get(), "_top"))
-        );
-        modBlockModels.createBlockWithRandomRotations(geyser, ModBlocks.GEYSER_BLOCK.get());
-
         //region Obsidianstone
 
         /// what
@@ -196,11 +193,13 @@ public class ModModelProvider extends ModelProvider {
 //        blockModels.family(ModBlocks.OBSIDIANSTONE.get())
 //                .stairs(ModBlocks.OBSIDIANSTONE_STAIRS.get())
 //                .slab(ModBlocks.OBSIDIANSTONE_SLAB.get())
-//                .wall(ModBlocks.OBSIDIANSTONE_WALL.get());
+////                .wall(ModBlocks.OBSIDIANSTONE_WALL.get());
 //        blockModels.family(ModBlocks.POLISHED_OBSIDIANSTONE.get())
 //                .stairs(ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get())
 //                .slab(ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get())
-//                .wall(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
+//                .wall(ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get())
+//                .pressurePlate(ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE.get())
+//                .button(ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON.get());
 //        blockModels.family(ModBlocks.OBSIDIANSTONE_BRICKS.get())
 //                .stairs(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get())
 //                .slab(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get())
@@ -209,6 +208,7 @@ public class ModModelProvider extends ModelProvider {
         //endregion
 
         blockModels.createTrivialCube(ModBlocks.SCORIA.get());
+        blockModels.createTrivialCube(ModBlocks.SCORIA_BRICKS.get());
         blockModels.createNonTemplateModelBlock(ModBlocks.SOFT_MAGMA_BLOCK.get());
 
     }

@@ -9,9 +9,9 @@ import net.thxlotl.cavernous.util.ModTags;
 
 public class ObsidianstoneTint {
 
-    private static final int boost = 1;
+    public static final int boost = 1;
 
-    private static final int maxRange = 6;
+    public static final int maxRange = 6;
     public static final int heatedColor = ARGB.color(255, 255, 110, 40);
     public static final int unheatedColor = ARGB.color(255, 97 * boost, 95 * boost, 100 * boost);
 

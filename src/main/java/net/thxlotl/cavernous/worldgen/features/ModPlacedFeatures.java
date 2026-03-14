@@ -20,6 +20,7 @@ import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OreConfiguredFeatureType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OrePlacedFeatureType;
 import net.thxlotl.cavernous.worldgen.features.placed.FungalCavesPlacedFeatures;
+import net.thxlotl.cavernous.worldgen.features.placed.VolcanicCavesPlacedFeatures;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ public class ModPlacedFeatures {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         FungalCavesPlacedFeatures.bootstrap(context, configuredFeatures);
+        VolcanicCavesPlacedFeatures.bootstrap(context, configuredFeatures);
     }
 
 

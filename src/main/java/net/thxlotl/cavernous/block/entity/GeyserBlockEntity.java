@@ -1,6 +1,7 @@
 package net.thxlotl.cavernous.block.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -14,6 +15,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.thxlotl.cavernous.particle.ModParticles;
+import net.thxlotl.cavernous.rendering.ObsidianstoneTint;
+import net.thxlotl.cavernous.util.ModTags;
 
 import java.util.List;
 
@@ -41,6 +44,8 @@ public class GeyserBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, GeyserBlockEntity geyser) {
+
+        RandomSource random = RandomSource.create();
 
         List<LivingEntity> entities = geyser.getCheckedEntities(level, pos);
         List<LivingEntity> checkedEntities =
@@ -82,6 +87,26 @@ public class GeyserBlockEntity extends BlockEntity {
             geyser.launch(toLaunch, geyser);
         }
 
+
+        if (level.hasNearbyAlivePlayer(pos.getX(), pos.getY(), pos.getZ(), 50) &&
+                random.nextFloat() < 0.15f &&
+                !level.getBlockState(pos.below()).is(BlockTags.ICE) &&
+                level.getBlockState(pos.above()).is(BlockTags.REPLACEABLE) &&
+                !(geyser.stoodOnTime > 0)
+        ) {
+
+            level.addAlwaysVisibleParticle(
+                    ModParticles.GEYSER_STEAM.get(),
+                    pos.getCenter().x,
+                    pos.getY() + 1,
+                    pos.getCenter().z,
+                    0,
+                    0,
+                    0
+            );
+
+        }
+
     }
 
     public List<Entity> getEntitiesToLaunch(Level level, BlockPos pos) {
@@ -91,10 +116,12 @@ public class GeyserBlockEntity extends BlockEntity {
         return level.getEntitiesOfClass(LivingEntity.class, getCheckBox(pos));
     }
 
+    // MAKE IT SO THE HOTTER THE GEYSER IS THE HIGHER IT LAUNCHES YOU
+
     public void launch(List<Entity> entities, GeyserBlockEntity geyser) {
 
         for (Entity entity : entities) {
-            entity.addDeltaMovement(new Vec3(0, LAUNCH_VELOCITY, 0));
+            entity.addDeltaMovement(new Vec3(0, calculateLaunchVelocity(geyser), 0));
             entity.hurtMarked = true;
 
             level.playSound(entity, geyser.getBlockPos(), SoundEvents.PLAYER_SPLASH_HIGH_SPEED, SoundSource.BLOCKS, 0.5f, 1.3f);
@@ -106,6 +133,38 @@ public class GeyserBlockEntity extends BlockEntity {
         geyser.stoodOnTime = 0;
         geyser.standTriggered = false;
         geyser.launchTriggered = false;
+    }
+
+    private float calculateLaunchVelocity(GeyserBlockEntity geyser) {
+
+        float ratio = (getHeatAmount(geyser.level, geyser.getBlockState(), geyser.getBlockPos()) + 6) / 10f;
+
+        return (ratio) * LAUNCH_VELOCITY;
+    }
+
+    public static int getHeatAmount(Level level, BlockState state, BlockPos pos)
+    {
+        int nearestDistance = ObsidianstoneTint.maxRange;
+
+        for (int x = -ObsidianstoneTint.maxRange; x <= ObsidianstoneTint.maxRange; x++) {
+            for (int y = -ObsidianstoneTint.maxRange; y <= ObsidianstoneTint.maxRange; y++) {
+                for (int z = -ObsidianstoneTint.maxRange; z <= ObsidianstoneTint.maxRange; z++) {
+
+                    BlockPos current = new BlockPos(x, y, z);
+
+                    if (level.getBlockState(pos.offset(current)).is(ModTags.Blocks.HOT_BLOCKS)) {
+
+                        int currentDistance = new Vec3i(x, y, z).distManhattan(Vec3i.ZERO);
+
+                        if (currentDistance < nearestDistance) nearestDistance = currentDistance;
+
+                    }
+
+                }
+            }
+        }
+
+        return ObsidianstoneTint.maxRange + 1 - nearestDistance;
     }
 
     private static void createLaunchParticles(GeyserBlockEntity geyser) {

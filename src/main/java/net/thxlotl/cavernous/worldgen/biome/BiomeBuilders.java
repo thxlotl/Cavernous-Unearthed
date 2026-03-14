@@ -18,6 +18,7 @@ import net.thxlotl.cavernous.util.worldgen.ore.CustomStoneOreFamily;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OrePlacedFeatureType;
 import net.thxlotl.cavernous.worldgen.features.placed.FungalCavesPlacedFeatures;
+import net.thxlotl.cavernous.worldgen.features.placed.VolcanicCavesPlacedFeatures;
 
 import java.util.EnumMap;
 
@@ -108,7 +109,7 @@ public class BiomeBuilders {
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 335155)
                 .setAttribute(EnvironmentAttributes.SKY_COLOR, 10014123) //12377016 old color
                 .setAttribute(EnvironmentAttributes.FOG_COLOR, 10014123)
-                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, -10f)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
                 .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
                 .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
                 .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.FUNGAL_SPORE.get(), 0.001f))
@@ -134,6 +135,8 @@ public class BiomeBuilders {
         // Ores
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         // Custom features
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VolcanicCavesPlacedFeatures.GEYSER_CLUSTER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, VolcanicCavesPlacedFeatures.LAVA_FALL);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()
@@ -150,7 +153,9 @@ public class BiomeBuilders {
                 )
                 .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 3552822)
                 .setAttribute(EnvironmentAttributes.SKY_COLOR, 8870956) //12377016 old color
-                .setAttribute(EnvironmentAttributes.FOG_COLOR, 13464130)
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 11357466)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 10f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
                 .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
                 .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.VOLCANIC_ASH.get(), 0.07f))

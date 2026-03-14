@@ -192,4 +192,9 @@ public class SoftMagmaBlock extends Block {
         }
 
     }
+
+    @Override
+    public float getJumpFactor() {
+        return 0.3f;
+    }
 }

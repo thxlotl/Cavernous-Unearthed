@@ -60,6 +60,7 @@ public class RegisterEvents {
         event.registerSpriteSet(ModParticles.GEYSER_BURST.get(), GeyserBurstParticle.BurstProvider::new);
         event.registerSpriteSet(ModParticles.GEYSER_BUBBLE.get(), GeyserBurstParticle.BubbleProvider::new);
         event.registerSpriteSet(ModParticles.VOLCANIC_ASH.get(), VolcanicAshParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_STEAM.get(), GeyserSteamParticle.Provider::new);
     }
 
     @SubscribeEvent
@@ -70,6 +71,8 @@ public class RegisterEvents {
         event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_SLAB.get());
         event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_WALL.get());
         event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE.get());
         event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get());
         event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get());
         event.register(ObsidianstoneTint::getColor, ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
@@ -77,6 +80,7 @@ public class RegisterEvents {
         event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get());
         event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get());
         event.register(ObsidianstoneTint::getColor, ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
+        event.register(ObsidianstoneTint::getColor, ModBlocks.GEYSER_BLOCK.get());
     }
 
 }

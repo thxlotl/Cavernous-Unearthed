@@ -24,6 +24,8 @@
       }
     ],
     "minecraft:visual/fog_color": "#cd7242",
+    "minecraft:visual/fog_end_distance": 85.0,
+    "minecraft:visual/fog_start_distance": 10.0,
     "minecraft:visual/sky_color": "#875c2c",
     "minecraft:visual/water_fog_color": "#363636"
   },
@@ -81,10 +83,13 @@
       "minecraft:ore_copper",
       "minecraft:underwater_magma"
     ],
-    [],
+    [
+      "cavernous:geyser_cluster"
+    ],
     [
       "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:spring_lava",
+      "cavernous:lava_fall"
     ],
     [
       "minecraft:glow_lichen",

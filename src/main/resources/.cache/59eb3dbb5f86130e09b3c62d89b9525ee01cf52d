@@ -1,4 +1,4 @@
-// 1.21.11	2026-01-17T14:24:48.6242123	Loot Tables
+// 1.21.11	2026-03-13T20:55:09.3794483	Loot Tables
 c51630f1719f6478d4d8656f74a6cdeae6bb5062 data/cavernous/loot_table/blocks/black_trumpet_patch.json
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 38dedca17ee7f85459836bd6b149dbe3f607c0cd data/cavernous/loot_table/blocks/blue_ghost_fungus.json
@@ -56,6 +56,8 @@ d27aee0c51136c404eb19e15005c65ceba1a9366 data/cavernous/loot_table/blocks/polish
 6761a7907e0c8304eeaaeb214622906e194d62f0 data/cavernous/loot_table/blocks/polished_fungatite_stairs.json
 9adf6d712ab0912263dc235d971a67d5570a778d data/cavernous/loot_table/blocks/polished_fungatite_wall.json
 7cc75754130ff726805006f875acd2358bdda398 data/cavernous/loot_table/blocks/polished_obsidianstone.json
+acfc8274848264dd86caaf928566f09e62dc6df7 data/cavernous/loot_table/blocks/polished_obsidianstone_button.json
+30730608ebcebc3ae1cd114832d3f04f309b3efb data/cavernous/loot_table/blocks/polished_obsidianstone_pressure_plate.json
 e2a1388a147c4dbdd57f27190c5e8bedebcceb92 data/cavernous/loot_table/blocks/polished_obsidianstone_slab.json
 ca4b7b1571218a450995dc6e2e89e22fc0b7122b data/cavernous/loot_table/blocks/polished_obsidianstone_stairs.json
 f8e0d49b7cad5a5ab44aeba3cb115d88714890f6 data/cavernous/loot_table/blocks/polished_obsidianstone_wall.json
@@ -63,6 +65,7 @@ f8e0d49b7cad5a5ab44aeba3cb115d88714890f6 data/cavernous/loot_table/blocks/polish
 108f148c2df05f6209b2afd608119caa275f9682 data/cavernous/loot_table/blocks/potted_toadstool_button.json
 eb56f6999924b8bc9aec3e54c389ee522adb6c81 data/cavernous/loot_table/blocks/puffshroom.json
 276c0bedac245acfeb64f91d122053d4db889cb8 data/cavernous/loot_table/blocks/scoria.json
+61f296f5db0292d440d829ca1135f292321cefb6 data/cavernous/loot_table/blocks/scoria_bricks.json
 cc7fa4e8d362ef3aa9d454e1f8daa05292e5c976 data/cavernous/loot_table/blocks/shelfshroom.json
 18981fe57e99b53b21edc9b520600a9318b6212c data/cavernous/loot_table/blocks/shelfshroom_cap_block.json
 97ddb79c0ad2465a1661640bbc4f2adf8d7a167f data/cavernous/loot_table/blocks/shroomwood.json

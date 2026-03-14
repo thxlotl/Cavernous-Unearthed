@@ -2,10 +2,13 @@ package net.thxlotl.cavernous.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -20,6 +23,8 @@ import net.minecraft.world.level.redstone.Orientation;
 import net.thxlotl.cavernous.block.entity.GeyserBlockEntity;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.particle.ModParticles;
+import net.thxlotl.cavernous.rendering.ObsidianstoneTint;
+import net.thxlotl.cavernous.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 public class GeyserBlock extends BaseEntityBlock {
@@ -54,17 +59,6 @@ public class GeyserBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         return createTickerHelper(blockEntityType, ModBlockEntities.GEYSER_BLOCK.get(), GeyserBlockEntity::tick);
-    }
-
-    @Override
-    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        super.stepOn(level, pos, state, entity);
-
-    }
-
-    @Override
-    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        super.tick(state, level, pos, random);
     }
 
     @Override
@@ -111,7 +105,10 @@ public class GeyserBlock extends BaseEntityBlock {
                         random.nextDouble() * 0.1
                 );
             }
+
         }
 
     }
+
+
 }

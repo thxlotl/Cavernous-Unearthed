@@ -11,16 +11,6 @@ import java.util.Map;
 
 public class BiomeData {
 
-    public static final Map<ResourceKey<Biome>, Float> BIOME_FOG_NEAR_OFFSET = new HashMap<>(Map.of(
-            ModBiomes.FUNGAL_CAVES, 10.0f,
-            ModBiomes.VOLCANIC_CAVES, 8.0f
-    ));
-
-    public static final Map<ResourceKey<Biome>, Float> BIOME_FOG_FAR_MULTIPLIER = new HashMap<>(Map.of(
-            ModBiomes.FUNGAL_CAVES, 0.08f,
-            ModBiomes.VOLCANIC_CAVES, 0.07f
-    ));
-
     public static final Map<ResourceKey<Biome>, Float> BIOME_BRIGHTNESS_BOOST = new HashMap<>(Map.of(
             ModBiomes.FUNGAL_CAVES, 0.4f,
             ModBiomes.VOLCANIC_CAVES, 0.4f
@@ -32,7 +22,8 @@ public class BiomeData {
     ));
 
     public static final Map<ResourceKey<Biome>, Vec3> BIOME_FOG_COLOR = new HashMap<>(Map.of(
-            ModBiomes.FUNGAL_CAVES, computeBiomeColor(7839842) //old color 10014123 , newer old color 9881216
+            ModBiomes.FUNGAL_CAVES, computeBiomeColor(7839842), //old color 10014123 , newer old color 9881216
+            ModBiomes.VOLCANIC_CAVES, computeBiomeColor(11357466) //old color 10014123 , newer old color 9881216
     ));
 
 
@@ -44,7 +35,7 @@ public class BiomeData {
     public static float get(Map<ResourceKey<Biome>, Float> map, ResourceKey<Biome> biome) {
 
         float defaultValue = 1.0f;
-        if(map == BIOME_FOG_NEAR_OFFSET || map == BIOME_BRIGHTNESS_BOOST || map == BIOME_BRIGHTNESS_OVERRIDE) {
+        if(map == BIOME_BRIGHTNESS_BOOST || map == BIOME_BRIGHTNESS_OVERRIDE) {
             defaultValue = 0.0f;
         }
 
