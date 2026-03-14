@@ -1,6 +1,7 @@
 package net.thxlotl.cavernous.worldgen.features.configured;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
@@ -27,7 +28,6 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.block.ModBlocks;
@@ -37,10 +37,10 @@ import net.thxlotl.cavernous.util.worldgen.CFeatureUtil;
 import net.thxlotl.cavernous.util.worldgen.WeightedBlockState;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OreConfiguredFeatureType;
+import net.thxlotl.cavernous.worldgen.custom.boulder.BoulderConfiguration;
 import net.thxlotl.cavernous.worldgen.features.ModConfiguredFeatures;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.custom.segmentedwallblock.SegmentedWallBlockConfiguration;
-import net.thxlotl.cavernous.worldgen.custom.tree.LeaveCustomVineDecorator;
 import net.thxlotl.cavernous.worldgen.custom.tree.MushroomCapFoliagePlacer;
 import net.thxlotl.cavernous.worldgen.custom.tree.ToadstoolTrunkPlacer;
 import net.thxlotl.cavernous.worldgen.custom.wallshroom.WallShroomConfiguration;
@@ -72,6 +72,9 @@ public class FungalCavesConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> MYCELIUM_SPROUT_PATCH = ModConfiguredFeatures.registerKey("mycelium_sprout_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAMPSHROOM_PATCH_CLUSTER = ModConfiguredFeatures.registerKey("lampshroom_patch_cluster");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAMPSHROOM_CLUSTER = ModConfiguredFeatures.registerKey("lampshroom_cluster");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FUNGATITE_BOULDER = ModConfiguredFeatures.registerKey("fungatite_boulder");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MYCELIUM_VINES = ModConfiguredFeatures.registerKey("mycelium_vines");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_GHOST_FUNGUS_CLUSTER = ModConfiguredFeatures.registerKey("blue_ghost_fungus_cluster");
 
     //region ORES
     public static final ResourceKey<ConfiguredFeature<?,?>> FUNGATITE_ORE_COAL = ModConfiguredFeatures.oreKey(CustomStoneType.FUNGATITE, OreConfiguredFeatureType.COAL);
@@ -129,6 +132,10 @@ public class FungalCavesConfiguredFeatures {
 
         FeatureUtils.register(context, LAMPSHROOM_PATCH_CLUSTER, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchOfBlock(
                 95, 4, ModBlocks.LAMPSHROOM_PATCH.get()
+        ));
+
+        FeatureUtils.register(context, BLUE_GHOST_FUNGUS_CLUSTER, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchOfBlock(
+                45, 4, ModBlocks.BLUE_GHOST_FUNGUS.get()
         ));
 
         // Toadstool
@@ -198,8 +205,8 @@ public class FungalCavesConfiguredFeatures {
 
         BlockColumnConfiguration hangingShroomSporePodConfig = new BlockColumnConfiguration(
                 List.of(
-                        new BlockColumnConfiguration.Layer(UniformInt.of(6, 8), SimpleStateProvider.simple(ModBlocks.HANGING_SHROOM_STEM.get())),
-                        new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(ModBlocks.HANGING_SHROOM_CAP.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, 15)))),
+                        new BlockColumnConfiguration.Layer(UniformInt.of(6, 8), SimpleStateProvider.simple(ModBlocks.FLIPSHROOM_STEM.get())),
+                        new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(ModBlocks.FLIPSHROOM.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, 15)))),
                 Direction.DOWN,
                 BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR),
                 true
@@ -208,8 +215,8 @@ public class FungalCavesConfiguredFeatures {
 
         BlockColumnConfiguration hangingShroomConfig = new BlockColumnConfiguration(
                 List.of(
-                        new BlockColumnConfiguration.Layer(BiasedToBottomInt.of(1, 12), SimpleStateProvider.simple(ModBlocks.HANGING_SHROOM_STEM.get())),
-                        new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(ModBlocks.HANGING_SHROOM_CAP.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, 12)))),
+                        new BlockColumnConfiguration.Layer(BiasedToBottomInt.of(1, 12), SimpleStateProvider.simple(ModBlocks.FLIPSHROOM_STEM.get())),
+                        new BlockColumnConfiguration.Layer(ConstantInt.of(1), SimpleStateProvider.simple(ModBlocks.FLIPSHROOM.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, 12)))),
                 Direction.DOWN,
                 BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR),
                 true
@@ -272,6 +279,37 @@ public class FungalCavesConfiguredFeatures {
         );
         FeatureUtils.register(context, SHELFSHROOM, ModFeature.WALLSHROOM_FEATURE.get(), shelfshroomConfig);
 
+        BoulderConfiguration fungatiteBoulderConfig = new BoulderConfiguration(SimpleStateProvider.simple(ModBlocks.FUNGATITE.get()), BiasedToBottomInt.of(2, 4));
+        FeatureUtils.register(context, FUNGATITE_BOULDER, ModFeature.BOULDER_FEATURE.get(), fungatiteBoulderConfig);
+
+        VegetationPatchConfiguration myceliumVineConfig = new VegetationPatchConfiguration(
+                ModTags.Blocks.UNDERGROUND_MYCELIUM_REPLACEABLE,
+                BlockStateProvider.simple(ModBlocks.FUNGATITE.get()),
+                PlacementUtils.inlinePlaced(
+                        Holder.direct(
+                                new ConfiguredFeature<>(
+                                    Feature.BLOCK_COLUMN,
+                                    new BlockColumnConfiguration(
+                                            List.of(
+                                                    new BlockColumnConfiguration.Layer(BiasedToBottomInt.of(2, 10), BlockStateProvider.simple(ModBlocks.MYCELIUM_VINE_PLANT.get())),
+                                                    new BlockColumnConfiguration.Layer(ConstantInt.of(1), BlockStateProvider.simple(ModBlocks.MYCELIUM_VINE.get()))
+                                            ),
+                                            Direction.DOWN,
+                                            BlockPredicate.matchesBlocks(Blocks.AIR),
+                                            true
+                                    )
+                                )
+                        )
+                ),
+                CaveSurface.CEILING,
+                ConstantInt.of(1),
+                0f,
+                6,
+                0.5f,
+                UniformInt.of(2, 4),
+                0.45f
+        );
+        FeatureUtils.register(context, MYCELIUM_VINES, Feature.VEGETATION_PATCH, myceliumVineConfig);
 
         ModConfiguredFeatures.createOreForStoneType(context, CustomStoneType.FUNGATITE, ModTags.Blocks.FUNGATITE_ORE_REPLACEABLE);
     }

@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "cavernous:block/obsidianstone"
+    "model": "cavernous:block/obsidianstone",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 6381412
+      }
+    ]
   }
 }

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "cavernous:polished_fungatite",
-  "result": {
-    "count": 2,
-    "id": "cavernous:fungatite_brick_slab"
-  }
-}

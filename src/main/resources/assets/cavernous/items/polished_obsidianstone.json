@@ -1,6 +1,12 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "cavernous:block/polished_obsidianstone"
+    "model": "cavernous:block/polished_obsidianstone",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 6381412
+      }
+    ]
   }
 }

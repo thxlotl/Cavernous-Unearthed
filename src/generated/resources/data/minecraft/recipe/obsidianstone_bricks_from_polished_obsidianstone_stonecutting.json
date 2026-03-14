@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "cavernous:polished_obsidianstone",
-  "result": {
-    "count": 1,
-    "id": "cavernous:obsidianstone_bricks"
-  }
-}

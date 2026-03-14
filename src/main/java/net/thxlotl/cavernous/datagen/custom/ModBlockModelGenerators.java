@@ -7,13 +7,10 @@ import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.model.Variant;
 import net.minecraft.client.renderer.block.model.VariantMutator;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.VineBlock;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Property;
 
 import java.util.Map;
@@ -21,20 +18,20 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class ModBlockModelGenerators extends BlockModelGenerators {
-    public ModBlockModelGenerators(Consumer<BlockModelDefinitionGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
+    public ModBlockModelGenerators(Consumer<BlockModelDefinitionGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         super(blockStateOutput, itemModelOutput, modelOutput);
     }
 
     public void createVine(VineBlock vineBlock, Boolean tinted) {
         this.createMultiface(vineBlock);
-        ResourceLocation resourcelocation = this.createFlatItemModelWithBlockTexture(vineBlock.asItem(), vineBlock);
+        Identifier Identifier = this.createFlatItemModelWithBlockTexture(vineBlock.asItem(), vineBlock);
         if (tinted)
         {
-            this.registerSimpleTintedItemModel(vineBlock, resourcelocation, ItemModelUtils.constantTint(-12012264));
+            this.registerSimpleTintedItemModel(vineBlock, Identifier, ItemModelUtils.constantTint(-12012264));
         }
         else
         {
-            this.registerSimpleItemModel(vineBlock, resourcelocation);
+            this.registerSimpleItemModel(vineBlock, Identifier);
         }
     }
 

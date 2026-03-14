@@ -3,7 +3,7 @@ package net.thxlotl.cavernous.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
@@ -96,9 +96,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SCORIA.get());
         
         tag(BlockTags.CLIMBABLE)
-                .add(ModBlocks.HANGING_SHROOM_CAP.get())
-                .add(ModBlocks.HANGING_SHROOM_STEM.get())
-                .add(ModBlocks.HANGING_FEATHER_MOSS.get());
+                .add(ModBlocks.FLIPSHROOM.get())
+                .add(ModBlocks.FLIPSHROOM_STEM.get())
+                .add(ModBlocks.HANGING_FEATHER_MOSS.get())
+                .add(ModBlocks.MYCELIUM_VINE_PLANT.get())
+                .add(ModBlocks.MYCELIUM_VINE.get());
 
         tag(BlockTags.COAL_ORES)
                 .add(ModBlocks.FUNGATITE_COAL_ORE.get());tag(BlockTags.COAL_ORES)
@@ -188,6 +190,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FUNGATITE_LAPIS_ORE.get())
                 .add(ModBlocks.FUNGATITE_EMERALD_ORE.get())
                 .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get())
+                .add(ModBlocks.FLIPSHROOM_CAP_BLOCK.get())
+                .add(ModBlocks.SHELFSHROOM_CAP_BLOCK.get())
+                .add(ModBlocks.TOADSTOOL_CAP_BLOCK.get())
+                .add(ModBlocks.LAMPSHROOM_CAP_BLOCK.get())
                 .addTag(ModTags.Blocks.SHROOMWOOD_LOGS);
         tag(BlockTags.LOGS)
                 .add(ModBlocks.SHROOMWOOD_LOG.get())
@@ -256,6 +262,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(ModTags.Blocks.MYCELIUM_SPROUTS_PLACEABLE)
                 .addTag(BlockTags.MUSHROOM_GROW_BLOCK);
+
+        tag(ModTags.Blocks.HOT_BLOCKS)
+                .add(Blocks.LAVA)
+                .add(Blocks.MAGMA_BLOCK)
+                .add(ModBlocks.SOFT_MAGMA_BLOCK.get());
 
     }
 }

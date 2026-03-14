@@ -1,4 +1,34 @@
 {
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.overworld.dripstone_caves"
+      }
+    },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "cavernous:volcanic_ash"
+        },
+        "probability": 0.07
+      }
+    ],
+    "minecraft:visual/fog_color": "#cd7242",
+    "minecraft:visual/fog_end_distance": 85.0,
+    "minecraft:visual/fog_start_distance": 10.0,
+    "minecraft:visual/sky_color": "#875c2c",
+    "minecraft:visual/water_fog_color": "#363636"
+  },
   "carvers": [
     "minecraft:cave",
     "minecraft:cave_extra_underground",
@@ -6,36 +36,9 @@
   ],
   "downfall": 0.0,
   "effects": {
-    "fog_color": 13464130,
-    "foliage_color": 7039851,
-    "grass_color": 7039851,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "music": [
-      {
-        "data": {
-          "max_delay": 24000,
-          "min_delay": 12000,
-          "replace_current_music": false,
-          "sound": "minecraft:music.overworld.dripstone_caves"
-        },
-        "weight": 1
-      }
-    ],
-    "music_volume": 1.0,
-    "particle": {
-      "options": {
-        "type": "cavernous:volcanic_ash"
-      },
-      "probability": 0.07
-    },
-    "sky_color": 8870956,
-    "water_color": 7039851,
-    "water_fog_color": 3552822
+    "foliage_color": "#6b6b6b",
+    "grass_color": "#6b6b6b",
+    "water_color": "#6b6b6b"
   },
   "features": [
     [],
@@ -80,10 +83,13 @@
       "minecraft:ore_copper",
       "minecraft:underwater_magma"
     ],
-    [],
+    [
+      "cavernous:geyser_cluster"
+    ],
     [
       "minecraft:spring_water",
-      "minecraft:spring_lava"
+      "minecraft:spring_lava",
+      "cavernous:lava_fall"
     ],
     [
       "minecraft:glow_lichen",

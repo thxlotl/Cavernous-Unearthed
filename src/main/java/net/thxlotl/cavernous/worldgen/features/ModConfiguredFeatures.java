@@ -5,7 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -19,6 +19,7 @@ import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OreConfiguredFeatureType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OreResourceType;
 import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.configured.VolcanicCavesConfiguredFeatures;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -30,6 +31,7 @@ public class ModConfiguredFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 
         FungalCavesConfiguredFeatures.bootstrap(context);
+        VolcanicCavesConfiguredFeatures.bootstrap(context);
     }
 
 
@@ -177,7 +179,7 @@ public class ModConfiguredFeatures {
     //endregion
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(Cavernous.MODID, name));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register

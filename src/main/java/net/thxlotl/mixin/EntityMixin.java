@@ -28,20 +28,20 @@ public abstract class EntityMixin implements IEntityExtension {
         }
     }
 
-//    @Inject(
-//            method = "isInFluidType",
-//            at = @At("HEAD"),
-//            cancellable = true
-//    )
-//    private void onIsInFluidType(BiPredicate<FluidType, Double> predicate, boolean bool, CallbackInfoReturnable<Boolean> cir) {
-//
-//        Entity entity = (Entity)(Object)this;
-//
-//        if (isInSmoothMagma(entity)) {
-//            cir.setReturnValue(true); //Fluids.LAVA.getFluidType()
-//        }
-//
-//    }
+    @Inject(
+            method = "isInFluidType",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private void onIsInFluidType(BiPredicate<FluidType, Double> predicate, boolean bool, CallbackInfoReturnable<Boolean> cir) {
+
+        Entity entity = (Entity)(Object)this;
+
+        if (isInSmoothMagma(entity)) {
+            cir.setReturnValue(true); //Fluids.LAVA.getFluidType()
+        }
+
+    }
 
     public boolean isInSmoothMagma(Entity entity) {
 

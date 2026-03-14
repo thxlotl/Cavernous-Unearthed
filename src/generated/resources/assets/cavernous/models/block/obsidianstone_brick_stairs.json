@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "cavernous:block/obsidianstone_bricks",
-    "side": "cavernous:block/obsidianstone_bricks",
-    "top": "cavernous:block/obsidianstone_bricks"
-  }
-}

@@ -6,13 +6,13 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.thxlotl.cavernous.Cavernous;
 
 public class InfectedAntModel extends EntityModel<AntRenderState> {
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "infected_ant"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Cavernous.MODID, "infected_ant"), "main");
 
     private final KeyframeAnimation walkingAnimation;
     private final KeyframeAnimation attackAnimation;

@@ -49,6 +49,13 @@ public class ModRecipeProvider extends RecipeProvider {
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
         wallBuilder(RecipeCategory.BUILDING_BLOCKS, wallBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
     }
+    private void makeStoneFamilyRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, PressurePlateBlock pressurePlateBlock, ButtonBlock buttonBlock) {
+        stairBuilder(stairBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, wallBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        pressurePlateBuilder(RecipeCategory.BUILDING_BLOCKS, pressurePlateBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        buttonBuilder(buttonBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+    }
 
     private void makeRefineRecipe(Block input, Block result) {
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, result, 4)
@@ -225,7 +232,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.POLISHED_OBSIDIANSTONE.get(),
                 ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get(),
                 ModBlocks.POLISHED_OBSIDIANSTONE_SLAB.get(),
-                ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get());
+                ModBlocks.POLISHED_OBSIDIANSTONE_WALL.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE.get(),
+                ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON.get());
         makeStoneFamilyStonecutterRecipes(
                 ModBlocks.POLISHED_OBSIDIANSTONE.get(),
                 ModBlocks.POLISHED_OBSIDIANSTONE_STAIRS.get(),

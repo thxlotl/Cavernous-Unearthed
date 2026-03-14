@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/stairs",
+  "parent": "cavernous:block/template/stairs_tinted",
   "textures": {
     "bottom": "cavernous:block/obsidianstone",
     "side": "cavernous:block/obsidianstone",

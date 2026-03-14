@@ -6,6 +6,10 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.attribute.AmbientParticle;
+import net.minecraft.world.attribute.AmbientSounds;
+import net.minecraft.world.attribute.BackgroundMusic;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -14,6 +18,7 @@ import net.thxlotl.cavernous.util.worldgen.ore.CustomStoneOreFamily;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OrePlacedFeatureType;
 import net.thxlotl.cavernous.worldgen.features.placed.FungalCavesPlacedFeatures;
+import net.thxlotl.cavernous.worldgen.features.placed.VolcanicCavesPlacedFeatures;
 
 import java.util.EnumMap;
 
@@ -67,23 +72,26 @@ public class BiomeBuilders {
         addCustomStoneOres(biomeBuilder, CustomStoneType.FUNGATITE);
 
         // Custom features
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FungalCavesPlacedFeatures.FUNGATITE_BOULDER);
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, FungalCavesPlacedFeatures.ORE_GROUND_FUNGATITE);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, FungalCavesPlacedFeatures.SHELFSHROOM);
 
-        ///biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.FEATHER_MOSS_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.FEATHER_MOSS_PATCH);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_PATCH_CLUSTER);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.UNDERGROUND_MYCELIUM_PATCH);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.MYCELIUM_SPROUT_PATCH);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_PATCH_CLUSTER);
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.TOADSTOOL);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.LAMPSHROOM_CLUSTER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.BLUE_GHOST_FUNGUS_CLUSTER);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.BLEEDING_TOOTH_FUNGUS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.CORDYCEPS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.HANGING_SHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.GHOST_FUNGUS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.PUFFSHROOM);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FungalCavesPlacedFeatures.MYCELIUM_VINES);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()
@@ -94,13 +102,20 @@ public class BiomeBuilders {
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(4178916)
-                        .waterFogColor(335155)
-                        .skyColor(10014123) //12377016 old color
-                        .fogColor(10014123)
                         .grassColorOverride(7311404)
                         .foliageColorOverride(7311404)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES)).build())
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 335155)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 10014123) //12377016 old color
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 10014123)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 0f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.SKY_LIGHT_FACTOR, 0f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.FUNGAL_SPORE.get(), 0.001f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.LAMPSHROOM_SPORE.get(), 0.001f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
                 .build();
     }
 
@@ -120,6 +135,8 @@ public class BiomeBuilders {
         // Ores
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         // Custom features
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VolcanicCavesPlacedFeatures.GEYSER_CLUSTER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, VolcanicCavesPlacedFeatures.LAVA_FALL);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()
@@ -130,15 +147,18 @@ public class BiomeBuilders {
                 .mobSpawnSettings(spawnBuilder.build())
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(7039851)
-                        .waterFogColor(3552822)
-                        .skyColor(8870956)
-                        .fogColor(13464130)
                         .grassColorOverride(7039851)
                         .foliageColorOverride(7039851)
-                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                        .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
-                        .ambientParticle(new AmbientParticleSettings(ModParticles.VOLCANIC_ASH.get(), 0.07f))
-                        .build())
+                        .build()
+                )
+                .setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 3552822)
+                .setAttribute(EnvironmentAttributes.SKY_COLOR, 8870956) //12377016 old color
+                .setAttribute(EnvironmentAttributes.FOG_COLOR, 11357466)
+                .setAttribute(EnvironmentAttributes.FOG_START_DISTANCE, 10f)
+                .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
+                .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
+                .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.VOLCANIC_ASH.get(), 0.07f))
                 .build();
     }
 

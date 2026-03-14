@@ -1,0 +1,6 @@
+{
+  "parent": "cavernous:block/template/pressure_plate_down_tinted",
+  "textures": {
+    "texture": "cavernous:block/polished_obsidianstone"
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "cavernous:block/fungatite_redstone_ore"
-  }
-}

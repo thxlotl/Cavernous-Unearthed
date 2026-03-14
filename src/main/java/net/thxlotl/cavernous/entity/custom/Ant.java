@@ -89,9 +89,29 @@ public class Ant extends Animal implements NeutralMob {
         this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 
-    @javax.annotation.Nullable
-    public UUID getPersistentAngerTarget() {
-        return this.persistentAngerTarget;
+    @Override
+    public long getPersistentAngerEndTime() {
+        return 0;
+    }
+
+    @Override
+    public void setPersistentAngerEndTime(long l) {
+
+    }
+
+    @Override
+    public @org.jspecify.annotations.Nullable EntityReference<LivingEntity> getPersistentAngerTarget() {
+        return null;
+    }
+
+//    @javax.annotation.Nullable
+//    public UUID getPersistentAngerTarget() {
+//        return this.persistentAngerTarget;
+//    }
+
+    @Override
+    public void setPersistentAngerTarget(@org.jspecify.annotations.Nullable EntityReference<LivingEntity> entityReference) {
+
     }
 
     public void setPersistentAngerTarget(@javax.annotation.Nullable UUID p_406276_) {

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "cavernous:block/shroomwood_planks",
-    "side": "cavernous:block/shroomwood_planks",
-    "top": "cavernous:block/shroomwood_planks"
-  }
-}

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "cavernous:block/template/cube_all_tinted",
   "textures": {
     "all": "cavernous:block/polished_obsidianstone"
   }

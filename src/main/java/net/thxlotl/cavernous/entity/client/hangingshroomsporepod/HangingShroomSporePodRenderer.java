@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.thxlotl.cavernous.Cavernous;
@@ -69,7 +69,7 @@ public class HangingShroomSporePodRenderer extends EntityRenderer<HangingShroomS
         super.submit(renderState, poseStack, nodeCollector, cameraRenderState);
     }
 
-    public ResourceLocation getTextureLocation() {
-        return ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "textures/entity/hanging_shroom_spore_pod.png");
+    public Identifier getTextureLocation() {
+        return Identifier.fromNamespaceAndPath(Cavernous.MODID, "textures/entity/hanging_shroom_spore_pod.png");
     }
 }

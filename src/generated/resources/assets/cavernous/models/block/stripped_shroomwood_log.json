@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "cavernous:block/stripped_shroomwood_log_top",
-    "side": "cavernous:block/stripped_shroomwood_log"
-  }
-}

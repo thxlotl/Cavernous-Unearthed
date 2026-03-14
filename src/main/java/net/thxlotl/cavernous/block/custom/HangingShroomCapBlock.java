@@ -46,7 +46,7 @@ public class HangingShroomCapBlock extends GrowingPlantHeadBlock {
 
     @Override
     protected Block getBodyBlock() {
-        return ModBlocks.HANGING_SHROOM_STEM.get();
+        return ModBlocks.FLIPSHROOM_STEM.get();
     }
 
     @Override
@@ -63,7 +63,7 @@ public class HangingShroomCapBlock extends GrowingPlantHeadBlock {
     @Override
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 
-        if (stack.is(ModBlocks.HANGING_SHROOM_CAP.asItem()))
+        if (stack.is(ModBlocks.FLIPSHROOM.asItem()))
         {
             boolean willGrow = false;
             int offset = 1;
@@ -77,7 +77,7 @@ public class HangingShroomCapBlock extends GrowingPlantHeadBlock {
                     willGrow = true;
                     break;
                 }
-                else if (!(checkedState.is(ModBlocks.HANGING_SHROOM_CAP) || checkedState.is(ModBlocks.HANGING_SHROOM_STEM)))
+                else if (!(checkedState.is(ModBlocks.FLIPSHROOM) || checkedState.is(ModBlocks.FLIPSHROOM_STEM)))
                 {
                     willGrow = false;
                     break;
@@ -89,7 +89,7 @@ public class HangingShroomCapBlock extends GrowingPlantHeadBlock {
             {
                 BlockPos growPos = pos.below(offset);
                 stack.consume(1, player);
-                level.setBlockAndUpdate(growPos, ModBlocks.HANGING_SHROOM_CAP.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, player.getRandom().nextInt(0, 25)));
+                level.setBlockAndUpdate(growPos, ModBlocks.FLIPSHROOM.get().defaultBlockState().setValue(BlockStateProperties.AGE_25, player.getRandom().nextInt(0, 25)));
                 level.playLocalSound(growPos, this.soundType.getPlaceSound(), SoundSource.BLOCKS, 1, 1, false);
                 return InteractionResult.SUCCESS;
             }

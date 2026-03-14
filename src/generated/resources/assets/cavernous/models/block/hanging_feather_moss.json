@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/mossy_carpet_side",
-  "textures": {
-    "side": "cavernous:block/hanging_feather_moss"
-  }
-}

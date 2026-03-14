@@ -6,13 +6,13 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.thxlotl.cavernous.Cavernous;
 
 public class HangingShroomSporePodModel extends EntityModel<EntityRenderState> {
 
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Cavernous.MODID, "hanging_shroom_spore_pod"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Cavernous.MODID, "hanging_shroom_spore_pod"), "main");
     private final ModelPart spore_pod;
 
     public HangingShroomSporePodModel(ModelPart root) {

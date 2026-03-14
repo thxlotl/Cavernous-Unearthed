@@ -2,13 +2,18 @@ package net.thxlotl.cavernous.event;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.item.GrassColorSource;
+import net.minecraft.client.color.item.ItemTintSource;
+import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.ClientInput;
 import net.minecraft.client.renderer.fog.FogData;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.CubicSampler;
+///import net.minecraft.util.CubicSampler;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.attribute.GaussianSampler;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -17,6 +22,7 @@ import net.minecraft.world.entity.player.Input;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -27,7 +33,9 @@ import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.rendering.RenderUtil;
+import net.thxlotl.cavernous.util.CubicSampler;
 import net.thxlotl.cavernous.worldgen.biome.BiomeData;
+///import net.thxlotl.mixin.ClientInputAccessor;
 import net.thxlotl.mixin.ClientInputAccessor;
 import org.joml.Vector3f;
 
@@ -39,34 +47,51 @@ public class ModEvents {
     @SubscribeEvent
     public static void rendering(ViewportEvent.ComputeFogColor event)
     {
-        Entity entity = event.getCamera().getEntity();
-        ClientLevel level = (ClientLevel) entity.level();
+        Camera cam = event.getCamera();
+        Entity entity = cam.entity();
 
-        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
-
-            event.setRed(0.6f);
-            event.setGreen(0.09411765f);
-            event.setBlue(0f);
+        // Smooth magma fog color
+        if (cam.getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+            setFogColors(event, 0.6f, 0.0941f, 0f);
         }
-        else
-        if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
+        else if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE) {
 
-            Camera camera = event.getCamera();
-            ///Vec3 vec3 = camera.getPosition().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
+            Vec3 vec3 = cam.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
+            BiomeManager biomemanager = entity.level().getBiomeManager();
 
-            setFogColor(
-                    event,
-                    RenderUtil.getBaseColor(
+            float sampledOverride = (float) CubicSampler.gaussianSampleVec3(
+                    vec3,
+                    (x, y, z) -> {
+                        Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
+                        ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
+                        float value = key != null ? BiomeData.get(BiomeData.BIOME_BRIGHTNESS_OVERRIDE, key) : 1.0f;
+                        return new Vec3(value, value, value); // replicate float into RGB
+                    }
+            ).x();
+
+            if (sampledOverride > 0) {
+                ClientLevel level = (ClientLevel) entity.level();
+
+                int caveColor = RenderUtil.getCaveFogColor(entity.level(), cam, vec3);
+                int baseColor = RenderUtil.getBaseColor(
                         level,
-                        camera,
+                        event.getCamera(),
                         Minecraft.getInstance().options.getEffectiveRenderDistance(),
-                        RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(true))
-                    )
-            );
+                        RenderUtil.getDarkenWorldAmount(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false)));
+
+                int resolvedColor = ARGB.linearLerp(sampledOverride, baseColor, caveColor);
+
+                setFogColors(event, ARGB.vector3fFromRGB24(resolvedColor));
+            }
         }
     }
 
-    private static void setFogColor(ViewportEvent.ComputeFogColor event, Vector3f color) {
+    private static void setFogColors(ViewportEvent.ComputeFogColor event, float red, float green, float blue) {
+        event.setRed(red);
+        event.setGreen(green);
+        event.setBlue(blue);
+    }
+    private static void setFogColors(ViewportEvent.ComputeFogColor event, Vector3f color) {
         event.setRed(color.x);
         event.setGreen(color.y);
         event.setBlue(color.z);
@@ -75,12 +100,14 @@ public class ModEvents {
     @SubscribeEvent
     public static void rendering(ViewportEvent.RenderFog event)
     {
+        Camera cam = event.getCamera();
 
+        // Make fog close in soft magma
+        // Maybe change this check to make give it a small range so there is less of a jump when entering magma
+        if (cam.getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
 
-        Entity entity = event.getCamera().getEntity();
-        FogData fogData = event.getFogData();
-
-        if (event.getCamera().getBlockAtCamera() == ModBlocks.SOFT_MAGMA_BLOCK.get().defaultBlockState()) {
+            Entity entity = cam.entity();
+            FogData fogData = event.getFogData();
 
             float f = 16 * Minecraft.getInstance().options.getEffectiveRenderDistance();
             if (entity.isSpectator()) {
@@ -106,45 +133,8 @@ public class ModEvents {
             fogData.cloudEnd = fogData.environmentalEnd;
 
         }
-        else if (entity instanceof Player player) {
-
-            if (entity.level().isClientSide() && event.getCamera().getFluidInCamera() == FogType.NONE && !player.isSpectator())
-            {
-                ClientLevel level = (ClientLevel) entity.level();
-                BiomeManager biomemanager = level.getBiomeManager();
-                Vec3 pos = entity.position().subtract((double)2.0F, (double)2.0F, (double)2.0F).scale((double)0.25F);
-
-                float sampledNear = (float) CubicSampler.gaussianSampleVec3(
-                        pos,
-                        (x, y, z) -> {
-                            Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-                            ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                            float value = key != null ? BiomeData.get(BiomeData.BIOME_FOG_NEAR_OFFSET, key) : 1.0f;
-                            return new Vec3(value, value, value); // replicate float into RGB
-                        }
-                ).x();
-                float sampledFar = (float) CubicSampler.gaussianSampleVec3(
-                        pos,
-                        (x, y, z) -> {
-                            Holder<Biome> biomeAtQuart = biomemanager.getNoiseBiomeAtQuart(x, y, z);
-                            ResourceKey<Biome> key = biomeAtQuart.unwrapKey().orElse(null);
-                            float value = key != null ? BiomeData.get(BiomeData.BIOME_FOG_FAR_MULTIPLIER, key) : 1.0f;
-                            return new Vec3(value, value, value); // replicate float into RGB
-                        }
-                ).x();
-                //System.out.println("Fog Near: " + event.getNearPlaneDistance() + ", Far: " + event.getFarPlaneDistance() + ", Near Sample: " + sampledNear + ", Far Sample: " + sampledFar);
-
-                if (Minecraft.getInstance().player.hasEffect(MobEffects.BLINDNESS) || Minecraft.getInstance().player.hasEffect(MobEffects.DARKNESS)) {
-                    //fogData.environmentalStart = 0.0f;
-                } else {
-                    fogData.environmentalStart += sampledNear;
-                    fogData.environmentalEnd *= sampledFar;
-                }
-
-            }
-        }
-
     }
+
 
     @SubscribeEvent
     public static void movementInputEvent(MovementInputUpdateEvent event) {
@@ -174,6 +164,5 @@ public class ModEvents {
     private static void setInputVector(ClientInput input, Vec2 moveVector) {
         ((ClientInputAccessor) input).setMoveVector(moveVector);
     }
-
 
 }
