@@ -24,18 +24,19 @@ public class GeyserSteamParticle extends SingleQuadParticle {
 
         // speed
         float angle = Mth.PI / 4 + random.nextFloat() * 0.4f - 0.2f;
-        this.setParticleSpeed(horizontalSpeed * Mth.cos(angle), verticalSpeed * MathUtil.scaleFloat(random.nextFloat(), 1f, 1.5f), horizontalSpeed * Mth.sin(angle));
+        this.setParticleSpeed(horizontalSpeed * Mth.cos(angle), verticalSpeed * MathUtil.scaleFloat(random.nextFloat(), 0.5f, 1.5f), horizontalSpeed * Mth.sin(angle));
 
         // size
-        this.quadSize = MathUtil.scaleFloat((float)Math.random(), 0.6f, 0.9f);
+        this.quadSize = MathUtil.scaleFloat((float)Math.random(), 0.7f, 1f);
         this.setSize(quadSize, quadSize);
 
         // alpha + lifetime
         this.setAlpha(0f);
-        this.setLifetime(200);
+        this.setLifetime(300);
 
         // physics
         this.friction = 1f;
+
     }
 
     @Override
@@ -43,11 +44,13 @@ public class GeyserSteamParticle extends SingleQuadParticle {
         super.tick();
 
         if (this.age > this.getLifetime() / 2f && this.steamAlpha > 0.01f) {
-            this.steamAlpha -= 0.01f;
+            this.steamAlpha -= 0.005f;
         }
         this.setAlpha(Math.min(steamAlpha, this.age / 10f));
 
         this.yd *= 0.993f;
+
+        this.setSize(this.quadSize + 0.009f,this.quadSize + 0.009f);
     }
 
     @Override

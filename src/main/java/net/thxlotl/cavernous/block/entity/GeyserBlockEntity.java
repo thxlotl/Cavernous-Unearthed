@@ -45,7 +45,7 @@ public class GeyserBlockEntity extends BlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, GeyserBlockEntity geyser) {
 
-        RandomSource random = RandomSource.create();
+        //RandomSource random = RandomSource.create(geyser.getBlockPos().asLong());
 
         List<LivingEntity> entities = geyser.getCheckedEntities(level, pos);
         List<LivingEntity> checkedEntities =
@@ -88,8 +88,9 @@ public class GeyserBlockEntity extends BlockEntity {
         }
 
 
-        if (level.hasNearbyAlivePlayer(pos.getX(), pos.getY(), pos.getZ(), 50) &&
-                random.nextFloat() < 0.15f &&
+        if (
+                //level.hasNearbyAlivePlayer(pos.getX(), pos.getY(), pos.getZ(), 50) &&
+                RandomSource.create().nextFloat() < 0.143f &&
                 !level.getBlockState(pos.below()).is(BlockTags.ICE) &&
                 level.getBlockState(pos.above()).is(BlockTags.REPLACEABLE) &&
                 !(geyser.stoodOnTime > 0)
