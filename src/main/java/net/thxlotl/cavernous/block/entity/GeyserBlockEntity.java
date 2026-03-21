@@ -90,7 +90,7 @@ public class GeyserBlockEntity extends BlockEntity {
 
         if (
                 //level.hasNearbyAlivePlayer(pos.getX(), pos.getY(), pos.getZ(), 50) &&
-                RandomSource.create().nextFloat() < 0.143f &&
+                RandomSource.create().nextFloat() < 0.1f &&
                 !level.getBlockState(pos.below()).is(BlockTags.ICE) &&
                 level.getBlockState(pos.above()).is(BlockTags.REPLACEABLE) &&
                 !(geyser.stoodOnTime > 0)

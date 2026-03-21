@@ -556,6 +556,13 @@ public class ModBlocks {
                     strength(1.5f).
                     requiresCorrectToolForDrops().
                     sound(SoundType.STONE));
+    public static final DeferredBlock<Block> POLISHED_SCORIA = registerBlock(
+            "polished_scoria",
+            properties -> new Block(properties),
+            BlockBehaviour.Properties.of().
+                    strength(1.5f).
+                    requiresCorrectToolForDrops().
+                    sound(SoundType.STONE));
     public static final DeferredBlock<Block> SCORIA_BRICKS = registerBlock(
             "scoria_bricks",
             properties -> new Block(properties),

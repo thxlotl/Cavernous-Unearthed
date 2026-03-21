@@ -23,7 +23,7 @@
         "probability": 0.07
       }
     ],
-    "minecraft:visual/fog_color": "#cd7242",
+    "minecraft:visual/fog_color": "#ad4d1a",
     "minecraft:visual/fog_end_distance": 85.0,
     "minecraft:visual/fog_start_distance": 10.0,
     "minecraft:visual/sky_color": "#875c2c",

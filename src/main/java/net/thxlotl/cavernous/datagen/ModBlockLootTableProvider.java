@@ -121,6 +121,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.OBSIDIANSTONE_BRICK_WALL,
                 ModBlocks.GEYSER_BLOCK,
                 ModBlocks.SCORIA,
+                ModBlocks.POLISHED_SCORIA,
                 ModBlocks.SCORIA_BRICKS,
                 ModBlocks.GILLED_MUSHROOM,
                 ModBlocks.CLUSTER_SHROOM,

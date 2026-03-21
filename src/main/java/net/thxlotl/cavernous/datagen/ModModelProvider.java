@@ -208,6 +208,7 @@ public class ModModelProvider extends ModelProvider {
         //endregion
 
         blockModels.createTrivialCube(ModBlocks.SCORIA.get());
+        blockModels.createTrivialCube(ModBlocks.POLISHED_SCORIA.get());
         blockModels.createTrivialCube(ModBlocks.SCORIA_BRICKS.get());
         blockModels.createNonTemplateModelBlock(ModBlocks.SOFT_MAGMA_BLOCK.get());
 
