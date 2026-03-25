@@ -19,7 +19,7 @@ public class BiolithBiomePlacement {
     {
         Identifier overworldRules = Identifier.fromNamespaceAndPath("minecraft", "rules/overworld");
 
-        BiomePlacement.addOverworld(ModBiomes.FUNGAL_CAVES, ClimateParameters.fungalParametersSNAPSHOT);
+        BiomePlacement.addOverworld(ModBiomes.FUNGAL_CAVES, ClimateParameters.fungalParameters);
         SurfaceGeneration.addOverworldSurfaceRules(overworldRules, BiomeSurfaceRules.fungalRules());
 
         BiomePlacement.addOverworld(ModBiomes.VOLCANIC_CAVES, ClimateParameters.volcanicParametersSNAPSHOT); // Offset

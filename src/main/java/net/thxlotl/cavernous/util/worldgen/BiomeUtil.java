@@ -9,7 +9,7 @@ public class BiomeUtil {
     public static boolean isVolcanicRegion(DensityFunction erosionFunction, DensityFunction depthFunction, DensityFunction.FunctionContext functionContext) {
         //return erosionFunction.compute(functionContext) < (double)-0.225F && depthFunction.compute(functionContext) > (double)0.9F;
 
-        Climate.ParameterPoint point = ClimateParameters.volcanicParameters;
+        Climate.ParameterPoint point = ClimateParameters.volcanicParametersSNAPSHOT;
 
         float buffer = 0.07f; //0.07
         return inParameterRange(erosionFunction.compute(functionContext), point.erosion(), buffer) && inParameterRange(depthFunction.compute(functionContext), point.depth(), buffer);

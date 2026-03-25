@@ -1,0 +1,25 @@
+Copyright © 2025-2026 Interstella Studios
+
+This software is licensed under the Interstella Project License v1.0
+
+All rights reserved.
+
+This software, including all code, assets, textures, models, audio, and related files, is the exclusive property of the copyright holder(s).
+No part of this software may be copied, modified, distributed, decompiled, or used in any derivative works, in whole or in part without express written permission from the copyright holder(s).
+
+You are not permitted to:
+-Reproduce or redistribute this project in any form.
+-Upload or host the project on any platform without permission.
+-Reuse any of the project's code, assets, or proprietary content.
+-Create forks or derivative works without permission.
+
+You are permitted to:
+-Download and use the project for personal and non-commercial gameplay.
+-Include the UNMODIFIED project in a compilation (e.g., modpack) with explicit credit given to the copyright holder(s).
+
+This license may be updated, replaced, or modified at any time.
+Future versions of this license apply to versions of the software released under that license.
+
+For permission requests, please contact me through discord or email:
+discord.gg/D7hyC7AWMJ
+thxlotl@gmail.com
