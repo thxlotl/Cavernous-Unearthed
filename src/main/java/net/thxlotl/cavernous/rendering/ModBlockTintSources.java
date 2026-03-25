@@ -48,11 +48,13 @@ public class ModBlockTintSources {
 
                 float ratio = (float)nearestDistance / ((float)maxRange);
 
-                return ARGB.linearLerp((float)Math.pow(ratio, 0.5), heatedColor, unheatedColor);
+                return RenderUtil.blendGammaCorrected(heatedColor, unheatedColor, (float)Math.pow(ratio, 0.5));
 
             }
         };
     }
+
+
 
 
 }

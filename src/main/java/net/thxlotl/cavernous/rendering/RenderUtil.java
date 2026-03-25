@@ -230,10 +230,26 @@ public class RenderUtil {
         return k;
     }
 
-    private static int multiplyColor(int color, float multiplier) {
+    public static int multiplyColor(int color, float multiplier) {
         Vec3 vecColor = new Vec3(ARGB.redFloat(color), ARGB.greenFloat(color), ARGB.blueFloat(color));
         vecColor = vecColor.multiply(multiplier, multiplier, multiplier);
         return  ARGB.color(vecColor);
+    }
+
+    public static int blendGammaCorrected(int color1, int color2, float t) {
+        float r1 = (float)Math.pow((color1 >> 16 & 0xFF) / 255.0, 2.2);
+        float g1 = (float)Math.pow((color1 >> 8 & 0xFF) / 255.0, 2.2);
+        float b1 = (float)Math.pow((color1 & 0xFF) / 255.0, 2.2);
+
+        float r2 = (float)Math.pow((color2 >> 16 & 0xFF) / 255.0, 2.2);
+        float g2 = (float)Math.pow((color2 >> 8 & 0xFF) / 255.0, 2.2);
+        float b2 = (float)Math.pow((color2 & 0xFF) / 255.0, 2.2);
+
+        float r = (float)Math.pow(r1 * (1-t) + r2 * t, 1/2.2);
+        float g = (float)Math.pow(g1 * (1-t) + g2 * t, 1/2.2);
+        float b = (float)Math.pow(b1 * (1-t) + b2 * t, 1/2.2);
+
+        return ARGB.color(255, (int)(r*255), (int)(g*255), (int)(b*255));
     }
 
     public static int rgb(int r, int g, int b) {
