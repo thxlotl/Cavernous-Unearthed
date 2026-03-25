@@ -33,7 +33,7 @@ public class BleedingToothMushroomBlock extends VegetationBlock{
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(ModTags.Blocks.SHROOMWOOD_LOGS) || super.mayPlaceOn(state, level, pos) || state.is(BlockTags.MUSHROOM_GROW_BLOCK);
+        return state.is(ModTags.Blocks.SHROOMWOOD_LOGS) || super.mayPlaceOn(state, level, pos) || state.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT);
     }
 
     @Override

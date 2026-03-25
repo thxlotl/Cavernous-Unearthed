@@ -28,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.block.ModBlocks;
@@ -130,12 +131,12 @@ public class FungalCavesConfiguredFeatures {
         ));
 
 
-        FeatureUtils.register(context, LAMPSHROOM_PATCH_CLUSTER, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchOfBlock(
-                95, 4, ModBlocks.LAMPSHROOM_PATCH.get()
+        FeatureUtils.register(context, LAMPSHROOM_PATCH_CLUSTER, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(
+                ModBlocks.LAMPSHROOM_PATCH.get()
         ));
 
-        FeatureUtils.register(context, BLUE_GHOST_FUNGUS_CLUSTER, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchOfBlock(
-                45, 4, ModBlocks.BLUE_GHOST_FUNGUS.get()
+        FeatureUtils.register(context, BLUE_GHOST_FUNGUS_CLUSTER, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(
+                ModBlocks.BLUE_GHOST_FUNGUS.get()
         ));
 
         // Toadstool
@@ -197,8 +198,8 @@ public class FungalCavesConfiguredFeatures {
                 2, 5
         ));
 
-        FeatureUtils.register(context, MYCELIUM_SPROUT_PATCH, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchOfBlock(
-                450, 8, ModBlocks.MYCELIUM_SPROUTS.get()
+        FeatureUtils.register(context, MYCELIUM_SPROUT_PATCH, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(
+                ModBlocks.MYCELIUM_SPROUTS.get()
         ));
         //endregion
 
@@ -232,8 +233,14 @@ public class FungalCavesConfiguredFeatures {
                 BlockPredicate.matchesBlocks(new Vec3i(0, 1, 0), Blocks.AIR),
                 true
         );
+
+        // This is a dumb bandaid so I need to redo this part
+        //
         FeatureUtils.register(context, LAMPSHROOM, Feature.BLOCK_COLUMN, lampshroomConfig);
-        FeatureUtils.register(context, LAMPSHROOM_CLUSTER, Feature.RANDOM_PATCH, CFeatureUtil.createRandomVegetationPatchNoGrassCheck(holdergetter, 40, 3, LAMPSHROOM));
+        FeatureUtils.register(context, LAMPSHROOM_CLUSTER, Feature.RANDOM_BOOLEAN_SELECTOR, new RandomBooleanFeatureConfiguration(
+                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(LAMPSHROOM)),
+                PlacementUtils.inlinePlaced(holdergetter.getOrThrow(LAMPSHROOM))
+        ));
 
         TreeConfiguration lampshroomTreeConfig = new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.SHROOMWOOD_LOG.get().defaultBlockState()),

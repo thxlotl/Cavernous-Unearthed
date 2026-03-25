@@ -23,7 +23,7 @@ public class SegmentedWallBlockFeature extends Feature<SegmentedWallBlockConfigu
     @Override
     public boolean place(FeaturePlaceContext<SegmentedWallBlockConfiguration> context) {
 
-        Block toPlace = context.config().block().getState(context.random(), context.origin()).getBlock();
+        Block toPlace = context.config().block().getState(context.level(), context.random(), context.origin()).getBlock();
 
         if (toPlace instanceof SegmentedWallBlock block) {
 

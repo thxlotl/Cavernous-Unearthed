@@ -25,7 +25,7 @@ public class LampshroomStemBlock extends GrowingPlantBodyBlock {
 
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(BlockTags.DIRT) || state.getBlock() instanceof FarmBlock || state.is(BlockTags.MUSHROOM_GROW_BLOCK);
+        return state.is(BlockTags.DIRT) || state.getBlock() instanceof FarmlandBlock || state.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT);
     }
 
     @Override

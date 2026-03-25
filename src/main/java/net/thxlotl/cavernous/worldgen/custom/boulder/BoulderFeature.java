@@ -84,7 +84,7 @@ public class BoulderFeature extends Feature<BoulderConfiguration> {
 
             featurePlaceContext.level().setBlock(
                     pos,
-                    featurePlaceContext.config().toPlace().getState(random, pos),
+                    featurePlaceContext.config().toPlace().getState(featurePlaceContext.level(), random, pos),
                     2
             );
 

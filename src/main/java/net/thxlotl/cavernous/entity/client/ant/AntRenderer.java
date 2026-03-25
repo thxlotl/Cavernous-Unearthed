@@ -5,7 +5,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.Identifier;
 import net.thxlotl.cavernous.Cavernous;
@@ -22,14 +23,14 @@ public class AntRenderer extends MobRenderer<Ant, AntRenderState, AntModel> {
     }
 
     @Override
-    public void submit(AntRenderState renderState, PoseStack poseStack, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
-        if(renderState.isBaby) {
+    public void submit(AntRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+        if(state.isBaby) {
             poseStack.scale(0.5f, 0.5f, 0.5f);
         }
         else {
             poseStack.scale(1f, 1f, 1f);
         }
-        super.submit(renderState, poseStack, nodeCollector, cameraRenderState);
+        super.submit(state, poseStack, submitNodeCollector, camera);
     }
 
     @Override

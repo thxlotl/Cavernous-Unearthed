@@ -1,0 +1,17 @@
+{
+  "values": [
+    "cavernous:shroomwood_log",
+    "cavernous:stripped_shroomwood_log",
+    "cavernous:shroomwood",
+    "cavernous:stripped_shroomwood",
+    "cavernous:shroomwood_planks",
+    "cavernous:shroomwood_stairs",
+    "cavernous:shroomwood_slab",
+    "cavernous:shroomwood_fence",
+    "cavernous:shroomwood_fence_gate",
+    "cavernous:shroomwood_door",
+    "cavernous:shroomwood_trapdoor",
+    "cavernous:shroomwood_pressure_plate",
+    "cavernous:shroomwood_button"
+  ]
+}

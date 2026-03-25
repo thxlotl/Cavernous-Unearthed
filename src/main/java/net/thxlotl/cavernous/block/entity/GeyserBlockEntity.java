@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.thxlotl.cavernous.particle.ModParticles;
-import net.thxlotl.cavernous.rendering.ObsidianstoneTint;
+import net.thxlotl.cavernous.rendering.ObsidianstoneTintProperties;
 import net.thxlotl.cavernous.util.ModTags;
 
 import java.util.List;
@@ -145,11 +145,11 @@ public class GeyserBlockEntity extends BlockEntity {
 
     public static int getHeatAmount(Level level, BlockState state, BlockPos pos)
     {
-        int nearestDistance = ObsidianstoneTint.maxRange;
+        int nearestDistance = ObsidianstoneTintProperties.maxRange;
 
-        for (int x = -ObsidianstoneTint.maxRange; x <= ObsidianstoneTint.maxRange; x++) {
-            for (int y = -ObsidianstoneTint.maxRange; y <= ObsidianstoneTint.maxRange; y++) {
-                for (int z = -ObsidianstoneTint.maxRange; z <= ObsidianstoneTint.maxRange; z++) {
+        for (int x = -ObsidianstoneTintProperties.maxRange; x <= ObsidianstoneTintProperties.maxRange; x++) {
+            for (int y = -ObsidianstoneTintProperties.maxRange; y <= ObsidianstoneTintProperties.maxRange; y++) {
+                for (int z = -ObsidianstoneTintProperties.maxRange; z <= ObsidianstoneTintProperties.maxRange; z++) {
 
                     BlockPos current = new BlockPos(x, y, z);
 
@@ -165,7 +165,7 @@ public class GeyserBlockEntity extends BlockEntity {
             }
         }
 
-        return ObsidianstoneTint.maxRange + 1 - nearestDistance;
+        return ObsidianstoneTintProperties.maxRange + 1 - nearestDistance;
     }
 
     private static void createLaunchParticles(GeyserBlockEntity geyser) {

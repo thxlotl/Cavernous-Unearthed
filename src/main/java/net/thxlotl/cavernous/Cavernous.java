@@ -1,25 +1,29 @@
 package net.thxlotl.cavernous;
 
-import net.minecraft.client.color.item.GrassColorSource;
-import net.minecraft.client.renderer.FaceInfo;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.world.level.GrassColor;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.RenderTypeGroup;
-import net.neoforged.neoforge.client.RenderTypeHelper;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.entity.ModBlockEntities;
 import net.thxlotl.cavernous.effect.ModEffects;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.entity.client.ant.AntRenderer;
-import net.thxlotl.cavernous.entity.client.hangingshroomsporepod.HangingShroomSporePodRenderer;
 import net.thxlotl.cavernous.entity.client.ant.InfectedAntRenderer;
 import net.thxlotl.cavernous.entity.client.fungalzombie.FungalZombieRenderer;
+import net.thxlotl.cavernous.entity.client.hangingshroomsporepod.HangingShroomSporePodRenderer;
 import net.thxlotl.cavernous.item.ModCreativeModeTabs;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.particle.ModParticles;
@@ -30,20 +34,6 @@ import net.thxlotl.cavernous.worldgen.custom.tree.ModFoliagePlacerTypes;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTreeDecoratorType;
 import net.thxlotl.cavernous.worldgen.custom.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
-import net.minecraft.world.item.CreativeModeTabs;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(Cavernous.MODID)
@@ -177,36 +167,36 @@ public class Cavernous {
 
             Sheets.addWoodType(ModWoodTypes.SHROOMWOOD);
 
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_TUFTS.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.ANCIENT_FERN.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLUSTER_SHROOM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_SPROUTS.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_FERN.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.GILLED_MUSHROOM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_FEATHER_MOSS.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_PATCH.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLIPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLIPSHROOM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CORDYCEPS_PATCH.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_CARPET.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_LAMPSHROOM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_TERRARIUM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRINGSHROOM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.INKY_CAP_PATCH.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.PUFFSHROOM.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_PATCH.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_VINE.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_VINE_PLANT.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_TUFTS.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.ANCIENT_FERN.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLUSTER_SHROOM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_SPROUTS.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_FERN.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.GILLED_MUSHROOM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.HANGING_FEATHER_MOSS.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_PATCH.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLIPSHROOM_STEM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.FLIPSHROOM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.CORDYCEPS_PATCH.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.FEATHER_MOSS_CARPET.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_LAMPSHROOM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_TERRARIUM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.SPRINGSHROOM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.INKY_CAP_PATCH.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.PUFFSHROOM.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.LAMPSHROOM_PATCH.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_TOADSTOOL_BUTTON.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_VINE.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.MYCELIUM_VINE_PLANT.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.BLUE_GHOST_FUNGUS.get(), ChunkSectionLayer.CUTOUT);
 
             // hold on
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.OBSIDIANSTONE.get(), ChunkSectionLayer.CUTOUT);
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.OBSIDIANSTONE_STAIRS.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.OBSIDIANSTONE.get(), ChunkSectionLayer.CUTOUT);
+            /// ItemBlockRenderTypes.setRenderLayer(ModBlocks.OBSIDIANSTONE_STAIRS.get(), ChunkSectionLayer.CUTOUT);
 
             EntityRenderers.register(ModEntities.HANGING_SHROOM_SPORE_POD.get(), HangingShroomSporePodRenderer::new);
             EntityRenderers.register(ModEntities.ANT.get(), AntRenderer::new);

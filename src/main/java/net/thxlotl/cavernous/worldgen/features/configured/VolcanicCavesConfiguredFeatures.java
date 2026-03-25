@@ -71,17 +71,19 @@ public class VolcanicCavesConfiguredFeatures {
                         true
                 ));
 
-        FeatureUtils.register(context, GEYSER_CLUSTER, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(
-                        12,
-                        1,
-                        4,
-                        PlacementUtils.inlinePlaced(
-                                holdergetter.getOrThrow(GEYSER_PILLAR),
-                                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.TORCH.defaultBlockState(), Vec3i.ZERO)),
-                                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE)))
-                        )
-                ));
+        // Mojang ur killing me
+//        FeatureUtils.register(context, GEYSER_CLUSTER, Feature.RANDOM_PATCH,
+//                new RandomPatchConfiguration(
+//                        12,
+//                        1,
+//                        4,
+//                        PlacementUtils.inlinePlaced(
+//                                holdergetter.getOrThrow(GEYSER_PILLAR),
+//                                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.TORCH.defaultBlockState(), Vec3i.ZERO)),
+//                                BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE)))
+//                        )
+//                ));
+        FeatureUtils.register(context, GEYSER_CLUSTER, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(ModBlocks.GEYSER_BLOCK.get()));
         //endregion
 
 //        FeatureUtils.register(context, LAVA_FALL, Feature.BLOCK_COLUMN,

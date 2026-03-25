@@ -18,30 +18,36 @@ import java.util.function.BiPredicate;
 @Mixin(Entity.class)
 public abstract class EntityMixin implements IEntityExtension {
 
-    @Inject(method = "isInLava", at = @At("RETURN"), cancellable = true)
-    private void beforeReturn_isInLava(CallbackInfoReturnable<Boolean> cir) {
+    // Fix later
 
-        Entity entity = (Entity)(Object)this;
-
-        if (this.isInSmoothMagma(entity)) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(
-            method = "isInFluidType",
-            at = @At("HEAD"),
-            cancellable = true
-    )
-    private void onIsInFluidType(BiPredicate<FluidType, Double> predicate, boolean bool, CallbackInfoReturnable<Boolean> cir) {
-
-        Entity entity = (Entity)(Object)this;
-
-        if (isInSmoothMagma(entity)) {
-            cir.setReturnValue(true); //Fluids.LAVA.getFluidType()
-        }
-
-    }
+//    @Inject(
+//            method = "isInLava",
+//            at = @At("RETURN"),
+//            cancellable = true
+//    )
+//    private void beforeReturn_isInLava(CallbackInfoReturnable<Boolean> cir) {
+//
+//        Entity entity = (Entity)(Object)this;
+//
+//        if (this.isInSmoothMagma(entity)) {
+//            cir.setReturnValue(true);
+//        }
+//    }
+//
+//    @Inject(
+//            method = "isInFluidType",
+//            at = @At("HEAD"),
+//            cancellable = true
+//    )
+//    private void onIsInFluidType(BiPredicate<FluidType, Double> predicate, boolean bool, CallbackInfoReturnable<Boolean> cir) {
+//
+//        Entity entity = (Entity)(Object)this;
+//
+//        if (isInSmoothMagma(entity)) {
+//            cir.setReturnValue(true); //Fluids.LAVA.getFluidType()
+//        }
+//
+//    }
 
     public boolean isInSmoothMagma(Entity entity) {
 

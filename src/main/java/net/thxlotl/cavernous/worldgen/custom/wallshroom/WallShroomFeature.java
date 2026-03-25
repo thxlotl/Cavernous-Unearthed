@@ -27,7 +27,7 @@ public class WallShroomFeature extends Feature<WallShroomConfiguration> {
 
                 //BlockPos currentPos = new BlockPos(x + origin.getX(), origin.getY(), z + origin.getZ());
                 BlockPos currentPos = origin.offset(x, 0, z);
-                BlockState placeState = config.toPlace().getState(context.random(), currentPos);
+                BlockState placeState = config.toPlace().getState(wgLevel, context.random(), currentPos);
 
                 if (canPlace(origin, currentPos, radius) && wgLevel.getBlockState(currentPos).isAir() && placeState.canSurvive(wgLevel, currentPos)) {
 

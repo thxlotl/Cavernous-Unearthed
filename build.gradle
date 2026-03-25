@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.123'
+    id 'net.neoforged.moddev' version '2.0.141'
     id 'idea'
 }
 
@@ -24,8 +24,13 @@ group = mod_group_id
 
 repositories {
     maven {
-        name = 'TerraformersMC'
-        url = 'https://maven.terraformersmc.com/'
+        name = "TerraformersMC Releases"
+        url = "https://maven.terraformersmc.com/releases"
+    }
+
+    maven {
+        name = "TerraformersMC Snapshots"
+        url = "https://maven.terraformersmc.com/snapshots"
     }
 }
 
@@ -34,7 +39,7 @@ base {
 }
 
 // Mojang ships Java 21 to end users in 1.21.8, so mods should target Java 21.
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     // Specify the version of NeoForge to use.
@@ -123,6 +128,9 @@ dependencies {
 
     implementation("com.terraformersmc:biolith-neoforge:${project.biolith_version}")
     jarJar("com.terraformersmc:biolith-neoforge:${project.biolith_version}")
+//    implementation("com.terraformersmc:biolith-neoforge:3.6.0-alpha.2")
+//    jarJar("com.terraformersmc:biolith-neoforge:3.6.0-alpha.2")
+
 
 
     // Example optional mod dependency with JEI
@@ -183,6 +191,7 @@ publishing {
     repositories {
         maven {
             url "file://${project.projectDir}/repo"
+
         }
     }
 }

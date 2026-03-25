@@ -3,6 +3,7 @@ package net.thxlotl.cavernous.worldgen.custom.segmentedwallblock;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -15,7 +16,7 @@ public record SegmentedWallBlockConfiguration(BlockStateProvider block, IntProvi
     public static final Codec<SegmentedWallBlockConfiguration> CODEC = RecordCodecBuilder.create(
             (configInstance) -> configInstance.group(
                     BlockStateProvider.CODEC.fieldOf("block").forGetter((config) -> config.block),
-                    IntProvider.CODEC.fieldOf("radius").forGetter((config) -> config.radius)
+                    IntProviders.CODEC.fieldOf("radius").forGetter((config) -> config.radius)
             ).apply(configInstance, SegmentedWallBlockConfiguration::new));
 
 }

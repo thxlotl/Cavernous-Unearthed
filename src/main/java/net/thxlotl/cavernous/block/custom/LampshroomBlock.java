@@ -10,7 +10,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.FarmlandBlock;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -71,7 +71,7 @@ public class LampshroomBlock extends GrowingPlantHeadBlock {
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         if (onGround(level, blockPos))
         {
-            return (double)level.random.nextFloat() < 0.35;
+            return (double)level.getRandom().nextFloat() < 0.35;
         }
         else
         {
@@ -100,7 +100,7 @@ public class LampshroomBlock extends GrowingPlantHeadBlock {
     private boolean onGround(Level level, BlockPos pos)
     {
         BlockState groundState = level.getBlockState(pos.below());
-        return groundState.is(BlockTags.DIRT) || groundState.getBlock() instanceof FarmBlock || groundState.is(BlockTags.MUSHROOM_GROW_BLOCK);
+        return groundState.is(BlockTags.DIRT) || groundState.getBlock() instanceof FarmlandBlock || groundState.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT);
     }
 
     private void bonemealGrowingPlant(ServerLevel serverLevel, RandomSource randomSource, BlockPos pos, BlockState state)

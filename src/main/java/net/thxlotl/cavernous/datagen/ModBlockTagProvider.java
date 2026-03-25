@@ -178,7 +178,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.GROUND_FUNGATITE.get())
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
-        tag(BlockTags.MUSHROOM_GROW_BLOCK)
+        tag(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT)
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get())
                 .add(ModBlocks.FUNGATITE.get())
                 .add(ModBlocks.GROUND_FUNGATITE.get())
@@ -208,10 +208,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.SAPLINGS)
                 .add(ModBlocks.TOADSTOOL_BUTTON.get());
 
-        tag(BlockTags.BIG_DRIPLEAF_PLACEABLE)
+        tag(BlockTags.SUPPORTS_BIG_DRIPLEAF)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get());
 
-        tag(BlockTags.SMALL_DRIPLEAF_PLACEABLE)
+        tag(BlockTags.SUPPORTS_SMALL_DRIPLEAF)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get());
 
         tag(BlockTags.SNIFFER_DIGGABLE_BLOCK)
@@ -261,7 +261,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get());
 
         tag(ModTags.Blocks.MYCELIUM_SPROUTS_PLACEABLE)
-                .addTag(BlockTags.MUSHROOM_GROW_BLOCK);
+                .addTag(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT);
 
         tag(ModTags.Blocks.HOT_BLOCKS)
                 .add(Blocks.LAVA)

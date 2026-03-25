@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.lighting.LightEngine;
@@ -35,7 +36,7 @@ public class UndergroundMyceliumBlock extends Block implements BonemealableBlock
             return false;
         }
         else {
-            int i = LightEngine.getLightBlockInto(state, blockstate, Direction.UP, blockstate.getLightBlock());
+            int i = LightEngine.getLightBlockInto(state, blockstate, Direction.UP, blockstate.getLightDampening());
             return i < 15;
         }
     }

@@ -90,7 +90,7 @@ public class ShelfshroomBlock extends Block implements BonemealableBlock {
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return (double)level.random.nextFloat() < 0.55f;
+        return (double)level.getRandom().nextFloat() < 0.55f;
     }
 
     @Override

@@ -29,7 +29,7 @@ public class LampshroomPatchBlock extends VegetationBlock implements Bonemealabl
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(ModTags.Blocks.SHROOMWOOD_LOGS) || super.mayPlaceOn(state, level, pos) || state.is(BlockTags.MUSHROOM_GROW_BLOCK);
+        return state.is(ModTags.Blocks.SHROOMWOOD_LOGS) || super.mayPlaceOn(state, level, pos) || state.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class LampshroomPatchBlock extends VegetationBlock implements Bonemealabl
 
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return (double)level.random.nextFloat() < 0.75;
+        return (double)level.getRandom().nextFloat() < 0.75;
     }
 
     @Override

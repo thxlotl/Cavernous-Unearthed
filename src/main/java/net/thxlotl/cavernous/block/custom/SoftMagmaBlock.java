@@ -185,7 +185,7 @@ public class SoftMagmaBlock extends Block {
 
     private boolean canEntityWalkOnSoftMagma(Entity entity) {
 
-        if (entity.getType().is(ModTags.EntityTypes.CAN_WALK_ON_SMOOTH_MAGMA)) {
+        if (entity.is(ModTags.EntityTypes.CAN_WALK_ON_SMOOTH_MAGMA)) {
             return true;
         } else {
             return entity instanceof LivingEntity ? ((LivingEntity)entity).getItemBySlot(EquipmentSlot.FEET).is(ModTags.Items.SMOOTH_MAGMA_WALKABLE) : false;

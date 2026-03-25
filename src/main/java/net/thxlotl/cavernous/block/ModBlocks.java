@@ -502,7 +502,7 @@ public class ModBlocks {
     );
     public static final DeferredBlock<SurfaceCoverPlant> BLUE_GHOST_FUNGUS = registerBlock(
             "blue_ghost_fungus",
-            properties -> new SurfaceCoverPlant(properties, BlockTags.MUSHROOM_GROW_BLOCK),
+            properties -> new SurfaceCoverPlant(properties, BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.NONE).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 2)
     );
     public static final DeferredBlock<CordycepsPatchBlock> CORDYCEPS_PATCH = registerBlock(

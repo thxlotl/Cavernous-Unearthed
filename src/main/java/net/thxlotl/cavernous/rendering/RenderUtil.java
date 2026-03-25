@@ -3,7 +3,7 @@ package net.thxlotl.cavernous.rendering;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.PanoramicScreenshotParameters;
+import net.minecraft.client.renderer.fog.environment.AtmosphericFogEnvironment;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.ARGB;
@@ -162,11 +162,7 @@ public class RenderUtil {
 
             float sunDirection = Mth.sin(sunAngleRad) > 0.0F ? -1.0F : 1.0F;
 
-            PanoramicScreenshotParameters panorama =
-                    Minecraft.getInstance().gameRenderer.getPanoramicScreenshotParameters();
-
-            Vector3fc forward =
-                    panorama != null ? panorama.forwardVector() : camera.forwardVector();
+            Vector3fc forward = camera.isPanoramicMode() ? camera.panoramicForwards() : camera.forwardVector();
 
             float alignment = forward.dot(sunDirection, 0.0F, 0.0F);
 

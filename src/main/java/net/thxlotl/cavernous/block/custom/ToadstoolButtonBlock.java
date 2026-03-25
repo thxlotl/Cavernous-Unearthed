@@ -67,7 +67,7 @@ public class ToadstoolButtonBlock extends VegetationBlock implements Bonemealabl
     }
 
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(BlockTags.DIRT) || state.getBlock() instanceof FarmBlock || state.is(BlockTags.MUSHROOM_GROW_BLOCK);
+        return state.is(BlockTags.DIRT) || state.getBlock() instanceof FarmlandBlock || state.is(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class ToadstoolButtonBlock extends VegetationBlock implements Bonemealabl
     }
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
-        return (double)level.random.nextFloat() < 0.45;
+        return (double)level.getRandom().nextFloat() < 0.45;
     }
     @Override
     public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {

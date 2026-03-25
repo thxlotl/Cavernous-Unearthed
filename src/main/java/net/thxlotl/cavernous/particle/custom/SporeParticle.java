@@ -38,12 +38,12 @@ public class SporeParticle extends SingleQuadParticle {
     }
 
     @Override
-    protected int getLightColor(float partialTick) {
+    protected int getLightCoords(float a) {
         if (this.lamp) {
             return 255;
         }
         else {
-            return super.getLightColor(partialTick);
+            return super.getLightCoords(a);
         }
     }
 

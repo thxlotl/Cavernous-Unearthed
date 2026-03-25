@@ -6,7 +6,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
@@ -18,7 +20,7 @@ public class MushroomCapFoliagePlacer extends FoliagePlacer {
     public static final MapCodec<MushroomCapFoliagePlacer>
             CODEC = RecordCodecBuilder.mapCodec(
             (MushroomCapFoliageInstance) -> foliagePlacerParts(MushroomCapFoliageInstance)
-                    .and(IntProvider.codec(3, 16).fieldOf("height").forGetter((heightInstance) -> heightInstance.height))
+                    .and(IntProviders.codec(3, 16).fieldOf("height").forGetter((heightInstance) -> heightInstance.height))
                     .apply(MushroomCapFoliageInstance, MushroomCapFoliagePlacer::new));
 
     public MushroomCapFoliagePlacer(IntProvider radius, IntProvider offset, IntProvider height) {
@@ -32,10 +34,7 @@ public class MushroomCapFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected void createFoliage(LevelSimulatedReader levelReader, FoliagePlacer.FoliageSetter foliageSetter, RandomSource random, TreeConfiguration treeConfig,
-                                 int maxFreeTreeHeight, FoliagePlacer.FoliageAttachment foliageAttachment, int foliageHeight, int foliageRadius, int offset) {
-
-
+    protected void createFoliage(WorldGenLevel levelReader, FoliageSetter foliageSetter, RandomSource random, TreeConfiguration treeConfig, int i, FoliageAttachment foliageAttachment, int foliageHeight, int foliageRadius, int offset) {
         this.placeLeavesCap(levelReader, foliageSetter, random, treeConfig, foliageAttachment.pos(), foliageRadius + 1, offset, foliageAttachment.doubleTrunk(), false);
         for(int y = 1; y <= foliageHeight - 2; ++y) {
             this.placeLeavesCap(levelReader, foliageSetter, random, treeConfig, foliageAttachment.pos(), foliageRadius, offset + y, foliageAttachment.doubleTrunk(), false);
@@ -59,7 +58,7 @@ public class MushroomCapFoliagePlacer extends FoliagePlacer {
     }
 
     protected void placeLeavesCap(
-            LevelSimulatedReader level,
+            WorldGenLevel level,
             FoliagePlacer.FoliageSetter foliageSetter,
             RandomSource random,
             TreeConfiguration treeConfiguration,

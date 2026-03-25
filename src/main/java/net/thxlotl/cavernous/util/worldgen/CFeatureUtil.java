@@ -83,45 +83,45 @@ public class CFeatureUtil {
                 0.75f);
     }
 
-    public static RandomPatchConfiguration createRandomVegetationPatch(HolderGetter<ConfiguredFeature<?, ?>> holderGetter, int tries, int xzSpread, ResourceKey<ConfiguredFeature<?,?>> featureKey) {
-        return new RandomPatchConfiguration(
-                tries,
-                xzSpread,
-                3,
-                PlacementUtils.inlinePlaced(holderGetter.getOrThrow(featureKey),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SHORT_GRASS.defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE)))
-                )
-        );
-    }
-    public static RandomPatchConfiguration createRandomVegetationPatchNoGrassCheck(HolderGetter<ConfiguredFeature<?, ?>> holderGetter, int tries, int xzSpread, ResourceKey<ConfiguredFeature<?,?>> featureKey) {
-        return new RandomPatchConfiguration(
-                tries,
-                xzSpread,
-                3,
-                PlacementUtils.inlinePlaced(holderGetter.getOrThrow(featureKey),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.TORCH.defaultBlockState(), Vec3i.ZERO)),
-                        BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE))
-                        ))
-        );
-    }
-    public static RandomPatchConfiguration createRandomVegetationPatchOfBlock(int tries, int xzSpread, Block block) {
-
-        return new RandomPatchConfiguration(
-                tries,
-                xzSpread,
-                3,
-                PlacementUtils.inlinePlaced(
-                        Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, createSimpleBlock(block))),
-                        BlockPredicateFilter.forPredicate(
-                                BlockPredicate.allOf(
-                                        BlockPredicate.wouldSurvive(block.defaultBlockState(), Vec3i.ZERO),
-                                        BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE))
-                                )
-                        )
-                )
-        );
-    }
+//    public static RandomPatchConfiguration createRandomVegetationPatch(HolderGetter<ConfiguredFeature<?, ?>> holderGetter, int tries, int xzSpread, ResourceKey<ConfiguredFeature<?,?>> featureKey) {
+//        return new RandomPatchConfiguration(
+//                tries,
+//                xzSpread,
+//                3,
+//                PlacementUtils.inlinePlaced(holderGetter.getOrThrow(featureKey),
+//                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.SHORT_GRASS.defaultBlockState(), Vec3i.ZERO)),
+//                        BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE)))
+//                )
+//        );
+//    }
+//    public static RandomPatchConfiguration createRandomVegetationPatchNoGrassCheck(HolderGetter<ConfiguredFeature<?, ?>> holderGetter, int tries, int xzSpread, ResourceKey<ConfiguredFeature<?,?>> featureKey) {
+//        return new RandomPatchConfiguration(
+//                tries,
+//                xzSpread,
+//                3,
+//                PlacementUtils.inlinePlaced(holderGetter.getOrThrow(featureKey),
+//                        BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(Blocks.TORCH.defaultBlockState(), Vec3i.ZERO)),
+//                        BlockPredicateFilter.forPredicate(BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE))
+//                        ))
+//        );
+//    }
+//    public static RandomPatchConfiguration createRandomVegetationPatchOfBlock(int tries, int xzSpread, Block block) {
+//
+//        return new RandomPatchConfiguration(
+//                tries,
+//                xzSpread,
+//                3,
+//                PlacementUtils.inlinePlaced(
+//                        Holder.direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, createSimpleBlock(block))),
+//                        BlockPredicateFilter.forPredicate(
+//                                BlockPredicate.allOf(
+//                                        BlockPredicate.wouldSurvive(block.defaultBlockState(), Vec3i.ZERO),
+//                                        BlockPredicate.anyOf(BlockPredicate.matchesBlocks(Blocks.AIR), BlockPredicate.matchesTag(BlockTags.REPLACEABLE))
+//                                )
+//                        )
+//                )
+//        );
+//    }
 
     public static SimpleBlockConfiguration createSimpleBlock(Block block) {
         return new SimpleBlockConfiguration(
