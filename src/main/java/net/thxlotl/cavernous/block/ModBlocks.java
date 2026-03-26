@@ -34,7 +34,7 @@ import net.thxlotl.cavernous.block.register.ModProperties;
 import net.thxlotl.cavernous.block.register.ModBlockSetTypes;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.GhostFungus;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 

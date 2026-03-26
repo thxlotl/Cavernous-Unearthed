@@ -28,12 +28,11 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.block.custom.ToadstoolButtonBlock;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 import net.thxlotl.cavernous.util.worldgen.CFeatureUtil;
 import net.thxlotl.cavernous.util.worldgen.WeightedBlockState;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;

@@ -1,9 +1,8 @@
-package net.thxlotl.cavernous.util;
+package net.thxlotl.cavernous.datagen.tag;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;

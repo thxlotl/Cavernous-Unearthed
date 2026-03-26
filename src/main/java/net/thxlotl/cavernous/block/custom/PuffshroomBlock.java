@@ -2,7 +2,6 @@ package net.thxlotl.cavernous.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -17,7 +16,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.util.MathUtil;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 
 public class PuffshroomBlock extends VegetationBlock {
 

@@ -4,9 +4,8 @@ import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
-import net.minecraft.util.ARGB;
 import net.minecraft.world.level.block.state.BlockState;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 
 public class ModBlockTintSources {
 

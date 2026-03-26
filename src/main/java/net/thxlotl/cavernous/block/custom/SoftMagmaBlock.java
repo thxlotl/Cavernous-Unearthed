@@ -28,7 +28,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 public class SoftMagmaBlock extends Block {

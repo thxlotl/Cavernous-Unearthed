@@ -1,6 +1,5 @@
 package net.thxlotl.cavernous.block.custom;
 
-import com.mojang.math.Axis;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -17,10 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.thxlotl.cavernous.block.ModBlocks;
-import net.thxlotl.cavernous.util.ModTags;
-
-import java.util.Collection;
-import java.util.Random;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 
 public class ToadstoolPatchBlock extends VegetationBlock implements BonemealableBlock {
     public ToadstoolPatchBlock(Properties p_401368_) {

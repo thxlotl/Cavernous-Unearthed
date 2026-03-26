@@ -1,17 +1,12 @@
-package net.thxlotl.cavernous.datagen;
+package net.thxlotl.cavernous.datagen.tag;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
-import net.thxlotl.cavernous.item.ModItems;
-import net.thxlotl.cavernous.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 

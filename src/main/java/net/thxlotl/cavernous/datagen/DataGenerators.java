@@ -10,6 +10,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.thxlotl.cavernous.Cavernous;
+import net.thxlotl.cavernous.datagen.tag.ModBlockTagProvider;
+import net.thxlotl.cavernous.datagen.tag.ModEntityTypeTagProvider;
+import net.thxlotl.cavernous.datagen.tag.ModItemTagProvider;
 import net.thxlotl.cavernous.util.worldgen.ore.CustomStoneOreFamily;
 
 import java.util.Collections;

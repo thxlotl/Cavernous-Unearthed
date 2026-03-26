@@ -1,24 +1,16 @@
 package net.thxlotl.cavernous.datagen;
 
-import net.minecraft.client.data.models.blockstates.ConditionBuilder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import net.thxlotl.cavernous.block.ModBlocks;
-import net.thxlotl.cavernous.item.ModItems;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

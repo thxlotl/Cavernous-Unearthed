@@ -18,7 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.entity.ai.AntAttackGoal;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;

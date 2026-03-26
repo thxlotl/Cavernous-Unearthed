@@ -1,11 +1,10 @@
-package net.thxlotl.cavernous.datagen;
+package net.thxlotl.cavernous.datagen.tag;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.world.entity.EntityType;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 

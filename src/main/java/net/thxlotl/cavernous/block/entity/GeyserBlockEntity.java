@@ -16,7 +16,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.thxlotl.cavernous.particle.ModParticles;
 import net.thxlotl.cavernous.rendering.ObsidianstoneTintProperties;
-import net.thxlotl.cavernous.util.ModTags;
+import net.thxlotl.cavernous.datagen.tag.ModTags;
 
 import java.util.List;
 
