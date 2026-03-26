@@ -103,7 +103,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.SHELFSHROOM,
                 ModBlocks.BLUE_GHOST_FUNGUS,
                 ModBlocks.LAMPSHROOM_TERRARIUM,
-                ModBlocks.SPRINGSHROOM,
                 ModBlocks.PUFFSHROOM,
                 ModBlocks.INKY_CAP_PATCH,
                 ModBlocks.CORDYCEPS_PATCH,
@@ -121,12 +120,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.OBSIDIANSTONE_BRICK_WALL,
                 ModBlocks.GEYSER_BLOCK,
                 ModBlocks.SCORIA,
-                ModBlocks.POLISHED_SCORIA,
-                ModBlocks.SCORIA_BRICKS,
-                ModBlocks.GILLED_MUSHROOM,
-                ModBlocks.CLUSTER_SHROOM,
-                ModBlocks.BLACK_TRUMPET_PATCH,
-                ModBlocks.LAMPSHROOM_BUTTON
+                ModBlocks.POLISHED_SCORIA
         );
         for (DeferredBlock deferredBlock : simpleDropBlocks) {
             makeDropSelf(deferredBlock);
@@ -191,8 +185,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         add(ModBlocks.HANGING_FEATHER_MOSS.get(),
                 block -> createShearsOnlyDrop(ModBlocks.HANGING_FEATHER_MOSS.get()));
-        add(ModBlocks.MUSHROOM_GILL_BLOCK.get(),
-                block -> createShearsOnlyDrop(ModBlocks.MUSHROOM_GILL_BLOCK.get()));
         add(ModBlocks.LAMPSHROOM_STEM.get(), block -> createSingleItemTable(ModBlocks.LAMPSHROOM));
         add(ModBlocks.POTTED_LAMPSHROOM.get(),
                 block -> createPotFlowerItemTable(ModBlocks.LAMPSHROOM.asItem()));

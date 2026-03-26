@@ -34,20 +34,16 @@ public class ModModelProvider extends ModelProvider {
             ///ModBlocks.MYCELIUM_FERN.get(),
             ModBlocks.LAMPSHROOM.get(),
             ModBlocks.LAMPSHROOM_STEM.get(),
-            ModBlocks.LAMPSHROOM_BUTTON.get(),
-            ModBlocks.GILLED_MUSHROOM.get(),
-            ModBlocks.MUSHROOM_GILL_BLOCK.get(),
             ///ModBlocks.HANGING_FEATHER_MOSS.get(),
             ModBlocks.BLEEDING_TOOTH_MUSHROOM.get(),
             ModBlocks.FLIPSHROOM_STEM.get(),
             ModBlocks.FLIPSHROOM.get(),
             ModBlocks.GHOST_FUNGUS.get(),
             ModBlocks.CORDYCEPS_PATCH.get(),
-            ModBlocks.BLACK_TRUMPET_PATCH.get(),
             ModBlocks.POTTED_LAMPSHROOM.get(),
             ModBlocks.LAMPSHROOM_TERRARIUM.get(),
             ModBlocks.SHELFSHROOM.get(),
-            ModBlocks.SPRINGSHROOM.get(),
+            ///ModBlocks.SPRINGSHROOM.get(),
             ModBlocks.PUFFSHROOM.get(),
             ModBlocks.LAMPSHROOM_PATCH.get(),
             ModBlocks.BLUE_GHOST_FUNGUS.get(),
@@ -67,9 +63,7 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
-            ModBlocks.GEYSER_BLOCK.get(),
-
-            ModBlocks.ANCIENT_FERN.get()
+            ModBlocks.GEYSER_BLOCK.get()
     );
     private final List<Item> ignoredItems = List.of(
             ModItems.HANGING_SHROOM_SPORE_POD.get(),
@@ -98,7 +92,6 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.TEST_ITEM.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.TOADSTOOL_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
-        modItemModels.generateFlatItemWithBlockTexture(ModBlocks.ANCIENT_FERN.get(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.BLUE_GHOST_FUNGUS.get(), ModelTemplates.FLAT_ITEM);
         ///modItemModels.generateFlatItemWithBlockTexture(ModBlocks.HANGING_FEATHER_MOSS.get(), ModelTemplates.FLAT_ITEM);
         ///modItemModels.generateFlatItemWithBlockTexture(ModBlocks.FEATHER_MOSS_TUFTS.get(), ModelTemplates.FLAT_ITEM);
@@ -108,7 +101,6 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModBlocks.CORDYCEPS_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.LAMPSHROOM_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.GHOST_FUNGUS.asItem(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModBlocks.BLACK_TRUMPET_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.MYCELIUM_VINE.get(), ModelTemplates.FLAT_ITEM);
 
         // BLOCKS ------------------------------------------------------------------------------------------------------
@@ -179,10 +171,8 @@ public class ModModelProvider extends ModelProvider {
 
 
 
-        blockModels.createCrossBlockWithDefaultItem(ModBlocks.CLUSTER_SHROOM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.INKY_CAP_PATCH.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         //modBlockModels.createVine(ModBlocks.MUSHVINE.get(), false);
-        blockModels.createTrivialCube(ModBlocks.TEST_BLOCK_ORE.get());
 
         //Volcanic Caves
 
@@ -209,7 +199,6 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createTrivialCube(ModBlocks.SCORIA.get());
         blockModels.createTrivialCube(ModBlocks.POLISHED_SCORIA.get());
-        blockModels.createTrivialCube(ModBlocks.SCORIA_BRICKS.get());
         blockModels.createNonTemplateModelBlock(ModBlocks.SOFT_MAGMA_BLOCK.get());
 
     }

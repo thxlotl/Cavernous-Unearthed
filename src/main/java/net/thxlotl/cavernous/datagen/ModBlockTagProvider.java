@@ -159,12 +159,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.REPLACEABLE)
                 .add(ModBlocks.FEATHER_MOSS_TUFTS.get())
-                .add(ModBlocks.ANCIENT_FERN.get())
                 .add(ModBlocks.MYCELIUM_SPROUTS.get());
         tag(BlockTags.ENCHANTMENT_POWER_TRANSMITTER)
                 .add(ModBlocks.FEATHER_MOSS_TUFTS.get())
                 .add(ModBlocks.TOADSTOOL_PATCH.get())
-                .add(ModBlocks.ANCIENT_FERN.get())
                 .add(ModBlocks.MYCELIUM_SPROUTS.get());
 
         tag(BlockTags.DIRT)

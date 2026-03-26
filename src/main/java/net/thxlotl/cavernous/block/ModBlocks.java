@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HangingSignItem;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.LavaFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
@@ -30,6 +30,7 @@ import net.thxlotl.cavernous.block.custom.sign.ModHangingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModStandingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModWallHangingSignBlock;
 import net.thxlotl.cavernous.block.custom.sign.ModWallSignBlock;
+import net.thxlotl.cavernous.block.register.ModProperties;
 import net.thxlotl.cavernous.block.register.ModBlockSetTypes;
 import net.thxlotl.cavernous.item.ModItems;
 import net.thxlotl.cavernous.util.GhostFungus;
@@ -38,6 +39,7 @@ import net.thxlotl.cavernous.util.ModWoodTypes;
 import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class ModBlocks {
 
@@ -47,144 +49,75 @@ public class ModBlocks {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Cavernous.MODID);
 
+    /*
+
+    So I've cleaned up a lot in this file but as I decide on more final properties, colors, etc, I should be able to
+    simplify things a little further
+
+     */
 
     // region Fungatite Blocks
-    public static final DeferredBlock<Block> FUNGATITE = registerBlock(
-            "fungatite",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
+
+    public static final DeferredBlock<Block> FUNGATITE = registerTrivialBlock("fungatite", ModProperties.FUNGATITE);
+    public static final DeferredBlock<StairBlock> FUNGATITE_STAIRS = registerStairBlock("fungatite", ModProperties.FUNGATITE, () -> ModBlocks.FUNGATITE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> FUNGATITE_SLAB = registerSlabBlock("fungatite", ModProperties.FUNGATITE);
+    public static final DeferredBlock<WallBlock> FUNGATITE_WALL = registerWallBlock("fungatite", ModProperties.FUNGATITE);
+
     public static final DeferredBlock<Block> GROUND_FUNGATITE = registerBlock(
             "ground_fungatite",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2.0f, 6.0f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.GRAVEL));
-    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_COAL_ORE = registerBlock(
-            "fungatite_coal_ore",
-            properties -> new DropExperienceBlock(UniformInt.of(0, 2), properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.COAL_ORE));
-    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_COPPER_ORE = registerBlock(
-            "fungatite_copper_ore",
-            properties -> new DropExperienceBlock(ConstantInt.of(0), properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_ORE));
-    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_IRON_ORE = registerBlock(
-            "fungatite_iron_ore",
-            properties -> new DropExperienceBlock(ConstantInt.of(0), properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE));
-    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_GOLD_ORE = registerBlock(
-            "fungatite_gold_ore",
-            properties -> new DropExperienceBlock(ConstantInt.of(0), properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_ORE));
-    public static final DeferredBlock<RedStoneOreBlock> FUNGATITE_REDSTONE_ORE = registerBlock(
-            "fungatite_redstone_ore",
-            properties -> new RedStoneOreBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_ORE));
-    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_LAPIS_ORE = registerBlock(
-            "fungatite_lapis_ore",
-            properties -> new DropExperienceBlock(UniformInt.of(2, 5), properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.LAPIS_ORE));
-    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_DIAMOND_ORE = registerBlock(
-            "fungatite_diamond_ore",
-            properties -> new DropExperienceBlock(UniformInt.of(3, 7), properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE));
-    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_EMERALD_ORE = registerBlock(
-            "fungatite_emerald_ore",
-            properties -> new DropExperienceBlock(UniformInt.of(3, 7), properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.EMERALD_ORE));
-    public static final DeferredBlock<StairBlock> FUNGATITE_STAIRS = registerBlock(
-            "fungatite_stairs",
-            properties -> new StairBlock(ModBlocks.FUNGATITE.get().defaultBlockState(), properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<SlabBlock> FUNGATITE_SLAB = registerBlock(
-            "fungatite_slab",
-            properties -> new SlabBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<WallBlock> FUNGATITE_WALL = registerBlock(
-            "fungatite_wall",
-            properties -> new WallBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
+            Block::new,
+            BlockBehaviour.Properties.of()
+                    .strength(1.0F, 4.0F)
+                    .sound(SoundType.STONE)
+                    .mapColor(MapColor.TERRACOTTA_BLUE)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+    );
+
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_COAL_ORE = registerOreBlock("fungatite", "coal", UniformInt.of(0, 2), 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_COPPER_ORE = registerOreBlock("fungatite", "copper", ConstantInt.of(0), 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_IRON_ORE = registerOreBlock("fungatite", "iron", ConstantInt.of(0), 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_GOLD_ORE = registerOreBlock("fungatite", "gold", ConstantInt.of(0), 3.0f);
+    public static final DeferredBlock<RedStoneOreBlock> FUNGATITE_REDSTONE_ORE = registerRedstoneOreBlock("fungatite", 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_LAPIS_ORE = registerOreBlock("fungatite", "lapis", UniformInt.of(2, 5), 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_DIAMOND_ORE = registerOreBlock("fungatite", "diamond", UniformInt.of(3, 7), 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> FUNGATITE_EMERALD_ORE = registerOreBlock("fungatite", "emerald", UniformInt.of(3, 7), 3.0f);
+
+    public static final DeferredBlock<Block> POLISHED_FUNGATITE = registerTrivialBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE);
+    public static final DeferredBlock<StairBlock> POLISHED_FUNGATITE_STAIRS = registerStairBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE, () -> ModBlocks.POLISHED_FUNGATITE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> POLISHED_FUNGATITE_SLAB = registerSlabBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE);
+    public static final DeferredBlock<WallBlock> POLISHED_FUNGATITE_WALL = registerWallBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE);
+    public static final DeferredBlock<Block> CHISELED_FUNGATITE = registerTrivialBlock("chiseled_fungatite", ModProperties.REFINED_FUNGATITE);
+
+    public static final DeferredBlock<Block> FUNGATITE_BRICKS = registerTrivialBlock("fungatite_bricks", ModProperties.REFINED_FUNGATITE);
+    public static final DeferredBlock<StairBlock> FUNGATITE_BRICK_STAIRS = registerStairBlock("fungatite_brick", ModProperties.REFINED_FUNGATITE, () -> ModBlocks.FUNGATITE_BRICKS.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> FUNGATITE_BRICK_SLAB = registerSlabBlock("fungatite_bricks", ModProperties.REFINED_FUNGATITE);
+    public static final DeferredBlock<WallBlock> FUNGATITE_BRICK_WALL = registerWallBlock("fungatite_bricks", ModProperties.REFINED_FUNGATITE);
+
     //endregion
 
-    //region Polished Fungatite Blocks
-    public static final DeferredBlock<Block> POLISHED_FUNGATITE = registerBlock(
-            "polished_fungatite",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<StairBlock> POLISHED_FUNGATITE_STAIRS = registerBlock(
-            "polished_fungatite_stairs",
-            properties -> new StairBlock(ModBlocks.POLISHED_FUNGATITE.get().defaultBlockState(), properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<SlabBlock> POLISHED_FUNGATITE_SLAB = registerBlock(
-            "polished_fungatite_slab",
-            properties -> new SlabBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<WallBlock> POLISHED_FUNGATITE_WALL = registerBlock(
-            "polished_fungatite_wall",
-            properties -> new WallBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<Block> CHISELED_FUNGATITE = registerBlock(
-            "chiseled_fungatite",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    //endregion
-
-    //region Fungatite Brick Blocks
-    public static final DeferredBlock<Block> FUNGATITE_BRICKS = registerBlock(
-            "fungatite_bricks",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<StairBlock> FUNGATITE_BRICK_STAIRS = registerBlock(
-            "fungatite_brick_stairs",
-            properties -> new StairBlock(ModBlocks.FUNGATITE.get().defaultBlockState(), properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<SlabBlock> FUNGATITE_BRICK_SLAB = registerBlock(
-            "fungatite_brick_slab",
-            properties -> new SlabBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<WallBlock> FUNGATITE_BRICK_WALL = registerBlock(
-            "fungatite_brick_wall",
-            properties -> new WallBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
+    //region Underground Mycelium Blocks
+    public static final DeferredBlock<UndergroundMyceliumBlock> UNDERGROUND_MYCELIUM = registerBlock(
+            "underground_mycelium",
+            UndergroundMyceliumBlock::new,
+            BlockBehaviour.Properties.of()
+                    .strength(2.0f, 6.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.NYLIUM)
+                    .mapColor(MapColor.TERRACOTTA_PURPLE)
+                    .randomTicks()
+    );
+    public static final DeferredBlock<MyceliumSproutsBlock> MYCELIUM_SPROUTS = registerBlock(
+            "mycelium_sprouts",
+            properties -> new MyceliumSproutsBlock(properties, ModTags.Blocks.MYCELIUM_SPROUTS_PLACEABLE),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
+    );
+    public static final DeferredBlock<MyceliumFernBlock> MYCELIUM_FERN = registerBlock(
+            "mycelium_fern",
+            MyceliumFernBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
+    );
+    public static final DeferredBlock<MyceliumVineBlock> MYCELIUM_VINE = registerBlock("mycelium_vine", MyceliumVineBlock::new, ModProperties.MYCELIUM_VINE); /// TIP BLOCK
+    public static final DeferredBlock<MyceliumVinePlantBlock> MYCELIUM_VINE_PLANT = registerBlock("mycelium_vine_plant",MyceliumVinePlantBlock::new,ModProperties.MYCELIUM_VINE); /// BODY BLOCK
     //endregion
 
     //region Feather Moss Blocks
@@ -195,96 +128,68 @@ public class ModBlocks {
             );
     public static final DeferredBlock<CarpetBlock> FEATHER_MOSS_CARPET = registerBlock(
             "feather_moss_carpet",
-            properties -> new CarpetBlock(properties),
+            CarpetBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET)
             );
-    public static final DeferredBlock<VineBlock> HANGING_FEATHER_MOSS = registerBlock(
-            "hanging_feather_moss",
-            properties -> new VineBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.VINE).sound(SoundType.MOSS)
-    );
     public static final DeferredBlock<WaterLoggablePlantBlock> FEATHER_MOSS_TUFTS = registerBlock(
             "feather_moss_tufts",
-            properties -> new WaterLoggablePlantBlock(properties),
+            WaterLoggablePlantBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).mapColor(MapColor.PLANT)
-            );
-    //endregion
+    );
 
-    //region Underground Mycelium Blocks
-    public static final DeferredBlock<UndergroundMyceliumBlock> UNDERGROUND_MYCELIUM = registerBlock(
-            "underground_mycelium",
-            properties -> new UndergroundMyceliumBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.NYLIUM)
-                    .mapColor(MapColor.COLOR_PURPLE)
-                    .randomTicks());
-    public static final DeferredBlock<MyceliumSproutsBlock> MYCELIUM_SPROUTS = registerBlock(
-            "mycelium_sprouts",
-            properties -> new MyceliumSproutsBlock(properties, ModTags.Blocks.MYCELIUM_SPROUTS_PLACEABLE),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
-    );
-    public static final DeferredBlock<MyceliumFernBlock> MYCELIUM_FERN = registerBlock(
-            "mycelium_fern",
-            properties -> new MyceliumFernBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
-    );
-    public static final DeferredBlock<MyceliumVineBlock> MYCELIUM_VINE = registerBlock(
-            "mycelium_vine",
-            properties -> new MyceliumVineBlock(properties),
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
-    );
-    public static final DeferredBlock<MyceliumVinePlantBlock> MYCELIUM_VINE_PLANT = registerBlock( // Body block btw
-            "mycelium_vine_plant",
-            properties -> new MyceliumVinePlantBlock(properties),
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
+    public static final DeferredBlock<VineBlock> HANGING_FEATHER_MOSS = registerBlock(
+            "hanging_feather_moss",
+            VineBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.VINE).sound(SoundType.MOSS)
     );
     //endregion
 
     //region Toadstool Blocks
-    public static final DeferredBlock<MushroomCapBlock> TOADSTOOL_CAP_BLOCK = registerBlock(
-            "toadstool_cap_block",
-            properties -> new MushroomCapBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(0.5f).
-                    sound(SoundType.WART_BLOCK));
+
+    public static final DeferredBlock<Block> TOADSTOOL_CAP_BLOCK = registerTrivialBlock("toadstool_cap_block", ModProperties.FUNGUS_CAP);
     public static final DeferredBlock<ToadstoolPatchBlock> TOADSTOOL_PATCH = registerBlock(
             "toadstool_patch",
-            properties -> new ToadstoolPatchBlock(properties),
+            ToadstoolPatchBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.NONE)
     );
     public static final DeferredBlock<ToadstoolButtonBlock> TOADSTOOL_BUTTON = registerBlock(
             "toadstool_button",
-            properties -> new ToadstoolButtonBlock(properties),
+            ToadstoolButtonBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).sound(SoundType.FUNGUS)
     );
     public static final DeferredBlock<FlowerPotBlock> POTTED_TOADSTOOL_BUTTON = registerBlock(
             "potted_toadstool_button",
-            properties -> new FlowerPotBlock(ModBlocks.TOADSTOOL_BUTTON.get(), properties),
-            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)
-    );
+            (p) -> new FlowerPotBlock(TOADSTOOL_BUTTON.get(), p),
+            ModProperties.POTTED_PLANT);
+
     //endregion
 
     //region Shroomwood Blocks
+
+    /*
+
+        Make generic stuff for things in here, its sooooooo messy
+
+     */
+
     public static final DeferredBlock<ShroomwoodLogBlock> SHROOMWOOD_LOG = registerBlock(
             "shroomwood_log",
-            properties -> new ShroomwoodLogBlock(properties),
+            ShroomwoodLogBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_STEM)
     );
     public static final DeferredBlock<ShroomwoodBlock> SHROOMWOOD = registerBlock(
             "shroomwood",
-            properties -> new ShroomwoodBlock(properties),
+            ShroomwoodBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_HYPHAE)
     );
     public static final DeferredBlock<ModFlammableRotatedPillarBlock> STRIPPED_SHROOMWOOD_LOG = registerBlock(
             "stripped_shroomwood_log",
-            properties -> new ModFlammableRotatedPillarBlock(properties),
+            ModFlammableRotatedPillarBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_WARPED_STEM)
     );
     public static final DeferredBlock<ModFlammableRotatedPillarBlock> STRIPPED_SHROOMWOOD = registerBlock(
             "stripped_shroomwood",
-            properties -> new ModFlammableRotatedPillarBlock(properties),
+            ModFlammableRotatedPillarBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_WARPED_HYPHAE)
     );
     public static final DeferredBlock<Block> SHROOMWOOD_PLANKS = registerBlock(
@@ -417,127 +322,145 @@ public class ModBlocks {
     //endregion
 
     //region Lampshroom Blocks
-    public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock(
-            "lampshroom_cap_block",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of()
-                    .strength(0.5f)
-                    .sound(SoundType.WART_BLOCK)
-                    .lightLevel((p) -> 9)
-                    .emissiveRendering(ModBlocks::always)
-    );
+
     public static final DeferredBlock<LampshroomBlock> LAMPSHROOM = registerBlock(
             "lampshroom",
-            properties -> new LampshroomBlock(properties),
+            LampshroomBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 7).sound(SoundType.FUNGUS)
     );
     public static final DeferredBlock<LampshroomStemBlock> LAMPSHROOM_STEM = registerBlock(
             "lampshroom_stem",
-            properties -> new LampshroomStemBlock(properties),
+            LampshroomStemBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollision().sound(SoundType.FUNGUS)
     );
+
+    public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock("lampshroom_cap_block", Block::new, ModProperties.FUNGUS_CAP.lightLevel((p) -> 9).emissiveRendering(ModBlocks::always));
     public static final DeferredBlock<FlowerPotBlock> POTTED_LAMPSHROOM = registerBlock(
             "potted_lampshroom",
-            properties -> new FlowerPotBlock(ModBlocks.LAMPSHROOM.get(), properties),
-            BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 6)
+            (p) -> new FlowerPotBlock(LAMPSHROOM.get(), p),
+            ModProperties.POTTED_PLANT.lightLevel((p) -> 9).emissiveRendering(ModBlocks::always)
+    );
+
+    public static final DeferredBlock<LampshroomPatchBlock> LAMPSHROOM_PATCH = registerBlock(
+            "lampshroom_patch",
+            LampshroomPatchBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.NONE).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 2)
     );
     public static final DeferredBlock<LampshroomTerrarium> LAMPSHROOM_TERRARIUM = registerBlock(
             "lampshroom_terrarium",
-            properties -> new LampshroomTerrarium(properties),
+            LampshroomTerrarium::new,
             BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 6)
     );
-    public static final DeferredBlock<LampshroomPatchBlock> LAMPSHROOM_PATCH = registerBlock(
-            "lampshroom_patch",
-            properties -> new LampshroomPatchBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.NONE).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 2)
-    );
+
     //endregion
 
     //region Shelfshroom Blocks
-    public static final DeferredBlock<MushroomCapBlock> SHELFSHROOM_CAP_BLOCK = registerBlock(
-            "shelfshroom_cap_block",
-            properties -> new MushroomCapBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(0.5f).
-                    sound(SoundType.WART_BLOCK));
-    public static final DeferredBlock<ShelfshroomBlock> SHELFSHROOM = registerBlock(
-            "shelfshroom",
-            properties -> new ShelfshroomBlock(properties),
-            BlockBehaviour.Properties.of()
-                    .instabreak().
-                    sound(SoundType.FUNGUS));
+
+    public static final DeferredBlock<Block> SHELFSHROOM_CAP_BLOCK = registerTrivialBlock("shelfshroom_cap_block", ModProperties.FUNGUS_CAP);
+
+    ///  Need to figure out if Im doing smth with this
+    public static final DeferredBlock<ShelfshroomBlock> SHELFSHROOM = registerBlock("shelfshroom", ShelfshroomBlock::new, BlockBehaviour.Properties.of().instabreak().sound(SoundType.FUNGUS));
+
     //endregion
 
     //region Flipshroom
-    public static final DeferredBlock<Block> FLIPSHROOM_CAP_BLOCK = registerBlock(
-            "flipshroom_cap_block",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of()
-                    .strength(0.5f)
-                    .sound(SoundType.WART_BLOCK)
-                    .lightLevel((p) -> 4)
-    );
+
+    public static final DeferredBlock<Block> FLIPSHROOM_CAP_BLOCK = registerTrivialBlock("flipshroom_cap_block", ModProperties.FUNGUS_CAP.lightLevel((p) -> 4));
+
     public static final DeferredBlock<HangingShroomStemBlock> FLIPSHROOM_STEM = registerBlock(
             "flipshroom_stem",
-            properties -> new HangingShroomStemBlock(properties),
+            HangingShroomStemBlock::new,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noCollision().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY)
     );
     public static final DeferredBlock<HangingShroomCapBlock> FLIPSHROOM = registerBlock(
             "flipshroom",
-            properties -> new HangingShroomCapBlock(properties),
-            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).randomTicks().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY).forceSolidOff()
+            HangingShroomCapBlock::new,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).randomTicks().instabreak().sound(SoundType.SMALL_DRIPLEAF).pushReaction(PushReaction.DESTROY).forceSolidOff() /// ??? deprecated to what
     );
+
     //endregion
 
     //region Misc. Mushroom Blocks
-    public static final DeferredBlock<BleedingToothMushroomBlock> BLEEDING_TOOTH_MUSHROOM = registerBlock(
-            "bleeding_tooth_mushroom",
-            properties -> new BleedingToothMushroomBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).sound(SoundType.FUNGUS)
-    );
+
     public static final DeferredBlock<GhostFungusBlock> GHOST_FUNGUS = registerBlock(
             "ghost_fungus",
-            properties -> new GhostFungusBlock(properties),
+            GhostFungusBlock::new,
             BlockBehaviour.Properties.of().replaceable().noCollision().lightLevel(GhostFungus.GHOST_FUNGUS_LIGHT).sound(SoundType.FUNGUS)
     );
+    public static final DeferredBlock<CordycepsPatchBlock> CORDYCEPS_PATCH = registerBlock(
+            "cordyceps_patch",
+            CordycepsPatchBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+    );
+
+    /// Keep these but fix them
     public static final DeferredBlock<SurfaceCoverPlant> BLUE_GHOST_FUNGUS = registerBlock(
             "blue_ghost_fungus",
             properties -> new SurfaceCoverPlant(properties, BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT),
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.NONE).instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).lightLevel((p) -> 2)
     );
-    public static final DeferredBlock<CordycepsPatchBlock> CORDYCEPS_PATCH = registerBlock(
-            "cordyceps_patch",
-            properties -> new CordycepsPatchBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
-    );
-    public static final DeferredBlock<SpringshroomBlock> SPRINGSHROOM = registerBlock(
-            "springshroom",
-            properties -> new SpringshroomBlock(properties),
+    public static final DeferredBlock<BleedingToothMushroomBlock> BLEEDING_TOOTH_MUSHROOM = registerBlock(
+            "bleeding_tooth_mushroom",
+            BleedingToothMushroomBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).sound(SoundType.FUNGUS)
     );
+
+    /// Don't keep these but replace it
     public static final DeferredBlock<WaterLoggablePlantBlock> INKY_CAP_PATCH = registerBlock(
             "inky_cap_patch",
-            properties -> new WaterLoggablePlantBlock(properties),
+            WaterLoggablePlantBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
     );
     public static final DeferredBlock<PuffshroomBlock> PUFFSHROOM = registerBlock(
             "puffshroom",
-            properties -> new PuffshroomBlock(properties),
+            PuffshroomBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
     );
+
+    //endregion
+
+    //region Scoria
+
+    public static final DeferredBlock<Block> SCORIA = registerTrivialBlock("scoria", ModProperties.SCORIA);
+    public static final DeferredBlock<StairBlock> SCORIA_STAIRS = registerStairBlock("scoria", ModProperties.SCORIA, () -> ModBlocks.SCORIA.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> SCORIA_SLAB = registerSlabBlock("scoria", ModProperties.SCORIA);
+    public static final DeferredBlock<WallBlock> SCORIA_WALL = registerWallBlock("scoria", ModProperties.SCORIA);
+
+    public static final DeferredBlock<Block> POLISHED_SCORIA = registerTrivialBlock("polished_scoria", ModProperties.SCORIA_BRICKS);
+
+    //endregion
+
+    //region Obsidianstone
+
+    public static final DeferredBlock<Block> OBSIDIANSTONE = registerTrivialBlock("obsidianstone", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_STAIRS = registerStairBlock("obsidianstone", ModProperties.OBSIDIANSTONE, () -> ModBlocks.OBSIDIANSTONE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_SLAB = registerSlabBlock("obsidianstone", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_WALL = registerWallBlock("obsidianstone", ModProperties.OBSIDIANSTONE);
+
+    public static final DeferredBlock<Block> POLISHED_OBSIDIANSTONE = registerTrivialBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<StairBlock> POLISHED_OBSIDIANSTONE_STAIRS = registerStairBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE, () -> ModBlocks.OBSIDIANSTONE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> POLISHED_OBSIDIANSTONE_SLAB = registerSlabBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<WallBlock> POLISHED_OBSIDIANSTONE_WALL = registerWallBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<PressurePlateBlock> POLISHED_OBSIDIANSTONE_PRESSURE_PLATE = registerStonePressurePlate("polished_obsidianstone", ModBlockSetTypes.POLISHED_OBSIDIANTSTONE);
+    public static final DeferredBlock<ButtonBlock> POLISHED_OBSIDIANSTONE_BUTTON = registerStoneButton("polished_obsidianstone", ModBlockSetTypes.POLISHED_OBSIDIANTSTONE);
+
+    public static final DeferredBlock<Block> OBSIDIANSTONE_BRICKS = registerTrivialBlock("obsidianstone_bricks", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_BRICK_STAIRS = registerStairBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE, () -> ModBlocks.OBSIDIANSTONE_BRICKS.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_BRICK_SLAB = registerSlabBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_BRICK_WALL = registerWallBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE);
+
     //endregion
 
     //region Volcanic Cave Misc
+
     public static final DeferredBlock<Block> GEYSER_BLOCK = registerBlock(
             "geyser_block",
-            properties -> new GeyserBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.BASALT));
+            GeyserBlock::new,
+            ModProperties.OBSIDIANSTONE.sound(SoundType.BASALT)
+    );
     public static final DeferredBlock<SoftMagmaBlock> SOFT_MAGMA_BLOCK = registerBlock(
             "soft_magma_block",
-            properties -> new SoftMagmaBlock(properties),
+            SoftMagmaBlock::new,
             BlockBehaviour.Properties.of().
                     strength(1.0f).
                     requiresCorrectToolForDrops().
@@ -545,174 +468,9 @@ public class ModBlocks {
                     lightLevel((p) -> 9).
                     noOcclusion()
                     .forceSolidOn()
-                    .emissiveRendering(ModBlocks::always));
-    //endregion
-
-    //region Scoria
-    public static final DeferredBlock<Block> SCORIA = registerBlock(
-            "scoria",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<Block> POLISHED_SCORIA = registerBlock(
-            "polished_scoria",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<Block> SCORIA_BRICKS = registerBlock(
-            "scoria_bricks",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(1.5f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    //endregion
-
-    //region Obsidianstone
-    public static final DeferredBlock<Block> OBSIDIANSTONE = registerBlock(
-            "obsidianstone",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.0F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_STAIRS = registerBlock(
-            "obsidianstone_stairs",
-            properties -> new StairBlock(ModBlocks.OBSIDIANSTONE.get().defaultBlockState(), properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.0F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_SLAB = registerBlock(
-            "obsidianstone_slab",
-            properties -> new SlabBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.0F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_WALL = registerBlock(
-            "obsidianstone_wall",
-            properties -> new WallBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.0F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-
-    public static final DeferredBlock<Block> POLISHED_OBSIDIANSTONE = registerBlock(
-            "polished_obsidianstone",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<StairBlock> POLISHED_OBSIDIANSTONE_STAIRS = registerBlock(
-            "polished_obsidianstone_stairs",
-            properties -> new StairBlock(ModBlocks.POLISHED_OBSIDIANSTONE.get().defaultBlockState(), properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<SlabBlock> POLISHED_OBSIDIANSTONE_SLAB = registerBlock(
-            "polished_obsidianstone_slab",
-            properties -> new SlabBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<WallBlock> POLISHED_OBSIDIANSTONE_WALL = registerBlock(
-            "polished_obsidianstone_wall",
-            properties -> new WallBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<PressurePlateBlock> POLISHED_OBSIDIANSTONE_PRESSURE_PLATE = registerBlock(
-            "polished_obsidianstone_pressure_plate",
-            properties -> new PressurePlateBlock(ModBlockSetTypes.POLISHED_OBSIDIANTSTONE ,properties),
-            BlockBehaviour.Properties.of().forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY).sound(SoundType.STONE));
-
-    public static final DeferredBlock<ButtonBlock> POLISHED_OBSIDIANSTONE_BUTTON = registerBlock(
-            "polished_obsidianstone_button",
-            properties -> new ButtonBlock(ModBlockSetTypes.POLISHED_OBSIDIANTSTONE, 20 ,properties),
-            BlockBehaviour.Properties.of().noCollision().instrument(NoteBlockInstrument.BASEDRUM).noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY).sound(SoundType.STONE));
-
-    public static final DeferredBlock<Block> OBSIDIANSTONE_BRICKS = registerBlock(
-            "obsidianstone_bricks",
-            properties -> new Block(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_BRICK_STAIRS = registerBlock(
-            "obsidianstone_brick_stairs",
-            properties -> new StairBlock(ModBlocks.OBSIDIANSTONE_BRICKS.get().defaultBlockState(), properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_BRICK_SLAB = registerBlock(
-            "obsidianstone_brick_slab",
-            properties -> new SlabBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_BRICK_WALL = registerBlock(
-            "obsidianstone_brick_wall",
-            properties -> new WallBlock(properties),
-            BlockBehaviour.Properties.of().
-                    strength(3.5F, 6.0F).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE));
-    //endregion
-
-
-
-
-
-
-    //region Scrapped/On-hold Blocks
-    public static final DeferredBlock<LampShroomButtonBlock> LAMPSHROOM_BUTTON = registerBlock(
-            "lampshroom_button",
-            properties -> new LampShroomButtonBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).lightLevel((p) -> 3));
-    public static final DeferredBlock<ToadstoolButtonBlock> GILLED_MUSHROOM = registerBlock(
-            "gilled_mushroom",
-            properties -> new ToadstoolButtonBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA)
+                    .emissiveRendering(ModBlocks::always)
     );
-    public static final DeferredBlock<WaterLoggablePlantBlock> CLUSTER_SHROOM = registerBlock(
-            "cluster_shroom",
-            properties -> new WaterLoggablePlantBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
-    );
-    public static final DeferredBlock<ToadstoolPatchBlock> BLACK_TRUMPET_PATCH = registerBlock(
-            "black_trumpet_patch",
-            properties -> new ToadstoolPatchBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
-    );
-    public static final DeferredBlock<WaterLoggablePlantBlock> ANCIENT_FERN = registerBlock(
-            "ancient_fern",
-            properties -> new WaterLoggablePlantBlock(properties),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).noLootTable()
-    );
-    public static final DeferredBlock<MushroomGillBlock> MUSHROOM_GILL_BLOCK = registerBlock(
-            "mushroom_gill_block",
-            properties -> new MushroomGillBlock(properties),
-            BlockBehaviour.Properties.of().noOcclusion()
-    );
-    public static final DeferredBlock<Block> TEST_BLOCK_ORE = registerBlock(
-            "test_block_ore",
-            properties -> new DropExperienceBlock(UniformInt.of(2, 4), properties),
-            BlockBehaviour.Properties.of().
-                    strength(2f).
-                    requiresCorrectToolForDrops().
-                    sound(SoundType.STONE).
-                    noLootTable());
+
     //endregion
 
     // Each block is basically adding its name, function to use, and properties to a list which neoforge will then use all together to actually make a block
@@ -723,24 +481,91 @@ public class ModBlocks {
     // Block behaviour properties is just a class that describes the properties
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, BlockBehaviour.Properties blockProperties)
     {
-        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, blockProperties); // Registers the block in the Deferred register
+        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, () -> blockProperties); // Registers the block in the Deferred register
         registerBlockItem(name, block); // Registers the item for the block
         return block;
     }
 
+    //region Helper Methods
+    private static DeferredBlock<Block> registerTrivialBlock(String name, BlockBehaviour.Properties blockProperties)
+    {
+        DeferredBlock<Block> block = BLOCKS.registerBlock(name, Block::new, () -> blockProperties); // Registers the block in the Deferred register
+        registerBlockItem(name, block); // Registers the item for the block
+        return block;
+    }
+    private static DeferredBlock<StairBlock> registerStairBlock(String familyName, BlockBehaviour.Properties blockProperties, Supplier<BlockState> state)
+    {
+        familyName += "_stairs";
+        DeferredBlock<StairBlock> stairBlock = BLOCKS.registerBlock(familyName, (p) -> new StairBlock(state.get(), p), () -> blockProperties); // Registers the block in the Deferred register
+        registerBlockItem(familyName, stairBlock); // Registers the item for the block
+        return stairBlock;
+    }
+    private static DeferredBlock<SlabBlock> registerSlabBlock(String familyName, BlockBehaviour.Properties blockProperties)
+    {
+        familyName += "_slab";
+        DeferredBlock<SlabBlock> slabBlock = BLOCKS.registerBlock(familyName, SlabBlock::new, () -> blockProperties); // Registers the block in the Deferred register
+        registerBlockItem(familyName, slabBlock); // Registers the item for the block
+        return slabBlock;
+    }
+    private static DeferredBlock<WallBlock> registerWallBlock(String familyName, BlockBehaviour.Properties blockProperties)
+    {
+        familyName += "_wall";
+        DeferredBlock<WallBlock> wallBlock = BLOCKS.registerBlock(familyName, WallBlock::new, () -> blockProperties); // Registers the block in the Deferred register
+        registerBlockItem(familyName, wallBlock); // Registers the item for the block
+        return wallBlock;
+    }
+    private static DeferredBlock<PressurePlateBlock> registerPressurePlateBlock(String familyName, BlockBehaviour.Properties blockProperties, BlockSetType blockSetType)
+    {
+        familyName += "_pressure_plate";
+        DeferredBlock<PressurePlateBlock> pressurePlateBlock = BLOCKS.registerBlock(familyName, (p) -> new PressurePlateBlock(blockSetType, p), () -> blockProperties); // Registers the block in the Deferred register
+        registerBlockItem(familyName, pressurePlateBlock); // Registers the item for the block
+        return pressurePlateBlock;
+    }
+    private static DeferredBlock<PressurePlateBlock> registerStonePressurePlate(String familyName, BlockSetType blockSetType)
+    {
+        return registerPressurePlateBlock(familyName, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_PRESSURE_PLATE), blockSetType);
+    }
+    private static BlockBehaviour.Properties stoneButtonProperties() {return BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BUTTON);}
+    private static DeferredBlock<ButtonBlock> registerStoneButton(String familyName, BlockSetType blockSetType)
+    {
+        familyName += "_button";
+        DeferredBlock<ButtonBlock> buttonBlock = BLOCKS.registerBlock(familyName, (p) -> new ButtonBlock(blockSetType, 20, p), ModBlocks::stoneButtonProperties); // Registers the block in the Deferred register
+        registerBlockItem(familyName, buttonBlock); // Registers the item for the block
+        return buttonBlock;
+    }
+    private static DeferredBlock<DropExperienceBlock> registerOreBlock(String familyName, String oreName, IntProvider expAmount, float destroyTime)
+    {
+        return registerBlock(
+                familyName + "_" + oreName + "_ore",
+                properties -> new DropExperienceBlock(expAmount, properties),
+                ModProperties.BASE_ORE.strength(destroyTime, 3.0f)
+        );
+    }
+    private static DeferredBlock<RedStoneOreBlock> registerRedstoneOreBlock(String familyName, float destroyTime)
+    {
+        return registerBlock(
+                familyName + "_redstone_ore",
+                RedStoneOreBlock::new,
+                BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_BLOCK).strength(destroyTime, 3.0f)
+        );
+    }
+    //endregion
+
     //region Sign Registration
+
     private static <T extends Block> DeferredBlock<T> registerSignBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, BlockBehaviour.Properties blockProperties, DeferredBlock<ModWallSignBlock> wallSign)
     {
-        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, blockProperties); // Registers the block in the Deferred register
+        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, () -> blockProperties); // Registers the block in the Deferred register
         ModItems.ITEMS.registerItem(name, (properties) -> new SignItem(block.get(), wallSign.get(), properties.setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Cavernous.MODID, name))).stacksTo(16))); // Registers the item for the block
         return block;
     }
     private static <T extends Block> DeferredBlock<T> registerHangingSignBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, BlockBehaviour.Properties blockProperties, DeferredBlock<ModWallHangingSignBlock> wallSign)
     {
-        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, blockProperties); // Registers the block in the Deferred register
+        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, () -> blockProperties); // Registers the block in the Deferred register
         ModItems.ITEMS.registerItem(name, (properties) -> new HangingSignItem(block.get(), wallSign.get(), properties.setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Cavernous.MODID, name))).stacksTo(16))); // Registers the item for the block
         return block;
     }
+
     //endregion
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
