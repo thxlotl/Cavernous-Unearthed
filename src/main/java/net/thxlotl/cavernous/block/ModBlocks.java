@@ -56,6 +56,8 @@ public class ModBlocks {
 
      */
 
+    // FUNGAL ----------------------------------------------------------------------------------------------------------
+
     // region Fungatite Blocks
 
     public static final DeferredBlock<Block> FUNGATITE = registerTrivialBlock("fungatite", ModProperties.FUNGATITE);
@@ -419,6 +421,8 @@ public class ModBlocks {
 
     //endregion
 
+    // VOLCANIC --------------------------------------------------------------------------------------------------------
+
     //region Scoria
 
     public static final DeferredBlock<Block> SCORIA = registerTrivialBlock("scoria", ModProperties.SCORIA);
@@ -473,18 +477,7 @@ public class ModBlocks {
 
     //endregion
 
-    // Each block is basically adding its name, function to use, and properties to a list which neoforge will then use all together to actually make a block
-
-    // Returns deferred block of type T with inputs
-    // Name
-    // Block factory is taking in a function that has properties as an input and an output of ? extends T or any block subclass
-    // Block behaviour properties is just a class that describes the properties
-    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, BlockBehaviour.Properties blockProperties)
-    {
-        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, () -> blockProperties); // Registers the block in the Deferred register
-        registerBlockItem(name, block); // Registers the item for the block
-        return block;
-    }
+    // HELPER METHODS --------------------------------------------------------------------------------------------------
 
     //region Helper Methods
     private static DeferredBlock<Block> registerTrivialBlock(String name, BlockBehaviour.Properties blockProperties)
@@ -567,6 +560,19 @@ public class ModBlocks {
     }
 
     //endregion
+
+    // Each block is basically adding its name, function to use, and properties to a list which neoforge will then use all together to actually make a block
+
+    // Returns deferred block of type T with inputs
+    // Name
+    // Block factory is taking in a function that has properties as an input and an output of ? extends T or any block subclass
+    // Block behaviour properties is just a class that describes the properties
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, BlockBehaviour.Properties blockProperties)
+    {
+        DeferredBlock<T> block = BLOCKS.registerBlock(name, blockFactory, () -> blockProperties); // Registers the block in the Deferred register
+        registerBlockItem(name, block); // Registers the item for the block
+        return block;
+    }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block)
     {
