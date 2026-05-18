@@ -64,6 +64,10 @@ public class RegisterEvents {
         event.registerSpriteSet(ModParticles.GEYSER_BUBBLE.get(), GeyserBurstParticle.BubbleProvider::new);
         event.registerSpriteSet(ModParticles.VOLCANIC_ASH.get(), VolcanicAshParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GEYSER_STEAM.get(), GeyserSteamParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_STEAM_1.get(), GeyserSteamParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_STEAM_2.get(), GeyserSteamParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_STEAM_3.get(), GeyserSteamParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_STEAM_4.get(), GeyserSteamParticle.Provider::new);
     }
 
     @SubscribeEvent
@@ -86,6 +90,7 @@ public class RegisterEvents {
         event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get());
         event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
         event.register(obsidianstoneTint, ModBlocks.GEYSER_BLOCK.get());
+        event.register(List.of(ModBlockTintSources.eruptiteTint()), ModBlocks.ERUPTITE_BLOCK.get());
     }
 
 }

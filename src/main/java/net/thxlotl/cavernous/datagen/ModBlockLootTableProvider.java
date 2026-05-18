@@ -120,7 +120,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.OBSIDIANSTONE_BRICK_WALL,
                 ModBlocks.GEYSER_BLOCK,
                 ModBlocks.SCORIA,
-                ModBlocks.POLISHED_SCORIA
+                ModBlocks.POLISHED_SCORIA,
+                ModBlocks.ERUPTITE_BLOCK,
+                ModBlocks.MAGMA_FERN
         );
         for (DeferredBlock deferredBlock : simpleDropBlocks) {
             makeDropSelf(deferredBlock);

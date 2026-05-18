@@ -1,0 +1,6 @@
+{
+  "parent": "cavernous:block/template/cube_all_tinted",
+  "textures": {
+    "all": "cavernous:block/eruptite_block"
+  }
+}

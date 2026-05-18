@@ -99,6 +99,10 @@
   "item.cavernous.obsidianstone_brick_wall": "Obsidianstone Brick Wall",
 
   "item.cavernous.soft_magma_block": "Soft Magma Block",
+  "item.cavernous.magma_fern": "Magma Fern",
+
+  "item.cavernous.eruptite_ingot": "Eruptite Ingot",
+  "item.cavernous.eruptite_block": "Eruptite Block",
 
   "item.cavernous.test_block_ore": "Test Block Ore",
   "item.cavernous.geyser_block": "Geyser Block",

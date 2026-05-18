@@ -11,14 +11,19 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.thxlotl.cavernous.util.MathUtil;
 
+import java.util.List;
+
 public class GeyserSteamParticle extends SingleQuadParticle {
 
     private static final float horizontalSpeed = 0.035f;
     private static final float verticalSpeed = 0.040f;
     private float steamAlpha = 0.65f;
+    private final SpriteSet sprites;
 
-    public GeyserSteamParticle(ClientLevel level, double x, double y, double z, TextureAtlasSprite sprite) {
-        super(level, x, y, z, 0, 0, 0, sprite);
+    public GeyserSteamParticle(ClientLevel level, double x, double y, double z, SpriteSet sprites) {
+
+        this.sprites = sprites;
+        super(level, x, y, z, 0, 0, 0, sprites.first());
 
         RandomSource random = RandomSource.create();
 
@@ -32,11 +37,13 @@ public class GeyserSteamParticle extends SingleQuadParticle {
 
         // alpha + lifetime
         this.setAlpha(0f);
-        this.setLifetime(300);
+        this.setLifetime(200);
+        this.age = 0;
 
         // physics
         this.friction = 1f;
 
+        this.setSpriteFromAge(this.sprites);
     }
 
     @Override
@@ -51,7 +58,10 @@ public class GeyserSteamParticle extends SingleQuadParticle {
         this.yd *= 0.993f;
 
         this.setSize(this.quadSize + 0.009f,this.quadSize + 0.009f);
+
+        this.setSpriteFromAgeCorrected(this.sprites);
     }
+
 
     @Override
     protected Layer getLayer() {
@@ -66,7 +76,21 @@ public class GeyserSteamParticle extends SingleQuadParticle {
         }
 
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
-            return new GeyserSteamParticle(level, x, y, z, this.sprite.get(random));
+            return new GeyserSteamParticle(level, x, y, z, sprite);
         }
     }
+
+
+    private void setSpriteFromAgeCorrected(SpriteSet sprites) {
+        if (!this.removed) {
+            this.setSprite(sprites.get(this.age * 4 / 3, this.lifetime));
+        }
+
+    }
+//    private List<TextureAtlasSprite> sprites;
+//
+//    @Override
+//    public TextureAtlasSprite get(int index, int max) {
+//        return this.sprites.get(index * (this.sprites.size() - 1) / max);
+//    }
 }

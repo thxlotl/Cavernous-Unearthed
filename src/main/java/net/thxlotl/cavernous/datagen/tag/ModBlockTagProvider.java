@@ -265,5 +265,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.MAGMA_BLOCK)
                 .add(ModBlocks.SOFT_MAGMA_BLOCK.get());
 
+        tag(ModTags.Blocks.MAGMA_PLANT_PLACEABLE)
+                .add(Blocks.MAGMA_BLOCK)
+                .addTag(BlockTags.DIRT)
+                .add(ModBlocks.SOFT_MAGMA_BLOCK.get())
+                .add(ModBlocks.OBSIDIANSTONE.get())
+                .add(ModBlocks.SCORIA.get());
+
     }
 }

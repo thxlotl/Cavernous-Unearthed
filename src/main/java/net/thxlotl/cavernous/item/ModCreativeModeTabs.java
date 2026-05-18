@@ -97,6 +97,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.OBSIDIANSTONE_BRICK_WALL);
                 output.accept(ModBlocks.SCORIA);
                 output.accept(ModBlocks.SOFT_MAGMA_BLOCK);
+                output.accept(ModItems.ERUPTITE_INGOT);
             })
             .build());
 

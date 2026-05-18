@@ -2,6 +2,7 @@ package net.thxlotl.cavernous.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -14,8 +15,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.thxlotl.cavernous.block.custom.GeyserBlock;
 import net.thxlotl.cavernous.particle.ModParticles;
-import net.thxlotl.cavernous.rendering.ObsidianstoneTintProperties;
+import net.thxlotl.cavernous.rendering.ObsidianstoneUtil;
 import net.thxlotl.cavernous.datagen.tag.ModTags;
 
 import java.util.List;
@@ -32,12 +34,22 @@ public class GeyserBlockEntity extends BlockEntity {
     private static final int LAUNCH_PARTICLE_COUNT = 80;
     private static final int BUBBLE_PARTICLE_COUNT = 2;
     private static final float RANDOM_BURST_CHANCE = 0.0001f;
+    private static final ParticleOptions[] PARTICLE_LIST = {
+            ModParticles.GEYSER_STEAM_1.get(),
+            ModParticles.GEYSER_STEAM_2.get(),
+            ModParticles.GEYSER_STEAM_3.get(),
+            ModParticles.GEYSER_STEAM_4.get()
+    };
+    private static final int STEAM_PARTICLE_TICK_INTERVAL = 10;
+    private static final int LAUNCH_COOLDOWN_AMOUNT = 90;
 
     // Variables
     public int stoodOnTime;
     public boolean standTriggered;
     public int launchTimer;
     public boolean launchTriggered;
+    public int ticksSinceSteam;
+    public int ticksSinceLaunch;
 
     public GeyserBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.GEYSER_BLOCK.get(), pos, blockState);
@@ -45,7 +57,8 @@ public class GeyserBlockEntity extends BlockEntity {
 
     public static void tick(Level level, BlockPos pos, BlockState state, GeyserBlockEntity geyser) {
 
-        //RandomSource random = RandomSource.create(geyser.getBlockPos().asLong());
+        geyser.ticksSinceSteam++;
+        geyser.ticksSinceLaunch++;
 
         List<LivingEntity> entities = geyser.getCheckedEntities(level, pos);
         List<LivingEntity> checkedEntities =
@@ -54,10 +67,10 @@ public class GeyserBlockEntity extends BlockEntity {
                 .filter(e -> !e.isCrouching())
                 .toList();
 
-        if (checkedEntities.isEmpty()) {
+        if (checkedEntities.isEmpty() || geyser.inLaunchCooldown()) {
             geyser.stoodOnTime = geyser.stoodOnTime > 0 ? geyser.stoodOnTime - 1: 0;
         }
-        else if (!geyser.isLocked(level, pos)){
+        else if (!geyser.isLocked()) {
             geyser.stoodOnTime += 1;
 
             createBubbleParticles(geyser);
@@ -82,30 +95,18 @@ public class GeyserBlockEntity extends BlockEntity {
             //geyser.launch(entities, geyser);
         }
 
-        if (geyser.launchTriggered || RandomSource.create().nextFloat() < RANDOM_BURST_CHANCE) {
+        boolean triggered = state.getValue(GeyserBlock.getTriggered());
+        boolean powered = level.hasNeighborSignal(pos);
+
+        if (geyser.launchTriggered || RandomSource.create().nextFloat() < RANDOM_BURST_CHANCE || (powered && !triggered)) {
             List<Entity> toLaunch = geyser.getEntitiesToLaunch(level, pos);
             geyser.launch(toLaunch, geyser);
         }
 
 
-        if (
-                //level.hasNearbyAlivePlayer(pos.getX(), pos.getY(), pos.getZ(), 50) &&
-                RandomSource.create().nextFloat() < 0.1f &&
-                !level.getBlockState(pos.below()).is(BlockTags.ICE) &&
-                level.getBlockState(pos.above()).is(BlockTags.REPLACEABLE) &&
-                !(geyser.stoodOnTime > 0)
-        ) {
-
-            level.addAlwaysVisibleParticle(
-                    ModParticles.GEYSER_STEAM.get(),
-                    pos.getCenter().x,
-                    pos.getY() + 1,
-                    pos.getCenter().z,
-                    0,
-                    0,
-                    0
-            );
-
+        if (geyser.willProduceSteamParticles())
+        {
+            geyser.spawnSteamParticle();
         }
 
     }
@@ -117,7 +118,42 @@ public class GeyserBlockEntity extends BlockEntity {
         return level.getEntitiesOfClass(LivingEntity.class, getCheckBox(pos));
     }
 
-    // MAKE IT SO THE HOTTER THE GEYSER IS THE HIGHER IT LAUNCHES YOU
+    public void spawnSteamParticle() {
+
+        int select = this.getLevel().getRandom().nextInt(PARTICLE_LIST.length);
+        ParticleOptions particle = PARTICLE_LIST[select];
+        BlockPos pos = this.getBlockPos();
+
+        level.addAlwaysVisibleParticle(
+                particle,
+                pos.getCenter().x,
+                pos.getY() + 1.1,
+                pos.getCenter().z,
+                0,
+                0,
+                0
+        );
+
+        this.ticksSinceSteam = 0;
+
+    }
+
+    private boolean inLaunchCooldown() {
+        return this.ticksSinceLaunch < LAUNCH_COOLDOWN_AMOUNT;
+    }
+
+    private boolean willProduceSteamParticles() {
+
+        BlockPos pos = this.getBlockPos();
+        Level level = this.getLevel();
+
+        return
+                this.ticksSinceSteam > STEAM_PARTICLE_TICK_INTERVAL &&
+                !level.getBlockState(pos.below()).is(BlockTags.ICE) &&
+                level.getBlockState(pos.above()).is(BlockTags.REPLACEABLE) &&
+                !(this.stoodOnTime > 0) &&
+                !this.inLaunchCooldown();
+    }
 
     public void launch(List<Entity> entities, GeyserBlockEntity geyser) {
 
@@ -128,7 +164,8 @@ public class GeyserBlockEntity extends BlockEntity {
             level.playSound(entity, geyser.getBlockPos(), SoundEvents.PLAYER_SPLASH_HIGH_SPEED, SoundSource.BLOCKS, 0.5f, 1.3f);
         }
 
-        createLaunchParticles(geyser);
+        geyser.ticksSinceLaunch = 0;
+        geyser.createLaunchParticles();
 
         geyser.launchTimer = 0;
         geyser.stoodOnTime = 0;
@@ -145,11 +182,11 @@ public class GeyserBlockEntity extends BlockEntity {
 
     public static int getHeatAmount(Level level, BlockState state, BlockPos pos)
     {
-        int nearestDistance = ObsidianstoneTintProperties.maxRange;
+        int nearestDistance = ObsidianstoneUtil.maxRange;
 
-        for (int x = -ObsidianstoneTintProperties.maxRange; x <= ObsidianstoneTintProperties.maxRange; x++) {
-            for (int y = -ObsidianstoneTintProperties.maxRange; y <= ObsidianstoneTintProperties.maxRange; y++) {
-                for (int z = -ObsidianstoneTintProperties.maxRange; z <= ObsidianstoneTintProperties.maxRange; z++) {
+        for (int x = -ObsidianstoneUtil.maxRange; x <= ObsidianstoneUtil.maxRange; x++) {
+            for (int y = -ObsidianstoneUtil.maxRange; y <= ObsidianstoneUtil.maxRange; y++) {
+                for (int z = -ObsidianstoneUtil.maxRange; z <= ObsidianstoneUtil.maxRange; z++) {
 
                     BlockPos current = new BlockPos(x, y, z);
 
@@ -165,13 +202,13 @@ public class GeyserBlockEntity extends BlockEntity {
             }
         }
 
-        return ObsidianstoneTintProperties.maxRange + 1 - nearestDistance;
+        return ObsidianstoneUtil.maxRange + 1 - nearestDistance;
     }
 
-    private static void createLaunchParticles(GeyserBlockEntity geyser) {
+    private void createLaunchParticles() {
 
-        BlockPos pos = geyser.getBlockPos();
-        Level level = geyser.level;
+        BlockPos pos = this.getBlockPos();
+        Level level = this.level;
 
         for (int i = 0; i < LAUNCH_PARTICLE_COUNT; i++) {
 
@@ -240,7 +277,7 @@ public class GeyserBlockEntity extends BlockEntity {
         );
     }
 
-    private boolean isLocked(Level level, BlockPos pos) {
-        return level.getBlockState(pos.below()).is(BlockTags.ICE);
+    private boolean isLocked() {
+        return this.getLevel().getBlockState(this.getBlockPos().below()).is(BlockTags.ICE);
     }
 }

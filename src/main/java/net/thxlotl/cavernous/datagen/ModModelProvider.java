@@ -63,7 +63,8 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
-            ModBlocks.GEYSER_BLOCK.get()
+            ModBlocks.GEYSER_BLOCK.get(),
+            ModBlocks.ERUPTITE_BLOCK.get()
     );
     private final List<Item> ignoredItems = List.of(
             ModItems.HANGING_SHROOM_SPORE_POD.get(),
@@ -89,7 +90,7 @@ public class ModModelProvider extends ModelProvider {
         ModItemModelGenerators modItemModels = new ModItemModelGenerators(itemModels.itemModelOutput, itemModels.modelOutput);
 
         // ITEMS
-        itemModels.generateFlatItem(ModItems.TEST_ITEM.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ERUPTITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.TOADSTOOL_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.BLUE_GHOST_FUNGUS.get(), ModelTemplates.FLAT_ITEM);
@@ -200,6 +201,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.SCORIA.get());
         blockModels.createTrivialCube(ModBlocks.POLISHED_SCORIA.get());
         blockModels.createNonTemplateModelBlock(ModBlocks.SOFT_MAGMA_BLOCK.get());
+        blockModels.createCrossBlockWithDefaultItem(ModBlocks.MAGMA_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+
+        //blockModels.createTrivialCube(ModBlocks.ERUPTITE_BLOCK.get());
 
     }
 

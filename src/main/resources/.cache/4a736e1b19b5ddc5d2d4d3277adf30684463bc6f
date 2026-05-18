@@ -1,6 +1,7 @@
-// 26.1	2026-03-25T18:41:46.9216143	Tags for minecraft:block mod id cavernous
+// 26.1	2026-05-17T21:48:44.9097447	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 8621f38f39a6c523d3eca26f998e1132ce0ed9ec data/cavernous/tags/block/hot_blocks.json
+b8b15427574d1362c45c6a55b8c5ef6df2441346 data/cavernous/tags/block/magma_plant_placeable.json
 1ec50998909f709b6e0f93b906bc73f710b29451 data/cavernous/tags/block/mycelium_sprouts_placeable.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/cavernous/tags/block/shroomwood_logs.json
 d3bc41ec175b87895412b425043e832279e3df59 data/cavernous/tags/block/underground_mycelium_replaceable.json
@@ -13,7 +14,7 @@ a9e37c73450d073d7437ad8bec68f049219aca10 data/minecraft/tags/block/coal_ores.jso
 ab6c32f7f7530ae4fa971ea41a87d6b6eb23b8ef data/minecraft/tags/block/diamond_ores.json
 d38702ba25cf0e993749d5a7ea3c95e4a83a160d data/minecraft/tags/block/dirt.json
 c000c21cc7e1eb8cd1fa0e80497dbbbfc11b7565 data/minecraft/tags/block/emerald_ores.json
-c7022be8aef38be13decbf6eba4d8f05fb9d21fc data/minecraft/tags/block/enchantment_power_transmitter.json
+d242bad281df7faa49607eeab86084505f13e209 data/minecraft/tags/block/enchantment_power_transmitter.json
 543199686b9dda7502906be908ff9305ab06032b data/minecraft/tags/block/fence_gates.json
 3dafcaf5619f11cdbfd5eebc10504fc7cff38453 data/minecraft/tags/block/flower_pots.json
 a794b585323727ebc110655a810c6b77b83bce8e data/minecraft/tags/block/gold_ores.json
@@ -24,24 +25,24 @@ a794b585323727ebc110655a810c6b77b83bce8e data/minecraft/tags/block/gold_ores.jso
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/lush_ground_replaceable.json
 6d6fdf04e15157fb1aed58e844d711194bb6a678 data/minecraft/tags/block/mineable/axe.json
 974c2272516f28535cc8a6c0fe8bb48065073da3 data/minecraft/tags/block/mineable/hoe.json
-2d37497871e1c5ae113c22417dafa49307b2222d data/minecraft/tags/block/mineable/pickaxe.json
+26cb5ea093b66c8280ed676d1947841766418c82 data/minecraft/tags/block/mineable/pickaxe.json
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/moss_replaceable.json
 48ec2187dd89dc642f944d65c94c5fe18a5134f2 data/minecraft/tags/block/needs_iron_tool.json
 ec4e19c68814e44bda837c8c82b58000be0ae473 data/minecraft/tags/block/needs_stone_tool.json
 7e6a63c1429d40b02094adab8578f9978cbc44ab data/minecraft/tags/block/overrides_mushroom_light_requirement.json
 0ad12a62294cadc75cd67b68626650a15624aaa9 data/minecraft/tags/block/overworld_carver_replaceables.json
 ca08515369ee457e4c0c33454e7a7310a1f6fd2c data/minecraft/tags/block/redstone_ores.json
-a3feb5819dd65cc347542602f8fe2341e1d16a75 data/minecraft/tags/block/replaceable.json
+82158231ad935f260a95efd771282f2620971e1a data/minecraft/tags/block/replaceable.json
 bb336f47252e3d2c96243f9b8b24e2a0a6d89714 data/minecraft/tags/block/saplings.json
 be4dad649d96e9d8e5b43ca0b63476a4c4af2f8f data/minecraft/tags/block/signs.json
-e33e43388e9f173f94196b06bc3843531f14c002 data/minecraft/tags/block/slabs.json
+85655e2957c930025442a22f71e2af8b12900f9a data/minecraft/tags/block/slabs.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/sniffer_diggable_block.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/sniffer_egg_hatch_boost.json
 73a5fbe09869c47939f96ed34c43a2ca01dcc20a data/minecraft/tags/block/stairs.json
 b173d01c149e335d696a38f432be19239b55458c data/minecraft/tags/block/standing_signs.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/supports_big_dripleaf.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/supports_small_dripleaf.json
-a81996c74606e4b87a1c0ea5aff707b62254ddca data/minecraft/tags/block/walls.json
+c9f754bd359e0a69dcf8fa2139cee8eb19ee342b data/minecraft/tags/block/walls.json
 21f89e59b8592568dcca7318ea77b5c11456773a data/minecraft/tags/block/wall_hanging_signs.json
 b173d01c149e335d696a38f432be19239b55458c data/minecraft/tags/block/wall_post_override.json
 deb8bec2edbfa1d66d2b915732cc743b2d415aab data/minecraft/tags/block/wall_signs.json

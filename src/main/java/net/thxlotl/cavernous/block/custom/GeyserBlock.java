@@ -64,10 +64,6 @@ public class GeyserBlock extends BaseEntityBlock {
 
             if (!triggered && powered) {
 
-                geyser.launchTriggered = true;
-
-                level.scheduleTick(pos, this, 1);
-
                 level.setBlock(pos, state.setValue(TRIGGERED, true), 3);
 
             }
@@ -81,26 +77,30 @@ public class GeyserBlock extends BaseEntityBlock {
         super.neighborChanged(state, level, pos, neighborBlock, orientation, movedByPiston);
     }
 
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        super.animateTick(state, level, pos, random);
+//    @Override
+//    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+//        super.animateTick(state, level, pos, random);
+//
+//        if (!level.getBlockState(pos.below()).is(BlockTags.ICE)) {
+//            for (int i = 0; i < SURFACE_PARTICLE_COUNT; i++) {
+//
+//                level.addParticle(
+//                        ModParticles.GEYSER_AMBIENT.get(),
+//                        pos.getX() + random.nextDouble(),
+//                        pos.getY() + 1,
+//                        pos.getZ() + random.nextDouble(),
+//                        random.nextDouble() * 0.1,
+//                        random.nextDouble() * 0.5,
+//                        random.nextDouble() * 0.1
+//                );
+//            }
+//
+//        }
+//
+//    }
 
-        if (!level.getBlockState(pos.below()).is(BlockTags.ICE)) {
-            for (int i = 0; i < SURFACE_PARTICLE_COUNT; i++) {
-
-                level.addParticle(
-                        ModParticles.GEYSER_AMBIENT.get(),
-                        pos.getX() + random.nextDouble(),
-                        pos.getY() + 1,
-                        pos.getZ() + random.nextDouble(),
-                        random.nextDouble() * 0.1,
-                        random.nextDouble() * 0.5,
-                        random.nextDouble() * 0.1
-                );
-            }
-
-        }
-
+    public static BooleanProperty getTriggered() {
+        return TRIGGERED;
     }
 
 

@@ -20,6 +20,7 @@ public class ModTags {
         public static final TagKey<Block> FUNGATITE_ORE_REPLACEABLE = createTag("fungatite_ore_replaceable");
         public static final TagKey<Block> MYCELIUM_SPROUTS_PLACEABLE = createTag("mycelium_sprouts_placeable");
         public static final TagKey<Block> HOT_BLOCKS = createTag("hot_blocks");
+        public static final TagKey<Block> MAGMA_PLANT_PLACEABLE = createTag("magma_plant_placeable");
 
 
         private static TagKey<Block> createTag(String name) {

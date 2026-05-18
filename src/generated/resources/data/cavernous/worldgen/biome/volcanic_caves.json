@@ -20,7 +20,7 @@
         "particle": {
           "type": "cavernous:volcanic_ash"
         },
-        "probability": 0.07
+        "probability": 0.04
       }
     ],
     "minecraft:visual/fog_color": "#ad4d1a",

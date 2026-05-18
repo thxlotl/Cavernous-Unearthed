@@ -3,6 +3,10 @@
   "package": "net.thxlotl.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "ModelBlockRendererAccessor",
+    "ModelBlockRendererMixin",
+    "QuadInstanceAccessor",
+    "QuadInstanceMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -12,7 +16,11 @@
   },
   "client": [
     "ClientInputAccessor",
-    "EntityMixin"
+    "EntityMixin",
+    "ModelBlockRendererAccessor",
+    "ModelBlockRendererMixin",
+    "QuadInstanceAccessor",
+    "QuadInstanceMixin"
   ],
   "server": [
   ]

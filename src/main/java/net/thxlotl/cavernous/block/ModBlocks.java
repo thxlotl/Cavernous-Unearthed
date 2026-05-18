@@ -426,9 +426,6 @@ public class ModBlocks {
     //region Scoria
 
     public static final DeferredBlock<Block> SCORIA = registerTrivialBlock("scoria", ModProperties.SCORIA);
-    public static final DeferredBlock<StairBlock> SCORIA_STAIRS = registerStairBlock("scoria", ModProperties.SCORIA, () -> ModBlocks.SCORIA.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> SCORIA_SLAB = registerSlabBlock("scoria", ModProperties.SCORIA);
-    public static final DeferredBlock<WallBlock> SCORIA_WALL = registerWallBlock("scoria", ModProperties.SCORIA);
 
     public static final DeferredBlock<Block> POLISHED_SCORIA = registerTrivialBlock("polished_scoria", ModProperties.SCORIA_BRICKS);
 
@@ -474,6 +471,18 @@ public class ModBlocks {
                     .forceSolidOn()
                     .emissiveRendering(ModBlocks::always)
     );
+    public static final DeferredBlock<MagmaFern> MAGMA_FERN = registerBlock(
+            "magma_fern",
+            MagmaFern::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS).mapColor(MapColor.COLOR_ORANGE)
+    );
+
+    //endregion
+
+    //region Eruptite
+
+    ///public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_ERUPTITE_ORE = registerOreBlock("obsidianstone", "eruptite", ConstantInt.of(0), 4.5f);
+    public static final DeferredBlock<SaturatedBlock> ERUPTITE_BLOCK = registerBlock("eruptite_block", SaturatedBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
 
     //endregion
 

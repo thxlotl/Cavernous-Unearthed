@@ -158,7 +158,7 @@ public class BiomeBuilders {
                 .setAttribute(EnvironmentAttributes.FOG_END_DISTANCE, 85f)
                 .setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, AmbientSounds.LEGACY_CAVE_SETTINGS)
                 .setAttribute(EnvironmentAttributes.BACKGROUND_MUSIC, new BackgroundMusic(SoundEvents.MUSIC_BIOME_DRIPSTONE_CAVES))
-                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.VOLCANIC_ASH.get(), 0.07f))
+                .setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, AmbientParticle.of(ModParticles.VOLCANIC_ASH.get(), 0.04f))
                 .build();
     }
 
