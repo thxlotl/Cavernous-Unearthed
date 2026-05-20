@@ -66,6 +66,22 @@ public class ModParticles {
             "geyser_steam_4",
             () -> new SimpleParticleType(false)
     );
+    public static final Supplier<SimpleParticleType> GEYSER_BURST_1 = PARTICLE_TYPES.register(
+            "geyser_burst_1",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> GEYSER_BURST_2 = PARTICLE_TYPES.register(
+            "geyser_burst_2",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> GEYSER_BURST_3 = PARTICLE_TYPES.register(
+            "geyser_burst_3",
+            () -> new SimpleParticleType(false)
+    );
+    public static final Supplier<SimpleParticleType> GEYSER_BURST_4 = PARTICLE_TYPES.register(
+            "geyser_burst_4",
+            () -> new SimpleParticleType(false)
+    );
 
 
 

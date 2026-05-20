@@ -1,12 +1,17 @@
 package net.thxlotl.cavernous.particle.custom;
 
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.*;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SingleQuadParticle;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.thxlotl.cavernous.util.MathUtil;
 
-public class GeyserBurstParticle extends SingleQuadParticle{
+public class GeyserBubbleParticle extends SingleQuadParticle{
 
     private static final double maxPower = 0.65;
 
@@ -14,15 +19,9 @@ public class GeyserBurstParticle extends SingleQuadParticle{
     protected double theta;
     protected double horizontalPower;
     protected double yInitial;
-    private float burstAlpha = 0.65f;
-    private final SpriteSet sprites;
 
-    public GeyserBurstParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, SpriteSet sprites, double theta, double horizontalPower) {
-
-        super(level, x, y, z, xSpeed, ySpeed, zSpeed, sprites.first());
-
-        this.sprites = sprites;
-        this.setSpriteFromAge(this.sprites);
+    public GeyserBubbleParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, TextureAtlasSprite sprite, double theta, double horizontalPower) {
+        super(level, x, y, z, xSpeed, ySpeed, zSpeed, sprite);
 
         this.theta = theta;
         this.horizontalPower = horizontalPower;
@@ -30,10 +29,10 @@ public class GeyserBurstParticle extends SingleQuadParticle{
 
         this.rotSpeed = (float)Math.toRadians((double)MathUtil.scaleFloat((float)Math.random(), -10f, 10f));
 
-        this.setLifetime(level.getRandom().nextInt(30, 60));
-        this.age = 0;
-        this.friction = 0.95f;
-        this.gravity = 0.8f;
+        RandomSource random = RandomSource.create();
+        this.lifetime = Mth.randomBetweenInclusive(random, 15, 20);
+        this.friction = 1f;
+        this.gravity = 1f;
         this.hasPhysics = true;
 
         float f = this.random.nextFloat() * 0.07f + 0.93f;
@@ -42,20 +41,17 @@ public class GeyserBurstParticle extends SingleQuadParticle{
         this.bCol = f;
 
         this.quadSize = MathUtil.scaleFloat((float)Math.random(), 0.45f, 0.5f);
-        this.setSize(0.2F, 0.2F);
+        this.setSize(0.1F, 0.1F);
 
         this.setParticleSpeed(xSpeed, ySpeed, zSpeed);
 
-        this.setAlpha(0f);
-
+        this.setAlpha(MathUtil.scaleFloat((float)Math.random(), 0.3f, 0.7f));
 
     }
 
     @Override
     public void tick() {
         super.tick();
-
-        // Physics
 
         double vx = this.xd;
         double vy = this.yd;
@@ -68,20 +64,12 @@ public class GeyserBurstParticle extends SingleQuadParticle{
 
         this.setParticleSpeed(vx, vy, vz);
 
+        if (this.alpha > 0.02f) {
+            this.alpha -= 0.01f;
+        }
+
         this.oRoll = this.roll;
         this.roll += this.rotSpeed / 20.0F;
-
-        // Alpha
-
-        if (this.age > this.getLifetime() / 2f && this.burstAlpha > 0.05f) {
-            this.burstAlpha -= 0.05f;
-        }
-        this.setAlpha(Math.min(burstAlpha, this.age / 10f));
-
-        this.setSize(this.quadSize + 0.009f,this.quadSize + 0.009f);
-
-        this.setSpriteFromAgeCorrected(this.sprites);
-
     }
 
     @Override
@@ -99,25 +87,14 @@ public class GeyserBurstParticle extends SingleQuadParticle{
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, RandomSource random) {
 
             double theta = MathUtil.scaleFloat(random.nextDouble(), 0, 2 * Math.PI);
-            double horizontalPower = MathUtil.scaleFloat(random.nextDouble(), 0.05, 0.1);
-            double initialSpeed = MathUtil.scaleFloat(random.nextDouble(), 0.01, 0.05);
+            double horizontalPower = MathUtil.scaleFloat(random.nextDouble(), 0.02, 0.2);
+            double initialSpeed = MathUtil.scaleFloat(random.nextDouble(), 0.04, 0.06);
 
             double vx = Math.cos(theta) * initialSpeed;
-            double vy = random.nextDouble() * 0.55f + 0.3f;
+            double vy = random.nextDouble() * 0.3f + 0.1f;
             double vz = Math.sin(theta) * initialSpeed;
 
-            return new GeyserBurstParticle(level, x, y, z, vx, vy, vz, this.sprite, theta, horizontalPower);
+            return new GeyserBubbleParticle(level, x, y, z, vx, vy, vz, this.sprite.get(random), theta, horizontalPower);
         }
     }
-
-    private void setSpriteFromAgeCorrected(SpriteSet sprites) {
-        if (!this.removed) {
-
-            int frame = Math.min(this.age * 4 / 3, this.lifetime - 1);
-
-            this.setSprite(sprites.get(frame, this.lifetime));
-        }
-
-    }
-
 }

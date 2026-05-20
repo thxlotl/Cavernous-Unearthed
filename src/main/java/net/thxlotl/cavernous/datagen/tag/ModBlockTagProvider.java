@@ -93,6 +93,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.UNDERGROUND_MYCELIUM.get())
                 .add(ModBlocks.OBSIDIANSTONE.get())
                 .add(ModBlocks.SCORIA.get());
+        tag(BlockTags.BASE_STONE_OVERWORLD)
+                .add(ModBlocks.OBSIDIANSTONE.get())
+                .add(ModBlocks.SCORIA.get());
         
         tag(BlockTags.CLIMBABLE)
                 .add(ModBlocks.FLIPSHROOM.get())
@@ -269,6 +272,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.MAGMA_BLOCK)
                 .addTag(BlockTags.DIRT)
                 .add(ModBlocks.SOFT_MAGMA_BLOCK.get())
+                .add(ModBlocks.OBSIDIANSTONE.get())
+                .add(ModBlocks.SCORIA.get());
+
+        tag(ModTags.Blocks.GEYSER_PATCH_REPLACEABLE)
                 .add(ModBlocks.OBSIDIANSTONE.get())
                 .add(ModBlocks.SCORIA.get());
 

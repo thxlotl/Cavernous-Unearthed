@@ -1,11 +1,13 @@
-// 26.1	2026-05-17T21:48:44.9097447	Tags for minecraft:block mod id cavernous
+// 26.1	2026-05-18T01:02:26.7035989	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
+e26bf87c5ce47f51f380d824e2c8a498347f0725 data/cavernous/tags/block/geyser_patch_replaceable.json
 8621f38f39a6c523d3eca26f998e1132ce0ed9ec data/cavernous/tags/block/hot_blocks.json
-b8b15427574d1362c45c6a55b8c5ef6df2441346 data/cavernous/tags/block/magma_plant_placeable.json
+91011048d06e0112e4767db78261a0e537aa73f1 data/cavernous/tags/block/magma_plant_placeable.json
 1ec50998909f709b6e0f93b906bc73f710b29451 data/cavernous/tags/block/mycelium_sprouts_placeable.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/cavernous/tags/block/shroomwood_logs.json
 d3bc41ec175b87895412b425043e832279e3df59 data/cavernous/tags/block/underground_mycelium_replaceable.json
 de6b2ac748773d268a4260b09473618d90373ce1 data/minecraft/tags/block/all_hanging_signs.json
+e26bf87c5ce47f51f380d824e2c8a498347f0725 data/minecraft/tags/block/base_stone_overworld.json
 66c63c701bb9ae985d7d23050293302e8988140e data/minecraft/tags/block/ceiling_hanging_signs.json
 090b4e2a3372d1f1a2524447a24ae8cfe704b292 data/minecraft/tags/block/climbable.json
 a9e37c73450d073d7437ad8bec68f049219aca10 data/minecraft/tags/block/coal_ores.json

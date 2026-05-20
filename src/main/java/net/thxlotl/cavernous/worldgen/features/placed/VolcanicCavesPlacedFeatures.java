@@ -27,12 +27,16 @@ public class VolcanicCavesPlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> GEYSER_CLUSTER = registerKey("geyser_cluster");
     public static final ResourceKey<PlacedFeature> LAVA_FALL = registerKey("lava_fall");
+    public static final ResourceKey<PlacedFeature> MAGMA_FERN = registerKey("magma_fern");
+    public static final ResourceKey<PlacedFeature> ORE_SCORIA = registerKey("ore_scoria");
 
 
     // Register Features
     public static void bootstrap(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures) {
 
-        register(context, GEYSER_CLUSTER, configuredFeatures.getOrThrow(VolcanicCavesConfiguredFeatures.GEYSER_CLUSTER), PFeatureUtil.caveTreePlacementModifiers(20, Blocks.TORCH));
+        register(context, GEYSER_CLUSTER, configuredFeatures.getOrThrow(VolcanicCavesConfiguredFeatures.GEYSER_CLUSTER), PFeatureUtil.caveTreePlacementModifiers(10, Blocks.TORCH));
+
+        register(context, MAGMA_FERN, configuredFeatures.getOrThrow(VolcanicCavesConfiguredFeatures.MAGMA_FERN), PFeatureUtil.caveTreePlacementModifiers(20, ModBlocks.MAGMA_FERN.get()));
 
         register(context, LAVA_FALL, configuredFeatures.getOrThrow(VolcanicCavesConfiguredFeatures.LAVA_FALL),
                 List.of(
@@ -49,6 +53,8 @@ public class VolcanicCavesPlacedFeatures {
                         ),
                         BiomeFilter.biome()
                 ));
+
+        register(context, ORE_SCORIA, configuredFeatures.getOrThrow(VolcanicCavesConfiguredFeatures.ORE_SCORIA), PFeatureUtil.cavePlacementModifersNoScan(30));
 
     }
 }

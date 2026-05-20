@@ -60,14 +60,18 @@ public class RegisterEvents {
         event.registerSpriteSet(ModParticles.LAMPSHROOM_SPORE.get(), SporeParticle.LampshroomProvider::new);
         event.registerSpriteSet(ModParticles.UNDERGROUND_MYCELIUM.get(), UndergroundMyceliumParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GEYSER_AMBIENT.get(), GeyserAmbientParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.GEYSER_BURST.get(), GeyserBurstParticle.BurstProvider::new);
-        event.registerSpriteSet(ModParticles.GEYSER_BUBBLE.get(), GeyserBurstParticle.BubbleProvider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BURST.get(), GeyserBurstParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BUBBLE.get(), GeyserBubbleParticle.Provider::new);
         event.registerSpriteSet(ModParticles.VOLCANIC_ASH.get(), VolcanicAshParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GEYSER_STEAM.get(), GeyserSteamParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GEYSER_STEAM_1.get(), GeyserSteamParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GEYSER_STEAM_2.get(), GeyserSteamParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GEYSER_STEAM_3.get(), GeyserSteamParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GEYSER_STEAM_4.get(), GeyserSteamParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BURST_1.get(), GeyserBurstParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BURST_2.get(), GeyserBurstParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BURST_3.get(), GeyserBurstParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.GEYSER_BURST_4.get(), GeyserBurstParticle.Provider::new);
     }
 
     @SubscribeEvent

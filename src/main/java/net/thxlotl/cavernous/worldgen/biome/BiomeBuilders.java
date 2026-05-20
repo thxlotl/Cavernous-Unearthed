@@ -27,13 +27,16 @@ public class BiomeBuilders {
     //region Helper Methods
 
     // Default features
-    public static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
+    public static void globalOverworldGenerationNoGroundClutter(BiomeGenerationSettings.Builder builder) {
         BiomeDefaultFeatures.addDefaultCarversAndLakes(builder);
         BiomeDefaultFeatures.addDefaultCrystalFormations(builder);
         BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
-        BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
         BiomeDefaultFeatures.addDefaultSprings(builder);
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
+    }
+    public static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
+        globalOverworldGenerationNoGroundClutter(builder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
     }
 
     // Default ores
@@ -130,13 +133,15 @@ public class BiomeBuilders {
                 new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER));
 
         // Default features
-        globalOverworldGeneration(biomeBuilder);
+        globalOverworldGenerationNoGroundClutter(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         // Ores
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         // Custom features
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VolcanicCavesPlacedFeatures.GEYSER_CLUSTER);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VolcanicCavesPlacedFeatures.MAGMA_FERN);
         biomeBuilder.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, VolcanicCavesPlacedFeatures.LAVA_FALL);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VolcanicCavesPlacedFeatures.ORE_SCORIA);
 
         // Biome characteristics
         return new Biome.BiomeBuilder()

@@ -29,6 +29,9 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlace
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTestType;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.block.ModBlocks;
 
 import java.util.List;
@@ -128,6 +131,24 @@ public class CFeatureUtil {
                 SimpleStateProvider.simple(block.defaultBlockState()),
                 true
         );
+    }
+
+    public static OreConfiguration createBlobOre(TagKey<Block> tag, Block ore, int size, float airDiscardChance) {
+        return new OreConfiguration(
+                new TagMatchTest(tag),
+                ore.defaultBlockState(),
+                size,
+                airDiscardChance
+        );
+    }
+    public static OreConfiguration createBlobOre(Block ore, int size, float airDiscardChance) {
+        return createBlobOre(BlockTags.BASE_STONE_OVERWORLD, ore, size, airDiscardChance);
+    }
+    public static OreConfiguration createBlobOre(Block ore, int size) {
+        return createBlobOre(ore, size, 0);
+    }
+    public static OreConfiguration createBlobOre(Block ore) {
+        return createBlobOre(ore, 64);
     }
 
     //region Maybe just cavernous lite

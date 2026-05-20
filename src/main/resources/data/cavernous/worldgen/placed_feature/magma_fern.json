@@ -1,9 +1,9 @@
 {
-  "feature": "cavernous:geyser_cluster",
+  "feature": "cavernous:magma_fern",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 10
+      "count": 20
     },
     {
       "type": "minecraft:in_square"
@@ -30,7 +30,7 @@
           {
             "type": "minecraft:would_survive",
             "state": {
-              "Name": "minecraft:torch"
+              "Name": "cavernous:magma_fern"
             }
           },
           {

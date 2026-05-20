@@ -31,14 +31,20 @@ public class GeyserBlockEntity extends BlockEntity {
     private static final double BOX_WIDTH = 0.45f;
     private static final double LAUNCH_BOX_HEIGHT = 1.4f;
     private static final double CHECK_BOX_HEIGHT = 0.4f;
-    private static final int LAUNCH_PARTICLE_COUNT = 80;
-    private static final int BUBBLE_PARTICLE_COUNT = 2;
+    private static final int LAUNCH_PARTICLE_COUNT = 100;
+    private static final int BUBBLE_PARTICLE_COUNT = 4;
     private static final float RANDOM_BURST_CHANCE = 0.0001f;
-    private static final ParticleOptions[] PARTICLE_LIST = {
+    private static final ParticleOptions[] STEAM_PARTICLE_LIST = {
             ModParticles.GEYSER_STEAM_1.get(),
             ModParticles.GEYSER_STEAM_2.get(),
             ModParticles.GEYSER_STEAM_3.get(),
             ModParticles.GEYSER_STEAM_4.get()
+    };
+    private static final ParticleOptions[] BURST_PARTICLE_LIST = {
+            ModParticles.GEYSER_BURST_1.get(),
+            ModParticles.GEYSER_BURST_2.get(),
+            ModParticles.GEYSER_BURST_3.get(),
+            ModParticles.GEYSER_BURST_4.get()
     };
     private static final int STEAM_PARTICLE_TICK_INTERVAL = 10;
     private static final int LAUNCH_COOLDOWN_AMOUNT = 90;
@@ -120,8 +126,8 @@ public class GeyserBlockEntity extends BlockEntity {
 
     public void spawnSteamParticle() {
 
-        int select = this.getLevel().getRandom().nextInt(PARTICLE_LIST.length);
-        ParticleOptions particle = PARTICLE_LIST[select];
+        int select = this.getLevel().getRandom().nextInt(STEAM_PARTICLE_LIST.length);
+        ParticleOptions particle = STEAM_PARTICLE_LIST[select];
         BlockPos pos = this.getBlockPos();
 
         level.addAlwaysVisibleParticle(
@@ -136,6 +142,23 @@ public class GeyserBlockEntity extends BlockEntity {
 
         this.ticksSinceSteam = 0;
 
+    }
+
+    public void spawnBurstParticle() {
+
+        int select = this.getLevel().getRandom().nextInt(BURST_PARTICLE_LIST.length);
+        ParticleOptions particle = BURST_PARTICLE_LIST[select];
+        BlockPos pos = this.getBlockPos();
+
+        level.addAlwaysVisibleParticle(
+                particle,
+                pos.getCenter().x,
+                pos.getY() + 0.6,
+                pos.getCenter().z,
+                0,
+                0,
+                0
+        );
     }
 
     private boolean inLaunchCooldown() {
@@ -212,19 +235,21 @@ public class GeyserBlockEntity extends BlockEntity {
 
         for (int i = 0; i < LAUNCH_PARTICLE_COUNT; i++) {
 
-            if (level instanceof ServerLevel serverLevel) {
-                serverLevel.sendParticles(
-                        ModParticles.GEYSER_BURST.get(),
-                        pos.getCenter().x,
-                        pos.getY() + 0.6,
-                        pos.getCenter().z,
-                        1,
-                        0,
-                        0,
-                        0,
-                        0
-                );
-            }
+//            if (level instanceof ServerLevel serverLevel) {
+//                serverLevel.sendParticles(
+//                        ModParticles.GEYSER_BURST.get(),
+//                        pos.getCenter().x,
+//                        pos.getY() + 0.6,
+//                        pos.getCenter().z,
+//                        1,
+//                        0,
+//                        0,
+//                        0,
+//                        0
+//                );
+//            }
+
+            this.spawnBurstParticle();
 
         }
     }
@@ -240,7 +265,7 @@ public class GeyserBlockEntity extends BlockEntity {
                 serverLevel.sendParticles(
                         ModParticles.GEYSER_BUBBLE.get(),
                         pos.getCenter().x,
-                        pos.getY() + 1.05f,
+                        pos.getY() + 1.1f,
                         pos.getCenter().z,
                         1,
                         0,

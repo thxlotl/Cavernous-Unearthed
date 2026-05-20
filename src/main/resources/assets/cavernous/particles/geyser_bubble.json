@@ -1,7 +1,8 @@
 {
   "textures": [
-    "cavernous:geyser_1",
-    "cavernous:geyser_2",
-    "cavernous:geyser_3"
+    "cavernous:geyser_bubble_1",
+    "cavernous:geyser_bubble_2",
+    "cavernous:geyser_bubble_3",
+    "cavernous:geyser_bubble_4"
   ]
 }
