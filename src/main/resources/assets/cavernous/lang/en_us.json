@@ -102,7 +102,9 @@
   "item.cavernous.magma_fern": "Magma Fern",
 
   "item.cavernous.eruptite_ingot": "Eruptite Ingot",
+  "item.cavernous.raw_eruptite": "Raw Eruptite",
   "item.cavernous.eruptite_block": "Eruptite Block",
+  "item.cavernous.cut_eruptite_block": "Cut Eruptite Block",
 
   "item.cavernous.test_block_ore": "Test Block Ore",
   "item.cavernous.geyser_block": "Geyser Block",

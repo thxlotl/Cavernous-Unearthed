@@ -482,7 +482,9 @@ public class ModBlocks {
     //region Eruptite
 
     ///public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_ERUPTITE_ORE = registerOreBlock("obsidianstone", "eruptite", ConstantInt.of(0), 4.5f);
-    public static final DeferredBlock<SaturatedBlock> ERUPTITE_BLOCK = registerBlock("eruptite_block", SaturatedBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
+    public static final DeferredBlock<Block> ERUPTITE_BLOCK = registerBlock("eruptite_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
+    public static final DeferredBlock<Block> CUT_ERUPTITE_BLOCK = registerBlock("cut_eruptite_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
+    public static final DeferredBlock<IronBarsBlock> ERUPTITE_BARS = registerBlock("eruptite_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS));
 
     //endregion
 

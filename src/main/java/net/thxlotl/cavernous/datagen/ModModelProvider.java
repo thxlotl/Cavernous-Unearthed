@@ -91,6 +91,7 @@ public class ModModelProvider extends ModelProvider {
 
         // ITEMS
         itemModels.generateFlatItem(ModItems.ERUPTITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RAW_ERUPTITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.TOADSTOOL_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.BLUE_GHOST_FUNGUS.get(), ModelTemplates.FLAT_ITEM);
@@ -203,7 +204,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createNonTemplateModelBlock(ModBlocks.SOFT_MAGMA_BLOCK.get());
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.MAGMA_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
-        //blockModels.createTrivialCube(ModBlocks.ERUPTITE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.ERUPTITE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.CUT_ERUPTITE_BLOCK.get());
+        blockModels.createBarsAndItem(ModBlocks.ERUPTITE_BARS.get());
 
     }
 

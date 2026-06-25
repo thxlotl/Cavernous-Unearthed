@@ -98,6 +98,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.SCORIA);
                 output.accept(ModBlocks.SOFT_MAGMA_BLOCK);
                 output.accept(ModItems.ERUPTITE_INGOT);
+                output.accept(ModItems.RAW_ERUPTITE);
+                output.accept(ModBlocks.ERUPTITE_BLOCK);
+                output.accept(ModBlocks.ERUPTITE_BARS);
+                output.accept(ModBlocks.CUT_ERUPTITE_BLOCK);
             })
             .build());
 

@@ -4,7 +4,6 @@
   "compatibilityLevel": "JAVA_25",
   "mixins": [
     "ModelBlockRendererAccessor",
-    "ModelBlockRendererMixin",
     "QuadInstanceAccessor",
     "QuadInstanceMixin"
   ],
@@ -18,7 +17,6 @@
     "ClientInputAccessor",
     "EntityMixin",
     "ModelBlockRendererAccessor",
-    "ModelBlockRendererMixin",
     "QuadInstanceAccessor",
     "QuadInstanceMixin"
   ],

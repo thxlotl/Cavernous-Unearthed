@@ -94,7 +94,6 @@ public class RegisterEvents {
         event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get());
         event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
         event.register(obsidianstoneTint, ModBlocks.GEYSER_BLOCK.get());
-        event.register(List.of(ModBlockTintSources.eruptiteTint()), ModBlocks.ERUPTITE_BLOCK.get());
     }
 
 }

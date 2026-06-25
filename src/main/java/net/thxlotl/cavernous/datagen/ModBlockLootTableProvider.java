@@ -122,6 +122,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.SCORIA,
                 ModBlocks.POLISHED_SCORIA,
                 ModBlocks.ERUPTITE_BLOCK,
+                ModBlocks.CUT_ERUPTITE_BLOCK,
+                ModBlocks.ERUPTITE_BARS,
                 ModBlocks.MAGMA_FERN
         );
         for (DeferredBlock deferredBlock : simpleDropBlocks) {
