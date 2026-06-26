@@ -1,0 +1,167 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"4": "cavernous:block/obsidianstone_eruptite_ore",
+		"5": "cavernous:block/obsidianstone",
+		"particle": "cavernous:block/obsidianstone"
+	},
+	"elements": [
+		{
+			"name": "Base",
+			"from": [
+				0,
+				0,
+				0
+			],
+			"to": [
+				16,
+				16,
+				16
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#5",
+					"cullface": "north",
+					"tintindex": 0
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#5",
+					"cullface": "east",
+					"tintindex": 0
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#5",
+					"cullface": "south",
+					"tintindex": 0
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#5",
+					"cullface": "west",
+					"tintindex": 0
+				},
+				"up": {
+					"uv": [
+						16,
+						16,
+						0,
+						0
+					],
+					"texture": "#5",
+					"cullface": "up",
+					"tintindex": 0
+				},
+				"down": {
+					"uv": [
+						16,
+						0,
+						0,
+						16
+					],
+					"texture": "#5",
+					"cullface": "down",
+					"tintindex": 0
+				}
+			}
+		},
+		{
+			"name": "Overlay",
+			"from": [
+				0,
+				0,
+				0
+			],
+			"to": [
+				16,
+				16,
+				16
+			],
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#4",
+					"cullface": "north"
+				},
+				"east": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#4",
+					"cullface": "east"
+				},
+				"south": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#4",
+					"cullface": "south"
+				},
+				"west": {
+					"uv": [
+						0,
+						0,
+						16,
+						16
+					],
+					"texture": "#4",
+					"cullface": "west"
+				},
+				"up": {
+					"uv": [
+						16,
+						16,
+						0,
+						0
+					],
+					"texture": "#4",
+					"cullface": "up"
+				},
+				"down": {
+					"uv": [
+						16,
+						0,
+						0,
+						16
+					],
+					"texture": "#4",
+					"cullface": "down"
+				}
+			}
+		}
+	],
+	"display": {}
+}

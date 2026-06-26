@@ -64,7 +64,7 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
             ModBlocks.GEYSER_BLOCK.get(),
-            ModBlocks.ERUPTITE_BLOCK.get()
+            ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get()
     );
     private final List<Item> ignoredItems = List.of(
             ModItems.HANGING_SHROOM_SPORE_POD.get(),
@@ -80,7 +80,8 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.asItem(),
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.asItem(),
             ModBlocks.OBSIDIANSTONE_BRICK_WALL.asItem(),
-            ModBlocks.GEYSER_BLOCK.asItem()
+            ModBlocks.GEYSER_BLOCK.asItem(),
+            ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.asItem()
     );
 
 
@@ -91,7 +92,7 @@ public class ModModelProvider extends ModelProvider {
 
         // ITEMS
         itemModels.generateFlatItem(ModItems.ERUPTITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
-        itemModels.generateFlatItem(ModItems.RAW_ERUPTITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ERUPTITE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.TOADSTOOL_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.BLUE_GHOST_FUNGUS.get(), ModelTemplates.FLAT_ITEM);
@@ -205,7 +206,10 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.MAGMA_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
         blockModels.createTrivialCube(ModBlocks.ERUPTITE_BLOCK.get());
-        blockModels.createTrivialCube(ModBlocks.CUT_ERUPTITE_BLOCK.get());
+        blockModels.family(ModBlocks.CUT_ERUPTITE_BLOCK.get())
+                .stairs(ModBlocks.CUT_ERUPTITE_STAIRS.get())
+                .slab(ModBlocks.CUT_ERUPTITE_SLAB.get())
+                .wall(ModBlocks.CUT_ERUPTITE_WALL.get());
         blockModels.createBarsAndItem(ModBlocks.ERUPTITE_BARS.get());
 
     }

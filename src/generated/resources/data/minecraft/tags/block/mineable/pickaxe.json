@@ -37,6 +37,13 @@
     "cavernous:obsidianstone_brick_stairs",
     "cavernous:obsidianstone_brick_slab",
     "cavernous:obsidianstone_brick_wall",
-    "cavernous:scoria"
+    "cavernous:scoria",
+    "cavernous:obsidianstone_eruptite_ore",
+    "cavernous:eruptite_block",
+    "cavernous:cut_eruptite_block",
+    "cavernous:cut_eruptite_stairs",
+    "cavernous:cut_eruptite_slab",
+    "cavernous:cut_eruptite_wall",
+    "cavernous:eruptite_bars"
   ]
 }

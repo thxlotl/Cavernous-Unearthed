@@ -11,6 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.*;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.datagen.tag.ModTags;
+import net.thxlotl.cavernous.item.ModItems;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -248,6 +249,24 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
                 ModBlocks.POLISHED_OBSIDIANSTONE.get(),
                 ModBlocks.OBSIDIANSTONE.get());
+
+        //endregion
+
+        //region Eruptite
+
+        nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ERUPTITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ERUPTITE_BLOCK);
+
+        makeStoneFamilyRecipes(
+                ModBlocks.CUT_ERUPTITE_BLOCK.get(),
+                ModBlocks.CUT_ERUPTITE_STAIRS.get(),
+                ModBlocks.CUT_ERUPTITE_SLAB.get(),
+                ModBlocks.CUT_ERUPTITE_WALL.get());
+        makeStoneFamilyStonecutterRecipes(
+                ModBlocks.CUT_ERUPTITE_BLOCK.get(),
+                ModBlocks.CUT_ERUPTITE_STAIRS.get(),
+                ModBlocks.CUT_ERUPTITE_SLAB.get(),
+                ModBlocks.CUT_ERUPTITE_WALL.get());
+        /// Make recipes for turning normal into extra cut
 
         //endregion
     }

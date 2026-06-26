@@ -5,7 +5,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.thxlotl.cavernous.Cavernous;
-import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.entity.ModEntities;
 import net.thxlotl.cavernous.item.custom.HangingShroomSporePodItem;
 
@@ -14,7 +13,7 @@ public class ModItems {
 
 
     public static final DeferredItem<Item> ERUPTITE_INGOT = ITEMS.registerItem("eruptite_ingot", Item::new, Item.Properties::new);
-    public static final DeferredItem<Item> RAW_ERUPTITE = ITEMS.registerItem("raw_eruptite", Item::new, Item.Properties::new);
+    public static final DeferredItem<Item> ERUPTITE = ITEMS.registerItem("eruptite", Item::new, Item.Properties::new);
 
 
     public static final DeferredItem<HangingShroomSporePodItem> HANGING_SHROOM_SPORE_POD = ITEMS.registerItem("hanging_shroom_spore_pod", HangingShroomSporePodItem::new, () -> new Item.Properties().stacksTo(16));

@@ -45,6 +45,15 @@ public class ModProperties {
             .mapColor(MapColor.TERRACOTTA_GRAY)
             .instrument(NoteBlockInstrument.BASEDRUM);
 
+    public static final BlockBehaviour.Properties ERUPTITE = BlockBehaviour.Properties.of()
+            .strength(3.0F, 6.0F)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.METAL)
+            .mapColor(MapColor.COLOR_ORANGE)
+            .instrument(NoteBlockInstrument.BASEDRUM);
+
+
+
     // More fringe/not actually a definite block set
 
     public static final BlockBehaviour.Properties BASE_ORE = BlockBehaviour.Properties.of()

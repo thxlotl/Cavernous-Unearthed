@@ -482,9 +482,13 @@ public class ModBlocks {
     //region Eruptite
 
     ///public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_ERUPTITE_ORE = registerOreBlock("obsidianstone", "eruptite", ConstantInt.of(0), 4.5f);
-    public static final DeferredBlock<Block> ERUPTITE_BLOCK = registerBlock("eruptite_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
-    public static final DeferredBlock<Block> CUT_ERUPTITE_BLOCK = registerBlock("cut_eruptite_block", Block::new, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
-    public static final DeferredBlock<IronBarsBlock> ERUPTITE_BARS = registerBlock("eruptite_bars", IronBarsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS));
+    public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_ERUPTITE_ORE = registerOreBlock("obsidianstone", "eruptite", ConstantInt.of(0), 4.5f);
+    public static final DeferredBlock<Block> ERUPTITE_BLOCK = registerTrivialBlock("eruptite_block", ModProperties.ERUPTITE);
+    public static final DeferredBlock<Block> CUT_ERUPTITE_BLOCK = registerTrivialBlock("cut_eruptite_block", ModProperties.ERUPTITE);
+    public static final DeferredBlock<StairBlock> CUT_ERUPTITE_STAIRS = registerStairBlock("cut_eruptite", ModProperties.ERUPTITE, () -> ModBlocks.CUT_ERUPTITE_BLOCK.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> CUT_ERUPTITE_SLAB = registerSlabBlock("cut_eruptite", ModProperties.ERUPTITE);
+    public static final DeferredBlock<WallBlock> CUT_ERUPTITE_WALL = registerWallBlock("cut_eruptite", ModProperties.ERUPTITE);
+    public static final DeferredBlock<IronBarsBlock> ERUPTITE_BARS = registerBlock("eruptite_bars", IronBarsBlock::new, ModProperties.ERUPTITE);
 
     //endregion
 

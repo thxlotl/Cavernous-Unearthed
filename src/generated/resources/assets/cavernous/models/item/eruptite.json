@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "cavernous:item/raw_eruptite"
+    "layer0": "cavernous:item/eruptite"
   }
 }

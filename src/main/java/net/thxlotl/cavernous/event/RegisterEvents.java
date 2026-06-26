@@ -93,6 +93,7 @@ public class RegisterEvents {
         event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get());
         event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get());
         event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
+        event.register(obsidianstoneTint, ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get());
         event.register(obsidianstoneTint, ModBlocks.GEYSER_BLOCK.get());
     }
 
