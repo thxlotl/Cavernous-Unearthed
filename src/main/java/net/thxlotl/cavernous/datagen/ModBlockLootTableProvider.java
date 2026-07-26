@@ -133,7 +133,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.CUT_ERUPTITE_STAIRS,
                 ModBlocks.CUT_ERUPTITE_WALL,
                 ModBlocks.ERUPTITE_BARS,
-                ModBlocks.MAGMA_FERN
+                ModBlocks.MAGMA_FERN,
+                ModBlocks.ERUPTITE_GRATE,
+                ModBlocks.ERUPTITE_CHAIN
         );
         for (DeferredBlock deferredBlock : simpleDropBlocks) {
             makeDropSelf(deferredBlock);

@@ -104,6 +104,7 @@
   "item.cavernous.eruptite_ingot": "Eruptite Ingot",
   "item.cavernous.raw_eruptite": "Raw Eruptite",
   "item.cavernous.eruptite": "Eruptite",
+  "item.cavernous.eruptite_nugget": "Eruptite Nugget",
   "item.cavernous.eruptite_block": "Eruptite Block",
   "item.cavernous.obsidianstone_eruptite_ore": "Obsidianstone Eruptite Ore",
   "item.cavernous.eruptite_bars": "Eruptite Bars",
@@ -111,6 +112,8 @@
   "item.cavernous.cut_eruptite_stairs": "Cut Eruptite Stairs",
   "item.cavernous.cut_eruptite_slab": "Cut Eruptite Slab",
   "item.cavernous.cut_eruptite_wall": "Cut Eruptite Wall",
+  "item.cavernous.eruptite_grate": "Eruptite Grate",
+  "item.cavernous.eruptite_chain": "Eruptite Chain",
 
   "item.cavernous.test_block_ore": "Test Block Ore",
   "item.cavernous.geyser_block": "Geyser Block",

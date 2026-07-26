@@ -14,6 +14,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> ERUPTITE_INGOT = ITEMS.registerItem("eruptite_ingot", Item::new, Item.Properties::new);
     public static final DeferredItem<Item> ERUPTITE = ITEMS.registerItem("eruptite", Item::new, Item.Properties::new);
+    public static final DeferredItem<Item> ERUPTITE_NUGGET = ITEMS.registerItem("eruptite_nugget", Item::new, Item.Properties::new);
 
 
     public static final DeferredItem<HangingShroomSporePodItem> HANGING_SHROOM_SPORE_POD = ITEMS.registerItem("hanging_shroom_spore_pod", HangingShroomSporePodItem::new, () -> new Item.Properties().stacksTo(16));

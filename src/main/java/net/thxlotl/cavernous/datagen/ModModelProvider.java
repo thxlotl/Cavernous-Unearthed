@@ -9,6 +9,7 @@ import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.thxlotl.cavernous.Cavernous;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.datagen.custom.ModBlockFamilies;
@@ -92,7 +93,9 @@ public class ModModelProvider extends ModelProvider {
 
         // ITEMS
         itemModels.generateFlatItem(ModItems.ERUPTITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModBlocks.ERUPTITE_CHAIN.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.ERUPTITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ERUPTITE_NUGGET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.TOADSTOOL_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.MYCELIUM_FERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.BLUE_GHOST_FUNGUS.get(), ModelTemplates.FLAT_ITEM);
@@ -206,11 +209,13 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.MAGMA_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
         blockModels.createTrivialCube(ModBlocks.ERUPTITE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.ERUPTITE_GRATE.get());
         blockModels.family(ModBlocks.CUT_ERUPTITE_BLOCK.get())
                 .stairs(ModBlocks.CUT_ERUPTITE_STAIRS.get())
                 .slab(ModBlocks.CUT_ERUPTITE_SLAB.get())
                 .wall(ModBlocks.CUT_ERUPTITE_WALL.get());
         blockModels.createBarsAndItem(ModBlocks.ERUPTITE_BARS.get());
+        blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.plainVariant(TexturedModel.CHAIN.create(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.modelOutput)));
 
     }
 

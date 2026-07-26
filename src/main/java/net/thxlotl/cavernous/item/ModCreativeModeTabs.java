@@ -100,8 +100,11 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.ERUPTITE_INGOT);
                 output.accept(ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE);
                 output.accept(ModItems.ERUPTITE);
+                output.accept(ModItems.ERUPTITE_NUGGET);
                 output.accept(ModBlocks.ERUPTITE_BLOCK);
+                output.accept(ModBlocks.ERUPTITE_GRATE);
                 output.accept(ModBlocks.ERUPTITE_BARS);
+                output.accept(ModBlocks.ERUPTITE_CHAIN);
                 output.accept(ModBlocks.CUT_ERUPTITE_BLOCK);
                 output.accept(ModBlocks.CUT_ERUPTITE_STAIRS);
                 output.accept(ModBlocks.CUT_ERUPTITE_SLAB);

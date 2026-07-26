@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "cavernous:eruptite"
+  ],
+  "result": {
+    "count": 9,
+    "id": "cavernous:eruptite_nugget"
+  }
+}

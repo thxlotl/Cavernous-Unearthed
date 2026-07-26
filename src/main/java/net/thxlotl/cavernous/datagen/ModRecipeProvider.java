@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -58,6 +59,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern(" FF")
                 .define('F', input)
                 .unlockedBy("has_" + input.getName(), has(input)).save(output);
+    }
+
+    private void makeNuggetRecipes(Item nugget, Item ingot) {
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ingot, 1)
+                .pattern("FFF")
+                .pattern("FFF")
+                .pattern("FFF")
+                .define('F', nugget)
+                .unlockedBy("has_" + nugget.asItem().toString(), has(nugget)).save(output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, nugget, 9)
+                .requires(ingot)
+                .unlockedBy("has_" + ingot.asItem().toString(), has(ingot)).save(output);
     }
 
     private void makeStoneFamilyStonecutterRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, Block... ingredients) {
@@ -254,7 +269,14 @@ public class ModRecipeProvider extends RecipeProvider {
 
         //region Eruptite
 
+        // Nugget -> Raw -> Block
         nineBlockStorageRecipes(RecipeCategory.MISC, ModItems.ERUPTITE, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ERUPTITE_BLOCK);
+        makeNuggetRecipes(ModItems.ERUPTITE_NUGGET.get(), ModItems.ERUPTITE.get());
+
+        // Grate
+        grate(ModBlocks.ERUPTITE_GRATE.get(), ModBlocks.ERUPTITE_BLOCK.get());
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ERUPTITE_GRATE.get(), ModBlocks.ERUPTITE_BLOCK.get(), 4);
+
 
         makeStoneFamilyRecipes(
                 ModBlocks.CUT_ERUPTITE_BLOCK.get(),

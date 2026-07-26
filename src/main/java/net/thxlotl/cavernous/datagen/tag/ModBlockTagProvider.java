@@ -63,7 +63,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.CUT_ERUPTITE_STAIRS.get())
                 .add(ModBlocks.CUT_ERUPTITE_SLAB.get())
                 .add(ModBlocks.CUT_ERUPTITE_WALL.get())
-                .add(ModBlocks.ERUPTITE_BARS.get());
+                .add(ModBlocks.ERUPTITE_BARS.get())
+                .add(ModBlocks.ERUPTITE_GRATE.get())
+                .add(ModBlocks.ERUPTITE_CHAIN.get());
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get())
                 .add(ModBlocks.FEATHER_MOSS_CARPET.get())

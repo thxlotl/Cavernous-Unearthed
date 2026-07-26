@@ -9,6 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
@@ -45,6 +46,12 @@ public class ModBlocks {
 
     private static boolean always(BlockState state, BlockGetter blockGetter, BlockPos pos) {
         return true;
+    }
+    public static Boolean never(BlockState state, BlockGetter blockGetter, BlockPos blockPos, EntityType<?> entityType) {
+        return false;
+    }
+    private static boolean never(BlockState state, BlockGetter blockGetter, BlockPos blockPos) {
+        return false;
     }
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Cavernous.MODID);
@@ -489,6 +496,9 @@ public class ModBlocks {
     public static final DeferredBlock<SlabBlock> CUT_ERUPTITE_SLAB = registerSlabBlock("cut_eruptite", ModProperties.ERUPTITE);
     public static final DeferredBlock<WallBlock> CUT_ERUPTITE_WALL = registerWallBlock("cut_eruptite", ModProperties.ERUPTITE);
     public static final DeferredBlock<IronBarsBlock> ERUPTITE_BARS = registerBlock("eruptite_bars", IronBarsBlock::new, ModProperties.ERUPTITE);
+    public static final DeferredBlock<WaterloggedTransparentBlock> ERUPTITE_GRATE = registerBlock("eruptite_grate", WaterloggedTransparentBlock::new, ModProperties.ERUPTITE.noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never));
+    public static final DeferredBlock<ChainBlock> ERUPTITE_CHAIN = registerBlock("eruptite_chain", ChainBlock::new, BlockBehaviour.Properties.of().forceSolidOn().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.CHAIN).noOcclusion());
+
 
     //endregion
 
