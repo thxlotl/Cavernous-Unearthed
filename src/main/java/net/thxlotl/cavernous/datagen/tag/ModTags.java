@@ -22,6 +22,7 @@ public class ModTags {
         public static final TagKey<Block> HOT_BLOCKS = createTag("hot_blocks");
         public static final TagKey<Block> MAGMA_PLANT_PLACEABLE = createTag("magma_plant_placeable");
         public static final TagKey<Block> GEYSER_PATCH_REPLACEABLE = createTag("geyser_patch_replaceable");
+        public static final TagKey<Block> OBSIDIANSTONE_ORE_REPLACEABLE = createTag("obsidianstone_ore_replaceable");
 
 
         private static TagKey<Block> createTag(String name) {

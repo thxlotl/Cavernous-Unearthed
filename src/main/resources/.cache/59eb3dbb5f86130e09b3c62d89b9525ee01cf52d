@@ -1,4 +1,4 @@
-// 26.1	2026-07-26T10:17:13.9278258	Loot Tables
+// 26.1	2026-08-16T16:25:18.0719308	Loot Tables
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 38dedca17ee7f85459836bd6b149dbe3f607c0cd data/cavernous/loot_table/blocks/blue_ghost_fungus.json
 c11c95e59dca2392195b7ae39015636ed6d60e3f data/cavernous/loot_table/blocks/chiseled_fungatite.json
@@ -52,7 +52,12 @@ a05e8300791fe68d90089d4235a39b1d0cbf3e7c data/cavernous/loot_table/blocks/obsidi
 717594157abb86d6f1487275e50f532fdead7727 data/cavernous/loot_table/blocks/obsidianstone_brick_slab.json
 f22a35fdca8e41d0e7c07cb3071e7ae8136e2ea6 data/cavernous/loot_table/blocks/obsidianstone_brick_stairs.json
 f6ae55431c3a75b6c5cbc7dfd3bb2ad693664fe9 data/cavernous/loot_table/blocks/obsidianstone_brick_wall.json
+60f7d2acf108651f7709b4e40c3247b7b0f94ad2 data/cavernous/loot_table/blocks/obsidianstone_diamond_ore.json
 54d2ea939aa633321dd7b4f9e117ca4edd0f84d8 data/cavernous/loot_table/blocks/obsidianstone_eruptite_ore.json
+868b2361045ba9f9869b8f46cd8173a4096bf4aa data/cavernous/loot_table/blocks/obsidianstone_gold_ore.json
+0a1eacef08e2d5ec720a1a1f78c35a4310347a36 data/cavernous/loot_table/blocks/obsidianstone_iron_ore.json
+dd8d96e8b21bcffbdfe05e2d35d99e8f7df31506 data/cavernous/loot_table/blocks/obsidianstone_lapis_ore.json
+fca1498130a4f623d0ae9ca933a51d353a4786ef data/cavernous/loot_table/blocks/obsidianstone_redstone_ore.json
 29b24b30906359165b3dfce8bfd6ef66209f6b6b data/cavernous/loot_table/blocks/obsidianstone_slab.json
 5bd1635bcab4e3e97d74a74d9823f6704c18f722 data/cavernous/loot_table/blocks/obsidianstone_stairs.json
 04e389093d2101cec17408131e57422dad36936e data/cavernous/loot_table/blocks/obsidianstone_wall.json

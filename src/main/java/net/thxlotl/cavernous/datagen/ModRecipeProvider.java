@@ -265,6 +265,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.POLISHED_OBSIDIANSTONE.get(),
                 ModBlocks.OBSIDIANSTONE.get());
 
+        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_IRON_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.IRON_INGOT,0.7f,200,"iron");
+        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_GOLD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.GOLD_INGOT,1.0f,200,"gold");
+        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.REDSTONE,0.7f,200,"redstone");
+        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.LAPIS_LAZULI,0.2f,200,"lapis");
+        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.DIAMOND,1.0f,200,"diamond");
+
+        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_IRON_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.IRON_INGOT,0.7f,100,"iron");
+        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_GOLD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.GOLD_INGOT,1.0f,100,"gold");
+        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.REDSTONE,0.7f,100,"redstone");
+        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.LAPIS_LAZULI,0.2f,100,"lapis");
+        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.DIAMOND,1.0f,100,"diamond");
+
         //endregion
 
         //region Eruptite
@@ -276,6 +288,17 @@ public class ModRecipeProvider extends RecipeProvider {
         // Grate
         grate(ModBlocks.ERUPTITE_GRATE.get(), ModBlocks.ERUPTITE_BLOCK.get());
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ERUPTITE_GRATE.get(), ModBlocks.ERUPTITE_BLOCK.get(), 4);
+
+        // Chain
+        this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ERUPTITE_CHAIN)
+                .define('I', ModItems.ERUPTITE)
+                .define('N', ModItems.ERUPTITE_NUGGET)
+                .pattern("N")
+                .pattern("I")
+                .pattern("N")
+                .unlockedBy("has_eruptite", this.has(ModItems.ERUPTITE))
+                .unlockedBy("has_eruptite_nugget", this.has(ModItems.ERUPTITE_NUGGET))
+                .save(this.output);
 
 
         makeStoneFamilyRecipes(

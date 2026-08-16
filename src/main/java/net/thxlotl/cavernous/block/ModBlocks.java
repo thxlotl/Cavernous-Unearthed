@@ -457,6 +457,14 @@ public class ModBlocks {
     public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_BRICK_SLAB = registerSlabBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE);
     public static final DeferredBlock<WallBlock> OBSIDIANSTONE_BRICK_WALL = registerWallBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE);
 
+
+    // Vanilla OBSIDIANSTONE Ores
+    public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_IRON_ORE = registerOreBlock("obsidianstone", "iron", ConstantInt.of(0), 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_GOLD_ORE = registerOreBlock("obsidianstone", "gold", ConstantInt.of(0), 3.0f);
+    public static final DeferredBlock<RedStoneOreBlock> OBSIDIANSTONE_REDSTONE_ORE = registerRedstoneOreBlock("obsidianstone", 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_LAPIS_ORE = registerOreBlock("obsidianstone", "lapis", UniformInt.of(2, 5), 3.0f);
+    public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_DIAMOND_ORE = registerOreBlock("obsidianstone", "diamond", UniformInt.of(3, 7), 3.0f);
+
     //endregion
 
     //region Volcanic Cave Misc

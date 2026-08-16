@@ -97,6 +97,11 @@
   "item.cavernous.obsidianstone_brick_stairs": "Obsidianstone Brick Stairs",
   "item.cavernous.obsidianstone_brick_slab": "Obsidianstone Brick Slab",
   "item.cavernous.obsidianstone_brick_wall": "Obsidianstone Brick Wall",
+  "item.cavernous.obsidianstone_iron_ore": "Obsidianstone Iron Ore",
+  "item.cavernous.obsidianstone_gold_ore": "Obsidianstone Gold Ore",
+  "item.cavernous.obsidianstone_lapis_ore": "Obsidianstone Lapis Ore",
+  "item.cavernous.obsidianstone_redstone_ore": "Obsidianstone Redstone Ore",
+  "item.cavernous.obsidianstone_diamond_ore": "Obsidianstone Diamond Ore",
 
   "item.cavernous.soft_magma_block": "Soft Magma Block",
   "item.cavernous.magma_fern": "Magma Fern",

@@ -58,6 +58,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get())
                 .add(ModBlocks.SCORIA.get())
                 .add(ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_IRON_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_GOLD_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get())
                 .add(ModBlocks.ERUPTITE_BLOCK.get())
                 .add(ModBlocks.CUT_ERUPTITE_BLOCK.get())
                 .add(ModBlocks.CUT_ERUPTITE_STAIRS.get())
@@ -88,12 +93,18 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.FUNGATITE_IRON_ORE.get())
-                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get());
+                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_IRON_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.FUNGATITE_GOLD_ORE.get())
                 .add(ModBlocks.FUNGATITE_REDSTONE_ORE.get())
                 .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get())
-                .add(ModBlocks.FUNGATITE_EMERALD_ORE.get());
+                .add(ModBlocks.FUNGATITE_EMERALD_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_GOLD_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get());
 
 
         tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
@@ -117,19 +128,24 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.FUNGATITE_COAL_ORE.get());tag(BlockTags.COAL_ORES)
                 .add(ModBlocks.FUNGATITE_COAL_ORE.get());
         tag(BlockTags.IRON_ORES)
-                .add(ModBlocks.FUNGATITE_IRON_ORE.get());
+                .add(ModBlocks.FUNGATITE_IRON_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_IRON_ORE.get());
         tag(BlockTags.COPPER_ORES)
                 .add(ModBlocks.FUNGATITE_COPPER_ORE.get());
         tag(BlockTags.GOLD_ORES)
-                .add(ModBlocks.FUNGATITE_GOLD_ORE.get());
+                .add(ModBlocks.FUNGATITE_GOLD_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_GOLD_ORE.get());
         tag(BlockTags.REDSTONE_ORES)
-                .add(ModBlocks.FUNGATITE_REDSTONE_ORE.get());
+                .add(ModBlocks.FUNGATITE_REDSTONE_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get());
         tag(BlockTags.EMERALD_ORES)
                 .add(ModBlocks.FUNGATITE_EMERALD_ORE.get());
         tag(BlockTags.LAPIS_ORES)
-                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get());
+                .add(ModBlocks.FUNGATITE_LAPIS_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get());
         tag(BlockTags.DIAMOND_ORES)
-                .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get());
+                .add(ModBlocks.FUNGATITE_DIAMOND_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get());
 
 
         tag(BlockTags.STAIRS)
@@ -290,6 +306,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SCORIA.get());
 
         tag(ModTags.Blocks.GEYSER_PATCH_REPLACEABLE)
+                .add(ModBlocks.OBSIDIANSTONE.get())
+                .add(ModBlocks.SCORIA.get());
+
+
+        tag(ModTags.Blocks.OBSIDIANSTONE_ORE_REPLACEABLE)
                 .add(ModBlocks.OBSIDIANSTONE.get())
                 .add(ModBlocks.SCORIA.get());
 

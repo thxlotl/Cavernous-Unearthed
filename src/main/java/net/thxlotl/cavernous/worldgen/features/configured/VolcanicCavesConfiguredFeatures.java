@@ -24,6 +24,8 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.datagen.tag.ModTags;
 import net.thxlotl.cavernous.util.worldgen.CFeatureUtil;
+import net.thxlotl.cavernous.util.worldgen.ore.enums.CustomStoneType;
+import net.thxlotl.cavernous.util.worldgen.ore.enums.OreConfiguredFeatureType;
 import net.thxlotl.cavernous.worldgen.custom.ModFeature;
 import net.thxlotl.cavernous.worldgen.features.ModConfiguredFeatures;
 
@@ -36,6 +38,20 @@ public class VolcanicCavesConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAVA_FALL = ModConfiguredFeatures.registerKey("lava_fall");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MAGMA_FERN = ModConfiguredFeatures.registerKey("magma_fern");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCORIA = ModConfiguredFeatures.registerKey("ore_scoria");
+
+    //region ORES
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_IRON = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.IRON);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_IRON_SMALL = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.IRON_SMALL);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_GOLD = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.GOLD);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_GOLD_BURIED = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.GOLD_BURIED);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_REDSTONE = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.REDSTONE);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_LAPIS = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.LAPIS);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_LAPIS_BURIED = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.LAPIS_BURIED);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_DIAMOND_BURIED = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.DIAMOND_BURIED);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_DIAMOND_LARGE = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.DIAMOND_LARGE);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_DIAMOND_MEDIUM = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.DIAMOND_MEDIUM);
+    public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_DIAMOND_SMALL = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.DIAMOND_SMALL);
+    //endregion
 
     // Register features here
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -100,5 +116,7 @@ public class VolcanicCavesConfiguredFeatures {
         FeatureUtils.register(context, MAGMA_FERN, Feature.SIMPLE_BLOCK, CFeatureUtil.createSimpleBlock(ModBlocks.MAGMA_FERN.get()));
 
         FeatureUtils.register(context, ORE_SCORIA, Feature.ORE, CFeatureUtil.createBlobOre(ModBlocks.SCORIA.get()));
+
+        ModConfiguredFeatures.createOreForStoneType(context, CustomStoneType.OBSIDIANSTONE, ModTags.Blocks.OBSIDIANSTONE_ORE_REPLACEABLE);
     }
 }

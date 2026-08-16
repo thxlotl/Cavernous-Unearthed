@@ -30,6 +30,25 @@ public class VolcanicCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> MAGMA_FERN = registerKey("magma_fern");
     public static final ResourceKey<PlacedFeature> ORE_SCORIA = registerKey("ore_scoria");
 
+    //region ORES
+
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_IRON_MIDDLE = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.IRON_MIDDLE);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_IRON_SMALL = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.IRON_SMALL);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_IRON_UPPER = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.IRON_UPPER);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_GOLD = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.GOLD);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_GOLD_LOWER = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.GOLD_LOWER);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_REDSTONE = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.REDSTONE);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_REDSTONE_LOWER = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.REDSTONE_LOWER);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_LAPIS = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.LAPIS);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_LAPIS_BURIED = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.LAPIS_BURIED);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_DIAMOND = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.DIAMOND);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_DIAMOND_BURIED = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.DIAMOND_BURIED);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_DIAMOND_LARGE = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.DIAMOND_LARGE);
+    public static final ResourceKey<PlacedFeature> OBSIDIANSTONE_ORE_DIAMOND_MEDIUM = oreKey(CustomStoneType.OBSIDIANSTONE, OrePlacedFeatureType.DIAMOND_MEDIUM);
+
+
+    //endregion
+
 
     // Register Features
     public static void bootstrap(BootstrapContext<PlacedFeature> context, HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures) {
@@ -55,6 +74,8 @@ public class VolcanicCavesPlacedFeatures {
                 ));
 
         register(context, ORE_SCORIA, configuredFeatures.getOrThrow(VolcanicCavesConfiguredFeatures.ORE_SCORIA), PFeatureUtil.cavePlacementModifersNoScan(30));
+
+        ModPlacedFeatures.createOreForStoneType(context, configuredFeatures, CustomStoneType.OBSIDIANSTONE);
 
     }
 }

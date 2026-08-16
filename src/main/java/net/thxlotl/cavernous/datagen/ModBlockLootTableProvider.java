@@ -221,6 +221,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get()));
 
+        add(ModBlocks.OBSIDIANSTONE_IRON_ORE.get(),
+                block -> createOreDrop(ModBlocks.OBSIDIANSTONE_IRON_ORE.get(), Items.RAW_IRON));
+        add(ModBlocks.OBSIDIANSTONE_GOLD_ORE.get(),
+                block -> createOreDrop(ModBlocks.OBSIDIANSTONE_GOLD_ORE.get(), Items.RAW_GOLD));
+        add(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get(),
+                block -> createRedstoneOreDrops(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get()));
+        add(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get(),
+                block -> createLapisOreDrops(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get()));
+        add(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get(),
+                block -> createOreDrop(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get(), Items.DIAMOND));
 
         //endregion
 

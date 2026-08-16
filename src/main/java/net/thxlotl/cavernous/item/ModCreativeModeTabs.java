@@ -82,6 +82,11 @@ public class ModCreativeModeTabs {
                 ///output.accept(ModItems.FUNGAL_ZOMBIE_SPAWN_EGG);
                 output.accept(ModBlocks.GEYSER_BLOCK);
                 output.accept(ModBlocks.OBSIDIANSTONE);
+                output.accept(ModBlocks.OBSIDIANSTONE_IRON_ORE);
+                output.accept(ModBlocks.OBSIDIANSTONE_GOLD_ORE);
+                output.accept(ModBlocks.OBSIDIANSTONE_LAPIS_ORE);
+                output.accept(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE);
+                output.accept(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE);
                 output.accept(ModBlocks.OBSIDIANSTONE_STAIRS);
                 output.accept(ModBlocks.OBSIDIANSTONE_SLAB);
                 output.accept(ModBlocks.OBSIDIANSTONE_WALL);
@@ -97,7 +102,6 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.OBSIDIANSTONE_BRICK_WALL);
                 output.accept(ModBlocks.SCORIA);
                 output.accept(ModBlocks.SOFT_MAGMA_BLOCK);
-                output.accept(ModItems.ERUPTITE_INGOT);
                 output.accept(ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE);
                 output.accept(ModItems.ERUPTITE);
                 output.accept(ModItems.ERUPTITE_NUGGET);

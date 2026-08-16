@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "cavernous:eruptite",
+    "N": "cavernous:eruptite_nugget"
+  },
+  "pattern": [
+    "N",
+    "I",
+    "N"
+  ],
+  "result": {
+    "id": "cavernous:eruptite_chain"
+  }
+}

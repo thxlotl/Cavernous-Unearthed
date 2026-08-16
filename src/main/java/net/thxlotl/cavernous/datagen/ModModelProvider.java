@@ -65,7 +65,12 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get(),
             ModBlocks.OBSIDIANSTONE_BRICK_WALL.get(),
             ModBlocks.GEYSER_BLOCK.get(),
-            ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get()
+            ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get(),
+            ModBlocks.OBSIDIANSTONE_IRON_ORE.get(),
+            ModBlocks.OBSIDIANSTONE_GOLD_ORE.get(),
+            ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get(),
+            ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get(),
+            ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get()
     );
     private final List<Item> ignoredItems = List.of(
             ModItems.HANGING_SHROOM_SPORE_POD.get(),
@@ -81,8 +86,15 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.asItem(),
             ModBlocks.OBSIDIANSTONE_BRICK_SLAB.asItem(),
             ModBlocks.OBSIDIANSTONE_BRICK_WALL.asItem(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE.asItem(),
+            ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON.asItem(),
             ModBlocks.GEYSER_BLOCK.asItem(),
-            ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.asItem()
+            ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.asItem(),
+            ModBlocks.OBSIDIANSTONE_IRON_ORE.asItem(),
+            ModBlocks.OBSIDIANSTONE_GOLD_ORE.asItem(),
+            ModBlocks.OBSIDIANSTONE_LAPIS_ORE.asItem(),
+            ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.asItem(),
+            ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.asItem()
     );
 
 
@@ -200,6 +212,13 @@ public class ModModelProvider extends ModelProvider {
 //                .stairs(ModBlocks.OBSIDIANSTONE_BRICK_STAIRS.get())
 //                .slab(ModBlocks.OBSIDIANSTONE_BRICK_SLAB.get())
 //                .wall(ModBlocks.OBSIDIANSTONE_BRICK_WALL.get());
+
+
+//        blockModels.createTrivialCube(ModBlocks.OBSIDIANSTONE_IRON_ORE.get());
+//        blockModels.createTrivialCube(ModBlocks.OBSIDIANSTONE_GOLD_ORE.get());
+//        blockModels.createTrivialCube(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get());
+//        blockModels.createTrivialCube(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get());
+//        blockModels.createTrivialCube(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get());
 
         //endregion
 

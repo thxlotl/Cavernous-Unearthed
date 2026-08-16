@@ -13,7 +13,9 @@ import net.thxlotl.cavernous.util.worldgen.ore.enums.OreConfiguredFeatureType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OrePlacedFeatureType;
 import net.thxlotl.cavernous.util.worldgen.ore.enums.OreResourceType;
 import net.thxlotl.cavernous.worldgen.features.configured.FungalCavesConfiguredFeatures;
+import net.thxlotl.cavernous.worldgen.features.configured.VolcanicCavesConfiguredFeatures;
 import net.thxlotl.cavernous.worldgen.features.placed.FungalCavesPlacedFeatures;
+import net.thxlotl.cavernous.worldgen.features.placed.VolcanicCavesPlacedFeatures;
 
 import java.util.EnumMap;
 
@@ -82,6 +84,44 @@ public class CustomStoneOreFamily {
                         new OrePlacedFeatureEntry(OrePlacedFeatureType.DIAMOND_LARGE, FungalCavesPlacedFeatures.FUNGATITE_ORE_DIAMOND_LARGE),
                         new OrePlacedFeatureEntry(OrePlacedFeatureType.DIAMOND_MEDIUM, FungalCavesPlacedFeatures.FUNGATITE_ORE_DIAMOND_MEDIUM),
                         new OrePlacedFeatureEntry(OrePlacedFeatureType.EMERALD, FungalCavesPlacedFeatures.FUNGATITE_ORE_EMERALD)
+                )
+        ));
+
+        allFamilies.put(CustomStoneType.OBSIDIANSTONE, new CustomStoneOreFamily(
+                makeOreBlockMap(
+                        new OreBlockEntry(OreResourceType.IRON, ModBlocks.OBSIDIANSTONE_IRON_ORE.get()),
+                        new OreBlockEntry(OreResourceType.GOLD, ModBlocks.OBSIDIANSTONE_GOLD_ORE.get()),
+                        new OreBlockEntry(OreResourceType.REDSTONE, ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get()),
+                        new OreBlockEntry(OreResourceType.LAPIS, ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get()),
+                        new OreBlockEntry(OreResourceType.DIAMOND, ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get())
+                ),
+                makeConfigFeatureMap(
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.IRON, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_IRON),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.IRON_SMALL, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_IRON_SMALL),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.GOLD, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_GOLD),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.GOLD_BURIED, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_GOLD_BURIED),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.REDSTONE, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_REDSTONE),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.LAPIS, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_LAPIS),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.LAPIS_BURIED, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_LAPIS_BURIED),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.DIAMOND_SMALL, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_DIAMOND_SMALL),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.DIAMOND_MEDIUM, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_DIAMOND_MEDIUM),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.DIAMOND_LARGE, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_DIAMOND_LARGE),
+                        new OreConfigFeatureEntry(OreConfiguredFeatureType.DIAMOND_BURIED, VolcanicCavesConfiguredFeatures.OBSIDIANSTONE_ORE_DIAMOND_BURIED)
+                ),
+                makePlacedFeatureMap(
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.IRON_MIDDLE, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_IRON_MIDDLE),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.IRON_SMALL, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_IRON_SMALL),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.IRON_UPPER, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_IRON_UPPER),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.GOLD, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_GOLD),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.GOLD_LOWER, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_GOLD_LOWER),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.REDSTONE, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_REDSTONE),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.REDSTONE_LOWER, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_REDSTONE_LOWER),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.LAPIS, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_LAPIS),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.LAPIS_BURIED, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_LAPIS_BURIED),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.DIAMOND, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_DIAMOND),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.DIAMOND_BURIED, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_DIAMOND_BURIED),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.DIAMOND_LARGE, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_DIAMOND_LARGE),
+                        new OrePlacedFeatureEntry(OrePlacedFeatureType.DIAMOND_MEDIUM, VolcanicCavesPlacedFeatures.OBSIDIANSTONE_ORE_DIAMOND_MEDIUM)
                 )
         ));
     }
