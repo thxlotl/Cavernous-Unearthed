@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": "cavernous:obsidianstone",
-  "result": {
-    "id": "cavernous:obsidianstone_wall"
-  }
-}

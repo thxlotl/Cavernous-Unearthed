@@ -70,7 +70,8 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_GOLD_ORE.get(),
             ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get(),
             ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get(),
-            ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get()
+            ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get(),
+            ModBlocks.ERUPTITE_GRATE.get()
     );
     private final List<Item> ignoredItems = List.of(
             ModItems.HANGING_SHROOM_SPORE_POD.get(),
@@ -160,9 +161,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.woodProvider(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get()).logWithHorizontal(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get()).wood(ModBlocks.STRIPPED_SHROOMWOOD.get());
 
         blockModels.createHangingSign(ModBlocks.STRIPPED_SHROOMWOOD_LOG.get(), ModBlocks.SHROOMWOOD_HANGING_SIGN.get(), ModBlocks.SHROOMWOOD_WALL_HANGING_SIGN.get());
-        ModBlockFamilies.getAllFamilies()
-                .filter(BlockFamily::shouldGenerateModel)
-                .forEach(blockFamily -> blockModels.family(blockFamily.getBaseBlock()).generateFor(blockFamily));
+
 
 
         // UNDERGROUND MYCELIUM
@@ -227,8 +226,8 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createNonTemplateModelBlock(ModBlocks.SOFT_MAGMA_BLOCK.get());
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.MAGMA_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
-        blockModels.createTrivialCube(ModBlocks.ERUPTITE_BLOCK.get());
-        blockModels.createTrivialCube(ModBlocks.ERUPTITE_GRATE.get());
+        //blockModels.createTrivialCube(ModBlocks.ERUPTITE_BLOCK.get()); /// Covered in the block family section
+        //blockModels.createTrivialCube(ModBlocks.ERUPTITE_GRATE.get()); /// Custom model for backface
         blockModels.family(ModBlocks.CUT_ERUPTITE_BLOCK.get())
                 .stairs(ModBlocks.CUT_ERUPTITE_STAIRS.get())
                 .slab(ModBlocks.CUT_ERUPTITE_SLAB.get())
@@ -236,6 +235,11 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createBarsAndItem(ModBlocks.ERUPTITE_BARS.get());
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.plainVariant(TexturedModel.CHAIN.create(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.modelOutput)));
 
+
+        // Create all block family models
+        ModBlockFamilies.getAllFamilies()
+                .filter(BlockFamily::shouldGenerateModel)
+                .forEach(blockFamily -> blockModels.family(blockFamily.getBaseBlock()).generateFor(blockFamily));
     }
 
 

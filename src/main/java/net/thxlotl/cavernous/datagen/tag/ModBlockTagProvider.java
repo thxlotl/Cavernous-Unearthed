@@ -70,7 +70,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.CUT_ERUPTITE_WALL.get())
                 .add(ModBlocks.ERUPTITE_BARS.get())
                 .add(ModBlocks.ERUPTITE_GRATE.get())
-                .add(ModBlocks.ERUPTITE_CHAIN.get());
+                .add(ModBlocks.ERUPTITE_CHAIN.get())
+                .add(ModBlocks.ERUPTITE_DOOR.get())
+                .add(ModBlocks.ERUPTITE_TRAPDOOR.get());
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get())
                 .add(ModBlocks.FEATHER_MOSS_CARPET.get())
@@ -188,6 +190,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHROOMWOOD_BUTTON.get());
         tag(BlockTags.BARS)
                 .add(ModBlocks.ERUPTITE_BARS.get());
+        tag(BlockTags.DOORS)
+                .add(ModBlocks.ERUPTITE_DOOR.get())
+                .add(ModBlocks.SHROOMWOOD_DOOR.get());
+        tag(BlockTags.TRAPDOORS)
+                .add(ModBlocks.ERUPTITE_TRAPDOOR.get())
+                .add(ModBlocks.SHROOMWOOD_TRAPDOOR.get());
 
         tag(BlockTags.REPLACEABLE)
                 .add(ModBlocks.FEATHER_MOSS_TUFTS.get())

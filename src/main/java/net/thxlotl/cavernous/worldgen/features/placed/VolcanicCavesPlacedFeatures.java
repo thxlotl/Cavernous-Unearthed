@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.util.worldgen.PFeatureUtil;
@@ -29,6 +30,7 @@ public class VolcanicCavesPlacedFeatures {
     public static final ResourceKey<PlacedFeature> LAVA_FALL = registerKey("lava_fall");
     public static final ResourceKey<PlacedFeature> MAGMA_FERN = registerKey("magma_fern");
     public static final ResourceKey<PlacedFeature> ORE_SCORIA = registerKey("ore_scoria");
+    public static final ResourceKey<PlacedFeature> ORE_ERUPTITE = registerKey("ore_eruptite");
 
     //region ORES
 
@@ -77,5 +79,12 @@ public class VolcanicCavesPlacedFeatures {
 
         ModPlacedFeatures.createOreForStoneType(context, configuredFeatures, CustomStoneType.OBSIDIANSTONE);
 
+        register(context, ORE_ERUPTITE, configuredFeatures.getOrThrow(VolcanicCavesConfiguredFeatures.ORE_ERUPTITE),
+                List.of(
+                        CountPlacement.of(30),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.absolute(20))),
+                        BiomeFilter.biome()
+                ));
     }
 }

@@ -51,6 +51,8 @@
     "cavernous:cut_eruptite_wall",
     "cavernous:eruptite_bars",
     "cavernous:eruptite_grate",
-    "cavernous:eruptite_chain"
+    "cavernous:eruptite_chain",
+    "cavernous:eruptite_door",
+    "cavernous:eruptite_trapdoor"
   ]
 }

@@ -1,0 +1,41 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"1": "cavernous:block/eruptite_lava_lamp",
+		"": "textures/block/lava_still",
+		"particle": "cavernous:block/eruptite_lava_lamp"
+	},
+	"elements": [
+		{
+			"name": "Frame",
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "east"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Lava",
+			"from": [1, 1, 1],
+			"to": [15, 15, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#"}
+			}
+		}
+	],
+	"display": {}
+}

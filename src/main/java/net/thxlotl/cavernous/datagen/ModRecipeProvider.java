@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.datagen.tag.ModTags;
@@ -300,6 +301,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_eruptite_nugget", this.has(ModItems.ERUPTITE_NUGGET))
                 .save(this.output);
 
+        doorBuilder(ModBlocks.ERUPTITE_DOOR.get(), Ingredient.of(ModItems.ERUPTITE)).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
+        trapdoorBuilder(ModBlocks.ERUPTITE_TRAPDOOR.get(), Ingredient.of(ModItems.ERUPTITE), 6).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
 
         makeStoneFamilyRecipes(
                 ModBlocks.CUT_ERUPTITE_BLOCK.get(),
@@ -316,4 +319,7 @@ public class ModRecipeProvider extends RecipeProvider {
         //endregion
     }
 
+    protected RecipeBuilder trapdoorBuilder(ItemLike result, Ingredient base, int amount) {
+        return this.shaped(RecipeCategory.REDSTONE, result, amount).define('#', base).pattern("###").pattern("###");
+    }
 }

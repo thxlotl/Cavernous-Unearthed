@@ -119,6 +119,9 @@
   "item.cavernous.cut_eruptite_wall": "Cut Eruptite Wall",
   "item.cavernous.eruptite_grate": "Eruptite Grate",
   "item.cavernous.eruptite_chain": "Eruptite Chain",
+  "item.cavernous.eruptite_door": "Eruptite Door",
+  "item.cavernous.eruptite_trapdoor": "Eruptite Trapdoor",
+  "item.cavernous.eruptite_lava_lamp": "Eruptite Lava Lamp",
 
   "item.cavernous.test_block_ore": "Test Block Ore",
   "item.cavernous.geyser_block": "Geyser Block",

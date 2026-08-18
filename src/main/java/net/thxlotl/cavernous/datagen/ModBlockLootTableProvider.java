@@ -135,7 +135,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.ERUPTITE_BARS,
                 ModBlocks.MAGMA_FERN,
                 ModBlocks.ERUPTITE_GRATE,
-                ModBlocks.ERUPTITE_CHAIN
+                ModBlocks.ERUPTITE_CHAIN,
+                ModBlocks.ERUPTITE_TRAPDOOR
         );
         for (DeferredBlock deferredBlock : simpleDropBlocks) {
             makeDropSelf(deferredBlock);
@@ -237,6 +238,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         add(ModBlocks.CUT_ERUPTITE_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.CUT_ERUPTITE_SLAB.get()));
+        add(ModBlocks.ERUPTITE_DOOR.get(),
+                block -> createDoorTable(ModBlocks.ERUPTITE_DOOR.get()));
 
         dropWhenSilkTouch(ModBlocks.SOFT_MAGMA_BLOCK.get());
     }

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button_pressed",
-  "textures": {
-    "texture": "cavernous:block/shroomwood_planks"
-  }
-}

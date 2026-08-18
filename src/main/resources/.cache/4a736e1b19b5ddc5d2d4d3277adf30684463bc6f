@@ -1,4 +1,4 @@
-// 26.1	2026-08-16T16:45:48.8598908	Tags for minecraft:block mod id cavernous
+// 26.1	2026-08-17T16:27:09.8988806	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 e26bf87c5ce47f51f380d824e2c8a498347f0725 data/cavernous/tags/block/geyser_patch_replaceable.json
 8621f38f39a6c523d3eca26f998e1132ce0ed9ec data/cavernous/tags/block/hot_blocks.json
@@ -17,6 +17,7 @@ a9e37c73450d073d7437ad8bec68f049219aca10 data/minecraft/tags/block/coal_ores.jso
 52bd68ed9a8976001e69e16579593a6816e69135 data/minecraft/tags/block/copper_ores.json
 98b8cc6354975dd7f390e8e8236f3c3b956b699f data/minecraft/tags/block/diamond_ores.json
 d38702ba25cf0e993749d5a7ea3c95e4a83a160d data/minecraft/tags/block/dirt.json
+8be25e09f62733c2884931fd97a1fc3f9d83e9be data/minecraft/tags/block/doors.json
 c000c21cc7e1eb8cd1fa0e80497dbbbfc11b7565 data/minecraft/tags/block/emerald_ores.json
 d242bad281df7faa49607eeab86084505f13e209 data/minecraft/tags/block/enchantment_power_transmitter.json
 543199686b9dda7502906be908ff9305ab06032b data/minecraft/tags/block/fence_gates.json
@@ -29,7 +30,7 @@ a8811c036b173f25e0470926fc5fd999477083be data/minecraft/tags/block/lapis_ores.js
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/lush_ground_replaceable.json
 6d6fdf04e15157fb1aed58e844d711194bb6a678 data/minecraft/tags/block/mineable/axe.json
 974c2272516f28535cc8a6c0fe8bb48065073da3 data/minecraft/tags/block/mineable/hoe.json
-71d43879a0191f7f2387a89f9238019bac432ce0 data/minecraft/tags/block/mineable/pickaxe.json
+f3b8bb074b3db98b39ace3ed33002e2a017cd03e data/minecraft/tags/block/mineable/pickaxe.json
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/moss_replaceable.json
 6c9ff03edb02569530fc48706ec6e79924d19094 data/minecraft/tags/block/needs_iron_tool.json
 807c2ffd843142744cea7c5ce15c62a734316e0a data/minecraft/tags/block/needs_stone_tool.json
@@ -46,6 +47,7 @@ be4dad649d96e9d8e5b43ca0b63476a4c4af2f8f data/minecraft/tags/block/signs.json
 b173d01c149e335d696a38f432be19239b55458c data/minecraft/tags/block/standing_signs.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/supports_big_dripleaf.json
 0c26ebd7bcfbd6cad1c2036a56ca307023886a28 data/minecraft/tags/block/supports_small_dripleaf.json
+e663a7b43ddc7eef1e21dbe11cdbbb955645241f data/minecraft/tags/block/trapdoors.json
 893a9c6f1249fa6657caaf3383bc0504d935d1d0 data/minecraft/tags/block/walls.json
 21f89e59b8592568dcca7318ea77b5c11456773a data/minecraft/tags/block/wall_hanging_signs.json
 b173d01c149e335d696a38f432be19239b55458c data/minecraft/tags/block/wall_post_override.json

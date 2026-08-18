@@ -21,6 +21,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.datagen.tag.ModTags;
 import net.thxlotl.cavernous.util.worldgen.CFeatureUtil;
@@ -38,6 +39,7 @@ public class VolcanicCavesConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAVA_FALL = ModConfiguredFeatures.registerKey("lava_fall");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MAGMA_FERN = ModConfiguredFeatures.registerKey("magma_fern");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCORIA = ModConfiguredFeatures.registerKey("ore_scoria");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ERUPTITE = ModConfiguredFeatures.registerKey("ore_eruptite");
 
     //region ORES
     public static final ResourceKey<ConfiguredFeature<?,?>> OBSIDIANSTONE_ORE_IRON = ModConfiguredFeatures.oreKey(CustomStoneType.OBSIDIANSTONE, OreConfiguredFeatureType.IRON);
@@ -118,5 +120,12 @@ public class VolcanicCavesConfiguredFeatures {
         FeatureUtils.register(context, ORE_SCORIA, Feature.ORE, CFeatureUtil.createBlobOre(ModBlocks.SCORIA.get()));
 
         ModConfiguredFeatures.createOreForStoneType(context, CustomStoneType.OBSIDIANSTONE, ModTags.Blocks.OBSIDIANSTONE_ORE_REPLACEABLE);
+
+        FeatureUtils.register(context, ORE_ERUPTITE, Feature.ORE, new OreConfiguration(
+                new TagMatchTest(ModTags.Blocks.OBSIDIANSTONE_ORE_REPLACEABLE),
+                ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get().defaultBlockState(),
+                18,
+                0.0f
+        ));
     }
 }

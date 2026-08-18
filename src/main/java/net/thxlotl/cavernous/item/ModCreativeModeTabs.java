@@ -106,6 +106,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.ERUPTITE);
                 output.accept(ModItems.ERUPTITE_NUGGET);
                 output.accept(ModBlocks.ERUPTITE_BLOCK);
+                output.accept(ModBlocks.ERUPTITE_DOOR);
+                output.accept(ModBlocks.ERUPTITE_TRAPDOOR);
                 output.accept(ModBlocks.ERUPTITE_GRATE);
                 output.accept(ModBlocks.ERUPTITE_BARS);
                 output.accept(ModBlocks.ERUPTITE_CHAIN);

@@ -1,4 +1,4 @@
-// 26.1	2026-08-16T16:25:18.0659793	My Recipes
+// 26.1	2026-08-17T16:27:09.902848	My Recipes
 2953c9e9cf0df07d3e0221f3f5bb104538adf44d data/cavernous/advancement/recipes/building_blocks/chiseled_fungatite.json
 49d5bdb0a5c66eb4d5e150be02e517ad49fcad7b data/cavernous/advancement/recipes/building_blocks/cut_eruptite_slab.json
 8afd1e379def1de314a595958e144d499a5cedf0 data/cavernous/advancement/recipes/building_blocks/cut_eruptite_stairs.json
@@ -44,6 +44,8 @@ bec387e8754e964c3ca00ad0fb4a256fdcfb06e7 data/cavernous/advancement/recipes/buil
 fee0f51cba6a514d5e73b47bcb7807cd6b7df3a9 data/cavernous/advancement/recipes/decorations/shroomwood_sign.json
 f4320af77e84a84f25900ac06010056c29b3483c data/cavernous/advancement/recipes/misc/eruptite.json
 cc02f7004a15a0e414a5f8ecff45f768866aa21b data/cavernous/advancement/recipes/misc/eruptite_nugget.json
+6a05902be861f6d156144f6781d1b79997be30ac data/cavernous/advancement/recipes/redstone/eruptite_door.json
+28beaff1b26fae0a5f20846de918ebf6de1097fb data/cavernous/advancement/recipes/redstone/eruptite_trapdoor.json
 7e893e46aefefcc29b567678c06794f55c1b9686 data/cavernous/advancement/recipes/redstone/polished_obsidianstone_button.json
 4883936b01b77f21f4515c148533428f78cad6ac data/cavernous/advancement/recipes/redstone/shroomwood_button.json
 dab5afb18eb8abae9688ad0904b4c6e281f16e44 data/cavernous/advancement/recipes/redstone/shroomwood_door.json
@@ -55,8 +57,10 @@ fe2c04bda344345dfd52491ee3c075ea02a83722 data/cavernous/recipe/chiseled_fungatit
 05232e5f38e3982bc08edce64268ad103a4d4dd1 data/cavernous/recipe/cut_eruptite_wall.json
 f18edb2925b5a3e75764461b969c3ce8ddf3064b data/cavernous/recipe/eruptite.json
 26a63136ad1ed909d8f3b4e5d257f13325f61ca7 data/cavernous/recipe/eruptite_chain.json
+12be9dbe43865aa91b1258faacda3a067e7c79fd data/cavernous/recipe/eruptite_door.json
 c4b61876a93451a851acafbe88827255b83c7c44 data/cavernous/recipe/eruptite_grate.json
 092f42829ede9d0821c6d578a442f220c181068e data/cavernous/recipe/eruptite_nugget.json
+d6f89ac36cee33f650b0ef187527edb11a68586a data/cavernous/recipe/eruptite_trapdoor.json
 eb2e31c20c9a97c237434089a86a46314a089d02 data/cavernous/recipe/feather_moss_block.json
 f51f180e4cc0f36000c45d5bd60e85069af44f74 data/cavernous/recipe/feather_moss_carpet.json
 3d23897b7ae2eaf3d84803af395f1eb319020448 data/cavernous/recipe/feather_moss_tufts.json

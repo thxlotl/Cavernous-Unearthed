@@ -507,6 +507,8 @@ public class ModBlocks {
     public static final DeferredBlock<WaterloggedTransparentBlock> ERUPTITE_GRATE = registerBlock("eruptite_grate", WaterloggedTransparentBlock::new, ModProperties.ERUPTITE.noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never));
     public static final DeferredBlock<ChainBlock> ERUPTITE_CHAIN = registerBlock("eruptite_chain", ChainBlock::new, BlockBehaviour.Properties.of().forceSolidOn().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.CHAIN).noOcclusion());
 
+    public static final DeferredBlock<DoorBlock> ERUPTITE_DOOR = registerBlock("eruptite_door", (properties) -> new DoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.ERUPTITE.noOcclusion().pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<TrapDoorBlock> ERUPTITE_TRAPDOOR = registerBlock("eruptite_trapdoor", (properties) -> new TrapDoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.ERUPTITE.requiresCorrectToolForDrops().noOcclusion().isValidSpawn(Blocks::never));
 
     //endregion
 

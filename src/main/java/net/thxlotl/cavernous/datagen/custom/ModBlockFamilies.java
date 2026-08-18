@@ -25,6 +25,15 @@ public class ModBlockFamilies {
             .recipeUnlockedBy("has_planks")
             .getFamily();
 
+    public static final BlockFamily ERUPTITE = familyBuilder(ModBlocks.ERUPTITE_BLOCK.get())
+            ///.button(ModBlocks.SHROOMWOOD_BUTTON.get())
+            ///.pressurePlate(ModBlocks.SHROOMWOOD_PRESSURE_PLATE.get())
+            .door(ModBlocks.ERUPTITE_DOOR.get())
+            .trapdoor(ModBlocks.ERUPTITE_TRAPDOOR.get())
+            .recipeGroupPrefix("eruptite")
+            .recipeUnlockedBy("has_eruptite")
+            .getFamily();
+
     private static BlockFamily.Builder familyBuilder(Block baseBlock) {
         BlockFamily.Builder builder = new BlockFamily.Builder(baseBlock);
         BlockFamily existing = MAP.put(baseBlock, builder.getFamily());

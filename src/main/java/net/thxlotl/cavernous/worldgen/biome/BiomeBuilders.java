@@ -136,7 +136,8 @@ public class BiomeBuilders {
         globalOverworldGenerationNoGroundClutter(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         // Ores
-        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        addCustomStoneOres(biomeBuilder, CustomStoneType.OBSIDIANSTONE);
+        biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, VolcanicCavesPlacedFeatures.ORE_ERUPTITE);
         // Custom features
         biomeBuilder.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, VolcanicCavesPlacedFeatures.GEYSER_CLUSTER);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VolcanicCavesPlacedFeatures.MAGMA_FERN);
