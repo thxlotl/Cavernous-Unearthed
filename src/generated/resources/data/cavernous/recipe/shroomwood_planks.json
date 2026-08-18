@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "#cavernous:shroomwood_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cavernous:shroomwood_planks"
+  }
+}

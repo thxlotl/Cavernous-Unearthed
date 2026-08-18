@@ -71,7 +71,8 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get(),
             ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get(),
             ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get(),
-            ModBlocks.ERUPTITE_GRATE.get()
+            ModBlocks.ERUPTITE_GRATE.get(),
+            ModBlocks.ERUPTITE_LAVA_LAMP.get()
     );
     private final List<Item> ignoredItems = List.of(
             ModItems.HANGING_SHROOM_SPORE_POD.get(),

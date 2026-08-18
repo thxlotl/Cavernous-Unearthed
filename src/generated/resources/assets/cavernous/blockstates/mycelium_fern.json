@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "cavernous:block/mycelium_fern_bottom"
+    },
+    "half=upper": {
+      "model": "cavernous:block/mycelium_fern_top"
+    }
+  }
+}

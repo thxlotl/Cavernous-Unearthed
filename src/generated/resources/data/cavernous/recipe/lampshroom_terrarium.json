@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "G": "minecraft:glass",
+    "L": "cavernous:lampshroom",
+    "P": "#minecraft:planks",
+    "U": "cavernous:underground_mycelium"
+  },
+  "pattern": [
+    "GPG",
+    "GLG",
+    "GUG"
+  ],
+  "result": {
+    "id": "cavernous:lampshroom_terrarium"
+  }
+}

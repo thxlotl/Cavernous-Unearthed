@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "cavernous:eruptite_grate",
+    "S": "cavernous:soft_magma_block"
+  },
+  "pattern": [
+    " G ",
+    "GSG",
+    " G "
+  ],
+  "result": {
+    "id": "cavernous:eruptite_lava_lamp"
+  }
+}

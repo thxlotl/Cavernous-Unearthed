@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_fungatite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cavernous:polished_fungatite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:fungatite_bricks_wall_from_polished_fungatite_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_polished_fungatite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:fungatite_bricks_wall_from_polished_fungatite_stonecutting"
+    ]
+  }
+}

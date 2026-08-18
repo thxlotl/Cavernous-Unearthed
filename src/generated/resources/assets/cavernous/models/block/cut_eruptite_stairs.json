@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "cavernous:block/cut_eruptite_block",
+    "side": "cavernous:block/cut_eruptite_block",
+    "top": "cavernous:block/cut_eruptite_block"
+  }
+}

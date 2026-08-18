@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "cavernous:fungatite",
+  "result": {
+    "id": "cavernous:fungatite_brick_stairs"
+  }
+}

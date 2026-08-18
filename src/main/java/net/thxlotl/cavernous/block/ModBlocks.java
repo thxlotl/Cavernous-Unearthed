@@ -67,10 +67,10 @@ public class ModBlocks {
 
     // region Fungatite Blocks
 
-    public static final DeferredBlock<Block> FUNGATITE = registerTrivialBlock("fungatite", ModProperties.FUNGATITE);
-    public static final DeferredBlock<StairBlock> FUNGATITE_STAIRS = registerStairBlock("fungatite", ModProperties.FUNGATITE, () -> ModBlocks.FUNGATITE.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> FUNGATITE_SLAB = registerSlabBlock("fungatite", ModProperties.FUNGATITE);
-    public static final DeferredBlock<WallBlock> FUNGATITE_WALL = registerWallBlock("fungatite", ModProperties.FUNGATITE);
+    public static final DeferredBlock<Block> FUNGATITE = registerTrivialBlock("fungatite", ModProperties.fungatite());
+    public static final DeferredBlock<StairBlock> FUNGATITE_STAIRS = registerStairBlock("fungatite", ModProperties.fungatite(), () -> ModBlocks.FUNGATITE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> FUNGATITE_SLAB = registerSlabBlock("fungatite", ModProperties.fungatite());
+    public static final DeferredBlock<WallBlock> FUNGATITE_WALL = registerWallBlock("fungatite", ModProperties.fungatite());
 
     public static final DeferredBlock<Block> GROUND_FUNGATITE = registerBlock(
             "ground_fungatite",
@@ -91,16 +91,16 @@ public class ModBlocks {
     public static final DeferredBlock<DropExperienceBlock> FUNGATITE_DIAMOND_ORE = registerOreBlock("fungatite", "diamond", UniformInt.of(3, 7), 3.0f);
     public static final DeferredBlock<DropExperienceBlock> FUNGATITE_EMERALD_ORE = registerOreBlock("fungatite", "emerald", UniformInt.of(3, 7), 3.0f);
 
-    public static final DeferredBlock<Block> POLISHED_FUNGATITE = registerTrivialBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE);
-    public static final DeferredBlock<StairBlock> POLISHED_FUNGATITE_STAIRS = registerStairBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE, () -> ModBlocks.POLISHED_FUNGATITE.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> POLISHED_FUNGATITE_SLAB = registerSlabBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE);
-    public static final DeferredBlock<WallBlock> POLISHED_FUNGATITE_WALL = registerWallBlock("polished_fungatite", ModProperties.REFINED_FUNGATITE);
-    public static final DeferredBlock<Block> CHISELED_FUNGATITE = registerTrivialBlock("chiseled_fungatite", ModProperties.REFINED_FUNGATITE);
+    public static final DeferredBlock<Block> POLISHED_FUNGATITE = registerTrivialBlock("polished_fungatite", ModProperties.refinedFungatite());
+    public static final DeferredBlock<StairBlock> POLISHED_FUNGATITE_STAIRS = registerStairBlock("polished_fungatite", ModProperties.refinedFungatite(), () -> ModBlocks.POLISHED_FUNGATITE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> POLISHED_FUNGATITE_SLAB = registerSlabBlock("polished_fungatite", ModProperties.refinedFungatite());
+    public static final DeferredBlock<WallBlock> POLISHED_FUNGATITE_WALL = registerWallBlock("polished_fungatite", ModProperties.refinedFungatite());
+    public static final DeferredBlock<Block> CHISELED_FUNGATITE = registerTrivialBlock("chiseled_fungatite", ModProperties.refinedFungatite());
 
-    public static final DeferredBlock<Block> FUNGATITE_BRICKS = registerTrivialBlock("fungatite_bricks", ModProperties.REFINED_FUNGATITE);
-    public static final DeferredBlock<StairBlock> FUNGATITE_BRICK_STAIRS = registerStairBlock("fungatite_brick", ModProperties.REFINED_FUNGATITE, () -> ModBlocks.FUNGATITE_BRICKS.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> FUNGATITE_BRICK_SLAB = registerSlabBlock("fungatite_bricks", ModProperties.REFINED_FUNGATITE);
-    public static final DeferredBlock<WallBlock> FUNGATITE_BRICK_WALL = registerWallBlock("fungatite_bricks", ModProperties.REFINED_FUNGATITE);
+    public static final DeferredBlock<Block> FUNGATITE_BRICKS = registerTrivialBlock("fungatite_bricks", ModProperties.refinedFungatite());
+    public static final DeferredBlock<StairBlock> FUNGATITE_BRICK_STAIRS = registerStairBlock("fungatite_brick", ModProperties.refinedFungatite(), () -> ModBlocks.FUNGATITE_BRICKS.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> FUNGATITE_BRICK_SLAB = registerSlabBlock("fungatite_bricks", ModProperties.refinedFungatite());
+    public static final DeferredBlock<WallBlock> FUNGATITE_BRICK_WALL = registerWallBlock("fungatite_bricks", ModProperties.refinedFungatite());
 
     //endregion
 
@@ -125,8 +125,8 @@ public class ModBlocks {
             MyceliumFernBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_SPROUTS)
     );
-    public static final DeferredBlock<MyceliumVineBlock> MYCELIUM_VINE = registerBlock("mycelium_vine", MyceliumVineBlock::new, ModProperties.MYCELIUM_VINE); /// TIP BLOCK
-    public static final DeferredBlock<MyceliumVinePlantBlock> MYCELIUM_VINE_PLANT = registerBlock("mycelium_vine_plant",MyceliumVinePlantBlock::new,ModProperties.MYCELIUM_VINE); /// BODY BLOCK
+    public static final DeferredBlock<MyceliumVineBlock> MYCELIUM_VINE = registerBlock("mycelium_vine", MyceliumVineBlock::new, ModProperties.myceliumVine()); /// TIP BLOCK
+    public static final DeferredBlock<MyceliumVinePlantBlock> MYCELIUM_VINE_PLANT = registerBlock("mycelium_vine_plant",MyceliumVinePlantBlock::new,ModProperties.myceliumVine()); /// BODY BLOCK
     //endregion
 
     //region Feather Moss Blocks
@@ -155,7 +155,7 @@ public class ModBlocks {
 
     //region Toadstool Blocks
 
-    public static final DeferredBlock<Block> TOADSTOOL_CAP_BLOCK = registerTrivialBlock("toadstool_cap_block", ModProperties.FUNGUS_CAP);
+    public static final DeferredBlock<Block> TOADSTOOL_CAP_BLOCK = registerTrivialBlock("toadstool_cap_block", ModProperties.fungusCap());
     public static final DeferredBlock<ToadstoolPatchBlock> TOADSTOOL_PATCH = registerBlock(
             "toadstool_patch",
             ToadstoolPatchBlock::new,
@@ -169,7 +169,7 @@ public class ModBlocks {
     public static final DeferredBlock<FlowerPotBlock> POTTED_TOADSTOOL_BUTTON = registerBlock(
             "potted_toadstool_button",
             (p) -> new FlowerPotBlock(TOADSTOOL_BUTTON.get(), p),
-            ModProperties.POTTED_PLANT);
+            ModProperties.pottedPlant());
 
     //endregion
 
@@ -343,11 +343,11 @@ public class ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollision().sound(SoundType.FUNGUS)
     );
 
-    public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock("lampshroom_cap_block", Block::new, ModProperties.FUNGUS_CAP.lightLevel((p) -> 9).emissiveRendering(ModBlocks::always));
+    public static final DeferredBlock<Block> LAMPSHROOM_CAP_BLOCK = registerBlock("lampshroom_cap_block", Block::new, ModProperties.fungusCap().lightLevel((p) -> 9).emissiveRendering(ModBlocks::always));
     public static final DeferredBlock<FlowerPotBlock> POTTED_LAMPSHROOM = registerBlock(
             "potted_lampshroom",
             (p) -> new FlowerPotBlock(LAMPSHROOM.get(), p),
-            ModProperties.POTTED_PLANT.lightLevel((p) -> 9).emissiveRendering(ModBlocks::always)
+            ModProperties.pottedPlant().lightLevel((p) -> 9).emissiveRendering(ModBlocks::always)
     );
 
     public static final DeferredBlock<LampshroomPatchBlock> LAMPSHROOM_PATCH = registerBlock(
@@ -365,7 +365,7 @@ public class ModBlocks {
 
     //region Shelfshroom Blocks
 
-    public static final DeferredBlock<Block> SHELFSHROOM_CAP_BLOCK = registerTrivialBlock("shelfshroom_cap_block", ModProperties.FUNGUS_CAP);
+    public static final DeferredBlock<Block> SHELFSHROOM_CAP_BLOCK = registerTrivialBlock("shelfshroom_cap_block", ModProperties.fungusCap());
 
     ///  Need to figure out if Im doing smth with this
     public static final DeferredBlock<ShelfshroomBlock> SHELFSHROOM = registerBlock("shelfshroom", ShelfshroomBlock::new, BlockBehaviour.Properties.of().instabreak().sound(SoundType.FUNGUS));
@@ -374,7 +374,7 @@ public class ModBlocks {
 
     //region Flipshroom
 
-    public static final DeferredBlock<Block> FLIPSHROOM_CAP_BLOCK = registerTrivialBlock("flipshroom_cap_block", ModProperties.FUNGUS_CAP.lightLevel((p) -> 4));
+    public static final DeferredBlock<Block> FLIPSHROOM_CAP_BLOCK = registerTrivialBlock("flipshroom_cap_block", ModProperties.fungusCap().lightLevel((p) -> 4));
 
     public static final DeferredBlock<HangingShroomStemBlock> FLIPSHROOM_STEM = registerBlock(
             "flipshroom_stem",
@@ -432,30 +432,30 @@ public class ModBlocks {
 
     //region Scoria
 
-    public static final DeferredBlock<Block> SCORIA = registerTrivialBlock("scoria", ModProperties.SCORIA);
+    public static final DeferredBlock<Block> SCORIA = registerTrivialBlock("scoria", ModProperties.scoria());
 
-    public static final DeferredBlock<Block> POLISHED_SCORIA = registerTrivialBlock("polished_scoria", ModProperties.SCORIA_BRICKS);
+    public static final DeferredBlock<Block> POLISHED_SCORIA = registerTrivialBlock("polished_scoria", ModProperties.scoriaBricks());
 
     //endregion
 
     //region Obsidianstone
 
-    public static final DeferredBlock<Block> OBSIDIANSTONE = registerTrivialBlock("obsidianstone", ModProperties.OBSIDIANSTONE);
-    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_STAIRS = registerStairBlock("obsidianstone", ModProperties.OBSIDIANSTONE, () -> ModBlocks.OBSIDIANSTONE.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_SLAB = registerSlabBlock("obsidianstone", ModProperties.OBSIDIANSTONE);
-    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_WALL = registerWallBlock("obsidianstone", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<Block> OBSIDIANSTONE = registerTrivialBlock("obsidianstone", ModProperties.obsidianstone());
+    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_STAIRS = registerStairBlock("obsidianstone", ModProperties.obsidianstone(), () -> ModBlocks.OBSIDIANSTONE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_SLAB = registerSlabBlock("obsidianstone", ModProperties.obsidianstone());
+    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_WALL = registerWallBlock("obsidianstone", ModProperties.obsidianstone());
 
-    public static final DeferredBlock<Block> POLISHED_OBSIDIANSTONE = registerTrivialBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE);
-    public static final DeferredBlock<StairBlock> POLISHED_OBSIDIANSTONE_STAIRS = registerStairBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE, () -> ModBlocks.OBSIDIANSTONE.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> POLISHED_OBSIDIANSTONE_SLAB = registerSlabBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE);
-    public static final DeferredBlock<WallBlock> POLISHED_OBSIDIANSTONE_WALL = registerWallBlock("polished_obsidianstone", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<Block> POLISHED_OBSIDIANSTONE = registerTrivialBlock("polished_obsidianstone", ModProperties.obsidianstone());
+    public static final DeferredBlock<StairBlock> POLISHED_OBSIDIANSTONE_STAIRS = registerStairBlock("polished_obsidianstone", ModProperties.obsidianstone(), () -> ModBlocks.OBSIDIANSTONE.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> POLISHED_OBSIDIANSTONE_SLAB = registerSlabBlock("polished_obsidianstone", ModProperties.obsidianstone());
+    public static final DeferredBlock<WallBlock> POLISHED_OBSIDIANSTONE_WALL = registerWallBlock("polished_obsidianstone", ModProperties.obsidianstone());
     public static final DeferredBlock<PressurePlateBlock> POLISHED_OBSIDIANSTONE_PRESSURE_PLATE = registerStonePressurePlate("polished_obsidianstone", ModBlockSetTypes.POLISHED_OBSIDIANTSTONE);
     public static final DeferredBlock<ButtonBlock> POLISHED_OBSIDIANSTONE_BUTTON = registerStoneButton("polished_obsidianstone", ModBlockSetTypes.POLISHED_OBSIDIANTSTONE);
 
-    public static final DeferredBlock<Block> OBSIDIANSTONE_BRICKS = registerTrivialBlock("obsidianstone_bricks", ModProperties.OBSIDIANSTONE);
-    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_BRICK_STAIRS = registerStairBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE, () -> ModBlocks.OBSIDIANSTONE_BRICKS.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_BRICK_SLAB = registerSlabBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE);
-    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_BRICK_WALL = registerWallBlock("obsidianstone_brick", ModProperties.OBSIDIANSTONE);
+    public static final DeferredBlock<Block> OBSIDIANSTONE_BRICKS = registerTrivialBlock("obsidianstone_bricks", ModProperties.obsidianstone());
+    public static final DeferredBlock<StairBlock> OBSIDIANSTONE_BRICK_STAIRS = registerStairBlock("obsidianstone_brick", ModProperties.obsidianstone(), () -> ModBlocks.OBSIDIANSTONE_BRICKS.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> OBSIDIANSTONE_BRICK_SLAB = registerSlabBlock("obsidianstone_brick", ModProperties.obsidianstone());
+    public static final DeferredBlock<WallBlock> OBSIDIANSTONE_BRICK_WALL = registerWallBlock("obsidianstone_brick", ModProperties.obsidianstone());
 
 
     // Vanilla OBSIDIANSTONE Ores
@@ -472,7 +472,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> GEYSER_BLOCK = registerBlock(
             "geyser_block",
             GeyserBlock::new,
-            ModProperties.OBSIDIANSTONE.sound(SoundType.BASALT)
+            ModProperties.obsidianstone().sound(SoundType.BASALT)
     );
     public static final DeferredBlock<SoftMagmaBlock> SOFT_MAGMA_BLOCK = registerBlock(
             "soft_magma_block",
@@ -498,17 +498,20 @@ public class ModBlocks {
 
     ///public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_ERUPTITE_ORE = registerOreBlock("obsidianstone", "eruptite", ConstantInt.of(0), 4.5f);
     public static final DeferredBlock<DropExperienceBlock> OBSIDIANSTONE_ERUPTITE_ORE = registerOreBlock("obsidianstone", "eruptite", ConstantInt.of(0), 4.5f);
-    public static final DeferredBlock<Block> ERUPTITE_BLOCK = registerTrivialBlock("eruptite_block", ModProperties.ERUPTITE);
-    public static final DeferredBlock<Block> CUT_ERUPTITE_BLOCK = registerTrivialBlock("cut_eruptite_block", ModProperties.ERUPTITE);
-    public static final DeferredBlock<StairBlock> CUT_ERUPTITE_STAIRS = registerStairBlock("cut_eruptite", ModProperties.ERUPTITE, () -> ModBlocks.CUT_ERUPTITE_BLOCK.get().defaultBlockState());
-    public static final DeferredBlock<SlabBlock> CUT_ERUPTITE_SLAB = registerSlabBlock("cut_eruptite", ModProperties.ERUPTITE);
-    public static final DeferredBlock<WallBlock> CUT_ERUPTITE_WALL = registerWallBlock("cut_eruptite", ModProperties.ERUPTITE);
-    public static final DeferredBlock<IronBarsBlock> ERUPTITE_BARS = registerBlock("eruptite_bars", IronBarsBlock::new, ModProperties.ERUPTITE);
-    public static final DeferredBlock<WaterloggedTransparentBlock> ERUPTITE_GRATE = registerBlock("eruptite_grate", WaterloggedTransparentBlock::new, ModProperties.ERUPTITE.noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never));
-    public static final DeferredBlock<ChainBlock> ERUPTITE_CHAIN = registerBlock("eruptite_chain", ChainBlock::new, BlockBehaviour.Properties.of().forceSolidOn().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.CHAIN).noOcclusion());
+    public static final DeferredBlock<Block> ERUPTITE_BLOCK = registerTrivialBlock("eruptite_block", ModProperties.eruptite());
+    public static final DeferredBlock<Block> CUT_ERUPTITE_BLOCK = registerTrivialBlock("cut_eruptite_block", ModProperties.eruptite());
+    public static final DeferredBlock<StairBlock> CUT_ERUPTITE_STAIRS = registerStairBlock("cut_eruptite", ModProperties.eruptite(), () -> ModBlocks.CUT_ERUPTITE_BLOCK.get().defaultBlockState());
+    public static final DeferredBlock<SlabBlock> CUT_ERUPTITE_SLAB = registerSlabBlock("cut_eruptite", ModProperties.eruptite());
+    public static final DeferredBlock<WallBlock> CUT_ERUPTITE_WALL = registerWallBlock("cut_eruptite", ModProperties.eruptite());
+    public static final DeferredBlock<IronBarsBlock> ERUPTITE_BARS = registerBlock("eruptite_bars", IronBarsBlock::new, ModProperties.eruptite());
+    public static final DeferredBlock<WaterloggedTransparentBlock> ERUPTITE_GRATE = registerBlock("eruptite_grate", WaterloggedTransparentBlock::new, ModProperties.eruptite().noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never));
+    public static final DeferredBlock<Block> CHISELED_ERUPTITE_BLOCK = registerTrivialBlock("chiseled_eruptite_block", ModProperties.eruptite());
+    public static final DeferredBlock<ChainBlock> ERUPTITE_CHAIN = registerBlock("eruptite_chain", ChainBlock::new, BlockBehaviour.Properties.of().forceSolidOn().requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.CHAIN).noOcclusion());
 
-    public static final DeferredBlock<DoorBlock> ERUPTITE_DOOR = registerBlock("eruptite_door", (properties) -> new DoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.ERUPTITE.noOcclusion().pushReaction(PushReaction.DESTROY));
-    public static final DeferredBlock<TrapDoorBlock> ERUPTITE_TRAPDOOR = registerBlock("eruptite_trapdoor", (properties) -> new TrapDoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.ERUPTITE.requiresCorrectToolForDrops().noOcclusion().isValidSpawn(Blocks::never));
+    public static final DeferredBlock<DoorBlock> ERUPTITE_DOOR = registerBlock("eruptite_door", (properties) -> new DoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.eruptite().noOcclusion().pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<TrapDoorBlock> ERUPTITE_TRAPDOOR = registerBlock("eruptite_trapdoor", (properties) -> new TrapDoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.eruptite().requiresCorrectToolForDrops().noOcclusion().isValidSpawn(Blocks::never));
+
+    public static final DeferredBlock<Block> ERUPTITE_LAVA_LAMP = registerTrivialBlock("eruptite_lava_lamp", ModProperties.eruptite().lightLevel((p) -> 14));
 
     //endregion
 
@@ -566,7 +569,7 @@ public class ModBlocks {
         return registerBlock(
                 familyName + "_" + oreName + "_ore",
                 properties -> new DropExperienceBlock(expAmount, properties),
-                ModProperties.BASE_ORE.strength(destroyTime, 3.0f)
+                ModProperties.baseOre().strength(destroyTime, 3.0f)
         );
     }
     private static DeferredBlock<RedStoneOreBlock> registerRedstoneOreBlock(String familyName, float destroyTime)

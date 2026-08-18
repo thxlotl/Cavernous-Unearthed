@@ -109,12 +109,14 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.ERUPTITE_DOOR);
                 output.accept(ModBlocks.ERUPTITE_TRAPDOOR);
                 output.accept(ModBlocks.ERUPTITE_GRATE);
+                output.accept(ModBlocks.ERUPTITE_LAVA_LAMP);
                 output.accept(ModBlocks.ERUPTITE_BARS);
                 output.accept(ModBlocks.ERUPTITE_CHAIN);
                 output.accept(ModBlocks.CUT_ERUPTITE_BLOCK);
                 output.accept(ModBlocks.CUT_ERUPTITE_STAIRS);
                 output.accept(ModBlocks.CUT_ERUPTITE_SLAB);
                 output.accept(ModBlocks.CUT_ERUPTITE_WALL);
+                output.accept(ModBlocks.CHISELED_ERUPTITE_BLOCK);
             })
             .build());
 

@@ -301,6 +301,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_eruptite_nugget", this.has(ModItems.ERUPTITE_NUGGET))
                 .save(this.output);
 
+        // Lava Lamp
+        this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ERUPTITE_LAVA_LAMP)
+                .define('G', ModBlocks.ERUPTITE_GRATE)
+                .define('S', ModBlocks.SOFT_MAGMA_BLOCK)
+                .pattern(" G ")
+                .pattern("GSG")
+                .pattern(" G ")
+                .unlockedBy("has_eruptite_block", this.has(ModBlocks.ERUPTITE_BLOCK))
+                .unlockedBy("has_soft_magma_block", this.has(ModBlocks.SOFT_MAGMA_BLOCK))
+                .save(this.output);
+
         doorBuilder(ModBlocks.ERUPTITE_DOOR.get(), Ingredient.of(ModItems.ERUPTITE)).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
         trapdoorBuilder(ModBlocks.ERUPTITE_TRAPDOOR.get(), Ingredient.of(ModItems.ERUPTITE), 6).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
 

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "cavernous:block/shroomwood_door_bottom",
+    "top": "cavernous:block/shroomwood_door_top"
+  }
+}

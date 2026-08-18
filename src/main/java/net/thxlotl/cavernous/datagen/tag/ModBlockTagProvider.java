@@ -72,7 +72,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.ERUPTITE_GRATE.get())
                 .add(ModBlocks.ERUPTITE_CHAIN.get())
                 .add(ModBlocks.ERUPTITE_DOOR.get())
-                .add(ModBlocks.ERUPTITE_TRAPDOOR.get());
+                .add(ModBlocks.ERUPTITE_TRAPDOOR.get())
+                .add(ModBlocks.ERUPTITE_LAVA_LAMP.get());
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(ModBlocks.FEATHER_MOSS_BLOCK.get())
                 .add(ModBlocks.FEATHER_MOSS_CARPET.get())
@@ -304,7 +305,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.HOT_BLOCKS)
                 .add(Blocks.LAVA)
                 .add(Blocks.MAGMA_BLOCK)
-                .add(ModBlocks.SOFT_MAGMA_BLOCK.get());
+                .add(ModBlocks.SOFT_MAGMA_BLOCK.get())
+                .add(ModBlocks.ERUPTITE_LAVA_LAMP.get());
 
         tag(ModTags.Blocks.MAGMA_PLANT_PLACEABLE)
                 .add(Blocks.MAGMA_BLOCK)
