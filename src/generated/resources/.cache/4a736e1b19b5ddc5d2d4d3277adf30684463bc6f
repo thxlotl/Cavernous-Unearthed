@@ -1,4 +1,4 @@
-// 26.1	2026-08-18T15:39:02.5731268	Tags for minecraft:block mod id cavernous
+// 26.1	2026-08-18T16:12:25.9859074	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 e26bf87c5ce47f51f380d824e2c8a498347f0725 data/cavernous/tags/block/geyser_patch_replaceable.json
 607cc5c0791ec1fb5f5a059331e074b7059901f0 data/cavernous/tags/block/hot_blocks.json
@@ -30,7 +30,7 @@ a8811c036b173f25e0470926fc5fd999477083be data/minecraft/tags/block/lapis_ores.js
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/lush_ground_replaceable.json
 6d6fdf04e15157fb1aed58e844d711194bb6a678 data/minecraft/tags/block/mineable/axe.json
 974c2272516f28535cc8a6c0fe8bb48065073da3 data/minecraft/tags/block/mineable/hoe.json
-304afebebe1582960dc6fdd9dd50afd9058c705d data/minecraft/tags/block/mineable/pickaxe.json
+7544475f250076d347eadf83f9ae9c79e3f6869e data/minecraft/tags/block/mineable/pickaxe.json
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/minecraft/tags/block/moss_replaceable.json
 6c9ff03edb02569530fc48706ec6e79924d19094 data/minecraft/tags/block/needs_iron_tool.json
 807c2ffd843142744cea7c5ce15c62a734316e0a data/minecraft/tags/block/needs_stone_tool.json

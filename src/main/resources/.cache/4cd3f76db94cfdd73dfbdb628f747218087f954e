@@ -1,4 +1,5 @@
-// 26.1	2026-08-18T15:39:02.5780877	Model Definitions - cavernous
+// 26.1	2026-08-18T16:12:25.9903714	Model Definitions - cavernous
+32c80766dbfd21220ac0ad25668b8277670c2613 assets/cavernous/blockstates/chiseled_eruptite_block.json
 8a13c74ae4b06f300475d44c4845a3324d7f39df assets/cavernous/blockstates/chiseled_fungatite.json
 5de80e8de8398c750d6ab51d84deb8a150377be4 assets/cavernous/blockstates/cut_eruptite_block.json
 208809e7062acd63a94deb6a59958efb6b1ff077 assets/cavernous/blockstates/cut_eruptite_slab.json
@@ -67,6 +68,7 @@ f5e6bdca3257dd3b81e5cb1d7b1e6d3f1f151d19 assets/cavernous/blockstates/undergroun
 01c2c75ca6708cd9f8bf4a83b9ee2e1f5bd774e9 assets/cavernous/items/ant_spawn_egg.json
 296d89395ceccf80bb20fbf3439d7addc0d82ca9 assets/cavernous/items/bleeding_tooth_mushroom.json
 28e600c79c76ffd006521d8825a404b75a38ef60 assets/cavernous/items/blue_ghost_fungus.json
+9b07c3b3a8b5b77d0d13cbdf33875e6285b51b8d assets/cavernous/items/chiseled_eruptite_block.json
 8e0e73d996d183de37f059d2b4c9696f7f1ce419 assets/cavernous/items/chiseled_fungatite.json
 ee50f1d37691bc160c4c4c1586f2d84482a54464 assets/cavernous/items/cordyceps_patch.json
 69c34c25e0b5cde0d21075d41d9aeb992a001e0d assets/cavernous/items/cut_eruptite_block.json
@@ -154,6 +156,7 @@ d2e52bf32f3f9cd31b04ae826c8ade84df17b5ef assets/cavernous/items/stripped_shroomw
 99dfc6f6c6a820a8a977e7ff57055204c0223739 assets/cavernous/items/toadstool_cap_block.json
 46f8a7d0e86cefd1f07eb8f6b14ea187322a0681 assets/cavernous/items/toadstool_patch.json
 0b0de0699fcdb1e00723ff62f568942f6c383269 assets/cavernous/items/underground_mycelium.json
+8b767a5a627418801aedc4b2a70a301351f3449c assets/cavernous/models/block/chiseled_eruptite_block.json
 8a49d01820a5fe812a198b7bdd878734299a4a44 assets/cavernous/models/block/chiseled_fungatite.json
 fc341c25816d2c4926e3242896987598e632a61c assets/cavernous/models/block/cut_eruptite_block.json
 e8ae38541ddcea03683b0dea688221835228b059 assets/cavernous/models/block/cut_eruptite_slab.json

@@ -315,6 +315,10 @@ public class ModRecipeProvider extends RecipeProvider {
         doorBuilder(ModBlocks.ERUPTITE_DOOR.get(), Ingredient.of(ModItems.ERUPTITE)).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
         trapdoorBuilder(ModBlocks.ERUPTITE_TRAPDOOR.get(), Ingredient.of(ModItems.ERUPTITE), 6).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
 
+        // Chiseled
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ERUPTITE_BLOCK, ModBlocks.CUT_ERUPTITE_SLAB);
+        stonecutterResultFromIngredients(ModBlocks.CHISELED_ERUPTITE_BLOCK.get(), 1, ModBlocks.ERUPTITE_BLOCK.get(), ModBlocks.CUT_ERUPTITE_BLOCK.get());
+
         makeStoneFamilyRecipes(
                 ModBlocks.CUT_ERUPTITE_BLOCK.get(),
                 ModBlocks.CUT_ERUPTITE_STAIRS.get(),

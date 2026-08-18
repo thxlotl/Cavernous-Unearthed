@@ -511,7 +511,7 @@ public class ModBlocks {
     public static final DeferredBlock<DoorBlock> ERUPTITE_DOOR = registerBlock("eruptite_door", (properties) -> new DoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.eruptite().noOcclusion().pushReaction(PushReaction.DESTROY));
     public static final DeferredBlock<TrapDoorBlock> ERUPTITE_TRAPDOOR = registerBlock("eruptite_trapdoor", (properties) -> new TrapDoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.eruptite().requiresCorrectToolForDrops().noOcclusion().isValidSpawn(Blocks::never));
 
-    public static final DeferredBlock<Block> ERUPTITE_LAVA_LAMP = registerTrivialBlock("eruptite_lava_lamp", ModProperties.eruptite().lightLevel((p) -> 14));
+    public static final DeferredBlock<Block> ERUPTITE_LAVA_LAMP = registerTrivialBlock("eruptite_lava_lamp", ModProperties.eruptite().lightLevel((p) -> 14).noOcclusion());
 
     //endregion
 

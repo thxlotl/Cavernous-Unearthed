@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "cavernous:cut_eruptite_block",
+  "result": {
+    "id": "cavernous:chiseled_eruptite_block"
+  }
+}

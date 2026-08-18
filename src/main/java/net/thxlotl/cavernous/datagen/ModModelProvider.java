@@ -233,6 +233,7 @@ public class ModModelProvider extends ModelProvider {
                 .stairs(ModBlocks.CUT_ERUPTITE_STAIRS.get())
                 .slab(ModBlocks.CUT_ERUPTITE_SLAB.get())
                 .wall(ModBlocks.CUT_ERUPTITE_WALL.get());
+        blockModels.createTrivialCube(ModBlocks.CHISELED_ERUPTITE_BLOCK.get());
         blockModels.createBarsAndItem(ModBlocks.ERUPTITE_BARS.get());
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.plainVariant(TexturedModel.CHAIN.create(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.modelOutput)));
 
