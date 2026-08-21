@@ -139,7 +139,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 ModBlocks.ERUPTITE_TRAPDOOR,
                 ModBlocks.ERUPTITE_LAVA_LAMP,
                 ModBlocks.CHISELED_ERUPTITE_BLOCK,
-                ModBlocks.ERUPTITE_LANTERN
+                ModBlocks.ERUPTITE_LANTERN,
+                ModBlocks.ERUPTITE_PRESSURE_PLATE,
+                ModBlocks.ERUPTITE_BUTTON
         );
         for (DeferredBlock deferredBlock : simpleDropBlocks) {
             makeDropSelf(deferredBlock);

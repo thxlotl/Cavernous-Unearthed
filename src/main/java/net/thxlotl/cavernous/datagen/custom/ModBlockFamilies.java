@@ -26,8 +26,8 @@ public class ModBlockFamilies {
             .getFamily();
 
     public static final BlockFamily ERUPTITE = familyBuilder(ModBlocks.ERUPTITE_BLOCK.get())
-            ///.button(ModBlocks.SHROOMWOOD_BUTTON.get())
-            ///.pressurePlate(ModBlocks.SHROOMWOOD_PRESSURE_PLATE.get())
+            .button(ModBlocks.ERUPTITE_BUTTON.get())
+            .pressurePlate(ModBlocks.ERUPTITE_PRESSURE_PLATE.get())
             .door(ModBlocks.ERUPTITE_DOOR.get())
             .trapdoor(ModBlocks.ERUPTITE_TRAPDOOR.get())
             .recipeGroupPrefix("eruptite")

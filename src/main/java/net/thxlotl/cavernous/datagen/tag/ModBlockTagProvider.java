@@ -188,8 +188,20 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHROOMWOOD_TRAPDOOR.get());
         tag(BlockTags.WOODEN_PRESSURE_PLATES)
                 .add(ModBlocks.SHROOMWOOD_PRESSURE_PLATE.get());
+        tag(BlockTags.PRESSURE_PLATES)
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE.get())
+                .add(ModBlocks.ERUPTITE_PRESSURE_PLATE.get())
+                .add(ModBlocks.SHROOMWOOD_PRESSURE_PLATE.get());
+        tag(BlockTags.STONE_PRESSURE_PLATES)
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_PRESSURE_PLATE.get());
         tag(BlockTags.WOODEN_BUTTONS)
                 .add(ModBlocks.SHROOMWOOD_BUTTON.get());
+        tag(BlockTags.BUTTONS)
+                .add(ModBlocks.SHROOMWOOD_BUTTON.get())
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON.get())
+                .add(ModBlocks.ERUPTITE_BUTTON.get());
+        tag(BlockTags.STONE_BUTTONS)
+                .add(ModBlocks.POLISHED_OBSIDIANSTONE_BUTTON.get());
         tag(BlockTags.BARS)
                 .add(ModBlocks.ERUPTITE_BARS.get());
         tag(BlockTags.DOORS)
@@ -314,6 +326,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.MAGMA_PLANT_PLACEABLE)
                 .add(Blocks.MAGMA_BLOCK)
                 .addTag(BlockTags.DIRT)
+                .addTag(ModTags.Blocks.OBSIDIANSTONE_ORE)
                 .add(ModBlocks.SOFT_MAGMA_BLOCK.get())
                 .add(ModBlocks.OBSIDIANSTONE.get())
                 .add(ModBlocks.SCORIA.get());
@@ -326,6 +339,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.OBSIDIANSTONE_ORE_REPLACEABLE)
                 .add(ModBlocks.OBSIDIANSTONE.get())
                 .add(ModBlocks.SCORIA.get());
+
+        tag(ModTags.Blocks.OBSIDIANSTONE_ORE)
+                .add(ModBlocks.OBSIDIANSTONE_IRON_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_GOLD_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get())
+                .add(ModBlocks.OBSIDIANSTONE_ERUPTITE_ORE.get());
 
     }
 }

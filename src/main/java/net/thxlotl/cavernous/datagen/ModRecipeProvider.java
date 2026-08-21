@@ -323,6 +323,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_soft_magma_block", this.has(ModBlocks.SOFT_MAGMA_BLOCK))
                 .save(this.output);
 
+        // Block set
+
+        buttonBuilder(ModBlocks.ERUPTITE_BUTTON.get(), Ingredient.of(ModItems.ERUPTITE_NUGGET)).unlockedBy("has_eruptite_nugget", has(ModItems.ERUPTITE_NUGGET)).save(output);
+        pressurePlateBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ERUPTITE_PRESSURE_PLATE.get(), Ingredient.of(ModBlocks.ERUPTITE_BLOCK)).unlockedBy("has_eruptite_block", has(ModBlocks.ERUPTITE_BLOCK)).save(output);
+
         doorBuilder(ModBlocks.ERUPTITE_DOOR.get(), Ingredient.of(ModItems.ERUPTITE)).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
         trapdoorBuilder(ModBlocks.ERUPTITE_TRAPDOOR.get(), Ingredient.of(ModItems.ERUPTITE), 6).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
 
