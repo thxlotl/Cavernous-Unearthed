@@ -1,4 +1,4 @@
-// 26.1	2026-08-18T16:12:25.9933474	Loot Tables
+// 26.1	2026-08-21T16:42:14.542293	Loot Tables
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 38dedca17ee7f85459836bd6b149dbe3f607c0cd data/cavernous/loot_table/blocks/blue_ghost_fungus.json
 1802d616250dff8961b1655d8d90a66e370cb269 data/cavernous/loot_table/blocks/chiseled_eruptite_block.json
@@ -13,6 +13,7 @@ abf5820f4115fc83bdcb7ecc4c60ae3ce76d6ec4 data/cavernous/loot_table/blocks/cut_er
 04b2c88a781233f1f9b8c1dfc4fe31f17780e5bc data/cavernous/loot_table/blocks/eruptite_chain.json
 5b633c7582e4d3fa13575f0b4fc9b94bb0f975c9 data/cavernous/loot_table/blocks/eruptite_door.json
 aa7b4c8a5bbe177be6986220c5d176ecbd3143ca data/cavernous/loot_table/blocks/eruptite_grate.json
+4f8a697dcba16940062e216e2721db0b6b90d5ca data/cavernous/loot_table/blocks/eruptite_lantern.json
 8ddca75990b00516f4c71a1a13c11775bacf4380 data/cavernous/loot_table/blocks/eruptite_lava_lamp.json
 50dbc7f04e1970811caa35d11460553760380d54 data/cavernous/loot_table/blocks/eruptite_trapdoor.json
 b450a5677e756e71b0179456b35ee9cdd8e6737c data/cavernous/loot_table/blocks/feather_moss_block.json

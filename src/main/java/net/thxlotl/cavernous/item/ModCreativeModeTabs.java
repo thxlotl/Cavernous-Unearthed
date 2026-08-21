@@ -112,6 +112,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.ERUPTITE_LAVA_LAMP);
                 output.accept(ModBlocks.ERUPTITE_BARS);
                 output.accept(ModBlocks.ERUPTITE_CHAIN);
+                output.accept(ModBlocks.ERUPTITE_LANTERN);
                 output.accept(ModBlocks.CUT_ERUPTITE_BLOCK);
                 output.accept(ModBlocks.CUT_ERUPTITE_STAIRS);
                 output.accept(ModBlocks.CUT_ERUPTITE_SLAB);

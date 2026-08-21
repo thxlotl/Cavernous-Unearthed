@@ -1,4 +1,4 @@
-// 26.1	2026-08-18T16:12:25.9903714	Model Definitions - cavernous
+// 26.1	2026-08-21T16:42:14.5224519	Model Definitions - cavernous
 32c80766dbfd21220ac0ad25668b8277670c2613 assets/cavernous/blockstates/chiseled_eruptite_block.json
 8a13c74ae4b06f300475d44c4845a3324d7f39df assets/cavernous/blockstates/chiseled_fungatite.json
 5de80e8de8398c750d6ab51d84deb8a150377be4 assets/cavernous/blockstates/cut_eruptite_block.json
@@ -82,6 +82,7 @@ dbfe7e7207cbc69f664144bd0efc8aa932dd2bc0 assets/cavernous/items/eruptite_chain.j
 f1ada5b907e26fb0c31a9ecfca9704547ae5ce3c assets/cavernous/items/eruptite_door.json
 a42d4be18650c584eaaac577f55c3927422107e2 assets/cavernous/items/eruptite_grate.json
 2c3b81ce68d3e07ab42e7301ff6bba7dc050459e assets/cavernous/items/eruptite_ingot.json
+dde40d56e619a6721e8512f737ed0711e3d3fcd5 assets/cavernous/items/eruptite_lantern.json
 d89d88d373c81f19704041babed9ff2a9cb1b7cb assets/cavernous/items/eruptite_lava_lamp.json
 687cf919e36a5b5a3f2d076b08881335cb826d76 assets/cavernous/items/eruptite_nugget.json
 23cb4927d2c5c2b2b183bf6c5acf0338bfaceb50 assets/cavernous/items/eruptite_trapdoor.json
@@ -289,6 +290,7 @@ a951eab65f7efe11a78ce3f07144da2c1585fc2f assets/cavernous/models/block/stripped_
 59a10d219e1949fd595c4487b5e87b0bf94d613c assets/cavernous/models/item/eruptite_chain.json
 a4ff93c0d0726324ca59f3f88051b184d801e8cd assets/cavernous/models/item/eruptite_door.json
 3a45b4cf0bc73a1f1764e343dbcd6729de677b0b assets/cavernous/models/item/eruptite_ingot.json
+4eb2d8656b97b2e91ae3f4152bdddd0fb9a545ff assets/cavernous/models/item/eruptite_lantern.json
 8b6ddf70f97c33d66d63f07572b528c5d71e6ef6 assets/cavernous/models/item/eruptite_nugget.json
 df6331276606aa7f2a42e0430a806824f8a8125e assets/cavernous/models/item/feather_moss_tufts.json
 43a0246ded45549098113a96bbb070ae052fd6f5 assets/cavernous/models/item/fungal_zombie_spawn_egg.json

@@ -507,11 +507,12 @@ public class ModBlocks {
     public static final DeferredBlock<WaterloggedTransparentBlock> ERUPTITE_GRATE = registerBlock("eruptite_grate", WaterloggedTransparentBlock::new, ModProperties.eruptite().noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never));
     public static final DeferredBlock<Block> CHISELED_ERUPTITE_BLOCK = registerTrivialBlock("chiseled_eruptite_block", ModProperties.eruptite());
     public static final DeferredBlock<ChainBlock> ERUPTITE_CHAIN = registerBlock("eruptite_chain", ChainBlock::new, BlockBehaviour.Properties.of().forceSolidOn().requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.CHAIN).noOcclusion());
-
     public static final DeferredBlock<DoorBlock> ERUPTITE_DOOR = registerBlock("eruptite_door", (properties) -> new DoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.eruptite().noOcclusion().pushReaction(PushReaction.DESTROY));
     public static final DeferredBlock<TrapDoorBlock> ERUPTITE_TRAPDOOR = registerBlock("eruptite_trapdoor", (properties) -> new TrapDoorBlock(ModBlockSetTypes.ERUPTITE, properties), ModProperties.eruptite().requiresCorrectToolForDrops().noOcclusion().isValidSpawn(Blocks::never));
-
     public static final DeferredBlock<Block> ERUPTITE_LAVA_LAMP = registerTrivialBlock("eruptite_lava_lamp", ModProperties.eruptite().lightLevel((p) -> 14).noOcclusion());
+    public static final DeferredBlock<EruptiteLanternBlock> ERUPTITE_LANTERN = registerBlock("eruptite_lantern", EruptiteLanternBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).forceSolidOn().strength(3.5F).sound(SoundType.LANTERN).lightLevel((statex) -> 15).noOcclusion().pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<PressurePlateBlock> ERUPTITE_PRESSURE_PLATE = registerStonePressurePlate("eruptite", ModBlockSetTypes.ERUPTITE);
+    public static final DeferredBlock<ButtonBlock> ERUPTITE_BUTTON = registerStoneButton("eruptite", ModBlockSetTypes.ERUPTITE);
 
     //endregion
 

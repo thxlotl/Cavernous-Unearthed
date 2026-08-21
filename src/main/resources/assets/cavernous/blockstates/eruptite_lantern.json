@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "cavernous:block/eruptite_lantern"
+    },
+    "hanging=true": {
+      "model": "cavernous:block/eruptite_lantern_hanging"
+    }
+  }
+}

@@ -301,6 +301,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_eruptite_nugget", this.has(ModItems.ERUPTITE_NUGGET))
                 .save(this.output);
 
+        // Lantern
+        this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ERUPTITE_LANTERN)
+                .define('#', Items.TORCH)
+                .define('X', ModItems.ERUPTITE_NUGGET)
+                .pattern("XXX")
+                .pattern("X#X")
+                .pattern("XXX")
+                .unlockedBy("has_eruptite_nugget", this.has(ModItems.ERUPTITE_NUGGET))
+                .unlockedBy("has_eruptite", this.has(ModItems.ERUPTITE))
+                .save(this.output);
+
         // Lava Lamp
         this.shaped(RecipeCategory.DECORATIONS, ModBlocks.ERUPTITE_LAVA_LAMP)
                 .define('G', ModBlocks.ERUPTITE_GRATE)

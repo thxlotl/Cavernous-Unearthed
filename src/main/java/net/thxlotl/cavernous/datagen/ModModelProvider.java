@@ -72,7 +72,8 @@ public class ModModelProvider extends ModelProvider {
             ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.get(),
             ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.get(),
             ModBlocks.ERUPTITE_GRATE.get(),
-            ModBlocks.ERUPTITE_LAVA_LAMP.get()
+            ModBlocks.ERUPTITE_LAVA_LAMP.get(),
+            ModBlocks.ERUPTITE_LANTERN.get()
     );
     private final List<Item> ignoredItems = List.of(
             ModItems.HANGING_SHROOM_SPORE_POD.get(),
@@ -121,6 +122,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModBlocks.CORDYCEPS_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.LAMPSHROOM_PATCH.asItem(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModBlocks.GHOST_FUNGUS.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModBlocks.ERUPTITE_LANTERN.asItem(), ModelTemplates.FLAT_ITEM);
         modItemModels.generateFlatItemWithBlockTexture(ModBlocks.MYCELIUM_VINE.get(), ModelTemplates.FLAT_ITEM);
 
         // BLOCKS ------------------------------------------------------------------------------------------------------
@@ -236,6 +238,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.CHISELED_ERUPTITE_BLOCK.get());
         blockModels.createBarsAndItem(ModBlocks.ERUPTITE_BARS.get());
         blockModels.createAxisAlignedPillarBlockCustomModel(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.plainVariant(TexturedModel.CHAIN.create(ModBlocks.ERUPTITE_CHAIN.get(), blockModels.modelOutput)));
+        //blockModels.createLantern(ModBlocks.ERUPTITE_LANTERN.get()); /// Custom model
 
 
         // Create all block family models

@@ -1,4 +1,4 @@
-// 26.1	2026-08-18T16:12:25.9859074	Tags for minecraft:block mod id cavernous
+// 26.1	2026-08-21T16:32:33.4507983	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 e26bf87c5ce47f51f380d824e2c8a498347f0725 data/cavernous/tags/block/geyser_patch_replaceable.json
 607cc5c0791ec1fb5f5a059331e074b7059901f0 data/cavernous/tags/block/hot_blocks.json
@@ -24,6 +24,7 @@ d242bad281df7faa49607eeab86084505f13e209 data/minecraft/tags/block/enchantment_p
 3dafcaf5619f11cdbfd5eebc10504fc7cff38453 data/minecraft/tags/block/flower_pots.json
 7d37231e6277911fc61f54f02c6ff6b5ab5969ab data/minecraft/tags/block/gold_ores.json
 480392a5f62460add089ee1f8e798da13b83d1b6 data/minecraft/tags/block/iron_ores.json
+0b56ed99fb324eac650bed9c56281d9b468f490e data/minecraft/tags/block/lanterns.json
 a8811c036b173f25e0470926fc5fd999477083be data/minecraft/tags/block/lapis_ores.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/minecraft/tags/block/logs.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/minecraft/tags/block/logs_that_burn.json

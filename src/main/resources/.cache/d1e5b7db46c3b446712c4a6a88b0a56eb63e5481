@@ -1,4 +1,4 @@
-// 26.1	2026-08-18T16:12:25.9878908	My Recipes
+// 26.1	2026-08-21T16:32:33.4542701	My Recipes
 f634e6a33d8b8982fed75a36cea980c4ccd88701 data/cavernous/advancement/recipes/building_blocks/chiseled_eruptite_block.json
 2953c9e9cf0df07d3e0221f3f5bb104538adf44d data/cavernous/advancement/recipes/building_blocks/chiseled_fungatite.json
 49d5bdb0a5c66eb4d5e150be02e517ad49fcad7b data/cavernous/advancement/recipes/building_blocks/cut_eruptite_slab.json
@@ -40,6 +40,7 @@ bec387e8754e964c3ca00ad0fb4a256fdcfb06e7 data/cavernous/advancement/recipes/buil
 0f0afeb7858a4fa0b7e21207cc70d0ee1f45ef9c data/cavernous/advancement/recipes/building_blocks/shroomwood_stairs.json
 0afb9bc48c4178dd885bb7c0f20153844d37add8 data/cavernous/advancement/recipes/building_blocks/stripped_shroomwood.json
 2b5819d160f8dbe4b625c02b367138baaf0ce653 data/cavernous/advancement/recipes/decorations/eruptite_chain.json
+fa349ecef4fb8ace91c87c65339f8b1c7a826102 data/cavernous/advancement/recipes/decorations/eruptite_lantern.json
 3bce1a81c4169c3a9fedc4cc1868da20cf9a135d data/cavernous/advancement/recipes/decorations/eruptite_lava_lamp.json
 13cdafaa8c282bc103992f855762f90e81645298 data/cavernous/advancement/recipes/decorations/shroomwood_fence.json
 90de4eb1e428fa36d86da3cc74cddb956f6da842 data/cavernous/advancement/recipes/decorations/shroomwood_hanging_sign.json
@@ -62,6 +63,7 @@ f18edb2925b5a3e75764461b969c3ce8ddf3064b data/cavernous/recipe/eruptite.json
 26a63136ad1ed909d8f3b4e5d257f13325f61ca7 data/cavernous/recipe/eruptite_chain.json
 12be9dbe43865aa91b1258faacda3a067e7c79fd data/cavernous/recipe/eruptite_door.json
 c4b61876a93451a851acafbe88827255b83c7c44 data/cavernous/recipe/eruptite_grate.json
+6fda50bc75c27f6e74ab9b840dec1dc618aedef8 data/cavernous/recipe/eruptite_lantern.json
 da1970c71f8a374ef00317aee7ddd855e07c6903 data/cavernous/recipe/eruptite_lava_lamp.json
 092f42829ede9d0821c6d578a442f220c181068e data/cavernous/recipe/eruptite_nugget.json
 d6f89ac36cee33f650b0ef187527edb11a68586a data/cavernous/recipe/eruptite_trapdoor.json

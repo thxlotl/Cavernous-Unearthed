@@ -198,6 +198,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.TRAPDOORS)
                 .add(ModBlocks.ERUPTITE_TRAPDOOR.get())
                 .add(ModBlocks.SHROOMWOOD_TRAPDOOR.get());
+        tag(BlockTags.LANTERNS)
+                .add(ModBlocks.ERUPTITE_LANTERN.get());
 
         tag(BlockTags.REPLACEABLE)
                 .add(ModBlocks.FEATHER_MOSS_TUFTS.get())
