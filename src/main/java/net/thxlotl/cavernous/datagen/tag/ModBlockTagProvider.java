@@ -329,7 +329,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .addTag(ModTags.Blocks.OBSIDIANSTONE_ORE)
                 .add(ModBlocks.SOFT_MAGMA_BLOCK.get())
                 .add(ModBlocks.OBSIDIANSTONE.get())
-                .add(ModBlocks.SCORIA.get());
+                .add(ModBlocks.SCORIA.get())
+                .add(ModBlocks.GEYSER_BLOCK.get());
 
         tag(ModTags.Blocks.GEYSER_PATCH_REPLACEABLE)
                 .add(ModBlocks.OBSIDIANSTONE.get())

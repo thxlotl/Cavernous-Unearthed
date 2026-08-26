@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "cavernous:eruptite_block",
   "result": {
+    "count": 4,
     "id": "cavernous:chiseled_eruptite_block"
   }
 }

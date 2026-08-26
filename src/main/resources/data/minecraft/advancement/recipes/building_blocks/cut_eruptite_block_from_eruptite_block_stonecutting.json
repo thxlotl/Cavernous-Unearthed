@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_eruptite_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cavernous:eruptite_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:cut_eruptite_block_from_eruptite_block_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_eruptite_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:cut_eruptite_block_from_eruptite_block_stonecutting"
+    ]
+  }
+}

@@ -7,6 +7,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -57,20 +58,23 @@ public class GeyserBlock extends BaseEntityBlock {
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean movedByPiston) {
 
-        if(level.getBlockEntity(pos) instanceof GeyserBlockEntity geyser) {
+        if (!level.isClientSide()) {
+            if(level.getBlockEntity(pos) instanceof GeyserBlockEntity geyser) {
 
-            boolean triggered = state.getValue(TRIGGERED);
-            boolean powered = level.hasNeighborSignal(pos);
+                boolean triggered = state.getValue(TRIGGERED);
+                boolean powered = level.hasNeighborSignal(pos);
 
-            if (!triggered && powered) {
+                if (!triggered && powered) {
 
-                level.setBlock(pos, state.setValue(TRIGGERED, true), 3);
+                    level.scheduleTick(pos, this, 4);
+                    level.setBlock(pos, state.setValue(TRIGGERED, true), 2);
 
-            }
+                }
 
-            if (!powered && triggered) {
+                if (!powered && triggered) {
 
-                level.setBlock(pos, state.setValue(TRIGGERED, false), 3);
+                    level.setBlock(pos, state.setValue(TRIGGERED, false), 2);
+                }
             }
         }
 

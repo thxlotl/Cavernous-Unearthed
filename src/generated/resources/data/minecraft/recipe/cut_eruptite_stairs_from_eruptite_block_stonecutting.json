@@ -1,7 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "cavernous:cut_eruptite_block",
+  "ingredient": "cavernous:eruptite_block",
   "result": {
+    "count": 4,
     "id": "cavernous:cut_eruptite_stairs"
   }
 }

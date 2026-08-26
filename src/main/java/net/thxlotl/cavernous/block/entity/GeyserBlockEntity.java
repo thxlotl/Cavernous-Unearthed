@@ -56,6 +56,7 @@ public class GeyserBlockEntity extends BlockEntity {
     public boolean launchTriggered;
     public int ticksSinceSteam;
     public int ticksSinceLaunch;
+    public boolean hasUsedRedstone = true;
 
     public GeyserBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.GEYSER_BLOCK.get(), pos, blockState);
@@ -76,7 +77,7 @@ public class GeyserBlockEntity extends BlockEntity {
         if (checkedEntities.isEmpty() || geyser.inLaunchCooldown()) {
             geyser.stoodOnTime = geyser.stoodOnTime > 0 ? geyser.stoodOnTime - 1: 0;
         }
-        else if (!geyser.isLocked()) {
+        else if (!geyser.isIced()) {
             geyser.stoodOnTime += 1;
 
             createBubbleParticles(geyser);
@@ -104,7 +105,17 @@ public class GeyserBlockEntity extends BlockEntity {
         boolean triggered = state.getValue(GeyserBlock.getTriggered());
         boolean powered = level.hasNeighborSignal(pos);
 
-        if (geyser.launchTriggered || RandomSource.create().nextFloat() < RANDOM_BURST_CHANCE || (powered && !triggered)) {
+        if (!powered) {
+            geyser.hasUsedRedstone = false;
+        }
+
+        if (powered && !geyser.hasUsedRedstone) {
+            List<Entity> toLaunch = geyser.getEntitiesToLaunch(level, pos);
+            geyser.launch(toLaunch, geyser);
+            geyser.hasUsedRedstone = true;
+        }
+
+        if (geyser.launchTriggered || RandomSource.create().nextFloat() < RANDOM_BURST_CHANCE) {
             List<Entity> toLaunch = geyser.getEntitiesToLaunch(level, pos);
             geyser.launch(toLaunch, geyser);
         }
@@ -170,12 +181,12 @@ public class GeyserBlockEntity extends BlockEntity {
         BlockPos pos = this.getBlockPos();
         Level level = this.getLevel();
 
-        return
-                this.ticksSinceSteam > STEAM_PARTICLE_TICK_INTERVAL &&
-                !level.getBlockState(pos.below()).is(BlockTags.ICE) &&
-                level.getBlockState(pos.above()).is(BlockTags.REPLACEABLE) &&
-                !(this.stoodOnTime > 0) &&
-                !this.inLaunchCooldown();
+        if (!(this.ticksSinceSteam > STEAM_PARTICLE_TICK_INTERVAL)) return false;
+        else if (this.isIced()) return false;
+        else if (this.isBlocked()) return false;
+        else if (this.isStoodOn()) return false;
+        else if (this.inLaunchCooldown()) return false;
+        else return true;
     }
 
     public void launch(List<Entity> entities, GeyserBlockEntity geyser) {
@@ -302,7 +313,29 @@ public class GeyserBlockEntity extends BlockEntity {
         );
     }
 
-    private boolean isLocked() {
-        return this.getLevel().getBlockState(this.getBlockPos().below()).is(BlockTags.ICE);
+    private boolean isIced()
+    {
+        Level level = this.getLevel();
+
+        if (level != null)
+        {
+            return level.getBlockState(this.getBlockPos().below()).is(BlockTags.ICE);
+        }
+        else return false;
+    }
+
+    private boolean isBlocked() {
+
+        Level level = this.getLevel();
+        BlockPos checkPos = this.getBlockPos().above();
+
+        if (level != null)
+        {
+            return level.getBlockState(checkPos).isCollisionShapeFullBlock(level, checkPos);
+        }
+        else return false;
+    }
+    private boolean isStoodOn() {
+        return this.stoodOnTime > 0;
     }
 }

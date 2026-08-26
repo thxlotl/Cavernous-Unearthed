@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "F": "cavernous:eruptite_block"
+  },
+  "pattern": [
+    "   ",
+    " FF",
+    " FF"
+  ],
+  "result": {
+    "count": 4,
+    "id": "cavernous:cut_eruptite_block"
+  }
+}

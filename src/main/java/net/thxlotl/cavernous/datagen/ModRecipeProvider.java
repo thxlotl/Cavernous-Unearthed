@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
 import net.thxlotl.cavernous.block.ModBlocks;
+import net.thxlotl.cavernous.datagen.custom.StonecutterIngredient;
 import net.thxlotl.cavernous.datagen.tag.ModTags;
 import net.thxlotl.cavernous.item.ModItems;
 
@@ -40,6 +41,9 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
 
+    protected RecipeBuilder trapdoorBuilder(ItemLike result, Ingredient base, int amount) {
+        return this.shaped(RecipeCategory.REDSTONE, result, amount).define('#', base).pattern("###").pattern("###");
+    }
     private void makeStoneFamilyRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock) {
         stairBuilder(stairBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
@@ -94,11 +98,36 @@ public class ModRecipeProvider extends RecipeProvider {
         }
 
     }
+    private void makeStoneFamilyStonecutterRecipesWithMultipliers(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, StonecutterIngredient... stonecutterIngredients) {
+
+        if (stonecutterIngredients.length == 0) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, parent, 1);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, parent, 2);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, parent, 1);
+        }
+
+        for (StonecutterIngredient stonecutterIngredient : stonecutterIngredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, stonecutterIngredient.block, 2 * stonecutterIngredient.multiplier);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
+            if (stonecutterIngredient.block != parent) {
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, parent, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
+            }
+        }
+
+    }
 
     private void stonecutterResultFromIngredients(Block result, int amount, Block... ingredients) {
 
         for (Block ingredient : ingredients) {
             stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, ingredient, amount);
+        }
+
+    }
+    private void stonecutterResultFromIngredientsWithMultipliers(Block result, int amount, StonecutterIngredient... stonecutterIngredients) {
+
+        for (StonecutterIngredient stonecutterIngredient : stonecutterIngredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, stonecutterIngredient.block, amount * stonecutterIngredient.multiplier);
         }
 
     }
@@ -324,33 +353,34 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(this.output);
 
         // Block set
-
         buttonBuilder(ModBlocks.ERUPTITE_BUTTON.get(), Ingredient.of(ModItems.ERUPTITE_NUGGET)).unlockedBy("has_eruptite_nugget", has(ModItems.ERUPTITE_NUGGET)).save(output);
         pressurePlateBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ERUPTITE_PRESSURE_PLATE.get(), Ingredient.of(ModBlocks.ERUPTITE_BLOCK)).unlockedBy("has_eruptite_block", has(ModBlocks.ERUPTITE_BLOCK)).save(output);
-
         doorBuilder(ModBlocks.ERUPTITE_DOOR.get(), Ingredient.of(ModItems.ERUPTITE)).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
         trapdoorBuilder(ModBlocks.ERUPTITE_TRAPDOOR.get(), Ingredient.of(ModItems.ERUPTITE), 6).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
 
         // Chiseled
         chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ERUPTITE_BLOCK, ModBlocks.CUT_ERUPTITE_SLAB);
-        stonecutterResultFromIngredients(ModBlocks.CHISELED_ERUPTITE_BLOCK.get(), 1, ModBlocks.ERUPTITE_BLOCK.get(), ModBlocks.CUT_ERUPTITE_BLOCK.get());
+        stonecutterResultFromIngredientsWithMultipliers(ModBlocks.CHISELED_ERUPTITE_BLOCK.get(), 1,
+                StonecutterIngredient.of(4, ModBlocks.ERUPTITE_BLOCK.get()),
+                StonecutterIngredient.of(1, ModBlocks.CUT_ERUPTITE_BLOCK.get())
+        );
+
+        // Cut
+        makeRefineRecipe(ModBlocks.ERUPTITE_BLOCK.get(), ModBlocks.CUT_ERUPTITE_BLOCK.get()); // 4 Eruptite -> 4 Cut
 
         makeStoneFamilyRecipes(
                 ModBlocks.CUT_ERUPTITE_BLOCK.get(),
                 ModBlocks.CUT_ERUPTITE_STAIRS.get(),
                 ModBlocks.CUT_ERUPTITE_SLAB.get(),
                 ModBlocks.CUT_ERUPTITE_WALL.get());
-        makeStoneFamilyStonecutterRecipes(
+        makeStoneFamilyStonecutterRecipesWithMultipliers(
                 ModBlocks.CUT_ERUPTITE_BLOCK.get(),
                 ModBlocks.CUT_ERUPTITE_STAIRS.get(),
                 ModBlocks.CUT_ERUPTITE_SLAB.get(),
-                ModBlocks.CUT_ERUPTITE_WALL.get());
-        /// Make recipes for turning normal into extra cut
+                ModBlocks.CUT_ERUPTITE_WALL.get(),
+                StonecutterIngredient.of(4, ModBlocks.ERUPTITE_BLOCK.get()));
 
         //endregion
     }
 
-    protected RecipeBuilder trapdoorBuilder(ItemLike result, Ingredient base, int amount) {
-        return this.shaped(RecipeCategory.REDSTONE, result, amount).define('#', base).pattern("###").pattern("###");
-    }
 }

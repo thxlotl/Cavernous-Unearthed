@@ -1,9 +1,10 @@
-// 26.1	2026-08-21T17:14:16.0157121	Tags for minecraft:block mod id cavernous
+// 26.1	2026-08-23T11:18:19.9379064	Tags for minecraft:block mod id cavernous
 a564bfff0b8d79ea9215d9f489c64b6515db7910 data/cavernous/tags/block/fungatite_ore_replaceable.json
 e26bf87c5ce47f51f380d824e2c8a498347f0725 data/cavernous/tags/block/geyser_patch_replaceable.json
 607cc5c0791ec1fb5f5a059331e074b7059901f0 data/cavernous/tags/block/hot_blocks.json
-91011048d06e0112e4767db78261a0e537aa73f1 data/cavernous/tags/block/magma_plant_placeable.json
+44b7f41e913395f02cb149a97fb88e2a8e70c785 data/cavernous/tags/block/magma_plant_placeable.json
 1ec50998909f709b6e0f93b906bc73f710b29451 data/cavernous/tags/block/mycelium_sprouts_placeable.json
+6c6f998c009920967a2356a7bac4d73052ad3479 data/cavernous/tags/block/obsidianstone_ore.json
 e26bf87c5ce47f51f380d824e2c8a498347f0725 data/cavernous/tags/block/obsidianstone_ore_replaceable.json
 4fbe3f7b6892db55edffba01e9285d787508b3a3 data/cavernous/tags/block/shroomwood_logs.json
 d3bc41ec175b87895412b425043e832279e3df59 data/cavernous/tags/block/underground_mycelium_replaceable.json

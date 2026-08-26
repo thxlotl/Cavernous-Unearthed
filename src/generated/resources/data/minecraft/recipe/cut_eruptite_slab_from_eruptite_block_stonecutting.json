@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "cavernous:cut_eruptite_block",
+  "ingredient": "cavernous:eruptite_block",
   "result": {
-    "count": 2,
+    "count": 8,
     "id": "cavernous:cut_eruptite_slab"
   }
 }
