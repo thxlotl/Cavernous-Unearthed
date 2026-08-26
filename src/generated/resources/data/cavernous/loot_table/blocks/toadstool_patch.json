@@ -14,7 +14,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cavernous:toadstool_cap_block"
+          "name": "cavernous:toadstool_patch"
         }
       ],
       "rolls": 1.0

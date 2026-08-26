@@ -27,6 +27,15 @@ public class ModModelProvider extends ModelProvider {
         super(output, Cavernous.MODID);
     }
 
+    /*
+
+    I dont want to even touch this rn this shit is a mess FUCK im putting off cleaning this up
+    "if it works and  looks stupid its not stupid" -neil armstronmg
+
+    "pput your hand on a hot stove" - albern einstien.
+
+     */
+
     private final List<Block> ignoredBlocks = List.of(
             ModBlocks.FEATHER_MOSS_CARPET.get(),
             ModBlocks.TOADSTOOL_PATCH.get(),

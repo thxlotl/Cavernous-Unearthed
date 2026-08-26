@@ -1,4 +1,4 @@
-// 26.1	2026-08-21T17:14:16.035056	Loot Tables
+// 26.1	2026-08-25T22:51:23.6083848	Loot Tables
 8332e02d8a77365f10631a4e84d4513076856689 data/cavernous/loot_table/blocks/bleeding_tooth_mushroom.json
 38dedca17ee7f85459836bd6b149dbe3f607c0cd data/cavernous/loot_table/blocks/blue_ghost_fungus.json
 1802d616250dff8961b1655d8d90a66e370cb269 data/cavernous/loot_table/blocks/chiseled_eruptite_block.json
@@ -103,7 +103,7 @@ a749b32985f9d582d9bfa0b45fa045e8712386a0 data/cavernous/loot_table/blocks/shroom
 fd2625ce8bd61ab858726d231dd45c2ba3f85420 data/cavernous/loot_table/blocks/stripped_shroomwood_log.json
 578556e11a89e3405681bfe2e0b63a8b351d995c data/cavernous/loot_table/blocks/toadstool_button.json
 e56493cdfde5a9a11ef6da59af7412f6fccacbce data/cavernous/loot_table/blocks/toadstool_cap_block.json
-c73f1537b56ea0fc0d7d8308ae314d0013b0365b data/cavernous/loot_table/blocks/toadstool_patch.json
+8a01a579bf536d2cb60ee094fbebf6207e438c98 data/cavernous/loot_table/blocks/toadstool_patch.json
 156582f0ef08b3740f9f0526882d2910c235211a data/cavernous/loot_table/blocks/underground_mycelium.json
 5e430025f4fd9b30386595dba7f97d01cf7a79a6 data/minecraft/loot_table/blocks/warped_hanging_sign.json
 4925d77f1797cace55a5ba7ad0ecb7807a355589 data/minecraft/loot_table/blocks/warped_sign.json

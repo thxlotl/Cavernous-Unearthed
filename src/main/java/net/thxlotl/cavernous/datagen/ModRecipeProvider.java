@@ -11,6 +11,7 @@ import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.thxlotl.cavernous.block.ModBlocks;
 import net.thxlotl.cavernous.datagen.custom.StonecutterIngredient;
 import net.thxlotl.cavernous.datagen.tag.ModTags;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
+
     public ModRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
         super(provider, recipeOutput);
     }
@@ -40,102 +42,10 @@ public class ModRecipeProvider extends RecipeProvider {
         }
     }
 
-
-    protected RecipeBuilder trapdoorBuilder(ItemLike result, Ingredient base, int amount) {
-        return this.shaped(RecipeCategory.REDSTONE, result, amount).define('#', base).pattern("###").pattern("###");
-    }
-    private void makeStoneFamilyRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock) {
-        stairBuilder(stairBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-        wallBuilder(RecipeCategory.BUILDING_BLOCKS, wallBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-    }
-    private void makeStoneFamilyRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, PressurePlateBlock pressurePlateBlock, ButtonBlock buttonBlock) {
-        stairBuilder(stairBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-        slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-        wallBuilder(RecipeCategory.BUILDING_BLOCKS, wallBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-        pressurePlateBuilder(RecipeCategory.BUILDING_BLOCKS, pressurePlateBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-        buttonBuilder(buttonBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
-    }
-
-    private void makeRefineRecipe(Block input, Block result) {
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, result, 4)
-                .pattern("   ")
-                .pattern(" FF")
-                .pattern(" FF")
-                .define('F', input)
-                .unlockedBy("has_" + input.getName(), has(input)).save(output);
-    }
-
-    private void makeNuggetRecipes(Item nugget, Item ingot) {
-
-        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ingot, 1)
-                .pattern("FFF")
-                .pattern("FFF")
-                .pattern("FFF")
-                .define('F', nugget)
-                .unlockedBy("has_" + nugget.asItem().toString(), has(nugget)).save(output);
-
-        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, nugget, 9)
-                .requires(ingot)
-                .unlockedBy("has_" + ingot.asItem().toString(), has(ingot)).save(output);
-    }
-
-    private void makeStoneFamilyStonecutterRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, Block... ingredients) {
-
-        if (ingredients.length == 0) {
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, parent, 1);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, parent, 2);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, parent, 1);
-        }
-
-        for (Block ingredient : ingredients) {
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, ingredient, 1);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, ingredient, 2);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, ingredient, 1);
-            if (ingredient != parent) {
-                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, parent, ingredient, 1);
-            }
-        }
-
-    }
-    private void makeStoneFamilyStonecutterRecipesWithMultipliers(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, StonecutterIngredient... stonecutterIngredients) {
-
-        if (stonecutterIngredients.length == 0) {
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, parent, 1);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, parent, 2);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, parent, 1);
-        }
-
-        for (StonecutterIngredient stonecutterIngredient : stonecutterIngredients) {
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, stonecutterIngredient.block, 2 * stonecutterIngredient.multiplier);
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
-            if (stonecutterIngredient.block != parent) {
-                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, parent, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
-            }
-        }
-
-    }
-
-    private void stonecutterResultFromIngredients(Block result, int amount, Block... ingredients) {
-
-        for (Block ingredient : ingredients) {
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, ingredient, amount);
-        }
-
-    }
-    private void stonecutterResultFromIngredientsWithMultipliers(Block result, int amount, StonecutterIngredient... stonecutterIngredients) {
-
-        for (StonecutterIngredient stonecutterIngredient : stonecutterIngredients) {
-            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, stonecutterIngredient.block, amount * stonecutterIngredient.multiplier);
-        }
-
-    }
-
     @Override
     protected void buildRecipes() {
 
-        // Feather Moss
+        //region Feather Moss
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.FEATHER_MOSS_CARPET, 3)
                 .pattern("   ")
                 .pattern("   ")
@@ -159,9 +69,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern(" FF")
                 .define('F', ModBlocks.FEATHER_MOSS_TUFTS.get())
                 .unlockedBy("has_feather_moss_tufts", has(ModBlocks.FEATHER_MOSS_TUFTS)).save(output);
+        //endregion
 
+        //region Fungatite
 
-        // Fungatite
+        // Normal
         makeRefineRecipe(ModBlocks.GROUND_FUNGATITE.get(), ModBlocks.FUNGATITE.get());
         makeStoneFamilyRecipes(
                 ModBlocks.FUNGATITE.get(),
@@ -174,7 +86,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.FUNGATITE_SLAB.get(),
                 ModBlocks.FUNGATITE_WALL.get());
 
-        // Polished Fungatite
+        // Polished
         makeRefineRecipe(ModBlocks.FUNGATITE.get(), ModBlocks.POLISHED_FUNGATITE.get());
         makeStoneFamilyRecipes(
                 ModBlocks.POLISHED_FUNGATITE.get(),
@@ -191,7 +103,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
         stonecutterResultFromIngredients(ModBlocks.CHISELED_FUNGATITE.get(), 1, ModBlocks.FUNGATITE.get(), ModBlocks.POLISHED_FUNGATITE.get());
 
-        // Fungatite Bricks
+        // Bricks
         makeRefineRecipe(ModBlocks.POLISHED_FUNGATITE.get(), ModBlocks.FUNGATITE_BRICKS.get());
         makeStoneFamilyRecipes(
                 ModBlocks.FUNGATITE_BRICKS.get(),
@@ -205,7 +117,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.FUNGATITE_BRICK_WALL.get(),
                 ModBlocks.FUNGATITE.get(), ModBlocks.POLISHED_FUNGATITE.get());
 
-        // Shroomwood
+        // Ores
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_COAL_ORE, "coal");
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_IRON_ORE, "iron");
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_COPPER_ORE, "copper");
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_GOLD_ORE, "gold");
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_REDSTONE_ORE, "redstone");
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_EMERALD_ORE, "emerald");
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_LAPIS_ORE, "lapis");
+        createOreSmeltingRecipes(ModBlocks.FUNGATITE_DIAMOND_ORE, "diamond");
+
+        //endregion
+
+        //region Shroomwood
+
         woodFromLogs(ModBlocks.SHROOMWOOD.get(), ModBlocks.SHROOMWOOD_LOG.get());
         woodFromLogs(ModBlocks.STRIPPED_SHROOMWOOD.get(), ModBlocks.STRIPPED_SHROOMWOOD_LOG.get());
         ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHROOMWOOD_PLANKS, 4)
@@ -222,25 +147,7 @@ public class ModRecipeProvider extends RecipeProvider {
         buttonBuilder(ModBlocks.SHROOMWOOD_BUTTON.get(), Ingredient.of(ModBlocks.SHROOMWOOD_PLANKS)).unlockedBy("has_shroomwood_planks", has(ModBlocks.SHROOMWOOD_PLANKS)).save(output);
         signBuilder(ModBlocks.SHROOMWOOD_SIGN, Ingredient.of(ModBlocks.SHROOMWOOD_PLANKS)).unlockedBy("has_shroomwood_planks", has(ModBlocks.SHROOMWOOD_PLANKS)).save(output);
         hangingSign(ModBlocks.SHROOMWOOD_HANGING_SIGN, ModBlocks.STRIPPED_SHROOMWOOD_LOG);
-
-        oreSmelting(List.of(ModBlocks.FUNGATITE_COAL_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.COAL,0.1f,200,"coal");
-        oreSmelting(List.of(ModBlocks.FUNGATITE_IRON_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.IRON_INGOT,0.7f,200,"iron");
-        oreSmelting(List.of(ModBlocks.FUNGATITE_COPPER_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.COPPER_INGOT,0.7f,200,"copper");
-        oreSmelting(List.of(ModBlocks.FUNGATITE_GOLD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.GOLD_INGOT,1.0f,200,"gold");
-        oreSmelting(List.of(ModBlocks.FUNGATITE_REDSTONE_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.REDSTONE,0.7f,200,"redstone");
-        oreSmelting(List.of(ModBlocks.FUNGATITE_EMERALD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.EMERALD,1.0f,200,"emerald");
-        oreSmelting(List.of(ModBlocks.FUNGATITE_LAPIS_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.LAPIS_LAZULI,0.2f,200,"lapis");
-        oreSmelting(List.of(ModBlocks.FUNGATITE_DIAMOND_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.DIAMOND,1.0f,200,"diamond");
-
-        oreBlasting(List.of(ModBlocks.FUNGATITE_COAL_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.COAL,0.1f,100,"coal");
-        oreBlasting(List.of(ModBlocks.FUNGATITE_IRON_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.IRON_INGOT,0.7f,100,"iron");
-        oreBlasting(List.of(ModBlocks.FUNGATITE_COPPER_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.COPPER_INGOT,0.7f,100,"copper");
-        oreBlasting(List.of(ModBlocks.FUNGATITE_GOLD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.GOLD_INGOT,1.0f,100,"gold");
-        oreBlasting(List.of(ModBlocks.FUNGATITE_REDSTONE_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.REDSTONE,0.7f,100,"redstone");
-        oreBlasting(List.of(ModBlocks.FUNGATITE_EMERALD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.EMERALD,1.0f,100,"emerald");
-        oreBlasting(List.of(ModBlocks.FUNGATITE_LAPIS_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.LAPIS_LAZULI,0.2f,100,"lapis");
-        oreBlasting(List.of(ModBlocks.FUNGATITE_DIAMOND_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.DIAMOND,1.0f,100,"diamond");
-
+        //endregion
 
         ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAMPSHROOM_TERRARIUM)
                 .pattern("GPG")
@@ -295,17 +202,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.POLISHED_OBSIDIANSTONE.get(),
                 ModBlocks.OBSIDIANSTONE.get());
 
-        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_IRON_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.IRON_INGOT,0.7f,200,"iron");
-        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_GOLD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.GOLD_INGOT,1.0f,200,"gold");
-        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.REDSTONE,0.7f,200,"redstone");
-        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.LAPIS_LAZULI,0.2f,200,"lapis");
-        oreSmelting(List.of(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.DIAMOND,1.0f,200,"diamond");
-
-        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_IRON_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.IRON_INGOT,0.7f,100,"iron");
-        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_GOLD_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.GOLD_INGOT,1.0f,100,"gold");
-        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.REDSTONE,0.7f,100,"redstone");
-        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_LAPIS_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.LAPIS_LAZULI,0.2f,100,"lapis");
-        oreBlasting(List.of(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE.asItem()),RecipeCategory.MISC, CookingBookCategory.BLOCKS,Items.DIAMOND,1.0f,100,"diamond");
+        createOreSmeltingRecipes(ModBlocks.OBSIDIANSTONE_IRON_ORE, "iron");
+        createOreSmeltingRecipes(ModBlocks.OBSIDIANSTONE_GOLD_ORE, "gold");
+        createOreSmeltingRecipes(ModBlocks.OBSIDIANSTONE_REDSTONE_ORE, "redstone");
+        createOreSmeltingRecipes(ModBlocks.OBSIDIANSTONE_LAPIS_ORE, "lapis");
+        createOreSmeltingRecipes(ModBlocks.OBSIDIANSTONE_DIAMOND_ORE, "diamond");
 
         //endregion
 
@@ -358,13 +259,6 @@ public class ModRecipeProvider extends RecipeProvider {
         doorBuilder(ModBlocks.ERUPTITE_DOOR.get(), Ingredient.of(ModItems.ERUPTITE)).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
         trapdoorBuilder(ModBlocks.ERUPTITE_TRAPDOOR.get(), Ingredient.of(ModItems.ERUPTITE), 6).unlockedBy("has_eruptite", has(ModItems.ERUPTITE)).save(output);
 
-        // Chiseled
-        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ERUPTITE_BLOCK, ModBlocks.CUT_ERUPTITE_SLAB);
-        stonecutterResultFromIngredientsWithMultipliers(ModBlocks.CHISELED_ERUPTITE_BLOCK.get(), 1,
-                StonecutterIngredient.of(4, ModBlocks.ERUPTITE_BLOCK.get()),
-                StonecutterIngredient.of(1, ModBlocks.CUT_ERUPTITE_BLOCK.get())
-        );
-
         // Cut
         makeRefineRecipe(ModBlocks.ERUPTITE_BLOCK.get(), ModBlocks.CUT_ERUPTITE_BLOCK.get()); // 4 Eruptite -> 4 Cut
 
@@ -380,7 +274,150 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModBlocks.CUT_ERUPTITE_WALL.get(),
                 StonecutterIngredient.of(4, ModBlocks.ERUPTITE_BLOCK.get()));
 
+        // Chiseled
+        chiseled(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ERUPTITE_BLOCK, ModBlocks.CUT_ERUPTITE_SLAB);
+        stonecutterResultFromIngredientsWithMultipliers(ModBlocks.CHISELED_ERUPTITE_BLOCK.get(), 1,
+                StonecutterIngredient.of(4, ModBlocks.ERUPTITE_BLOCK.get()),
+                StonecutterIngredient.of(1, ModBlocks.CUT_ERUPTITE_BLOCK.get())
+        );
+
         //endregion
+
     }
+
+    //region Helper Methods
+
+    protected RecipeBuilder trapdoorBuilder(ItemLike result, Ingredient base, int amount) {
+        return this.shaped(RecipeCategory.REDSTONE, result, amount).define('#', base).pattern("###").pattern("###");
+    }
+
+    private void makeStoneFamilyRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock) {
+        stairBuilder(stairBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, wallBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+    }
+    private void makeStoneFamilyRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, PressurePlateBlock pressurePlateBlock, ButtonBlock buttonBlock) {
+        stairBuilder(stairBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, slabBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, wallBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        pressurePlateBuilder(RecipeCategory.BUILDING_BLOCKS, pressurePlateBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+        buttonBuilder(buttonBlock, Ingredient.of(parent)).unlockedBy("has_" + parent.getName(), has(parent)).save(output);
+    }
+    private void makeRefineRecipe(Block input, Block result) {
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.BUILDING_BLOCKS, result, 4)
+                .pattern("   ")
+                .pattern(" FF")
+                .pattern(" FF")
+                .define('F', input)
+                .unlockedBy("has_" + input.getName(), has(input)).save(output);
+    }
+    private void makeNuggetRecipes(Item nugget, Item ingot) {
+
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, ingot, 1)
+                .pattern("FFF")
+                .pattern("FFF")
+                .pattern("FFF")
+                .define('F', nugget)
+                .unlockedBy("has_" + nugget.asItem().toString(), has(nugget)).save(output);
+
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.MISC, nugget, 9)
+                .requires(ingot)
+                .unlockedBy("has_" + ingot.asItem().toString(), has(ingot)).save(output);
+    }
+    private void makeStoneFamilyStonecutterRecipes(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, Block... ingredients) {
+
+        if (ingredients.length == 0) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, parent, 1);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, parent, 2);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, parent, 1);
+        }
+
+        for (Block ingredient : ingredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, ingredient, 1);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, ingredient, 2);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, ingredient, 1);
+            if (ingredient != parent) {
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, parent, ingredient, 1);
+            }
+        }
+
+    }
+    private void makeStoneFamilyStonecutterRecipesWithMultipliers(Block parent, StairBlock stairBlock, SlabBlock slabBlock, WallBlock wallBlock, StonecutterIngredient... stonecutterIngredients) {
+
+        if (stonecutterIngredients.length == 0) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, parent, 1);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, parent, 2);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, parent, 1);
+        }
+
+        for (StonecutterIngredient stonecutterIngredient : stonecutterIngredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stairBlock, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slabBlock, stonecutterIngredient.block, 2 * stonecutterIngredient.multiplier);
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wallBlock, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
+            if (stonecutterIngredient.block != parent) {
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, parent, stonecutterIngredient.block, 1 * stonecutterIngredient.multiplier);
+            }
+        }
+    }
+    private void stonecutterResultFromIngredients(Block result, int amount, Block... ingredients) {
+
+        for (Block ingredient : ingredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, ingredient, amount);
+        }
+
+    }
+    private void stonecutterResultFromIngredientsWithMultipliers(Block result, int amount, StonecutterIngredient... stonecutterIngredients) {
+
+        for (StonecutterIngredient stonecutterIngredient : stonecutterIngredients) {
+            stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, result, stonecutterIngredient.block, amount * stonecutterIngredient.multiplier);
+        }
+    }
+    private void createOreSmeltingRecipes(DeferredBlock<? extends Block> oreBlock, String ore) {
+
+        float exp;
+        Item item;
+
+        switch (ore) {
+            case "coal":
+                exp = 0.1f;
+                item = Items.COAL;
+                break;
+            case "iron":
+                exp = 0.7f;
+                item = Items.IRON_INGOT;
+                break;
+            case "copper":
+                exp = 0.7f;
+                item = Items.COPPER_INGOT;
+                break;
+            case "gold":
+                exp = 1f;
+                item = Items.GOLD_INGOT;
+                break;
+            case "redstone":
+                exp = 0.7f;
+                item = Items.REDSTONE;
+                break;
+            case "emerald":
+                exp = 1f;
+                item = Items.EMERALD;
+                break;
+            case "lapis":
+                exp = 0.2f;
+                item = Items.LAPIS_LAZULI;
+                break;
+            case "diamond":
+                exp = 1f;
+                item = Items.DIAMOND;
+                break;
+            default:
+                throw new IllegalStateException("Ore smelting recipe uses unexpected ore group");
+        }
+
+        oreSmelting(List.of(oreBlock.asItem()), RecipeCategory.MISC, CookingBookCategory.BLOCKS, item, exp, 200, ore);
+        oreBlasting(List.of(oreBlock.asItem()), RecipeCategory.MISC, CookingBookCategory.BLOCKS, item, exp, 100, ore);
+    }
+
+    //endregion
 
 }
