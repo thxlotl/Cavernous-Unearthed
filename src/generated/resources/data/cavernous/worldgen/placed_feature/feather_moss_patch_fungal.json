@@ -1,9 +1,9 @@
 {
-  "feature": "cavernous:mycelium_sprout_patch",
+  "feature": "cavernous:feather_moss_patch_fungal",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 70
+      "count": 65
     },
     {
       "type": "minecraft:in_square"

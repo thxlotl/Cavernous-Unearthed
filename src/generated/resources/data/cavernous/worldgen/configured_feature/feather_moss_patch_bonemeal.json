@@ -14,7 +14,7 @@
     "surface": "floor",
     "vegetation_chance": 0.5,
     "vegetation_feature": {
-      "feature": "cavernous:feather_moss_vegetation",
+      "feature": "cavernous:feather_moss_vegetation_bonemeal",
       "placement": [
         {
           "type": "minecraft:block_predicate_filter",
